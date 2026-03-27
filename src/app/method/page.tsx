@@ -3,9 +3,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'The Body Unmuted Method | Madison Griffin Fit',
+  title: 'The Body Unmuted Method',
   description:
     'Build a body that supports your life — not one that depends on controlling it. Structured strength, smart nutrition, and sustainable mindset shifts.',
+  openGraph: {
+    images: [{ url: '/Madison-73.webp', width: 1200, height: 630, alt: 'The Body Unmuted Method — Madison Griffin Fit' }],
+  },
 }
 
 export default function MethodPage() {

@@ -3,9 +3,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Work With Me | Madison Griffin Fit',
+  title: 'Work With Me',
   description:
     'Personalized 1:1 strength training and nutrition coaching for women who want real, lasting results. Apply to work with Madison Griffin.',
+  openGraph: {
+    images: [{ url: '/Madison-157.webp', width: 1200, height: 630, alt: '1:1 Coaching — Madison Griffin Fit' }],
+  },
 }
 
 const included = [

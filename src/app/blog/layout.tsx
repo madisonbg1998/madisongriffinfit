@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Blog | Madison Griffin Fit',
+  title: 'Blog',
   description:
     'Insights on strength training, nutrition, and building a body that keeps up with your life. Coming soon from Madison Griffin.',
 }
