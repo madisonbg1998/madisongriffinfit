@@ -77,7 +77,7 @@ export default function WorkWithMePage() {
           src="/Madison-157.webp"
           alt="Madison Griffin overlooking mountains and ocean"
           fill
-          className="object-cover object-center"
+          className="object-cover object-[center_35%]"
           priority
           quality={90}
         />

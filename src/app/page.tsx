@@ -58,6 +58,7 @@ export default function HomePage() {
       <ResultsSection />
       <DifferentiatorSection />
       <SocialProofSection />
+      <FAQSection />
       <FinalCTASection />
     </>
   )
@@ -82,52 +83,59 @@ function HeroSection() {
           alt="Madison Griffin on mountain trail in athletic wear"
           fill
           priority
-          className="object-cover object-center"
+          className="object-cover object-[center_20%]"
           sizes="100vw"
         />
         {/* Dark gradient overlay — bottom-heavy */}
-        <div className="absolute inset-0 bg-gradient-to-b from-midnight/30 via-midnight/20 to-midnight/70" />
+        {/* Gradient: heavier on left for text readability, lighter on right to show Madison */}
+        <div className="absolute inset-0 bg-gradient-to-b from-midnight/40 via-midnight/45 to-midnight/70" />
+        <div className="absolute inset-0 bg-gradient-to-r from-midnight/50 via-midnight/20 to-transparent" />
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 mx-auto max-w-4xl px-6 text-center pt-20">
-        <h1
-          className={`font-serif text-5xl md:text-7xl lg:text-[5.25rem] leading-[1.08] text-cream tracking-tight text-balance transition-all duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
-            loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}
-        >
-          Build a Strong, Lean Body That Actually Lasts
-        </h1>
-
-        <p
-          className={`mt-7 text-lg md:text-xl text-cream/85 font-sans font-light leading-relaxed max-w-2xl mx-auto transition-all duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-200 ${
-            loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}
-        >
-          Stop starting over every time life gets chaotic. Get strong, lean, and
-          confident without putting your life on pause.
-        </p>
-
-        <p
-          className={`mt-5 text-base md:text-lg text-cream/65 font-serif italic leading-relaxed max-w-xl mx-auto transition-all duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-400 ${
-            loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}
-        >
-          You&rsquo;ve built a life you love. Your body should feel like it
-          belongs in it.
-        </p>
-
-        <div
-          className={`mt-10 transition-all duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-500 ${
-            loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}
-        >
-          <Link
-            href="/apply"
-            className="inline-block bg-sand text-midnight font-sans font-medium text-sm tracking-wide uppercase rounded-full px-10 py-4 hover:bg-bark hover:text-cream transition-colors duration-400"
+      {/* Content — left-aligned so Madison is visible on right */}
+      <div className="relative z-10 mx-auto max-w-7xl w-full px-6 md:px-12 lg:px-20 text-left pt-20">
+        <div className="max-w-2xl">
+          <h1
+            className={`font-serif text-5xl md:text-7xl lg:text-[5.25rem] leading-[1.08] text-cream tracking-tight text-balance transition-all duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
+              loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            }`}
+            style={{ textShadow: '0 2px 20px rgba(0,0,0,0.5), 0 1px 4px rgba(0,0,0,0.3)' }}
           >
-            Apply for 1:1 Coaching
-          </Link>
+            Build a Strong, Lean Body That Actually Lasts
+          </h1>
+
+          <p
+            className={`mt-7 text-lg md:text-xl text-cream/85 font-sans font-light leading-relaxed max-w-xl transition-all duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-200 ${
+              loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
+            style={{ textShadow: '0 1px 10px rgba(0,0,0,0.4)' }}
+          >
+            Stop starting over every time life gets chaotic. Get strong, lean, and
+            confident without putting your life on pause.
+          </p>
+
+          <p
+            className={`mt-5 text-base md:text-lg text-cream/65 font-serif italic leading-relaxed max-w-lg transition-all duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-400 ${
+              loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
+            style={{ textShadow: '0 1px 10px rgba(0,0,0,0.4)' }}
+          >
+            You&rsquo;ve built a life you love. Your body should feel like it
+            belongs in it.
+          </p>
+
+          <div
+            className={`mt-10 transition-all duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-500 ${
+              loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
+          >
+            <Link
+              href="/apply"
+              className="inline-block bg-sand text-midnight font-sans font-medium text-sm tracking-wide uppercase rounded-full px-10 py-4 hover:bg-bark hover:text-cream transition-colors duration-400"
+            >
+              Apply for 1:1 Coaching
+            </Link>
+          </div>
         </div>
       </div>
 
@@ -726,6 +734,112 @@ function SocialProofSection() {
                 </p>
               </div>
             </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ================================================================== */
+/*  FAQ                                                                 */
+/* ================================================================== */
+const faqs = [
+  {
+    q: 'Who is this coaching for?',
+    a: 'This is for women who live full, busy lives — women who travel, build businesses, and want a body that keeps up. If you\'re tired of starting over every time your routine gets disrupted, this is for you.',
+  },
+  {
+    q: 'I travel a lot — will this still work for me?',
+    a: 'Absolutely. The Body Unmuted method is specifically designed to adapt to your lifestyle. Your training and nutrition plans flex with your schedule, whether you\'re at home, in a hotel gym, or on the go.',
+  },
+  {
+    q: 'How is this different from other coaching programs?',
+    a: 'Most programs give you a rigid plan that only works in perfect conditions. Body Unmuted builds a system that holds — even when life is messy. We focus on strength, fueling your body properly, and breaking the all-or-nothing patterns that keep most women stuck.',
+  },
+  {
+    q: 'What does the coaching actually include?',
+    a: 'You\'ll receive a personalized strength training program, nutrition guidance without restriction, ongoing coaching and support, and systems that adapt as your life changes. Everything is tailored to you.',
+  },
+  {
+    q: 'How long is the coaching commitment?',
+    a: 'I recommend a minimum of 3–6 months to see lasting results. This isn\'t a quick fix — it\'s a sustainable shift in how you train, eat, and think about your body.',
+  },
+  {
+    q: 'Do I need gym experience?',
+    a: 'No. Whether you\'re brand new to strength training or have years of experience, your program is built for where you are right now. I meet you exactly where you\'re at.',
+  },
+]
+
+function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
+  const [open, setOpen] = useState(false)
+  const s = useInView(0.1)
+
+  return (
+    <div
+      ref={s.ref}
+      {...anim(s.isVisible, index * 80)}
+      className={`border-b border-bark/15 ${anim(s.isVisible, index * 80).className}`}
+      style={anim(s.isVisible, index * 80).style}
+    >
+      <button
+        onClick={() => setOpen(!open)}
+        className="w-full flex items-center justify-between py-6 text-left group"
+      >
+        <span className="font-serif text-lg md:text-xl text-midnight pr-8">{q}</span>
+        <span
+          className={`flex-shrink-0 w-8 h-8 rounded-full border border-bark/30 flex items-center justify-center transition-transform duration-300 ${
+            open ? 'rotate-45 bg-bark border-bark' : 'group-hover:border-bark'
+          }`}
+        >
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 14 14"
+            fill="none"
+            className={open ? 'text-cream' : 'text-bark'}
+          >
+            <path d="M7 1v12M1 7h12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+          </svg>
+        </span>
+      </button>
+      <div
+        className={`overflow-hidden transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+          open ? 'max-h-60 opacity-100 pb-6' : 'max-h-0 opacity-0'
+        }`}
+      >
+        <p className="text-midnight/70 font-sans leading-relaxed pr-12">{a}</p>
+      </div>
+    </div>
+  )
+}
+
+function FAQSection() {
+  const s = useInView()
+
+  return (
+    <section className="bg-cream py-24 md:py-32">
+      <div className="mx-auto max-w-3xl px-6">
+        <div ref={s.ref} className="text-center mb-16">
+          <p
+            {...anim(s.isVisible)}
+            className={`text-bark text-[11px] font-medium tracking-[0.25em] uppercase mb-4 ${anim(s.isVisible).className}`}
+            style={anim(s.isVisible).style}
+          >
+            Common Questions
+          </p>
+          <h2
+            {...anim(s.isVisible, 100)}
+            className={`font-serif text-3xl md:text-5xl text-midnight ${anim(s.isVisible, 100).className}`}
+            style={anim(s.isVisible, 100).style}
+          >
+            Everything you need to know
+          </h2>
+        </div>
+
+        <div>
+          {faqs.map((faq, i) => (
+            <FAQItem key={i} q={faq.q} a={faq.a} index={i} />
           ))}
         </div>
       </div>
