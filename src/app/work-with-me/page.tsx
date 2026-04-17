@@ -215,15 +215,18 @@ export default function WorkWithMePage() {
             Investment
           </p>
           <h2 className="font-serif text-cream text-3xl sm:text-4xl lg:text-5xl font-medium mb-8">
-            This isn&apos;t about cost&thinsp;&mdash;&thinsp;it&apos;s about commitment.
+            Built around you.
           </h2>
-          <p className="text-cream/60 text-base sm:text-lg leading-relaxed max-w-xl mx-auto mb-4">
-            Coaching spots are limited and offered through an application process.
-            This ensures we&apos;re the right fit for each other and that you get the
-            attention you deserve.
+          <p className="text-cream/60 text-base sm:text-lg leading-relaxed max-w-xl mx-auto mb-5">
+            This is a personalised, high-touch coaching experience, designed to fit
+            your lifestyle, goals, and the level of support you need.
+          </p>
+          <p className="text-cream/60 text-base sm:text-lg leading-relaxed max-w-xl mx-auto mb-5">
+            A tailored monthly investment will be created for you based on your goals,
+            your starting point, and whether we&apos;re the right fit to work together.
           </p>
           <p className="text-cream/40 text-sm">
-            Pricing and program details are shared after your application is reviewed.
+            If it feels aligned, you can apply below and we&apos;ll walk through everything together.
           </p>
         </div>
       </section>

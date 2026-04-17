@@ -26,8 +26,8 @@ export default function AboutPage() {
                 Hi, I&rsquo;m Madison
               </h1>
               <p className="text-charcoal/80 font-sans text-lg md:text-xl leading-relaxed max-w-lg">
-                Strength &amp; nutrition coach for women who live full, expansive lives&nbsp;&mdash;
-                and want a body that can keep up.
+                Strength &amp; nutrition coach for women who want a strong, lean
+                body without making fitness their whole personality.
               </p>
             </div>
             <div className="relative aspect-[3/4] overflow-hidden rounded-sm">
@@ -50,34 +50,38 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
             <div className="lg:col-span-7 space-y-7 text-charcoal/80 font-sans text-[17px] leading-[1.75]">
               <p>
-                I did everything the fitness industry told women to do. I tracked every calorie. I
-                cut carbs, then cut fats, then cut whatever was next on the list. I worked out six
-                or seven days a week. I measured my body, weighed my food, and tied my entire sense
-                of self-worth to a number on a scale.
+                Fitness has always been part of my life &mdash; but it was never
+                supposed to be my whole identity. I wanted to travel. I wanted to
+                eat pasta and drink wine and actually enjoy the places I was visiting.
+                I didn&rsquo;t want to spend my twenties obsessively tracking macros
+                and skipping social dinners because they didn&rsquo;t fit my plan.
               </p>
               <p>
-                And here&rsquo;s the thing&nbsp;&mdash; it worked. For a while. I looked lean. I
-                looked fit. But I was exhausted. I was anxious around food. I couldn&rsquo;t enjoy
-                dinner without calculating what I&rsquo;d &ldquo;have to do&rdquo; the next morning
-                to make up for it.
+                But I also wanted to look and feel strong. I wanted a body that
+                felt capable. And for a long time, I couldn&rsquo;t figure out
+                how to have both.
               </p>
 
               <blockquote className="border-l-2 border-sand pl-6 my-10">
                 <p className="font-serif text-bark text-xl md:text-2xl italic leading-relaxed">
-                  &ldquo;I looked like I had it together. But my relationship with my body was built
-                  entirely on control.&rdquo;
+                  &ldquo;Every time I traveled or life got full, my results fell
+                  apart. I kept starting over. I couldn&rsquo;t figure out why
+                  nothing ever stuck.&rdquo;
                 </p>
               </blockquote>
 
               <p>
-                And control doesn&rsquo;t travel well. It breaks down when your routine changes.
-                When you&rsquo;re in a new city, eating at restaurants you didn&rsquo;t plan for. When
-                life gets full and messy and beautiful&nbsp;&mdash; and you can&rsquo;t meal-prep
-                your way through it.
+                So I did something that changed everything &mdash; I hired a coach.
+                Not because I needed someone to hand me a workout plan, but because
+                I needed someone to help me figure out a completely different way of
+                approaching this.
               </p>
               <p>
-                I spent years in that cycle. Restrict, control, fall apart, start over. Each time
-                feeling a little more broken. Each time trusting myself a little less.
+                That year, I visited 21 countries. And for the first time, everything
+                worked. My training adapted to wherever I was. My nutrition wasn&rsquo;t
+                a source of anxiety &mdash; it was just something I understood. I was
+                getting stronger, leaner, and more consistent than I&rsquo;d ever been.
+                Not despite my lifestyle. Because of how I was working with it.
               </p>
             </div>
 
@@ -96,22 +100,22 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── What Changed ── */}
+      {/* ── What I Learned ── */}
       <section className="bg-cream py-20 md:py-28">
         <div className="max-w-3xl mx-auto px-6">
           <p className="text-sand text-[11px] font-sans font-medium tracking-[0.3em] uppercase mb-6">
-            The Turning Point
+            What Changed
           </p>
           <h2 className="font-serif text-midnight text-3xl md:text-4xl lg:text-5xl leading-[1.15] mb-12">
-            Everything changed when I learned how to:
+            What I learned that year:
           </h2>
           <ul className="space-y-6">
             {[
-              'Build real strength — not just "tone" — through structured, progressive training',
-              'Fuel my body properly, without food fear, restriction, or guilt',
-              'Stop approaching fitness from a place of control and punishment',
-              'Create systems that held up when life got unpredictable',
-              'Trust myself enough to let go of the rigidity',
+              'You don\'t need a perfect routine — you need a flexible system',
+              'Strength training (done right) changes everything faster than cardio ever did',
+              'You can eat pasta and wine and travel and still get lean — it\'s about how, not what',
+              'The all-or-nothing mindset is the actual thing keeping most women stuck',
+              'Results that last are built around your life, not in spite of it',
             ].map((item, i) => (
               <li key={i} className="flex items-start gap-5">
                 <span className="block w-2 h-2 rounded-full bg-sand mt-2 shrink-0" />
@@ -128,14 +132,16 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div>
               <p className="text-sand text-[11px] font-sans font-medium tracking-[0.3em] uppercase mb-6">
-                The Result
+                Now
               </p>
               <blockquote className="font-serif text-cream text-2xl md:text-3xl lg:text-4xl leading-[1.3] mb-8">
-                The result wasn&rsquo;t just a better physique. It was a body that felt
-                powerful, resilient, and stable&nbsp;&mdash; no matter where I was in the world.
+                I built a body I&rsquo;m proud of &mdash; and I never had to
+                choose between it and the life I actually wanted.
               </blockquote>
               <p className="text-cream/60 font-sans text-lg leading-relaxed">
-                And that&rsquo;s exactly what I help my clients build now.
+                That&rsquo;s what I help my clients build now. Not a rigid plan
+                that only works when everything is perfect. A system that travels,
+                adapts, and compounds &mdash; so you never have to start over again.
               </p>
             </div>
             <div className="relative aspect-[3/4] overflow-hidden rounded-sm">
@@ -151,7 +157,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── Positioning ── */}
+      {/* ── Who I Work With ── */}
       <section className="bg-cream py-24 md:py-32">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
@@ -166,14 +172,14 @@ export default function AboutPage() {
             </div>
             <div>
               <h2 className="font-serif text-midnight text-3xl md:text-4xl lg:text-5xl leading-[1.15] mb-8">
-                I work with women who live full, expansive lives.
+                I work with women who have a full life and want their body to match it.
               </h2>
               <ul className="space-y-5 mb-10">
                 {[
-                  'Women who travel and refuse to put their life on pause for a program',
-                  'Women who build businesses and need energy, not depletion',
-                  'Women who crave freedom — in how they eat, move, and live',
-                  'Women who want to feel strong, not small',
+                  'Women who travel and refuse to put their goals on hold every time they do',
+                  'Women who want to feel strong and look lean — without obsessing over it',
+                  'Women who have tried everything and need something that actually holds',
+                  'Women who want to enjoy food, life, and still feel incredible in their body',
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-4">
                     <span className="block w-1.5 h-1.5 rounded-full bg-sand mt-2.5 shrink-0" />
@@ -184,7 +190,7 @@ export default function AboutPage() {
                 ))}
               </ul>
               <p className="font-serif text-bark text-xl md:text-2xl italic leading-relaxed">
-                And want a body that can keep up with it.
+                If that sounds like you &mdash; you&rsquo;re in the right place.
               </p>
             </div>
           </div>
@@ -198,14 +204,14 @@ export default function AboutPage() {
             Ready to work together?
           </h2>
           <p className="text-cream/70 font-sans text-lg mb-10 max-w-xl mx-auto">
-            If this resonates, I&rsquo;d love to hear from you. Apply for coaching and
-            let&rsquo;s talk about what&rsquo;s possible.
+            Start with a free Body Brief &mdash; a personalised snapshot of where
+            you are and what it will take to get where you want to go.
           </p>
           <Link
-            href="/apply"
+            href="/body-brief"
             className="inline-flex items-center bg-cream text-bark text-[12px] font-sans font-medium tracking-[0.2em] uppercase px-10 py-4 rounded-sm hover:bg-cream/90 transition-colors duration-300"
           >
-            Apply for Coaching
+            Get Your Free Body Brief
           </Link>
         </div>
       </section>

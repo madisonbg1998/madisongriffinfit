@@ -129,7 +129,7 @@ export default function ResultsPage() {
         <div className="max-w-5xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 text-center">
             {[
-              { number: '100+', label: 'Women Coached' },
+              { number: '50+', label: 'Women Coached' },
               { number: '15+', label: 'Countries' },
               { number: '1', label: 'Method That Works' },
             ].map((stat, i) => (

@@ -13,9 +13,22 @@ const TRAVEL_OPTIONS = [
 ]
 
 const COMMITMENT_OPTIONS = [
-  "Yes, I'm ready",
-  'I need to learn more first',
-  'Not sure yet',
+  '1–2 months — I want to try it out first',
+  "3–6 months — I'm serious and ready to commit",
+  '6–12 months — I want a full transformation',
+  "As long as it takes — I'm here for results",
+]
+
+const COACH_OPTIONS = [
+  'Yes, I currently work with a coach',
+  'I have in the past, but not currently',
+  'No, never',
+]
+
+const INVESTMENT_OPTIONS = [
+  'Yes, absolutely',
+  'Yes, if it feels like the right fit',
+  "I'm still figuring out my budget",
 ]
 
 interface FormData {
@@ -25,8 +38,11 @@ interface FormData {
   fitnessGoals: string
   currentRoutine: string
   biggestStruggle: string
+  pastAttempts: string
   travelFrequency: string
   commitmentLevel: string
+  workingWithCoach: string
+  openToInvestment: string
   anythingElse: string
 }
 
@@ -37,8 +53,11 @@ const initialFormData: FormData = {
   fitnessGoals: '',
   currentRoutine: '',
   biggestStruggle: '',
+  pastAttempts: '',
   travelFrequency: '',
   commitmentLevel: '',
+  workingWithCoach: '',
+  openToInvestment: '',
   anythingElse: '',
 }
 
@@ -379,6 +398,23 @@ export default function ApplyPage() {
                     className="w-full bg-white border border-bark/20 rounded-lg px-4 py-3 text-midnight placeholder:text-charcoal/30 text-sm min-h-[120px] resize-y focus:outline-none focus:ring-2 focus:ring-bark/20 focus:border-bark transition-all duration-300"
                   />
                 </div>
+                <div>
+                  <label
+                    htmlFor="pastAttempts"
+                    className="block text-midnight text-sm font-medium mb-2"
+                  >
+                    What have you tried in the past to reach your goals?
+                  </label>
+                  <textarea
+                    id="pastAttempts"
+                    value={formData.pastAttempts}
+                    onChange={(e) =>
+                      updateField('pastAttempts', e.target.value)
+                    }
+                    placeholder="Programs, diets, approaches — what have you already tried?"
+                    className="w-full bg-white border border-bark/20 rounded-lg px-4 py-3 text-midnight placeholder:text-charcoal/30 text-sm min-h-[120px] resize-y focus:outline-none focus:ring-2 focus:ring-bark/20 focus:border-bark transition-all duration-300"
+                  />
+                </div>
               </div>
             )}
 
@@ -426,7 +462,8 @@ export default function ApplyPage() {
 
                 <div>
                   <label className="block text-midnight text-sm font-medium mb-3">
-                    Are you ready to commit to a 3-6 month coaching process?
+                    How many months are you willing to commit to when it comes
+                    to reaching your fitness goals?
                   </label>
                   <div className="space-y-3">
                     {COMMITMENT_OPTIONS.map((opt) => (
@@ -456,6 +493,89 @@ export default function ApplyPage() {
                           checked={formData.commitmentLevel === opt}
                           onChange={(e) =>
                             updateField('commitmentLevel', e.target.value)
+                          }
+                          className="sr-only"
+                        />
+                        <span className="text-midnight text-sm">{opt}</span>
+                      </label>
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-midnight text-sm font-medium mb-3">
+                    Have you or are you currently working with a fitness coach?
+                  </label>
+                  <div className="space-y-3">
+                    {COACH_OPTIONS.map((opt) => (
+                      <label
+                        key={opt}
+                        className={`flex items-center gap-3 cursor-pointer group px-4 py-3.5 rounded-lg border transition-all duration-300 ${
+                          formData.workingWithCoach === opt
+                            ? 'border-bark bg-bark/5'
+                            : 'border-bark/10 bg-white hover:border-bark/25'
+                        }`}
+                      >
+                        <div
+                          className={`w-[18px] h-[18px] rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
+                            formData.workingWithCoach === opt
+                              ? 'border-bark'
+                              : 'border-bark/25 group-hover:border-bark/40'
+                          }`}
+                        >
+                          {formData.workingWithCoach === opt && (
+                            <div className="w-2.5 h-2.5 rounded-full bg-bark animate-scale-in" />
+                          )}
+                        </div>
+                        <input
+                          type="radio"
+                          name="workingWithCoach"
+                          value={opt}
+                          checked={formData.workingWithCoach === opt}
+                          onChange={(e) =>
+                            updateField('workingWithCoach', e.target.value)
+                          }
+                          className="sr-only"
+                        />
+                        <span className="text-midnight text-sm">{opt}</span>
+                      </label>
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-midnight text-sm font-medium mb-3">
+                    If this feels like the right fit, are you open to investing
+                    in coaching to get long-term results?
+                  </label>
+                  <div className="space-y-3">
+                    {INVESTMENT_OPTIONS.map((opt) => (
+                      <label
+                        key={opt}
+                        className={`flex items-center gap-3 cursor-pointer group px-4 py-3.5 rounded-lg border transition-all duration-300 ${
+                          formData.openToInvestment === opt
+                            ? 'border-bark bg-bark/5'
+                            : 'border-bark/10 bg-white hover:border-bark/25'
+                        }`}
+                      >
+                        <div
+                          className={`w-[18px] h-[18px] rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
+                            formData.openToInvestment === opt
+                              ? 'border-bark'
+                              : 'border-bark/25 group-hover:border-bark/40'
+                          }`}
+                        >
+                          {formData.openToInvestment === opt && (
+                            <div className="w-2.5 h-2.5 rounded-full bg-bark animate-scale-in" />
+                          )}
+                        </div>
+                        <input
+                          type="radio"
+                          name="openToInvestment"
+                          value={opt}
+                          checked={formData.openToInvestment === opt}
+                          onChange={(e) =>
+                            updateField('openToInvestment', e.target.value)
                           }
                           className="sr-only"
                         />

@@ -102,7 +102,7 @@ function HeroSection() {
             }`}
             style={{ textShadow: '0 2px 20px rgba(0,0,0,0.5), 0 1px 4px rgba(0,0,0,0.3)' }}
           >
-            Build a Strong, Lean Body That Actually Lasts
+            You Shouldn&rsquo;t Have to Slow Your Life Down to Get Results
           </h1>
 
           <p
@@ -111,18 +111,9 @@ function HeroSection() {
             }`}
             style={{ textShadow: '0 1px 10px rgba(0,0,0,0.4)' }}
           >
-            Stop starting over every time life gets chaotic. Get strong, lean, and
-            confident without putting your life on pause.
-          </p>
-
-          <p
-            className={`mt-5 text-base md:text-lg text-cream/65 font-serif italic leading-relaxed max-w-lg transition-all duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-400 ${
-              loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}
-            style={{ textShadow: '0 1px 10px rgba(0,0,0,0.4)' }}
-          >
-            You&rsquo;ve built a life you love. Your body should feel like it
-            belongs in it.
+            You&rsquo;ve built a full life. Work, travel, plans, people. It all
+            moves. And you don&rsquo;t want to give that up just to feel better
+            in your body.
           </p>
 
           <div
@@ -191,8 +182,7 @@ function ProblemSection() {
               className={`font-serif text-3xl md:text-[2.75rem] leading-[1.15] text-midnight tracking-tight text-balance ${anim(s1.isVisible).className}`}
               style={anim(s1.isVisible).style}
             >
-              You&rsquo;re not inconsistent. You&rsquo;ve just never been
-              taught how to build a body that holds.
+              Most fitness approaches quietly expect your life to stay the same.
             </h2>
 
             <div
@@ -201,21 +191,17 @@ function ProblemSection() {
               style={anim(s1.isVisible, 120).style}
             >
               <p>
-                You start a new routine. You meal prep. You get consistent for a
-                few weeks. Then a work trip happens, or your schedule shifts, or
-                life just... life&rsquo;s. And everything unravels. Again.
+                A gym you always go to. Meals you always cook. Days that always
+                go to plan. They don&rsquo;t say it outright. But that&rsquo;s
+                what they require.
               </p>
               <p>
-                You tell yourself you need more discipline. More willpower. A
-                stricter plan. But deep down, you know that&rsquo;s not it. You
-                have the drive &mdash; you&rsquo;ve built a career, a life, and
-                a reputation on it.
+                So you&rsquo;re left choosing between two bad options: force
+                your life to fit around your fitness &mdash; or accept that
+                results just aren&rsquo;t for you.
               </p>
               <p>
-                The real problem? Everything you&rsquo;ve been taught about
-                fitness was designed for people whose lives never change. Rigid
-                plans. All-or-nothing rules. Strategies that collapse the moment
-                life stops being perfectly controlled.
+                You don&rsquo;t need to choose.
               </p>
             </div>
 
@@ -224,9 +210,8 @@ function ProblemSection() {
               className={`border-l-2 border-sand pl-6 font-serif italic text-xl md:text-2xl text-midnight/80 leading-snug ${anim(s1.isVisible, 240).className}`}
               style={anim(s1.isVisible, 240).style}
             >
-              &ldquo;The problem isn&rsquo;t your discipline. It&rsquo;s that
-              everything you&rsquo;ve been taught only works when life is
-              perfectly controlled.&rdquo;
+              &ldquo;The problem was never your discipline. It was a system
+              designed for a life you don&rsquo;t actually live.&rdquo;
             </blockquote>
           </div>
 
@@ -287,7 +272,7 @@ function ReframeSection() {
               className={`font-serif text-3xl md:text-[2.75rem] leading-[1.15] text-cream tracking-tight text-balance ${anim(s2.isVisible).className}`}
               style={anim(s2.isVisible).style}
             >
-              Your fitness routine should work on your messiest weeks.
+              Picture waking up and actually liking what you see.
             </h2>
 
             <div
@@ -296,21 +281,19 @@ function ReframeSection() {
               style={anim(s2.isVisible, 120).style}
             >
               <p>
-                Most fitness advice sounds the same: eat less, move more, do
-                more cardio, cut the carbs. It works &mdash; until it
-                doesn&rsquo;t. Until you&rsquo;re traveling for two weeks, or
-                running on four hours of sleep, or simply living the full,
-                ambitious life you&rsquo;ve built.
+                You look in the mirror and something&rsquo;s different. Your
+                body looks tighter. Leaner. You put on a tank top and your arms
+                look defined. Your waist looks smaller. Your clothes fit
+                differently.
               </p>
               <p>
-                Those approaches create fragile results. They require perfect
-                conditions. And when conditions change &mdash; which they always
-                do &mdash; you&rsquo;re left starting from scratch.
+                And for a second you think &mdash; okay, I actually look pretty
+                damn good.
               </p>
               <p>
-                What if your body could get stronger, leaner, and more capable
-                even when life is unpredictable? What if the way you trained and
-                fueled actually adapted with you instead of breaking down?
+                Not because you suffered for it. Not because you skipped dinners
+                and cancelled plans. But because you built something that worked
+                with your life, not against it.
               </p>
             </div>
 
@@ -320,8 +303,8 @@ function ReframeSection() {
               style={anim(s2.isVisible, 240).style}
             >
               <p className="font-serif italic text-xl md:text-2xl text-sand leading-snug">
-                Inside Body Unmuted, we do the opposite. We build a body that
-                becomes stronger, more capable, and more resilient over time.
+                That&rsquo;s not a fantasy version of you. That&rsquo;s just
+                you &mdash; with a system that finally fits.
               </p>
             </div>
           </div>
@@ -340,28 +323,27 @@ const pillars = [
     alt: 'Madison showing athletic physique, smiling and confident',
     label: 'Strength',
     description:
-      'Progressive, periodized strength training designed around your real life. Not cookie-cutter programs — intelligent programming that adapts whether you have a full gym or a hotel room. We build lean muscle, increase your metabolism, and create a body that performs.',
+      'Building lean muscle through progressive training designed for women. Not endless cardio, not light weights — real programming that builds a body you can see and feel. We train with purpose so you stop spinning your wheels and start seeing actual change.',
   },
   {
     image: '/Madison-243.webp',
     alt: 'Madison eating from a bowl on the beach at sunset',
     label: 'Fuel',
     description:
-      'Nutrition that fuels performance and fat loss without restriction. No meal plans that fall apart on day four. Instead, a flexible framework that teaches you how to eat for your goals at home, at restaurants, while traveling, and everywhere in between.',
+      'Nutrition that works for you, not against you. No food tracking anxiety. No meal plans that fall apart the moment you travel or go out to dinner. A flexible approach to eating that supports your training, fits your life, and makes you feel genuinely good.',
   },
   {
     image: '/Madison-201.webp',
     alt: 'Madison close-up, eyes closed, peaceful in golden light',
     label: 'Mindset',
     description:
-      'The inner game that makes the outer results stick. We dismantle the all-or-nothing thinking, the guilt cycles, and the perfectionism that have kept you starting over. This is where lasting change actually lives.',
+      'The part most coaches skip. You can have the perfect plan — but if your head isn&rsquo;t in it, you&rsquo;ll keep self-sabotaging. We break the all-or-nothing cycles, the guilt, and the perfectionism so your results stick long after the program ends.',
   },
 ]
 
 function MethodSection() {
   const heading = useInView()
   const cards = useInView(0.1)
-  const closing = useInView()
 
   return (
     <section className="bg-cream py-28 md:py-36">
@@ -428,17 +410,6 @@ function MethodSection() {
           ))}
         </div>
 
-        {/* Closing line */}
-        <div ref={closing.ref} className="mt-20 text-center">
-          <p
-            {...anim(closing.isVisible)}
-            className={`font-serif italic text-xl md:text-2xl text-midnight/70 leading-snug max-w-3xl mx-auto ${anim(closing.isVisible).className}`}
-            style={anim(closing.isVisible).style}
-          >
-            &ldquo;This isn&rsquo;t just a transformation. It&rsquo;s a body
-            that holds its results &mdash; even as your life changes.&rdquo;
-          </p>
-        </div>
       </div>
     </section>
   )
@@ -474,8 +445,9 @@ function ImageDivider() {
           className={`font-serif italic text-2xl md:text-4xl lg:text-[2.75rem] text-cream leading-snug tracking-tight ${anim(s.isVisible).className}`}
           style={anim(s.isVisible).style}
         >
-          &ldquo;The goal was never to shrink yourself. It was to finally feel
-          at home in the body you&rsquo;re building your life in.&rdquo;
+          &ldquo;The goal was never to force your life around your fitness. It
+          was to finally feel at home in the body you&rsquo;re building your
+          life in.&rdquo;
         </p>
       </div>
     </section>
