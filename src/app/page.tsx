@@ -948,7 +948,7 @@ function FinalCTASection() {
           className={`font-serif text-3xl md:text-5xl lg:text-[3.25rem] text-cream leading-[1.12] tracking-tight text-balance ${anim(s.isVisible).className}`}
           style={anim(s.isVisible).style}
         >
-          If you&rsquo;re done starting over &mdash; this is your next step.
+          Not sure where to start? Let&rsquo;s figure it out together.
         </h2>
 
         <p
@@ -956,10 +956,9 @@ function FinalCTASection() {
           className={`mt-7 text-cream/70 font-sans text-base md:text-lg leading-relaxed max-w-2xl mx-auto ${anim(s.isVisible, 120).className}`}
           style={anim(s.isVisible, 120).style}
         >
-          Body Unmuted is an application-only 1:1 coaching experience for women
-          who are ready to build strength, confidence, and a body that keeps up
-          with the life they&rsquo;ve built. If that sounds like you, I&rsquo;d
-          love to hear from you.
+          Fill out the Body Brief form and I&rsquo;ll send you a personalised
+          snapshot of where you stand &mdash; your training, your nutrition, and
+          exactly what it will take to get the results you&rsquo;re after.
         </p>
 
         <p
@@ -967,8 +966,7 @@ function FinalCTASection() {
           className={`mt-5 text-cream/50 font-sans text-sm leading-relaxed max-w-xl mx-auto ${anim(s.isVisible, 200).className}`}
           style={anim(s.isVisible, 200).style}
         >
-          Limited spots available. Applications are reviewed personally and
-          responded to within 48 hours.
+          Takes 5 minutes. You&rsquo;ll hear back within 24&ndash;48 hours.
         </p>
 
         <div
@@ -977,10 +975,10 @@ function FinalCTASection() {
           style={anim(s.isVisible, 300).style}
         >
           <Link
-            href="/apply"
+            href="/body-brief"
             className="inline-block bg-sand text-midnight font-sans font-medium text-sm tracking-wide uppercase rounded-full px-12 py-5 hover:bg-bark hover:text-cream transition-colors duration-400 shadow-[0_4px_24px_rgba(212,165,116,0.3)]"
           >
-            Apply for 1:1 Coaching
+            Fill Out Your Body Brief
           </Link>
         </div>
 
@@ -989,7 +987,7 @@ function FinalCTASection() {
           className={`mt-8 text-cream/35 font-sans text-xs tracking-wide ${anim(s.isVisible, 400).className}`}
           style={anim(s.isVisible, 400).style}
         >
-          Free to apply &middot; No commitment required
+          Free &middot; No commitment required
         </p>
       </div>
     </section>
