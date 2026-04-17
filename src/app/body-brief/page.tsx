@@ -4,6 +4,7 @@ import { useState, useCallback } from 'react'
 import Image from 'next/image'
 
 const STEP_LABELS = [
+  'Your Info',
   'You & Your Life',
   'Your Goal',
   'Training & Nutrition',
@@ -131,9 +132,7 @@ function RadioOption({
     >
       <div
         className={`mt-0.5 w-[18px] h-[18px] rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
-          checked
-            ? 'border-bark'
-            : 'border-bark/25 group-hover:border-bark/40'
+          checked ? 'border-bark' : 'border-bark/25 group-hover:border-bark/40'
         }`}
       >
         {checked && (
@@ -174,9 +173,7 @@ function CheckboxOption({
     >
       <div
         className={`mt-0.5 w-[18px] h-[18px] rounded-sm border-2 flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
-          checked
-            ? 'border-bark bg-bark'
-            : 'border-bark/25 group-hover:border-bark/40'
+          checked ? 'border-bark bg-bark' : 'border-bark/25 group-hover:border-bark/40'
         }`}
       >
         {checked && (
@@ -207,16 +204,11 @@ function CheckboxOption({
   )
 }
 
-function QuestionLabel({ number, children }: { number: string; children: React.ReactNode }) {
-  return (
-    <div className="mb-3">
-      <p className="text-bark text-[10px] font-medium tracking-[0.2em] uppercase mb-1">
-        {number} —
-      </p>
-      {children}
-    </div>
-  )
-}
+const inputClass =
+  'w-full bg-white border border-bark/20 rounded-lg px-4 py-3 text-midnight placeholder:text-charcoal/30 text-sm focus:outline-none focus:ring-2 focus:ring-bark/20 focus:border-bark transition-all duration-300'
+
+const textareaClass =
+  'w-full bg-white border border-bark/20 rounded-lg px-4 py-3 text-midnight placeholder:text-charcoal/30 text-sm min-h-[120px] resize-y focus:outline-none focus:ring-2 focus:ring-bark/20 focus:border-bark transition-all duration-300'
 
 export default function BodyBriefPage() {
   const [step, setStep] = useState(1)
@@ -260,7 +252,7 @@ export default function BodyBriefPage() {
 
   const handleNext = useCallback(() => {
     if (validateStep()) {
-      setStep((s) => Math.min(s + 1, 4))
+      setStep((s) => Math.min(s + 1, 5))
     }
   }, [validateStep])
 
@@ -328,9 +320,9 @@ export default function BodyBriefPage() {
             Thank You
           </h1>
           <p className="text-charcoal/70 text-base sm:text-lg leading-relaxed mb-3">
-            Thank you for your submission. You&apos;ll get a response with your body
-            brief and opportunity to schedule a call to discuss it in 24-48
-            hours.
+            Thank you for your submission. You&apos;ll get a response with your
+            body brief and opportunity to schedule a call to discuss it in
+            24-48 hours.
           </p>
           <p className="text-charcoal/50 text-sm">
             Check your inbox — a confirmation is on its way.
@@ -367,7 +359,7 @@ export default function BodyBriefPage() {
             </p>
 
             {/* Step Progress */}
-            <div className="flex items-center gap-0 mb-12">
+            <div className="flex items-center mb-12">
               {STEP_LABELS.map((label, index) => {
                 const stepNum = index + 1
                 const isCompleted = step > stepNum
@@ -376,7 +368,7 @@ export default function BodyBriefPage() {
                   <div key={label} className="flex items-center">
                     {index > 0 && (
                       <div
-                        className={`w-8 sm:w-10 h-px transition-colors duration-300 ${
+                        className={`w-5 sm:w-7 h-px transition-colors duration-300 ${
                           isCompleted ? 'bg-sand' : 'bg-bark/15'
                         }`}
                       />
@@ -410,7 +402,7 @@ export default function BodyBriefPage() {
                         )}
                       </div>
                       <span
-                        className={`text-[9px] tracking-[0.1em] uppercase font-medium transition-colors duration-300 whitespace-nowrap hidden sm:block ${
+                        className={`text-[8px] tracking-[0.08em] uppercase font-medium transition-colors duration-300 whitespace-nowrap hidden sm:block ${
                           isCurrent || isCompleted
                             ? 'text-bark'
                             : 'text-charcoal/30'
@@ -431,19 +423,16 @@ export default function BodyBriefPage() {
               </div>
             )}
 
-            {/* Step 1: You & Your Life */}
+            {/* Step 1: Your Info */}
             {step === 1 && (
-              <div className="space-y-8 animate-fade-in">
-                <QuestionLabel number="01">
+              <div className="space-y-6 animate-fade-in">
+                <div>
                   <label
                     htmlFor="fullName"
-                    className="block text-midnight text-sm font-medium"
+                    className="block text-midnight text-sm font-medium mb-2"
                   >
-                    What&apos;s your name?{' '}
-                    <span className="text-sand">*</span>
+                    Full Name <span className="text-sand">*</span>
                   </label>
-                </QuestionLabel>
-                <div className="-mt-5">
                   <input
                     id="fullName"
                     type="text"
@@ -451,7 +440,7 @@ export default function BodyBriefPage() {
                     value={formData.fullName}
                     onChange={(e) => updateField('fullName', e.target.value)}
                     placeholder="Your name"
-                    className="w-full bg-white border border-bark/20 rounded-lg px-4 py-3 text-midnight placeholder:text-charcoal/30 text-sm focus:outline-none focus:ring-2 focus:ring-bark/20 focus:border-bark transition-all duration-300"
+                    className={inputClass}
                   />
                 </div>
 
@@ -469,18 +458,26 @@ export default function BodyBriefPage() {
                     value={formData.email}
                     onChange={(e) => updateField('email', e.target.value)}
                     placeholder="you@example.com"
-                    className="w-full bg-white border border-bark/20 rounded-lg px-4 py-3 text-midnight placeholder:text-charcoal/30 text-sm focus:outline-none focus:ring-2 focus:ring-bark/20 focus:border-bark transition-all duration-300"
+                    className={inputClass}
                   />
                 </div>
+              </div>
+            )}
 
+            {/* Step 2: You & Your Life */}
+            {step === 2 && (
+              <div className="space-y-8 animate-fade-in">
                 <div>
+                  <p className="text-bark text-[10px] font-medium tracking-[0.2em] uppercase mb-2">
+                    01 —
+                  </p>
                   <label
                     htmlFor="whatYouDo"
                     className="block text-midnight text-sm font-medium mb-1"
                   >
                     What do you do?
                   </label>
-                  <p className="text-charcoal/40 text-xs mb-2">
+                  <p className="text-charcoal/40 text-xs mb-3">
                     A sentence is enough — just helps me understand your world.
                   </p>
                   <input
@@ -489,16 +486,17 @@ export default function BodyBriefPage() {
                     value={formData.whatYouDo}
                     onChange={(e) => updateField('whatYouDo', e.target.value)}
                     placeholder="e.g. I'm a nurse, work from home in finance, run my own business..."
-                    className="w-full bg-white border border-bark/20 rounded-lg px-4 py-3 text-midnight placeholder:text-charcoal/30 text-sm focus:outline-none focus:ring-2 focus:ring-bark/20 focus:border-bark transition-all duration-300"
+                    className={inputClass}
                   />
                 </div>
 
                 <div>
-                  <QuestionLabel number="02">
-                    <p className="text-midnight text-sm font-medium">
-                      How would you describe your typical week?
-                    </p>
-                  </QuestionLabel>
+                  <p className="text-bark text-[10px] font-medium tracking-[0.2em] uppercase mb-2">
+                    02 —
+                  </p>
+                  <p className="text-midnight text-sm font-medium mb-3">
+                    How would you describe your typical week?
+                  </p>
                   <div className="space-y-2.5">
                     {WEEK_STRUCTURE_OPTIONS.map((opt) => (
                       <RadioOption
@@ -514,11 +512,12 @@ export default function BodyBriefPage() {
                 </div>
 
                 <div>
-                  <QuestionLabel number="03">
-                    <p className="text-midnight text-sm font-medium">
-                      How active are you outside of structured exercise?
-                    </p>
-                  </QuestionLabel>
+                  <p className="text-bark text-[10px] font-medium tracking-[0.2em] uppercase mb-2">
+                    03 —
+                  </p>
+                  <p className="text-midnight text-sm font-medium mb-3">
+                    How active are you outside of structured exercise?
+                  </p>
                   <div className="space-y-2.5">
                     {ACTIVITY_LEVEL_OPTIONS.map((opt) => (
                       <RadioOption
@@ -535,15 +534,16 @@ export default function BodyBriefPage() {
               </div>
             )}
 
-            {/* Step 2: Your Goal */}
-            {step === 2 && (
+            {/* Step 3: Your Goal */}
+            {step === 3 && (
               <div className="space-y-8 animate-fade-in">
                 <div>
-                  <QuestionLabel number="04">
-                    <p className="text-midnight text-sm font-medium">
-                      What is your primary goal right now?
-                    </p>
-                  </QuestionLabel>
+                  <p className="text-bark text-[10px] font-medium tracking-[0.2em] uppercase mb-2">
+                    04 —
+                  </p>
+                  <p className="text-midnight text-sm font-medium mb-3">
+                    What is your primary goal right now?
+                  </p>
                   <div className="space-y-2.5">
                     {PRIMARY_GOAL_OPTIONS.map((opt) => (
                       <RadioOption
@@ -559,15 +559,16 @@ export default function BodyBriefPage() {
                 </div>
 
                 <div>
-                  <QuestionLabel number="05">
-                    <label
-                      htmlFor="successDescription"
-                      className="block text-midnight text-sm font-medium"
-                    >
-                      In your own words — what does success look like for you?
-                    </label>
-                  </QuestionLabel>
-                  <p className="text-charcoal/40 text-xs mb-3 -mt-2">
+                  <p className="text-bark text-[10px] font-medium tracking-[0.2em] uppercase mb-2">
+                    05 —
+                  </p>
+                  <label
+                    htmlFor="successDescription"
+                    className="block text-midnight text-sm font-medium mb-1"
+                  >
+                    In your own words — what does success look like for you?
+                  </label>
+                  <p className="text-charcoal/40 text-xs mb-3">
                     How do you want to look, feel, and show up? Be specific.
                   </p>
                   <textarea
@@ -577,21 +578,23 @@ export default function BodyBriefPage() {
                       updateField('successDescription', e.target.value)
                     }
                     placeholder="Tell me what success really looks like for you..."
-                    className="w-full bg-white border border-bark/20 rounded-lg px-4 py-3 text-midnight placeholder:text-charcoal/30 text-sm min-h-[140px] resize-y focus:outline-none focus:ring-2 focus:ring-bark/20 focus:border-bark transition-all duration-300"
+                    className={textareaClass}
+                    style={{ minHeight: '140px' }}
                   />
                 </div>
               </div>
             )}
 
-            {/* Step 3: Training & Nutrition */}
-            {step === 3 && (
+            {/* Step 4: Training & Nutrition */}
+            {step === 4 && (
               <div className="space-y-8 animate-fade-in">
                 <div>
-                  <QuestionLabel number="06">
-                    <p className="text-midnight text-sm font-medium">
-                      How often are you currently training?
-                    </p>
-                  </QuestionLabel>
+                  <p className="text-bark text-[10px] font-medium tracking-[0.2em] uppercase mb-2">
+                    06 —
+                  </p>
+                  <p className="text-midnight text-sm font-medium mb-3">
+                    How often are you currently training?
+                  </p>
                   <div className="space-y-2.5">
                     {TRAINING_FREQUENCY_OPTIONS.map((opt) => (
                       <RadioOption
@@ -607,15 +610,16 @@ export default function BodyBriefPage() {
                 </div>
 
                 <div>
-                  <QuestionLabel number="07">
-                    <label
-                      htmlFor="trainingDescription"
-                      className="block text-midnight text-sm font-medium"
-                    >
-                      What does your training actually look like right now?
-                    </label>
-                  </QuestionLabel>
-                  <p className="text-charcoal/40 text-xs mb-3 -mt-2">
+                  <p className="text-bark text-[10px] font-medium tracking-[0.2em] uppercase mb-2">
+                    07 —
+                  </p>
+                  <label
+                    htmlFor="trainingDescription"
+                    className="block text-midnight text-sm font-medium mb-1"
+                  >
+                    What does your training actually look like right now?
+                  </label>
+                  <p className="text-charcoal/40 text-xs mb-3">
                     What are you doing, and what equipment do you have access
                     to?
                   </p>
@@ -626,16 +630,17 @@ export default function BodyBriefPage() {
                       updateField('trainingDescription', e.target.value)
                     }
                     placeholder="Describe your workouts and available equipment..."
-                    className="w-full bg-white border border-bark/20 rounded-lg px-4 py-3 text-midnight placeholder:text-charcoal/30 text-sm min-h-[120px] resize-y focus:outline-none focus:ring-2 focus:ring-bark/20 focus:border-bark transition-all duration-300"
+                    className={textareaClass}
                   />
                 </div>
 
                 <div>
-                  <QuestionLabel number="08">
-                    <p className="text-midnight text-sm font-medium">
-                      How much protein do you roughly eat per day?
-                    </p>
-                  </QuestionLabel>
+                  <p className="text-bark text-[10px] font-medium tracking-[0.2em] uppercase mb-2">
+                    08 —
+                  </p>
+                  <p className="text-midnight text-sm font-medium mb-3">
+                    How much protein do you roughly eat per day?
+                  </p>
                   <div className="space-y-2.5">
                     {PROTEIN_INTAKE_OPTIONS.map((opt) => (
                       <RadioOption
@@ -651,11 +656,12 @@ export default function BodyBriefPage() {
                 </div>
 
                 <div>
-                  <QuestionLabel number="09">
-                    <p className="text-midnight text-sm font-medium">
-                      How consistent is your nutrition overall?
-                    </p>
-                  </QuestionLabel>
+                  <p className="text-bark text-[10px] font-medium tracking-[0.2em] uppercase mb-2">
+                    09 —
+                  </p>
+                  <p className="text-midnight text-sm font-medium mb-3">
+                    How consistent is your nutrition overall?
+                  </p>
                   <div className="space-y-2.5">
                     {NUTRITION_CONSISTENCY_OPTIONS.map((opt) => (
                       <RadioOption
@@ -674,16 +680,17 @@ export default function BodyBriefPage() {
               </div>
             )}
 
-            {/* Step 4: Patterns & Mindset */}
-            {step === 4 && (
+            {/* Step 5: Patterns & Mindset */}
+            {step === 5 && (
               <div className="space-y-8 animate-fade-in">
                 <div>
-                  <QuestionLabel number="10">
-                    <p className="text-midnight text-sm font-medium">
-                      What usually triggers you falling off track?
-                    </p>
-                  </QuestionLabel>
-                  <p className="text-charcoal/40 text-xs mb-3 -mt-2">
+                  <p className="text-bark text-[10px] font-medium tracking-[0.2em] uppercase mb-2">
+                    10 —
+                  </p>
+                  <p className="text-midnight text-sm font-medium mb-1">
+                    What usually triggers you falling off track?
+                  </p>
+                  <p className="text-charcoal/40 text-xs mb-3">
                     Select all that apply
                   </p>
                   <div className="space-y-2.5">
@@ -700,11 +707,12 @@ export default function BodyBriefPage() {
                 </div>
 
                 <div>
-                  <QuestionLabel number="11">
-                    <p className="text-midnight text-sm font-medium">
-                      When things fall apart, how do you typically respond?
-                    </p>
-                  </QuestionLabel>
+                  <p className="text-bark text-[10px] font-medium tracking-[0.2em] uppercase mb-2">
+                    11 —
+                  </p>
+                  <p className="text-midnight text-sm font-medium mb-3">
+                    When things fall apart, how do you typically respond?
+                  </p>
                   <div className="space-y-2.5">
                     {RESPONSE_TO_FALLING_OPTIONS.map((opt) => (
                       <RadioOption
@@ -720,16 +728,17 @@ export default function BodyBriefPage() {
                 </div>
 
                 <div>
-                  <QuestionLabel number="12">
-                    <label
-                      htmlFor="whatDidntWork"
-                      className="block text-midnight text-sm font-medium"
-                    >
-                      What have you tried before that didn&apos;t work, and why
-                      did it fall apart?
-                    </label>
-                  </QuestionLabel>
-                  <p className="text-charcoal/40 text-xs mb-3 -mt-2">
+                  <p className="text-bark text-[10px] font-medium tracking-[0.2em] uppercase mb-2">
+                    12 —
+                  </p>
+                  <label
+                    htmlFor="whatDidntWork"
+                    className="block text-midnight text-sm font-medium mb-1"
+                  >
+                    What have you tried before that didn&apos;t work, and why
+                    did it fall apart?
+                  </label>
+                  <p className="text-charcoal/40 text-xs mb-3">
                     Be specific — this is one of the most useful things you can
                     tell me.
                   </p>
@@ -740,24 +749,24 @@ export default function BodyBriefPage() {
                       updateField('whatDidntWork', e.target.value)
                     }
                     placeholder="What you tried, why it didn't last..."
-                    className="w-full bg-white border border-bark/20 rounded-lg px-4 py-3 text-midnight placeholder:text-charcoal/30 text-sm min-h-[120px] resize-y focus:outline-none focus:ring-2 focus:ring-bark/20 focus:border-bark transition-all duration-300"
+                    className={textareaClass}
                   />
                 </div>
 
                 <div>
-                  <QuestionLabel number="13">
-                    <label
-                      htmlFor="anythingElse"
-                      className="block text-midnight text-sm font-medium"
-                    >
-                      Is there anything else you want me to know before I put
-                      your brief together?{' '}
-                      <span className="text-charcoal/30 font-normal">
-                        (optional)
-                      </span>
-                    </label>
-                  </QuestionLabel>
-                  <p className="text-charcoal/40 text-xs mb-3 -mt-2">
+                  <p className="text-bark text-[10px] font-medium tracking-[0.2em] uppercase mb-2">
+                    13 —
+                  </p>
+                  <label
+                    htmlFor="anythingElse"
+                    className="block text-midnight text-sm font-medium mb-1"
+                  >
+                    Is there anything else you want me to know?{' '}
+                    <span className="text-charcoal/30 font-normal">
+                      (optional)
+                    </span>
+                  </label>
+                  <p className="text-charcoal/40 text-xs mb-3">
                     Injuries, health conditions, life context, what you really
                     need right now — anything at all.
                   </p>
@@ -768,7 +777,7 @@ export default function BodyBriefPage() {
                       updateField('anythingElse', e.target.value)
                     }
                     placeholder="Share anything that feels important..."
-                    className="w-full bg-white border border-bark/20 rounded-lg px-4 py-3 text-midnight placeholder:text-charcoal/30 text-sm min-h-[120px] resize-y focus:outline-none focus:ring-2 focus:ring-bark/20 focus:border-bark transition-all duration-300"
+                    className={textareaClass}
                   />
                 </div>
               </div>
@@ -801,7 +810,7 @@ export default function BodyBriefPage() {
                 <div />
               )}
 
-              {step < 4 ? (
+              {step < 5 ? (
                 <button
                   type="button"
                   onClick={handleNext}

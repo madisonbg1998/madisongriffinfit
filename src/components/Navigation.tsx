@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 const navLinks = [
   { href: '/method', label: 'Method' },
@@ -11,9 +12,13 @@ const navLinks = [
   { href: '/blog', label: 'Blog' },
 ]
 
+const LIGHT_TOP_PAGES = ['/apply', '/body-brief']
+
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileOpen, setIsMobileOpen] = useState(false)
+  const pathname = usePathname()
+  const forceDark = LIGHT_TOP_PAGES.includes(pathname)
 
   const handleScroll = useCallback(() => {
     setIsScrolled(window.scrollY > 40)
@@ -39,7 +44,7 @@ export function Navigation() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out ${
-        isScrolled
+        isScrolled || forceDark
           ? 'bg-cream/95 backdrop-blur-md shadow-[0_1px_12px_rgba(0,0,0,0.06)]'
           : 'bg-transparent'
       }`}
@@ -50,7 +55,7 @@ export function Navigation() {
           <Link
             href="/"
             className={`text-[13px] font-medium tracking-[0.25em] uppercase transition-colors duration-500 ${
-              isScrolled ? 'text-midnight' : 'text-cream'
+              isScrolled || forceDark ? 'text-midnight' : 'text-cream'
             }`}
           >
             Madison Griffin
@@ -63,7 +68,7 @@ export function Navigation() {
                 key={link.href}
                 href={link.href}
                 className={`text-[11px] font-medium tracking-[0.18em] uppercase transition-colors duration-500 hover:opacity-60 ${
-                  isScrolled ? 'text-charcoal' : 'text-cream/90'
+                  isScrolled || forceDark ? 'text-charcoal' : 'text-cream/90'
                 }`}
               >
                 {link.label}
@@ -76,7 +81,7 @@ export function Navigation() {
             <Link
               href="/apply"
               className={`hidden lg:inline-flex items-center text-[11px] font-medium tracking-[0.18em] uppercase px-6 py-2.5 rounded-sm transition-all duration-500 ${
-                isScrolled
+                isScrolled || forceDark
                   ? 'bg-bark text-cream hover:bg-bark/90'
                   : 'bg-cream/15 text-cream backdrop-blur-sm border border-cream/25 hover:bg-cream/25'
               }`}
@@ -93,17 +98,17 @@ export function Navigation() {
             >
               <span
                 className={`block h-[1.5px] w-6 transition-all duration-400 ease-out ${
-                  isScrolled ? 'bg-midnight' : 'bg-cream'
+                  isScrolled || forceDark ? 'bg-midnight' : 'bg-cream'
                 } ${isMobileOpen ? 'rotate-45 translate-y-[0px]' : '-translate-y-[5px]'}`}
               />
               <span
                 className={`block h-[1.5px] w-6 transition-all duration-400 ease-out ${
-                  isScrolled ? 'bg-midnight' : 'bg-cream'
+                  isScrolled || forceDark ? 'bg-midnight' : 'bg-cream'
                 } ${isMobileOpen ? 'opacity-0 scale-x-0' : 'opacity-100'}`}
               />
               <span
                 className={`block h-[1.5px] w-6 transition-all duration-400 ease-out ${
-                  isScrolled ? 'bg-midnight' : 'bg-cream'
+                  isScrolled || forceDark ? 'bg-midnight' : 'bg-cream'
                 } ${isMobileOpen ? '-rotate-45 translate-y-[0px]' : 'translate-y-[5px]'}`}
               />
             </button>
