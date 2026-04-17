@@ -59,6 +59,7 @@ export default function HomePage() {
       <DifferentiatorSection />
       <SocialProofSection />
       <FAQSection />
+      <BodyBriefSection />
       <FinalCTASection />
     </>
   )
@@ -125,15 +126,21 @@ function HeroSection() {
           </p>
 
           <div
-            className={`mt-10 transition-all duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-500 ${
+            className={`mt-10 flex flex-col sm:flex-row items-start sm:items-center gap-5 transition-all duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-500 ${
               loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
             <Link
-              href="/apply"
+              href="/body-brief"
               className="inline-block bg-sand text-midnight font-sans font-medium text-sm tracking-wide uppercase rounded-full px-10 py-4 hover:bg-bark hover:text-cream transition-colors duration-400"
             >
-              Apply for 1:1 Coaching
+              Get Your Free Body Brief
+            </Link>
+            <Link
+              href="/apply"
+              className="text-cream/65 font-sans text-sm tracking-wide hover:text-cream/90 transition-colors duration-300 underline underline-offset-4 decoration-cream/30"
+            >
+              Or apply for 1:1 coaching →
             </Link>
           </div>
         </div>
@@ -848,7 +855,100 @@ function FAQSection() {
 }
 
 /* ================================================================== */
-/*  9. FINAL CTA                                                       */
+/*  9. BODY BRIEF CTA                                                  */
+/* ================================================================== */
+function BodyBriefSection() {
+  const s1 = useInView()
+  const s2 = useInView()
+
+  return (
+    <section className="bg-midnight py-28 md:py-36 overflow-hidden">
+      <div className="mx-auto max-w-7xl px-6 lg:px-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+
+          {/* Text */}
+          <div ref={s1.ref} className="space-y-7 order-2 lg:order-1">
+            <p
+              {...anim(s1.isVisible)}
+              className={`text-sand text-[11px] font-sans font-medium tracking-[0.25em] uppercase ${anim(s1.isVisible).className}`}
+              style={anim(s1.isVisible).style}
+            >
+              Your First Step
+            </p>
+
+            <h2
+              {...anim(s1.isVisible, 100)}
+              className={`font-serif text-3xl md:text-[2.75rem] leading-[1.15] text-cream tracking-tight text-balance ${anim(s1.isVisible, 100).className}`}
+              style={anim(s1.isVisible, 100).style}
+            >
+              Before we build anything &mdash; let&rsquo;s find out where you
+              actually are.
+            </h2>
+
+            <div
+              {...anim(s1.isVisible, 200)}
+              className={`space-y-5 text-cream/70 font-sans text-base md:text-[17px] leading-relaxed ${anim(s1.isVisible, 200).className}`}
+              style={anim(s1.isVisible, 200).style}
+            >
+              <p>
+                Most coaches hand you a program and tell you to start on Monday.
+                That&rsquo;s not how I work.
+              </p>
+              <p>
+                Before we do anything, I want to understand you &mdash; your
+                schedule, your history, what&rsquo;s worked, what&rsquo;s
+                fallen apart, and what you&rsquo;re actually working toward.
+                That&rsquo;s what the Body Brief is for.
+              </p>
+              <p>
+                Fill out a five-minute intake form and within 24&ndash;48 hours
+                I&rsquo;ll send you a personalized Body Brief: a clear picture
+                of where you stand and exactly what it will take to get where
+                you want to go.
+              </p>
+            </div>
+
+            <div
+              {...anim(s1.isVisible, 300)}
+              className={`pt-2 ${anim(s1.isVisible, 300).className}`}
+              style={anim(s1.isVisible, 300).style}
+            >
+              <Link
+                href="/body-brief"
+                className="inline-block bg-sand text-midnight font-sans font-medium text-sm tracking-wide uppercase rounded-full px-10 py-4 hover:bg-bark hover:text-cream transition-colors duration-400"
+              >
+                Fill Out Your Body Brief
+              </Link>
+              <p className="mt-4 text-cream/35 font-sans text-xs tracking-wide">
+                Free &middot; Takes 5 minutes &middot; No commitment required
+              </p>
+            </div>
+          </div>
+
+          {/* Image */}
+          <div
+            ref={s2.ref}
+            {...anim(s2.isVisible, 150)}
+            className={`relative aspect-[3/4] rounded-sm overflow-hidden order-1 lg:order-2 ${anim(s2.isVisible, 150).className}`}
+            style={anim(s2.isVisible, 150).style}
+          >
+            <Image
+              src="/Madison-157.webp"
+              alt="Madison Griffin"
+              fill
+              className="object-cover object-top"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-midnight/30 via-transparent to-transparent" />
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ================================================================== */
+/*  10. FINAL CTA                                                      */
 /* ================================================================== */
 function FinalCTASection() {
   const s = useInView()
