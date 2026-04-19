@@ -182,7 +182,7 @@ function ProblemSection() {
               className={`font-serif text-3xl md:text-[2.75rem] leading-[1.15] text-midnight tracking-tight text-balance ${anim(s1.isVisible).className}`}
               style={anim(s1.isVisible).style}
             >
-              Most fitness approaches quietly expect your life to stay the same.
+              Most fitness approaches quietly expect you to.
             </h2>
 
             <div
@@ -191,14 +191,21 @@ function ProblemSection() {
               style={anim(s1.isVisible, 120).style}
             >
               <p>
-                A gym you always go to. Meals you always cook. Days that always
-                go to plan. They don&rsquo;t say it outright. But that&rsquo;s
-                what they require.
+                They work&hellip; if your routine is fixed. If your schedule is
+                predictable. If your weeks all look the same.
               </p>
               <p>
-                So you&rsquo;re left choosing between two bad options: force
-                your life to fit around your fitness &mdash; or accept that
-                results just aren&rsquo;t for you.
+                But yours don&rsquo;t.
+              </p>
+              <p>
+                Some weeks you&rsquo;re in a rhythm &mdash; some weeks
+                you&rsquo;re not. And that&rsquo;s normal.
+              </p>
+              <p>
+                The problem is you&rsquo;ve been given two options: something
+                that gets results, but doesn&rsquo;t fit your life &mdash; or
+                something that fits your life, but doesn&rsquo;t change your
+                body. So you end up stuck between the two.
               </p>
               <p>
                 You don&rsquo;t need to choose.
@@ -281,19 +288,22 @@ function ReframeSection() {
               style={anim(s2.isVisible, 120).style}
             >
               <p>
-                You look in the mirror and something&rsquo;s different. Your
-                body looks tighter. Leaner. You put on a tank top and your arms
-                look defined. Your waist looks smaller. Your clothes fit
-                differently.
+                You wake up, look in the mirror&hellip; and you&rsquo;re not
+                immediately picking yourself apart. Your body looks tighter,
+                leaner, more defined. Your arms look good in a tank top. Your
+                waist feels smaller. Your clothes sit better.
               </p>
               <p>
-                And for a second you think &mdash; okay, I actually look pretty
-                damn good.
+                You put something on and think: <em>okay&hellip; I actually look
+                pretty damn good.</em> Not sucking in. Not overthinking it. Not
+                changing outfits three times. Just&hellip; comfortable in your
+                body. Confident.
               </p>
               <p>
-                Not because you suffered for it. Not because you skipped dinners
-                and cancelled plans. But because you built something that worked
-                with your life, not against it.
+                You walk into a room and feel put together, attractive, like
+                yourself again. Not because you&rsquo;re trying to hide
+                anything &mdash; but because you&rsquo;re not thinking about it
+                anymore.
               </p>
             </div>
 
@@ -303,8 +313,9 @@ function ReframeSection() {
               style={anim(s2.isVisible, 240).style}
             >
               <p className="font-serif italic text-xl md:text-2xl text-sand leading-snug">
-                That&rsquo;s not a fantasy version of you. That&rsquo;s just
-                you &mdash; with a system that finally fits.
+                Without having to pull back on your life to do it. Because your
+                life isn&rsquo;t the thing that needs to change. What you&rsquo;re
+                doing is.
               </p>
             </div>
           </div>
@@ -322,22 +333,32 @@ const pillars = [
     image: '/Madison-88.webp',
     alt: 'Madison showing athletic physique, smiling and confident',
     label: 'Strength',
-    description:
-      'Building lean muscle through progressive training designed for women. Not endless cardio, not light weights — real programming that builds a body you can see and feel. We train with purpose so you stop spinning your wheels and start seeing actual change.',
+    paragraphs: [
+      'Most women end up stuck doing one of two things: a \u201cperfect\u201d gym routine they can\u2019t keep up with, or workouts they can do anywhere that don\u2019t actually change their body.',
+      'I don\u2019t do either.',
+      'We use a more flexible approach where your training adapts to what you have, so when you\u2019ve got access to a full gym, we push for real physique change, and when you don\u2019t, we adjust without everything falling apart.',
+      'That way you\u2019re not choosing between results or something you can stick to.',
+    ],
   },
   {
     image: '/Madison-243.webp',
     alt: 'Madison eating from a bowl on the beach at sunset',
     label: 'Fuel',
-    description:
-      'Nutrition that works for you, not against you. No food tracking anxiety. No meal plans that fall apart the moment you travel or go out to dinner. A flexible approach to eating that supports your training, fits your life, and makes you feel genuinely good.',
+    paragraphs: [
+      'Most approaches just teach you how to eat less. Which works\u2026 until you actually want a life.',
+      'I do the opposite.',
+      'We focus on building a body that can eat more over time while still getting leaner and actually changing shape.',
+      'So you can go out, order what you want, enjoy your food\u2026 and not have that low-key panic about what it\u2019s doing to your body. You know what you\u2019re doing, you know how to adjust, and nothing feels off track.',
+    ],
   },
   {
     image: '/Madison-201.webp',
     alt: 'Madison close-up, eyes closed, peaceful in golden light',
     label: 'Mindset',
-    description:
-      'The part most coaches skip. You can have the perfect plan — but if your head isn&rsquo;t in it, you&rsquo;ll keep self-sabotaging. We break the all-or-nothing cycles, the guilt, and the perfectionism so your results stick long after the program ends.',
+    paragraphs: [
+      'The inner game that makes the outer results stick. We dismantle the all-or-nothing thinking, the guilt cycles, and the perfectionism that have kept you starting over.',
+      'This is where lasting change actually lives. We will not only be working on strengthening your body but strengthening your mind.',
+    ],
   },
 ]
 
@@ -402,9 +423,13 @@ function MethodSection() {
                 <p className="text-sand text-[11px] font-sans font-semibold tracking-[0.2em] uppercase mb-3">
                   {pillar.label}
                 </p>
-                <p className="text-charcoal/75 font-sans text-[15px] leading-relaxed">
-                  {pillar.description}
-                </p>
+                <div className="space-y-3">
+                  {pillar.paragraphs.map((para, i) => (
+                    <p key={i} className="text-charcoal/75 font-sans text-[15px] leading-relaxed">
+                      {para}
+                    </p>
+                  ))}
+                </div>
               </div>
             </div>
           ))}

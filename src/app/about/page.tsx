@@ -26,8 +26,9 @@ export default function AboutPage() {
                 Hi, I&rsquo;m Madison
               </h1>
               <p className="text-charcoal/80 font-sans text-lg md:text-xl leading-relaxed max-w-lg">
-                Strength &amp; nutrition coach for women who want a strong, lean
-                body without making fitness their whole personality.
+                I&rsquo;m a fitness coach, but I don&rsquo;t think your entire
+                personality should be fitness. Honestly, the whole &ldquo;gym is
+                my life&rdquo; thing? Kind of boring.
               </p>
             </div>
             <div className="relative aspect-[3/4] overflow-hidden rounded-sm">
@@ -50,38 +51,49 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
             <div className="lg:col-span-7 space-y-7 text-charcoal/80 font-sans text-[17px] leading-[1.75]">
               <p>
-                Fitness has always been part of my life &mdash; but it was never
-                supposed to be my whole identity. I wanted to travel. I wanted to
-                eat pasta and drink wine and actually enjoy the places I was visiting.
-                I didn&rsquo;t want to spend my twenties obsessively tracking macros
-                and skipping social dinners because they didn&rsquo;t fit my plan.
+                I care a lot about getting women visible, mind-blowing
+                results &mdash; but not at the cost of their life, their
+                interests, or their joy. I don&rsquo;t want you bonding over
+                pre-workout. I want you bonding over wine, travel, long
+                dinners, and the things that actually make you you.
               </p>
               <p>
-                But I also wanted to look and feel strong. I wanted a body that
-                felt capable. And for a long time, I couldn&rsquo;t figure out
-                how to have both.
+                I intentionally leave fitness off my dating profile.
+                I&rsquo;m obsessed with traveling. I love pasta. I could talk
+                about wine for hours.
+              </p>
+              <p>
+                And for a long time&hellip; my body didn&rsquo;t really match
+                that life.
               </p>
 
               <blockquote className="border-l-2 border-sand pl-6 my-10">
                 <p className="font-serif text-bark text-xl md:text-2xl italic leading-relaxed">
-                  &ldquo;Every time I traveled or life got full, my results fell
-                  apart. I kept starting over. I couldn&rsquo;t figure out why
-                  nothing ever stuck.&rdquo;
+                  I wasn&rsquo;t just &ldquo;trying a few things.&rdquo; I was
+                  being restrictive. Cutting out foods I actually love &mdash;
+                  bread, pasta, anything that felt &ldquo;bad.&rdquo; Trying to
+                  be disciplined. Trying to do it right. And still&hellip; not
+                  getting the results that matched the effort I was putting in.
+                  It wasn&rsquo;t adding up.
                 </p>
               </blockquote>
 
               <p>
-                So I did something that changed everything &mdash; I hired a coach.
-                Not because I needed someone to hand me a workout plan, but because
-                I needed someone to help me figure out a completely different way of
-                approaching this.
+                Then I hired a coach. And it clicked pretty quickly that it
+                wasn&rsquo;t an effort problem &mdash; it was a structure
+                problem. Once I actually had a plan that made sense, my body
+                started responding in a way it never had before.
               </p>
               <p>
-                That year, I visited 21 countries. And for the first time, everything
-                worked. My training adapted to wherever I was. My nutrition wasn&rsquo;t
-                a source of anxiety &mdash; it was just something I understood. I was
-                getting stronger, leaner, and more consistent than I&rsquo;d ever been.
-                Not despite my lifestyle. Because of how I was working with it.
+                A couple years later, I left to travel. I spent a year in 21
+                countries &mdash; living out of a suitcase, working from caf&eacute;s,
+                eating my way through cities &mdash; and very much not being the
+                girl who skips pasta in Italy or says no to a good glass of wine.
+              </p>
+              <p>
+                So I had to figure out how to make this actually work. Not when
+                everything is perfect. When life is full, spontaneous, and
+                honestly&hellip; better.
               </p>
             </div>
 
@@ -111,11 +123,11 @@ export default function AboutPage() {
           </h2>
           <ul className="space-y-6">
             {[
-              'You don\'t need a perfect routine — you need a flexible system',
-              'Strength training (done right) changes everything faster than cardio ever did',
-              'You can eat pasta and wine and travel and still get lean — it\'s about how, not what',
+              "It wasn\u2019t an effort problem \u2014 it was a structure problem",
+              'Strength training built around your life actually changes your body faster than anything else',
+              'You can eat pasta in Italy, drink good wine, and still build a great body',
               'The all-or-nothing mindset is the actual thing keeping most women stuck',
-              'Results that last are built around your life, not in spite of it',
+              'You don\u2019t need to become a more boring version of yourself to get results',
             ].map((item, i) => (
               <li key={i} className="flex items-start gap-5">
                 <span className="block w-2 h-2 rounded-full bg-sand mt-2 shrink-0" />
@@ -135,13 +147,18 @@ export default function AboutPage() {
                 Now
               </p>
               <blockquote className="font-serif text-cream text-2xl md:text-3xl lg:text-4xl leading-[1.3] mb-8">
-                I built a body I&rsquo;m proud of &mdash; and I never had to
-                choose between it and the life I actually wanted.
+                Now I lift, I eat really well, I drink good wine, I travel
+                constantly &mdash; and it just works.
               </blockquote>
+              <p className="text-cream/60 font-sans text-lg leading-relaxed mb-6">
+                That&rsquo;s what I help my clients build. A body that looks
+                incredible, yes &mdash; but more importantly, one that supports
+                a life they actually want to live.
+              </p>
               <p className="text-cream/60 font-sans text-lg leading-relaxed">
-                That&rsquo;s what I help my clients build now. Not a rigid plan
-                that only works when everything is perfect. A system that travels,
-                adapts, and compounds &mdash; so you never have to start over again.
+                Because you don&rsquo;t need to become a more boring version of
+                yourself to get results. You just need a way of doing this that
+                actually fits you.
               </p>
             </div>
             <div className="relative aspect-[3/4] overflow-hidden rounded-sm">
