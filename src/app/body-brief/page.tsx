@@ -4,110 +4,329 @@ import { useState, useCallback } from 'react'
 import Image from 'next/image'
 
 const STEP_LABELS = [
-  'Your Info',
-  'You & Your Life',
-  'Your Goal',
-  'Training & Nutrition',
-  'Patterns & Mindset',
+  'About You',
+  'Your Month',
+  'Your Training',
+  'Your Nutrition',
+  'Goals & Mindset',
 ]
 
-const WEEK_STRUCTURE_OPTIONS = [
-  "Pretty structured — I have a consistent routine most days",
-  "Somewhat structured — consistent at home but falls apart when I travel or get busy",
-  "Unpredictable — my schedule changes constantly and I rarely have two weeks the same",
-  "Chaotic — I'm in a particularly intense season right now",
+// ── Section 1: About You ──────────────────────────────────────────────────────
+
+const LIFE_DESCRIPTION_OPTIONS = [
+  "Full-time job with a pretty structured schedule",
+  "Work from home / remote work",
+  "Frequently traveling for work",
+  "Running my own business",
+  "Student",
+  "Stay-at-home mum or primary caregiver",
+  "In a really full or hectic season right now",
+  "Things are relatively calm",
+  "Other",
 ]
 
-const ACTIVITY_LEVEL_OPTIONS = [
-  "Mostly sedentary — desk job, minimal movement day to day",
-  "Lightly active — some walking but nothing intentional",
-  "Moderately active — regularly hitting 7,000-10,000 steps",
-  "Very active — on my feet most of the day",
+// ── Section 2: Your Month ─────────────────────────────────────────────────────
+
+const LOCATION_OPTIONS = [
+  "Home the whole time",
+  "Traveling a little (1–2 trips this month)",
+  "Traveling a lot (3+ trips or mostly away)",
+  "Other",
 ]
 
-const PRIMARY_GOAL_OPTIONS = [
-  "Lose body fat and get leaner",
-  "Build muscle and change my body composition",
-  "Both — lose fat and build muscle simultaneously",
-  "Get consistent and build sustainable habits first",
-  "Improve my energy, strength, and how I feel overall",
+const GYM_SITUATION_OPTIONS = [
+  "Full gym with good equipment",
+  "Home gym or limited equipment",
+  "Mix of both depending on where I am",
+  "No gym or equipment right now",
+  "Other",
 ]
 
-const TRAINING_FREQUENCY_OPTIONS = [
-  "Not at all right now",
-  "1-2x per week inconsistently",
-  "2-3x per week fairly regularly",
-  "3-4x per week consistently",
-  "4-5x per week consistently",
+const PROGRESSIVE_OVERLOAD_OPTIONS = [
+  "Yes — it's the foundation of how I train",
+  "I've heard of it but not sure I'm actually doing it",
+  "No — this is new to me",
 ]
 
-const PROTEIN_INTAKE_OPTIONS = [
-  "I have no idea — I don't track anything",
-  "Very little — protein isn't something I focus on",
-  "Some — probably 60-80g",
-  "Moderate — around 100-120g",
-  "High — 130g+ consistently",
+const ENERGY_OPTIONS = [
+  "Good — I feel energised most days",
+  "Up and down — some good days, some not",
+  "Low — I'm running on empty a lot",
+  "Really struggling — I'm exhausted consistently",
+  "Other",
 ]
 
-const NUTRITION_CONSISTENCY_OPTIONS = [
-  "Very consistent — I eat well most days regardless of what's going on",
-  "Good during the week, falls apart on weekends or when I travel",
-  "On and off — I have good stretches then completely fall off",
-  "Struggling — nutrition feels really hard right now",
+// ── Section 3: Your Training ──────────────────────────────────────────────────
+
+const CURRENT_TRAINING_OPTIONS = [
+  "Lifting / strength training",
+  "Pilates or yoga",
+  "Cardio (running, cycling, etc.)",
+  "Group fitness classes",
+  "Sport or recreational activity",
+  "Nothing right now — I'm not training",
+  "Other",
 ]
 
-const FALL_OFF_TRIGGERS = [
-  "Travel or being out of my routine",
-  "A stressful or busy period at work",
-  "Social events, eating out, or weekends",
-  "One bad day snowballing into more",
+const TRAINING_DAYS_OPTIONS = [
+  "0 — not training right now",
+  "1–2 days",
+  "3–4 days",
+  "5+ days",
+]
+
+const SESSION_LENGTH_OPTIONS = [
+  "Under 30 minutes",
+  "30–45 minutes",
+  "45–60 minutes",
+  "60–90 minutes",
+  "90+ minutes",
+]
+
+const WORKOUT_TIMING_OPTIONS = [
+  "Morning (before work or anything else)",
+  "Midday / lunch",
+  "Afternoon / after work",
+  "Evening",
+  "It varies — no consistent time",
+]
+
+const STRENGTH_PROGRESSION_OPTIONS = [
+  "Yes — I'm consistently getting stronger",
+  "Not really — I use the same weights most sessions",
+  "Hard to tell — I don't track it",
+  "I'm not doing strength training",
+  "Other",
+]
+
+// ── Section 4: Your Nutrition ─────────────────────────────────────────────────
+
+const EATING_DESCRIPTION_OPTIONS = [
+  "Pretty healthy and consistent — I eat well most of the time",
+  "Healthy during the week, off track on weekends",
+  "I track calories or macros",
+  "I eat quite restrictively and struggle with flexibility",
+  "All over the place — no real structure",
+  "Other",
+]
+
+const PROTEIN_SERVINGS_OPTIONS = [
+  "0–1 servings",
+  "2–3 servings",
+  "4–5 servings",
+  "5+ servings",
+]
+
+const DAILY_HABITS_OPTIONS = [
+  "Eat breakfast",
+  "Drink 2L+ of water",
+  "Get 7–9 hours of sleep",
+  "Limit alcohol during the week",
+  "Eat vegetables with most meals",
+  "Take supplements or protein powder",
+  "Other",
+]
+
+const FOOD_FEELING_OPTIONS = [
+  "Pretty relaxed — food is food, I enjoy it without overthinking",
+  "I enjoy food but feel guilty sometimes",
+  "I have a lot of anxiety around food and eating",
+  "I'm constantly starting over and can't find consistency",
+  "Other",
+]
+
+const HORMONAL_HEALTH_OPTIONS = [
+  "No, nothing significant",
+  "I'm on the pill or hormonal contraception",
+  "I've been diagnosed with PCOS",
+  "I'm peri-menopausal or menopausal",
+  "Yes, something else",
+]
+
+// ── Section 5: Goals & Mindset ────────────────────────────────────────────────
+
+const MAIN_FOCUS_OPTIONS = [
+  "Losing body fat and getting leaner",
+  "Building muscle and changing my shape",
+  "Both — lose fat and build muscle",
+  "Getting consistent first",
+  "Improving how I feel and my energy",
+  "Other",
+]
+
+const PHYSIQUE_GOALS_OPTIONS = [
+  "Flatter stomach / less belly fat",
+  "Leaner legs",
+  "More defined arms and shoulders",
+  "A rounder or fuller glutes",
+  "Overall leanness",
+  "More muscle definition generally",
+  "Other",
+]
+
+const FITNESS_FEELING_OPTIONS = [
+  "Like something I enjoy and feel pretty good about",
+  "Like a constant source of stress or frustration",
+  "Like something I don't think about much",
+  "Like an ongoing project I can never quite get right",
+  "Other",
+]
+
+const OFF_TRACK_RESPONSE_OPTIONS = [
+  "I get back on it pretty quickly — it doesn't spiral",
+  "I feel bad about it but come back eventually",
+  "One off day tends to become a week or more",
+  "I go hard to compensate — restrict more or overtrain — then crash",
+  "Other",
+]
+
+const TRIP_UP_TRIGGERS_OPTIONS = [
+  "Travel or being away from home",
+  "Busy or stressful periods",
+  "Social events and eating out",
+  "One bad day snowballing",
+  "Motivation dipping",
   "Not seeing results fast enough",
-  "Feeling like I've already ruined it so I'll start again Monday",
-  "Injury, illness, or low energy",
+  "Life generally feeling out of control",
+  "Other",
 ]
 
-const RESPONSE_TO_FALLING_OPTIONS = [
-  "I shake it off pretty quickly and get back on track",
-  "I beat myself up but eventually bounce back",
-  "One bad day or week tends to turn into much longer",
-  "I go all-in to compensate — restrict more, train harder — then crash again",
+// ── Card data ─────────────────────────────────────────────────────────────────
+
+const briefCards = [
+  {
+    num: '01',
+    title: 'Your audit',
+    body: "What's working right now and what isn't. Most women are a lot closer than they think — they're just missing one or two key things. You'll finally know exactly where you stand.",
+  },
+  {
+    num: '02',
+    title: 'Your needle movers',
+    body: "Not twenty things to change. The two or three things that will actually make a difference for you this month, based on exactly where you are right now.",
+  },
+  {
+    num: '03',
+    title: 'Your training framework',
+    body: "A simple, repeatable structure built around your schedule, your equipment, and your goals. Something you can actually start this week, not when life calms down.",
+  },
+  {
+    num: '04',
+    title: 'Your nutrition anchors',
+    body: "No tracking, no meal plan, no overhaul. Three simple anchors that support your goals without asking you to give up the life you've built.",
+  },
+  {
+    num: '05',
+    title: 'A note from me',
+    body: "Every brief ends with something personal. Something I noticed in your answers. Something I want you to know. It's usually the part women screenshot.",
+  },
 ]
+
+// ── Style constants ───────────────────────────────────────────────────────────
+
+const inputClass =
+  'w-full bg-white border border-bark/20 rounded-lg px-4 py-3 text-midnight placeholder:text-charcoal/30 text-sm focus:outline-none focus:ring-2 focus:ring-bark/20 focus:border-bark transition-all duration-300'
+
+const textareaClass =
+  'w-full bg-white border border-bark/20 rounded-lg px-4 py-3 text-midnight placeholder:text-charcoal/30 text-sm min-h-[120px] resize-y focus:outline-none focus:ring-2 focus:ring-bark/20 focus:border-bark transition-all duration-300'
+
+// ── FormData ──────────────────────────────────────────────────────────────────
 
 interface FormData {
+  // Section 1: About You
   fullName: string
   email: string
-  whatYouDo: string
-  weekStructure: string
-  activityLevel: string
-  primaryGoal: string
-  successDescription: string
-  trainingFrequency: string
-  trainingDescription: string
-  proteinIntake: string
-  nutritionConsistency: string
-  fallOffTriggers: string[]
-  responseToFalling: string
-  whatDidntWork: string
+  instagram: string
+  lifeDescription: string[]
+  lifeDescriptionOther: string
+  // Section 2: Your Month
+  location: string
+  locationOther: string
+  gymSituation: string
+  gymSituationOther: string
+  progressiveOverload: string
+  weekdaySchedule: string
+  energy: string
+  energyOther: string
+  // Section 3: Your Training
+  currentTraining: string[]
+  currentTrainingOther: string
+  trainingDays: string
+  sessionLength: string
+  workoutTiming: string
+  strengthProgression: string
+  strengthProgressionOther: string
+  // Section 4: Your Nutrition
+  eatingDescription: string
+  eatingDescriptionOther: string
+  proteinServings: string
+  dailyHabits: string[]
+  dailyHabitsOther: string
+  foodFeeling: string
+  foodFeelingOther: string
+  hormonalHealth: string
+  hormonalHealthOther: string
+  // Section 5: Goals & Mindset
+  mainFocus: string
+  mainFocusOther: string
+  physiqueGoals: string[]
+  physiqueGoalsOther: string
+  bodyGifts: string
+  fitnessFeeling: string
+  fitnessFeelingOther: string
+  offTrackResponse: string
+  offTrackResponseOther: string
+  tripUpTriggers: string[]
+  tripUpTriggersOther: string
+  notWorkingDescription: string
   anythingElse: string
 }
 
 const initialFormData: FormData = {
   fullName: '',
   email: '',
-  whatYouDo: '',
-  weekStructure: '',
-  activityLevel: '',
-  primaryGoal: '',
-  successDescription: '',
-  trainingFrequency: '',
-  trainingDescription: '',
-  proteinIntake: '',
-  nutritionConsistency: '',
-  fallOffTriggers: [],
-  responseToFalling: '',
-  whatDidntWork: '',
+  instagram: '',
+  lifeDescription: [],
+  lifeDescriptionOther: '',
+  location: '',
+  locationOther: '',
+  gymSituation: '',
+  gymSituationOther: '',
+  progressiveOverload: '',
+  weekdaySchedule: '',
+  energy: '',
+  energyOther: '',
+  currentTraining: [],
+  currentTrainingOther: '',
+  trainingDays: '',
+  sessionLength: '',
+  workoutTiming: '',
+  strengthProgression: '',
+  strengthProgressionOther: '',
+  eatingDescription: '',
+  eatingDescriptionOther: '',
+  proteinServings: '',
+  dailyHabits: [],
+  dailyHabitsOther: '',
+  foodFeeling: '',
+  foodFeelingOther: '',
+  hormonalHealth: '',
+  hormonalHealthOther: '',
+  mainFocus: '',
+  mainFocusOther: '',
+  physiqueGoals: [],
+  physiqueGoalsOther: '',
+  bodyGifts: '',
+  fitnessFeeling: '',
+  fitnessFeelingOther: '',
+  offTrackResponse: '',
+  offTrackResponseOther: '',
+  tripUpTriggers: [],
+  tripUpTriggersOther: '',
+  notWorkingDescription: '',
   anythingElse: '',
 }
+
+// ── Sub-components ────────────────────────────────────────────────────────────
 
 function RadioOption({
   name,
@@ -204,11 +423,7 @@ function CheckboxOption({
   )
 }
 
-const inputClass =
-  'w-full bg-white border border-bark/20 rounded-lg px-4 py-3 text-midnight placeholder:text-charcoal/30 text-sm focus:outline-none focus:ring-2 focus:ring-bark/20 focus:border-bark transition-all duration-300'
-
-const textareaClass =
-  'w-full bg-white border border-bark/20 rounded-lg px-4 py-3 text-midnight placeholder:text-charcoal/30 text-sm min-h-[120px] resize-y focus:outline-none focus:ring-2 focus:ring-bark/20 focus:border-bark transition-all duration-300'
+// ── Page component ────────────────────────────────────────────────────────────
 
 export default function BodyBriefPage() {
   const [step, setStep] = useState(1)
@@ -222,13 +437,16 @@ export default function BodyBriefPage() {
     setError(null)
   }, [])
 
-  const toggleTrigger = useCallback((trigger: string) => {
-    setFormData((prev) => ({
-      ...prev,
-      fallOffTriggers: prev.fallOffTriggers.includes(trigger)
-        ? prev.fallOffTriggers.filter((t) => t !== trigger)
-        : [...prev.fallOffTriggers, trigger],
-    }))
+  const toggleArrayField = useCallback((field: keyof FormData, value: string) => {
+    setFormData((prev) => {
+      const current = prev[field] as string[]
+      return {
+        ...prev,
+        [field]: current.includes(value)
+          ? current.filter((v) => v !== value)
+          : [...current, value],
+      }
+    })
     setError(null)
   }, [])
 
@@ -322,7 +540,7 @@ export default function BodyBriefPage() {
           <p className="text-charcoal/70 text-base sm:text-lg leading-relaxed mb-3">
             Thank you for your submission. You&apos;ll get a response with your
             body brief and opportunity to schedule a call to discuss it in
-            24-48 hours.
+            24–48 hours.
           </p>
           <p className="text-charcoal/50 text-sm">
             Check your inbox — a confirmation is on its way.
@@ -341,7 +559,110 @@ export default function BodyBriefPage() {
 
   return (
     <>
-      <div className="min-h-screen bg-cream flex">
+      {/* ── Hero ── */}
+      <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
+        <Image
+          src="/Madison-170.webp"
+          alt="Madison on mountain at sunset"
+          fill
+          priority
+          className="object-cover"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-midnight/55" />
+        <div className="relative z-10 max-w-4xl mx-auto px-6 text-center py-28">
+          <p className="text-sand text-[11px] font-sans font-medium tracking-[0.3em] uppercase mb-6">
+            The Body Brief
+          </p>
+          <h1 className="font-serif text-cream text-5xl md:text-7xl lg:text-[5rem] leading-[1.08] tracking-tight text-balance mb-8">
+            Finally figure out why you&rsquo;re stuck.
+          </h1>
+          <p className="text-cream/80 font-sans text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-12">
+            A free, personalised deep dive into your training, your nutrition, and what&rsquo;s actually been getting in the way. You fill in a five minute form. I tell you the truth.
+          </p>
+          <a
+            href="#form"
+            className="inline-block bg-sand text-midnight font-sans font-medium text-sm tracking-wide uppercase rounded-full px-10 py-4 hover:bg-bark hover:text-cream transition-colors duration-300"
+          >
+            Get Your Free Body Brief
+          </a>
+        </div>
+      </section>
+
+      {/* ── The Copy ── */}
+      <section className="bg-midnight py-24 md:py-32">
+        <div className="max-w-3xl mx-auto px-6">
+          <div className="space-y-6 text-cream/75 font-sans text-[17px] leading-[1.75] mb-14">
+            <p>Think of it as the conversation I&rsquo;d have with you if we sat down to lunch and you told me you were feeling stuck, didn&rsquo;t love your body, and couldn&rsquo;t figure out why nothing was working.</p>
+            <p>That&rsquo;s exactly what this is.</p>
+            <p>You tell me about your life. Your goals, your training, your nutrition, your patterns, the things that keep tripping you up. I go through every answer and put together something completely personalised: what you&rsquo;re already doing well, what&rsquo;s actually missing, what your real needle movers are, and a training and nutrition framework built around how you actually live.</p>
+            <p>Not a generic plan. Not a list of things to fix. The specific, honest picture of where you are and that &ldquo;ohhhh, that makes sense&rdquo; moment most women have never had about their own body.</p>
+            <p>It takes five minutes to fill in. You&rsquo;ll hear back within 48 hours. And it&rsquo;s completely free.</p>
+          </div>
+          <a
+            href="#form"
+            className="inline-block bg-sand text-midnight font-sans font-medium text-sm tracking-wide uppercase rounded-full px-10 py-4 hover:bg-bark hover:text-cream transition-colors duration-300"
+          >
+            Get Your Free Body Brief
+          </a>
+        </div>
+      </section>
+
+      {/* ── What You Get ── */}
+      <section className="bg-cream py-24 md:py-32">
+        <div className="max-w-5xl mx-auto px-6">
+          <h2 className="font-serif text-midnight text-3xl md:text-4xl lg:text-5xl leading-[1.15] mb-16">
+            What&rsquo;s inside your Body Brief.
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
+            {briefCards.map((item, i) => (
+              <div
+                key={item.title}
+                className={`bg-white border border-charcoal/8 rounded-sm p-8 md:p-10 shadow-[0_2px_20px_rgba(0,0,0,0.04)] ${i === briefCards.length - 1 ? 'md:col-span-2' : ''}`}
+              >
+                <p className="text-sand text-[11px] font-sans font-semibold tracking-[0.2em] uppercase mb-5">
+                  {item.num}
+                </p>
+                <h3 className="font-serif text-midnight text-xl md:text-2xl mb-3">{item.title}</h3>
+                <p className="text-charcoal/70 font-sans text-[15px] leading-relaxed">{item.body}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-14">
+            <a
+              href="#form"
+              className="inline-block bg-sand text-midnight font-sans font-medium text-sm tracking-wide uppercase rounded-full px-10 py-4 hover:bg-bark hover:text-cream transition-colors duration-300"
+            >
+              Get Your Free Body Brief
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ── This Is For You If ── */}
+      <section className="bg-midnight py-24 md:py-32">
+        <div className="max-w-2xl mx-auto px-6 text-center">
+          <div className="space-y-5 text-cream/70 font-sans text-[17px] leading-[1.75] mb-10">
+            <p>You&rsquo;ve been doing the things and not seeing the results. You&rsquo;re tired of not knowing why. You want someone to actually look at your situation and give you something real to work with.</p>
+            <p>Fill in the form. It&rsquo;s free. You might finally get the answer you&rsquo;ve been looking for.</p>
+          </div>
+          <p className="font-serif italic text-cream text-xl md:text-2xl leading-snug mb-12">
+            &ldquo;The more honest you are, the more useful your brief will be.&rdquo;
+          </p>
+          <a
+            href="#form"
+            className="inline-block bg-sand text-midnight font-sans font-medium text-sm tracking-wide uppercase rounded-full px-10 py-4 hover:bg-bark hover:text-cream transition-colors duration-300"
+          >
+            Get Your Free Body Brief
+          </a>
+          <p className="mt-5 text-cream/35 font-sans text-xs tracking-wide">Takes about five minutes.</p>
+        </div>
+      </section>
+
+      {/* ── Form ── */}
+      <div id="form" className="min-h-screen bg-cream flex">
         {/* Form Side */}
         <div className="w-full lg:w-[60%] px-6 sm:px-10 lg:px-16 xl:px-24 py-28 sm:py-32">
           <div className="max-w-lg mx-auto lg:mx-0">
@@ -423,15 +744,18 @@ export default function BodyBriefPage() {
               </div>
             )}
 
-            {/* Step 1: Your Info */}
+            {/* ── Step 1: About You ── */}
             {step === 1 && (
               <div className="space-y-6 animate-fade-in">
                 <div>
+                  <p className="text-bark text-[10px] font-medium tracking-[0.2em] uppercase mb-2">
+                    01 —
+                  </p>
                   <label
                     htmlFor="fullName"
                     className="block text-midnight text-sm font-medium mb-2"
                   >
-                    Full Name <span className="text-sand">*</span>
+                    What&apos;s your full name? <span className="text-sand">*</span>
                   </label>
                   <input
                     id="fullName"
@@ -445,11 +769,14 @@ export default function BodyBriefPage() {
                 </div>
 
                 <div>
+                  <p className="text-bark text-[10px] font-medium tracking-[0.2em] uppercase mb-2">
+                    02 —
+                  </p>
                   <label
                     htmlFor="email"
                     className="block text-midnight text-sm font-medium mb-2"
                   >
-                    Email Address <span className="text-sand">*</span>
+                    What&apos;s your email address? <span className="text-sand">*</span>
                   </label>
                   <input
                     id="email"
@@ -461,198 +788,170 @@ export default function BodyBriefPage() {
                     className={inputClass}
                   />
                 </div>
-              </div>
-            )}
 
-            {/* Step 2: You & Your Life */}
-            {step === 2 && (
-              <div className="space-y-8 animate-fade-in">
                 <div>
                   <p className="text-bark text-[10px] font-medium tracking-[0.2em] uppercase mb-2">
-                    01 —
+                    03 —
                   </p>
                   <label
-                    htmlFor="whatYouDo"
+                    htmlFor="instagram"
                     className="block text-midnight text-sm font-medium mb-1"
                   >
-                    What do you do?
+                    Instagram handle{' '}
+                    <span className="text-charcoal/30 font-normal">(optional)</span>
                   </label>
                   <p className="text-charcoal/40 text-xs mb-3">
-                    A sentence is enough — just helps me understand your world.
+                    Helps me put a face to a name.
                   </p>
                   <input
-                    id="whatYouDo"
+                    id="instagram"
                     type="text"
-                    value={formData.whatYouDo}
-                    onChange={(e) => updateField('whatYouDo', e.target.value)}
-                    placeholder="e.g. I'm a nurse, work from home in finance, run my own business..."
+                    value={formData.instagram}
+                    onChange={(e) => updateField('instagram', e.target.value)}
+                    placeholder="@yourhandle"
                     className={inputClass}
                   />
                 </div>
 
                 <div>
                   <p className="text-bark text-[10px] font-medium tracking-[0.2em] uppercase mb-2">
-                    02 —
+                    04 —
                   </p>
-                  <p className="text-midnight text-sm font-medium mb-3">
-                    How would you describe your typical week?
+                  <p className="text-midnight text-sm font-medium mb-1">
+                    How would you describe your life right now?
                   </p>
+                  <p className="text-charcoal/40 text-xs mb-3">Select all that apply.</p>
                   <div className="space-y-2.5">
-                    {WEEK_STRUCTURE_OPTIONS.map((opt) => (
-                      <RadioOption
+                    {LIFE_DESCRIPTION_OPTIONS.map((opt) => (
+                      <CheckboxOption
                         key={opt}
-                        name="weekStructure"
                         value={opt}
-                        checked={formData.weekStructure === opt}
-                        onChange={(v) => updateField('weekStructure', v)}
+                        checked={formData.lifeDescription.includes(opt)}
+                        onChange={(v) => toggleArrayField('lifeDescription', v)}
                         label={opt}
                       />
                     ))}
                   </div>
-                </div>
-
-                <div>
-                  <p className="text-bark text-[10px] font-medium tracking-[0.2em] uppercase mb-2">
-                    03 —
-                  </p>
-                  <p className="text-midnight text-sm font-medium mb-3">
-                    How active are you outside of structured exercise?
-                  </p>
-                  <div className="space-y-2.5">
-                    {ACTIVITY_LEVEL_OPTIONS.map((opt) => (
-                      <RadioOption
-                        key={opt}
-                        name="activityLevel"
-                        value={opt}
-                        checked={formData.activityLevel === opt}
-                        onChange={(v) => updateField('activityLevel', v)}
-                        label={opt}
-                      />
-                    ))}
-                  </div>
+                  {formData.lifeDescription.includes('Other') && (
+                    <input
+                      type="text"
+                      value={formData.lifeDescriptionOther}
+                      onChange={(e) => updateField('lifeDescriptionOther', e.target.value)}
+                      placeholder="Tell me a little more..."
+                      className={`${inputClass} mt-2`}
+                    />
+                  )}
                 </div>
               </div>
             )}
 
-            {/* Step 3: Your Goal */}
-            {step === 3 && (
+            {/* ── Step 2: Your Month ── */}
+            {step === 2 && (
               <div className="space-y-8 animate-fade-in">
-                <div>
-                  <p className="text-bark text-[10px] font-medium tracking-[0.2em] uppercase mb-2">
-                    04 —
-                  </p>
-                  <p className="text-midnight text-sm font-medium mb-3">
-                    What is your primary goal right now?
-                  </p>
-                  <div className="space-y-2.5">
-                    {PRIMARY_GOAL_OPTIONS.map((opt) => (
-                      <RadioOption
-                        key={opt}
-                        name="primaryGoal"
-                        value={opt}
-                        checked={formData.primaryGoal === opt}
-                        onChange={(v) => updateField('primaryGoal', v)}
-                        label={opt}
-                      />
-                    ))}
-                  </div>
-                </div>
-
                 <div>
                   <p className="text-bark text-[10px] font-medium tracking-[0.2em] uppercase mb-2">
                     05 —
                   </p>
-                  <label
-                    htmlFor="successDescription"
-                    className="block text-midnight text-sm font-medium mb-1"
-                  >
-                    In your own words — what does success look like for you?
-                  </label>
-                  <p className="text-charcoal/40 text-xs mb-3">
-                    How do you want to look, feel, and show up? Be specific.
+                  <p className="text-midnight text-sm font-medium mb-1">
+                    Where are you based, and where will you be this month?
                   </p>
-                  <textarea
-                    id="successDescription"
-                    value={formData.successDescription}
-                    onChange={(e) =>
-                      updateField('successDescription', e.target.value)
-                    }
-                    placeholder="Tell me what success really looks like for you..."
-                    className={textareaClass}
-                    style={{ minHeight: '140px' }}
-                  />
+                  <p className="text-charcoal/40 text-xs mb-3">
+                    This helps me understand your context right now.
+                  </p>
+                  <div className="space-y-2.5">
+                    {LOCATION_OPTIONS.map((opt) => (
+                      <RadioOption
+                        key={opt}
+                        name="location"
+                        value={opt}
+                        checked={formData.location === opt}
+                        onChange={(v) => updateField('location', v)}
+                        label={opt}
+                      />
+                    ))}
+                  </div>
+                  {formData.location === 'Other' && (
+                    <input
+                      type="text"
+                      value={formData.locationOther}
+                      onChange={(e) => updateField('locationOther', e.target.value)}
+                      placeholder="Tell me a little more..."
+                      className={`${inputClass} mt-2`}
+                    />
+                  )}
                 </div>
-              </div>
-            )}
 
-            {/* Step 4: Training & Nutrition */}
-            {step === 4 && (
-              <div className="space-y-8 animate-fade-in">
                 <div>
                   <p className="text-bark text-[10px] font-medium tracking-[0.2em] uppercase mb-2">
                     06 —
                   </p>
                   <p className="text-midnight text-sm font-medium mb-3">
-                    How often are you currently training?
+                    What&apos;s your gym situation like?
                   </p>
                   <div className="space-y-2.5">
-                    {TRAINING_FREQUENCY_OPTIONS.map((opt) => (
+                    {GYM_SITUATION_OPTIONS.map((opt) => (
                       <RadioOption
                         key={opt}
-                        name="trainingFrequency"
+                        name="gymSituation"
                         value={opt}
-                        checked={formData.trainingFrequency === opt}
-                        onChange={(v) => updateField('trainingFrequency', v)}
+                        checked={formData.gymSituation === opt}
+                        onChange={(v) => updateField('gymSituation', v)}
                         label={opt}
                       />
                     ))}
                   </div>
+                  {formData.gymSituation === 'Other' && (
+                    <input
+                      type="text"
+                      value={formData.gymSituationOther}
+                      onChange={(e) => updateField('gymSituationOther', e.target.value)}
+                      placeholder="Tell me a little more..."
+                      className={`${inputClass} mt-2`}
+                    />
+                  )}
                 </div>
 
                 <div>
                   <p className="text-bark text-[10px] font-medium tracking-[0.2em] uppercase mb-2">
                     07 —
                   </p>
-                  <label
-                    htmlFor="trainingDescription"
-                    className="block text-midnight text-sm font-medium mb-1"
-                  >
-                    What does your training actually look like right now?
-                  </label>
-                  <p className="text-charcoal/40 text-xs mb-3">
-                    What are you doing, and what equipment do you have access
-                    to?
+                  <p className="text-midnight text-sm font-medium mb-3">
+                    Are you familiar with progressive overload?
                   </p>
-                  <textarea
-                    id="trainingDescription"
-                    value={formData.trainingDescription}
-                    onChange={(e) =>
-                      updateField('trainingDescription', e.target.value)
-                    }
-                    placeholder="Describe your workouts and available equipment..."
-                    className={textareaClass}
-                  />
+                  <div className="space-y-2.5">
+                    {PROGRESSIVE_OVERLOAD_OPTIONS.map((opt) => (
+                      <RadioOption
+                        key={opt}
+                        name="progressiveOverload"
+                        value={opt}
+                        checked={formData.progressiveOverload === opt}
+                        onChange={(v) => updateField('progressiveOverload', v)}
+                        label={opt}
+                      />
+                    ))}
+                  </div>
                 </div>
 
                 <div>
                   <p className="text-bark text-[10px] font-medium tracking-[0.2em] uppercase mb-2">
                     08 —
                   </p>
-                  <p className="text-midnight text-sm font-medium mb-3">
-                    How much protein do you roughly eat per day?
+                  <label
+                    htmlFor="weekdaySchedule"
+                    className="block text-midnight text-sm font-medium mb-1"
+                  >
+                    Walk me through what a typical weekday looks like for you.
+                  </label>
+                  <p className="text-charcoal/40 text-xs mb-3">
+                    What time do you wake up, work, eat, train? Where does everything fall?
                   </p>
-                  <div className="space-y-2.5">
-                    {PROTEIN_INTAKE_OPTIONS.map((opt) => (
-                      <RadioOption
-                        key={opt}
-                        name="proteinIntake"
-                        value={opt}
-                        checked={formData.proteinIntake === opt}
-                        onChange={(v) => updateField('proteinIntake', v)}
-                        label={opt}
-                      />
-                    ))}
-                  </div>
+                  <textarea
+                    id="weekdaySchedule"
+                    value={formData.weekdaySchedule}
+                    onChange={(e) => updateField('weekdaySchedule', e.target.value)}
+                    placeholder="Walk me through a typical day..."
+                    className={textareaClass}
+                  />
                 </div>
 
                 <div>
@@ -660,50 +959,64 @@ export default function BodyBriefPage() {
                     09 —
                   </p>
                   <p className="text-midnight text-sm font-medium mb-3">
-                    How consistent is your nutrition overall?
+                    How&apos;s your energy been lately?
                   </p>
                   <div className="space-y-2.5">
-                    {NUTRITION_CONSISTENCY_OPTIONS.map((opt) => (
+                    {ENERGY_OPTIONS.map((opt) => (
                       <RadioOption
                         key={opt}
-                        name="nutritionConsistency"
+                        name="energy"
                         value={opt}
-                        checked={formData.nutritionConsistency === opt}
-                        onChange={(v) =>
-                          updateField('nutritionConsistency', v)
-                        }
+                        checked={formData.energy === opt}
+                        onChange={(v) => updateField('energy', v)}
                         label={opt}
                       />
                     ))}
                   </div>
+                  {formData.energy === 'Other' && (
+                    <input
+                      type="text"
+                      value={formData.energyOther}
+                      onChange={(e) => updateField('energyOther', e.target.value)}
+                      placeholder="Tell me a little more..."
+                      className={`${inputClass} mt-2`}
+                    />
+                  )}
                 </div>
               </div>
             )}
 
-            {/* Step 5: Patterns & Mindset */}
-            {step === 5 && (
+            {/* ── Step 3: Your Training ── */}
+            {step === 3 && (
               <div className="space-y-8 animate-fade-in">
                 <div>
                   <p className="text-bark text-[10px] font-medium tracking-[0.2em] uppercase mb-2">
                     10 —
                   </p>
                   <p className="text-midnight text-sm font-medium mb-1">
-                    What usually triggers you falling off track?
+                    What does your current training look like?
                   </p>
-                  <p className="text-charcoal/40 text-xs mb-3">
-                    Select all that apply
-                  </p>
+                  <p className="text-charcoal/40 text-xs mb-3">Select all that apply.</p>
                   <div className="space-y-2.5">
-                    {FALL_OFF_TRIGGERS.map((trigger) => (
+                    {CURRENT_TRAINING_OPTIONS.map((opt) => (
                       <CheckboxOption
-                        key={trigger}
-                        value={trigger}
-                        checked={formData.fallOffTriggers.includes(trigger)}
-                        onChange={toggleTrigger}
-                        label={trigger}
+                        key={opt}
+                        value={opt}
+                        checked={formData.currentTraining.includes(opt)}
+                        onChange={(v) => toggleArrayField('currentTraining', v)}
+                        label={opt}
                       />
                     ))}
                   </div>
+                  {formData.currentTraining.includes('Other') && (
+                    <input
+                      type="text"
+                      value={formData.currentTrainingOther}
+                      onChange={(e) => updateField('currentTrainingOther', e.target.value)}
+                      placeholder="Tell me a little more..."
+                      className={`${inputClass} mt-2`}
+                    />
+                  )}
                 </div>
 
                 <div>
@@ -711,16 +1024,16 @@ export default function BodyBriefPage() {
                     11 —
                   </p>
                   <p className="text-midnight text-sm font-medium mb-3">
-                    When things fall apart, how do you typically respond?
+                    How many days per week are you training?
                   </p>
                   <div className="space-y-2.5">
-                    {RESPONSE_TO_FALLING_OPTIONS.map((opt) => (
+                    {TRAINING_DAYS_OPTIONS.map((opt) => (
                       <RadioOption
                         key={opt}
-                        name="responseToFalling"
+                        name="trainingDays"
                         value={opt}
-                        checked={formData.responseToFalling === opt}
-                        onChange={(v) => updateField('responseToFalling', v)}
+                        checked={formData.trainingDays === opt}
+                        onChange={(v) => updateField('trainingDays', v)}
                         label={opt}
                       />
                     ))}
@@ -731,51 +1044,447 @@ export default function BodyBriefPage() {
                   <p className="text-bark text-[10px] font-medium tracking-[0.2em] uppercase mb-2">
                     12 —
                   </p>
-                  <label
-                    htmlFor="whatDidntWork"
-                    className="block text-midnight text-sm font-medium mb-1"
-                  >
-                    What have you tried before that didn&apos;t work, and why
-                    did it fall apart?
-                  </label>
-                  <p className="text-charcoal/40 text-xs mb-3">
-                    Be specific — this is one of the most useful things you can
-                    tell me.
+                  <p className="text-midnight text-sm font-medium mb-3">
+                    How long are your sessions typically?
                   </p>
-                  <textarea
-                    id="whatDidntWork"
-                    value={formData.whatDidntWork}
-                    onChange={(e) =>
-                      updateField('whatDidntWork', e.target.value)
-                    }
-                    placeholder="What you tried, why it didn't last..."
-                    className={textareaClass}
-                  />
+                  <div className="space-y-2.5">
+                    {SESSION_LENGTH_OPTIONS.map((opt) => (
+                      <RadioOption
+                        key={opt}
+                        name="sessionLength"
+                        value={opt}
+                        checked={formData.sessionLength === opt}
+                        onChange={(v) => updateField('sessionLength', v)}
+                        label={opt}
+                      />
+                    ))}
+                  </div>
                 </div>
 
                 <div>
                   <p className="text-bark text-[10px] font-medium tracking-[0.2em] uppercase mb-2">
                     13 —
                   </p>
+                  <p className="text-midnight text-sm font-medium mb-3">
+                    When do you typically train?
+                  </p>
+                  <div className="space-y-2.5">
+                    {WORKOUT_TIMING_OPTIONS.map((opt) => (
+                      <RadioOption
+                        key={opt}
+                        name="workoutTiming"
+                        value={opt}
+                        checked={formData.workoutTiming === opt}
+                        onChange={(v) => updateField('workoutTiming', v)}
+                        label={opt}
+                      />
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <p className="text-bark text-[10px] font-medium tracking-[0.2em] uppercase mb-2">
+                    14 —
+                  </p>
+                  <p className="text-midnight text-sm font-medium mb-1">
+                    Are you progressing in your strength training?
+                  </p>
+                  <p className="text-charcoal/40 text-xs mb-3">
+                    Getting heavier over time, or staying the same?
+                  </p>
+                  <div className="space-y-2.5">
+                    {STRENGTH_PROGRESSION_OPTIONS.map((opt) => (
+                      <RadioOption
+                        key={opt}
+                        name="strengthProgression"
+                        value={opt}
+                        checked={formData.strengthProgression === opt}
+                        onChange={(v) => updateField('strengthProgression', v)}
+                        label={opt}
+                      />
+                    ))}
+                  </div>
+                  {formData.strengthProgression === 'Other' && (
+                    <input
+                      type="text"
+                      value={formData.strengthProgressionOther}
+                      onChange={(e) => updateField('strengthProgressionOther', e.target.value)}
+                      placeholder="Tell me a little more..."
+                      className={`${inputClass} mt-2`}
+                    />
+                  )}
+                </div>
+              </div>
+            )}
+
+            {/* ── Step 4: Your Nutrition ── */}
+            {step === 4 && (
+              <div className="space-y-8 animate-fade-in">
+                <div>
+                  <p className="text-bark text-[10px] font-medium tracking-[0.2em] uppercase mb-2">
+                    15 —
+                  </p>
+                  <p className="text-midnight text-sm font-medium mb-3">
+                    How would you describe the way you eat overall?
+                  </p>
+                  <div className="space-y-2.5">
+                    {EATING_DESCRIPTION_OPTIONS.map((opt) => (
+                      <RadioOption
+                        key={opt}
+                        name="eatingDescription"
+                        value={opt}
+                        checked={formData.eatingDescription === opt}
+                        onChange={(v) => updateField('eatingDescription', v)}
+                        label={opt}
+                      />
+                    ))}
+                  </div>
+                  {formData.eatingDescription === 'Other' && (
+                    <input
+                      type="text"
+                      value={formData.eatingDescriptionOther}
+                      onChange={(e) => updateField('eatingDescriptionOther', e.target.value)}
+                      placeholder="Tell me a little more..."
+                      className={`${inputClass} mt-2`}
+                    />
+                  )}
+                </div>
+
+                <div>
+                  <p className="text-bark text-[10px] font-medium tracking-[0.2em] uppercase mb-2">
+                    16 —
+                  </p>
+                  <p className="text-midnight text-sm font-medium mb-1">
+                    How many protein-rich servings do you eat per day?
+                  </p>
+                  <p className="text-charcoal/40 text-xs mb-3">
+                    Think: chicken, fish, eggs, Greek yoghurt, protein shake, tofu, legumes.
+                  </p>
+                  <div className="space-y-2.5">
+                    {PROTEIN_SERVINGS_OPTIONS.map((opt) => (
+                      <RadioOption
+                        key={opt}
+                        name="proteinServings"
+                        value={opt}
+                        checked={formData.proteinServings === opt}
+                        onChange={(v) => updateField('proteinServings', v)}
+                        label={opt}
+                      />
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <p className="text-bark text-[10px] font-medium tracking-[0.2em] uppercase mb-2">
+                    17 —
+                  </p>
+                  <p className="text-midnight text-sm font-medium mb-1">
+                    Which of these do you do most days?
+                  </p>
+                  <p className="text-charcoal/40 text-xs mb-3">Select all that apply.</p>
+                  <div className="space-y-2.5">
+                    {DAILY_HABITS_OPTIONS.map((opt) => (
+                      <CheckboxOption
+                        key={opt}
+                        value={opt}
+                        checked={formData.dailyHabits.includes(opt)}
+                        onChange={(v) => toggleArrayField('dailyHabits', v)}
+                        label={opt}
+                      />
+                    ))}
+                  </div>
+                  {formData.dailyHabits.includes('Other') && (
+                    <input
+                      type="text"
+                      value={formData.dailyHabitsOther}
+                      onChange={(e) => updateField('dailyHabitsOther', e.target.value)}
+                      placeholder="Tell me a little more..."
+                      className={`${inputClass} mt-2`}
+                    />
+                  )}
+                </div>
+
+                <div>
+                  <p className="text-bark text-[10px] font-medium tracking-[0.2em] uppercase mb-2">
+                    18 —
+                  </p>
+                  <p className="text-midnight text-sm font-medium mb-3">
+                    How do you feel about food and eating?
+                  </p>
+                  <div className="space-y-2.5">
+                    {FOOD_FEELING_OPTIONS.map((opt) => (
+                      <RadioOption
+                        key={opt}
+                        name="foodFeeling"
+                        value={opt}
+                        checked={formData.foodFeeling === opt}
+                        onChange={(v) => updateField('foodFeeling', v)}
+                        label={opt}
+                      />
+                    ))}
+                  </div>
+                  {formData.foodFeeling === 'Other' && (
+                    <input
+                      type="text"
+                      value={formData.foodFeelingOther}
+                      onChange={(e) => updateField('foodFeelingOther', e.target.value)}
+                      placeholder="Tell me a little more..."
+                      className={`${inputClass} mt-2`}
+                    />
+                  )}
+                </div>
+
+                <div>
+                  <p className="text-bark text-[10px] font-medium tracking-[0.2em] uppercase mb-2">
+                    19 —
+                  </p>
+                  <p className="text-midnight text-sm font-medium mb-1">
+                    Any hormonal health things I should know about?
+                  </p>
+                  <p className="text-charcoal/40 text-xs mb-3">
+                    This can affect training and nutrition responses more than people realise.
+                  </p>
+                  <div className="space-y-2.5">
+                    {HORMONAL_HEALTH_OPTIONS.map((opt) => (
+                      <RadioOption
+                        key={opt}
+                        name="hormonalHealth"
+                        value={opt}
+                        checked={formData.hormonalHealth === opt}
+                        onChange={(v) => updateField('hormonalHealth', v)}
+                        label={opt}
+                      />
+                    ))}
+                  </div>
+                  {formData.hormonalHealth === 'Yes, something else' && (
+                    <input
+                      type="text"
+                      value={formData.hormonalHealthOther}
+                      onChange={(e) => updateField('hormonalHealthOther', e.target.value)}
+                      placeholder="Tell me a little more..."
+                      className={`${inputClass} mt-2`}
+                    />
+                  )}
+                </div>
+              </div>
+            )}
+
+            {/* ── Step 5: Goals & Mindset ── */}
+            {step === 5 && (
+              <div className="space-y-8 animate-fade-in">
+                <div>
+                  <p className="text-bark text-[10px] font-medium tracking-[0.2em] uppercase mb-2">
+                    20 —
+                  </p>
+                  <p className="text-midnight text-sm font-medium mb-3">
+                    What&apos;s your main focus right now?
+                  </p>
+                  <div className="space-y-2.5">
+                    {MAIN_FOCUS_OPTIONS.map((opt) => (
+                      <RadioOption
+                        key={opt}
+                        name="mainFocus"
+                        value={opt}
+                        checked={formData.mainFocus === opt}
+                        onChange={(v) => updateField('mainFocus', v)}
+                        label={opt}
+                      />
+                    ))}
+                  </div>
+                  {formData.mainFocus === 'Other' && (
+                    <input
+                      type="text"
+                      value={formData.mainFocusOther}
+                      onChange={(e) => updateField('mainFocusOther', e.target.value)}
+                      placeholder="Tell me a little more..."
+                      className={`${inputClass} mt-2`}
+                    />
+                  )}
+                </div>
+
+                <div>
+                  <p className="text-bark text-[10px] font-medium tracking-[0.2em] uppercase mb-2">
+                    21 —
+                  </p>
+                  <p className="text-midnight text-sm font-medium mb-1">
+                    What physique goals are you working toward?
+                  </p>
+                  <p className="text-charcoal/40 text-xs mb-3">Select all that apply.</p>
+                  <div className="space-y-2.5">
+                    {PHYSIQUE_GOALS_OPTIONS.map((opt) => (
+                      <CheckboxOption
+                        key={opt}
+                        value={opt}
+                        checked={formData.physiqueGoals.includes(opt)}
+                        onChange={(v) => toggleArrayField('physiqueGoals', v)}
+                        label={opt}
+                      />
+                    ))}
+                  </div>
+                  {formData.physiqueGoals.includes('Other') && (
+                    <input
+                      type="text"
+                      value={formData.physiqueGoalsOther}
+                      onChange={(e) => updateField('physiqueGoalsOther', e.target.value)}
+                      placeholder="Tell me a little more..."
+                      className={`${inputClass} mt-2`}
+                    />
+                  )}
+                </div>
+
+                <div>
+                  <p className="text-bark text-[10px] font-medium tracking-[0.2em] uppercase mb-2">
+                    22 —
+                  </p>
+                  <label
+                    htmlFor="bodyGifts"
+                    className="block text-midnight text-sm font-medium mb-1"
+                  >
+                    What do you love about your body right now?
+                  </label>
+                  <p className="text-charcoal/40 text-xs mb-3">
+                    Even one thing. Or something you appreciate about what it can do.
+                  </p>
+                  <textarea
+                    id="bodyGifts"
+                    value={formData.bodyGifts}
+                    onChange={(e) => updateField('bodyGifts', e.target.value)}
+                    placeholder="Tell me something you appreciate about your body..."
+                    className={textareaClass}
+                  />
+                </div>
+
+                <div>
+                  <p className="text-bark text-[10px] font-medium tracking-[0.2em] uppercase mb-2">
+                    23 —
+                  </p>
+                  <p className="text-midnight text-sm font-medium mb-3">
+                    How does fitness feel in your life right now?
+                  </p>
+                  <div className="space-y-2.5">
+                    {FITNESS_FEELING_OPTIONS.map((opt) => (
+                      <RadioOption
+                        key={opt}
+                        name="fitnessFeeling"
+                        value={opt}
+                        checked={formData.fitnessFeeling === opt}
+                        onChange={(v) => updateField('fitnessFeeling', v)}
+                        label={opt}
+                      />
+                    ))}
+                  </div>
+                  {formData.fitnessFeeling === 'Other' && (
+                    <input
+                      type="text"
+                      value={formData.fitnessFeelingOther}
+                      onChange={(e) => updateField('fitnessFeelingOther', e.target.value)}
+                      placeholder="Tell me a little more..."
+                      className={`${inputClass} mt-2`}
+                    />
+                  )}
+                </div>
+
+                <div>
+                  <p className="text-bark text-[10px] font-medium tracking-[0.2em] uppercase mb-2">
+                    24 —
+                  </p>
+                  <p className="text-midnight text-sm font-medium mb-3">
+                    When things fall off track, how do you typically respond?
+                  </p>
+                  <div className="space-y-2.5">
+                    {OFF_TRACK_RESPONSE_OPTIONS.map((opt) => (
+                      <RadioOption
+                        key={opt}
+                        name="offTrackResponse"
+                        value={opt}
+                        checked={formData.offTrackResponse === opt}
+                        onChange={(v) => updateField('offTrackResponse', v)}
+                        label={opt}
+                      />
+                    ))}
+                  </div>
+                  {formData.offTrackResponse === 'Other' && (
+                    <input
+                      type="text"
+                      value={formData.offTrackResponseOther}
+                      onChange={(e) => updateField('offTrackResponseOther', e.target.value)}
+                      placeholder="Tell me a little more..."
+                      className={`${inputClass} mt-2`}
+                    />
+                  )}
+                </div>
+
+                <div>
+                  <p className="text-bark text-[10px] font-medium tracking-[0.2em] uppercase mb-2">
+                    25 —
+                  </p>
+                  <p className="text-midnight text-sm font-medium mb-1">
+                    What tends to trip you up?
+                  </p>
+                  <p className="text-charcoal/40 text-xs mb-3">Select all that apply.</p>
+                  <div className="space-y-2.5">
+                    {TRIP_UP_TRIGGERS_OPTIONS.map((opt) => (
+                      <CheckboxOption
+                        key={opt}
+                        value={opt}
+                        checked={formData.tripUpTriggers.includes(opt)}
+                        onChange={(v) => toggleArrayField('tripUpTriggers', v)}
+                        label={opt}
+                      />
+                    ))}
+                  </div>
+                  {formData.tripUpTriggers.includes('Other') && (
+                    <input
+                      type="text"
+                      value={formData.tripUpTriggersOther}
+                      onChange={(e) => updateField('tripUpTriggersOther', e.target.value)}
+                      placeholder="Tell me a little more..."
+                      className={`${inputClass} mt-2`}
+                    />
+                  )}
+                </div>
+
+                <div>
+                  <p className="text-bark text-[10px] font-medium tracking-[0.2em] uppercase mb-2">
+                    26 —
+                  </p>
+                  <label
+                    htmlFor="notWorkingDescription"
+                    className="block text-midnight text-sm font-medium mb-1"
+                  >
+                    In your own words — what isn&apos;t working right now?
+                  </label>
+                  <p className="text-charcoal/40 text-xs mb-3">
+                    Be as specific as you can. This is the most useful part.
+                  </p>
+                  <textarea
+                    id="notWorkingDescription"
+                    value={formData.notWorkingDescription}
+                    onChange={(e) => updateField('notWorkingDescription', e.target.value)}
+                    placeholder="What have you tried, why hasn't it worked, what feels stuck..."
+                    className={textareaClass}
+                    style={{ minHeight: '140px' }}
+                  />
+                </div>
+
+                <div>
+                  <p className="text-bark text-[10px] font-medium tracking-[0.2em] uppercase mb-2">
+                    27 —
+                  </p>
                   <label
                     htmlFor="anythingElse"
                     className="block text-midnight text-sm font-medium mb-1"
                   >
-                    Is there anything else you want me to know?{' '}
-                    <span className="text-charcoal/30 font-normal">
-                      (optional)
-                    </span>
+                    Anything else you want me to know?{' '}
+                    <span className="text-charcoal/30 font-normal">(optional)</span>
                   </label>
                   <p className="text-charcoal/40 text-xs mb-3">
-                    Injuries, health conditions, life context, what you really
-                    need right now — anything at all.
+                    Injuries, health things, life context, what you really need right now — anything at all.
                   </p>
                   <textarea
                     id="anythingElse"
                     value={formData.anythingElse}
-                    onChange={(e) =>
-                      updateField('anythingElse', e.target.value)
-                    }
+                    onChange={(e) => updateField('anythingElse', e.target.value)}
                     placeholder="Share anything that feels important..."
                     className={textareaClass}
                   />
@@ -871,8 +1580,8 @@ export default function BodyBriefPage() {
         </div>
 
         {/* Photo Side - Desktop only */}
-        <div className="hidden lg:block w-[40%] relative">
-          <div className="fixed top-0 right-0 w-[40%] h-screen">
+        <div className="hidden lg:block w-[40%]">
+          <div className="sticky top-0 h-screen">
             <Image
               src="/Madison-88.webp"
               alt="Madison Griffin"

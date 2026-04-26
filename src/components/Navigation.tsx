@@ -7,13 +7,13 @@ import { usePathname } from 'next/navigation'
 const navLinks = [
   { href: '/method', label: 'Method' },
   { href: '/about', label: 'About' },
-  { href: '/results', label: 'Results' },
-  { href: '/work-with-me', label: 'Work With Me' },
   { href: '/body-brief', label: 'Body Brief' },
+  { href: '/body-reclaimed', label: 'Body Reclaimed' },
+  { href: '/work-with-me', label: '1:1 Coaching' },
   { href: '/blog', label: 'Blog' },
 ]
 
-const LIGHT_TOP_PAGES = ['/apply', '/body-brief']
+const LIGHT_TOP_PAGES = ['/apply']
 
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false)
