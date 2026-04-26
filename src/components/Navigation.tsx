@@ -59,7 +59,7 @@ export function Navigation() {
               isScrolled || forceDark ? 'text-midnight' : 'text-cream'
             }`}
           >
-            Madison Griffin
+            Madison Griffin Fit
           </Link>
 
           {/* Desktop Navigation */}

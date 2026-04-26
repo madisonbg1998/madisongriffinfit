@@ -43,12 +43,12 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const submissionData = {
-      ...body,
-      fallOffTriggers: Array.isArray(body.fallOffTriggers)
-        ? body.fallOffTriggers.join(', ')
-        : body.fallOffTriggers,
-    }
+    const submissionData = Object.fromEntries(
+      Object.entries(body).map(([key, value]) => [
+        key,
+        Array.isArray(value) ? value.join(', ') : value,
+      ])
+    )
 
     const response = await fetch(
       `${baseUrl}/api/v1/forms/${formSlug}/submit`,

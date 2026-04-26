@@ -3,9 +3,15 @@ import { NextRequest, NextResponse } from 'next/server'
 const REQUIRED_FIELDS = [
   'fullName',
   'email',
-  'fitnessGoals',
-  'currentRoutine',
-  'biggestStruggle',
+  'lifeDescription',
+  'bodyFeeling',
+  'goals',
+  'successVision',
+  'pastAttempts',
+  'barriers',
+  'currentStruggles',
+  'whyMadison',
+  'whyNow',
 ]
 
 function validateEmail(email: string): boolean {

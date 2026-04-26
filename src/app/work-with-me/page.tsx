@@ -3,249 +3,269 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Work With Me',
+  title: 'Body Unmuted 1:1 Coaching',
   description:
-    'Personalized 1:1 strength training and nutrition coaching for women who want real, lasting results. Apply to work with Madison Griffin.',
+    'Full transformation coaching with daily support, total personalisation, and a coach who treats your goals like her own.',
   openGraph: {
-    images: [{ url: '/Madison-157.webp', width: 1200, height: 630, alt: '1:1 Coaching — Madison Griffin Fit' }],
+    images: [{ url: '/Madison-157.webp', width: 1200, height: 630, alt: 'Body Unmuted 1:1 Coaching — Madison Griffin Fit' }],
   },
 }
 
 const included = [
   {
-    number: '01',
-    title: 'Personalized Strength Training Program',
-    description:
-      'A program built around your body, your goals, and where you actually train. No cookie-cutter templates. Every rep has a reason.',
+    num: '01',
+    title: 'Fully custom training program',
+    body: 'Progressive, periodised strength programming built around your goals and adapted to wherever you are in the world. Full gym, hotel gym, or anywhere in between — your program travels with you and keeps building.',
   },
   {
-    number: '02',
-    title: 'Nutrition Guidance Without Restriction',
-    description:
-      'A flexible approach to eating that fuels your training and fits your life. No food rules, no guilt, no meal plans that expire in a week.',
+    num: '02',
+    title: 'Custom nutrition framework',
+    body: 'A flexible approach built around your metabolism, your goals, and how you actually eat. No rigid meal plans. No cutting out the things you love. A strategy that gets you results and lets you live your life.',
   },
   {
-    number: '03',
-    title: 'Ongoing Coaching + Support',
-    description:
-      'Direct access to me throughout the week. Questions answered, form checks reviewed, and real-time adjustments so you never feel stuck.',
+    num: '03',
+    title: 'Daily messaging access',
+    body: "Text or voice note me whenever you need. Questions, updates, hard days, big wins. I'm there. This is what makes everything move faster.",
   },
   {
-    number: '04',
-    title: 'Systems That Adapt to Your Lifestyle',
-    description:
-      'Travel weeks, busy seasons, schedule changes. Your program flexes with you instead of breaking when life gets real.',
+    num: '04',
+    title: 'One SOS call per month',
+    body: 'For the moments when you just need to talk it through.',
+  },
+  {
+    num: '05',
+    title: 'Weekly check-ins and continuous adjustments',
+    body: 'Every week we check in on how you’re feeling and how your body is responding. Your program adapts in real time — nothing is set and forget, everything keeps moving with you.',
+  },
+  {
+    num: '06',
+    title: 'Mindset work woven throughout',
+    body: 'We work on your body and the patterns that have been keeping you stuck — the all-or-nothing thinking, the perfectionism, the guilt cycles. This is the part most coaches skip. It’s usually the part that changes everything.',
   },
 ]
 
 const steps = [
   {
-    step: 1,
-    title: 'Apply & Connect',
-    description:
-      'Submit your application so I can learn about you, your goals, and what you need.',
+    num: '01',
+    title: 'Apply',
+    body: 'Fill in a short application so I can understand your goals, your history, and what you’re looking for. I read every single one personally.',
   },
   {
-    step: 2,
-    title: 'Strategy Call',
-    description:
-      'A deep dive into your goals, history, and lifestyle so we can build the right plan from day one.',
+    num: '02',
+    title: 'Discovery call',
+    body: "If it feels like a fit, we jump on a call and chat about your goals, your life, what the coaching experience looks like, and whether we're right for each other. No pressure, just a real conversation.",
   },
   {
-    step: 3,
-    title: 'Custom Program',
-    description:
-      'Receive your personalized training and nutrition plan, built specifically for you.',
+    num: '03',
+    title: 'We build',
+    body: 'Once you’re in, everything is built from scratch around you. We get started within a week.',
   },
-  {
-    step: 4,
-    title: 'Ongoing Support',
-    description:
-      'Weekly check-ins, program adjustments, and continuous coaching as your body and life evolve.',
-  },
-]
-
-const whoItsFor = [
-  'Are tired of starting over every few months',
-  'Want real, lasting results they can maintain',
-  'Value their time, energy, and life outside the gym',
 ]
 
 export default function WorkWithMePage() {
   return (
     <>
-      {/* Hero */}
-      <section className="relative h-[85vh] min-h-[600px] flex items-center justify-center overflow-hidden">
+      {/* ── Hero ── */}
+      <section className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">
         <Image
           src="/Madison-157.webp"
           alt="Madison Griffin overlooking mountains and ocean"
           fill
-          className="object-cover object-[center_35%]"
           priority
+          className="object-cover object-[center_35%]"
+          sizes="100vw"
           quality={90}
         />
-        <div className="absolute inset-0 bg-midnight/55" />
-        <div className="relative z-10 text-center px-6 max-w-3xl mx-auto">
-          <p className="text-sand text-[11px] font-medium tracking-[0.25em] uppercase mb-6">
-            Work With Me
-          </p>
-          <h1 className="font-serif text-cream text-5xl sm:text-6xl lg:text-7xl font-medium mb-6">
+        <div className="absolute inset-0 bg-midnight/60" />
+        <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
+          <p className="text-sand text-[11px] font-sans font-medium tracking-[0.3em] uppercase mb-6">
             1:1 Coaching
+          </p>
+          <h1 className="font-serif text-cream text-5xl md:text-6xl lg:text-7xl leading-[1.05] mb-8 text-balance">
+            For the woman who&rsquo;s ready to go all in on her body the way she goes all in on her life.
           </h1>
-          <p className="text-cream/80 text-lg sm:text-xl leading-relaxed max-w-xl mx-auto">
-            Personalized support to build a body that actually lasts
-          </p>
-        </div>
-      </section>
-
-      {/* What's Included */}
-      <section className="bg-cream py-24 sm:py-32">
-        <div className="mx-auto max-w-7xl px-6 lg:px-10">
-          <div className="text-center mb-16 sm:mb-20">
-            <p className="text-bark text-[11px] font-medium tracking-[0.25em] uppercase mb-4">
-              The Details
-            </p>
-            <h2 className="font-serif text-midnight text-3xl sm:text-4xl lg:text-5xl font-medium">
-              What&apos;s Included
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 max-w-5xl mx-auto">
-            {included.map((item) => (
-              <div
-                key={item.number}
-                className="bg-white rounded-lg p-8 sm:p-10 border border-bark/8 shadow-[0_2px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_4px_30px_rgba(0,0,0,0.06)] transition-shadow duration-500"
-              >
-                <span className="text-sand font-serif text-3xl font-medium">
-                  {item.number}
-                </span>
-                <h3 className="font-serif text-midnight text-xl sm:text-2xl font-medium mt-4 mb-3">
-                  {item.title}
-                </h3>
-                <p className="text-charcoal/70 text-sm leading-relaxed">
-                  {item.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* The Experience - Timeline */}
-      <section className="bg-white py-24 sm:py-32">
-        <div className="mx-auto max-w-7xl px-6 lg:px-10">
-          <div className="text-center mb-16 sm:mb-20">
-            <p className="text-bark text-[11px] font-medium tracking-[0.25em] uppercase mb-4">
-              The Process
-            </p>
-            <h2 className="font-serif text-midnight text-3xl sm:text-4xl lg:text-5xl font-medium">
-              The Experience
-            </h2>
-          </div>
-          <div className="max-w-2xl mx-auto">
-            {steps.map((item, index) => (
-              <div key={item.step} className="relative flex gap-8 pb-14 last:pb-0">
-                {/* Vertical line */}
-                {index < steps.length - 1 && (
-                  <div className="absolute left-[15px] top-10 bottom-0 w-px bg-sand/30" />
-                )}
-                {/* Dot */}
-                <div className="flex-shrink-0 w-[31px] h-[31px] rounded-full bg-sand/20 flex items-center justify-center mt-1">
-                  <div className="w-3 h-3 rounded-full bg-sand" />
-                </div>
-                {/* Content */}
-                <div className="pt-0.5">
-                  <p className="text-bark text-[11px] font-medium tracking-[0.2em] uppercase mb-1">
-                    Step {item.step}
-                  </p>
-                  <h3 className="font-serif text-midnight text-xl sm:text-2xl font-medium mb-2">
-                    {item.title}
-                  </h3>
-                  <p className="text-charcoal/70 text-sm leading-relaxed">
-                    {item.description}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Who It's For */}
-      <section className="relative py-24 sm:py-32 overflow-hidden">
-        <div className="mx-auto max-w-7xl px-6 lg:px-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            <div className="relative aspect-[4/5] rounded-lg overflow-hidden">
-              <Image
-                src="/Madison-249.webp"
-                alt="Madison eating on the beach"
-                fill
-                className="object-cover object-center"
-                quality={85}
-              />
-            </div>
-            <div>
-              <p className="text-bark text-[11px] font-medium tracking-[0.25em] uppercase mb-4">
-                Is This You?
-              </p>
-              <h2 className="font-serif text-midnight text-3xl sm:text-4xl lg:text-5xl font-medium mb-10">
-                Who It&apos;s For
-              </h2>
-              <p className="text-charcoal/70 text-base mb-8 leading-relaxed">
-                This coaching experience is built for women who:
-              </p>
-              <ul className="space-y-5">
-                {whoItsFor.map((item) => (
-                  <li key={item} className="flex items-start gap-4">
-                    <span className="flex-shrink-0 w-2 h-2 rounded-full bg-sand mt-2" />
-                    <span className="text-midnight text-lg font-medium leading-snug">
-                      {item}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Investment */}
-      <section className="bg-midnight py-24 sm:py-32">
-        <div className="mx-auto max-w-3xl px-6 lg:px-10 text-center">
-          <p className="text-sand text-[11px] font-medium tracking-[0.25em] uppercase mb-6">
-            Investment
-          </p>
-          <h2 className="font-serif text-cream text-3xl sm:text-4xl lg:text-5xl font-medium mb-8">
-            Built around you.
-          </h2>
-          <p className="text-cream/60 text-base sm:text-lg leading-relaxed max-w-xl mx-auto mb-5">
-            This is a personalised, high-touch coaching experience, designed to fit
-            your lifestyle, goals, and the level of support you need.
-          </p>
-          <p className="text-cream/60 text-base sm:text-lg leading-relaxed max-w-xl mx-auto mb-5">
-            A tailored monthly investment will be created for you based on your goals,
-            your starting point, and whether we&apos;re the right fit to work together.
-          </p>
-          <p className="text-cream/40 text-sm">
-            If it feels aligned, you can apply below and we&apos;ll walk through everything together.
-          </p>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="bg-cream py-24 sm:py-32">
-        <div className="mx-auto max-w-3xl px-6 lg:px-10 text-center">
-          <h2 className="font-serif text-midnight text-3xl sm:text-4xl lg:text-5xl font-medium mb-6">
-            Ready to start?
-          </h2>
-          <p className="text-charcoal/70 text-base sm:text-lg leading-relaxed mb-10 max-w-lg mx-auto">
-            Take the first step toward building a body and routine that actually fits your life.
+          <p className="text-cream/80 font-sans text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-12">
+            Full transformation coaching with daily support, total personalisation, and a coach who treats your goals like her own.
           </p>
           <Link
             href="/apply"
-            className="inline-flex items-center bg-bark text-cream text-[12px] font-medium tracking-[0.2em] uppercase px-12 py-4 rounded-sm hover:bg-bark/90 transition-colors duration-300"
+            className="inline-block bg-sand text-midnight font-sans font-medium text-sm tracking-wide uppercase rounded-full px-10 py-4 hover:bg-bark hover:text-cream transition-colors duration-300"
           >
-            Apply Now
+            Apply for Coaching
           </Link>
+        </div>
+      </section>
+
+      {/* ── Opening ── */}
+      <section className="bg-midnight py-24 md:py-32">
+        <div className="max-w-3xl mx-auto px-6 space-y-12">
+          <p className="text-cream/75 font-sans text-[17px] leading-[1.75]">
+            You&rsquo;re the woman who fully commits to everything she does. Your career. Your business. Your relationships. The life you&rsquo;re building.
+          </p>
+
+          <p className="font-serif text-cream text-3xl md:text-4xl lg:text-5xl leading-snug text-center">
+            And then there&rsquo;s your body.
+          </p>
+
+          <div className="space-y-6 text-cream/75 font-sans text-[17px] leading-[1.75]">
+            <p>Not because you don&rsquo;t care. You care a lot. But nothing has ever quite clicked the way everything else has. You&rsquo;ve put in the effort. You&rsquo;ve seen some results. But you&rsquo;ve never fully cracked it. Never felt like your body truly matched the woman you are in every other area of your life.</p>
+            <p className="font-serif italic text-sand text-xl md:text-2xl leading-snug">
+              That&rsquo;s exactly what Body Unmuted is built for.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── What It Is ── */}
+      <section className="bg-cream py-24 md:py-32">
+        <div className="max-w-3xl mx-auto px-6">
+          <p className="text-sand text-[11px] font-sans font-medium tracking-[0.3em] uppercase mb-6">
+            The Coaching
+          </p>
+          <h2 className="font-serif text-midnight text-3xl md:text-4xl lg:text-5xl leading-[1.1] mb-10">
+            This is the real thing.
+          </h2>
+          <div className="space-y-5 text-charcoal/80 font-sans text-[17px] leading-[1.75]">
+            <p>Body Unmuted is the most personalised coaching experience I offer. Everything &mdash; your training, your nutrition, your mindset work &mdash; is built completely around you and adjusted in real time as your life changes.</p>
+            <p>Because your life doesn&rsquo;t stay still. And your coaching shouldn&rsquo;t either.</p>
+            <p>You have a coach who knows you, who&rsquo;s paying attention, and who&rsquo;s genuinely in your corner every single day. The kind of support that means nothing falls through the cracks, and you never start over.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── What's Included ── */}
+      <section className="bg-cream py-24 md:py-32">
+        <div className="max-w-5xl mx-auto px-6">
+          <h2 className="font-serif text-midnight text-3xl md:text-4xl lg:text-5xl leading-[1.15] mb-16">
+            What&rsquo;s included.
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {included.map((item) => (
+              <div
+                key={item.num}
+                className="bg-white border border-charcoal/8 rounded-sm p-8 md:p-10 shadow-[0_2px_20px_rgba(0,0,0,0.04)]"
+              >
+                <p className="text-sand text-[11px] font-sans font-semibold tracking-[0.2em] uppercase mb-5">
+                  {item.num}
+                </p>
+                <h3 className="font-serif text-midnight text-xl md:text-2xl mb-3">{item.title}</h3>
+                <p className="text-charcoal/70 font-sans text-[15px] leading-relaxed">{item.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Investment ── */}
+      <section className="bg-midnight py-24 md:py-32">
+        <div className="max-w-3xl mx-auto px-6 text-center">
+          <p className="text-sand text-[11px] font-sans font-medium tracking-[0.3em] uppercase mb-6">
+            The Investment
+          </p>
+          <h2 className="font-serif text-cream text-3xl md:text-4xl lg:text-5xl leading-[1.1] mb-10">
+            The investment.
+          </h2>
+          <div className="space-y-5 text-cream/70 font-sans text-[17px] leading-[1.75] text-left max-w-2xl mx-auto">
+            <p>Body Unmuted is a minimum 6 month commitment. Real transformation takes time and I want to make sure you&rsquo;re getting everything you need to see it through.</p>
+            <p>Pricing isn&rsquo;t listed here, intentionally. Every woman I work with is different and I want to make sure we&rsquo;re genuinely the right fit before we talk numbers. If you&rsquo;re accepted, we&rsquo;ll go through everything on a call together.</p>
+          </div>
+          <div className="mt-12">
+            <Link
+              href="/apply"
+              className="inline-block bg-sand text-midnight font-sans font-medium text-sm tracking-wide uppercase rounded-full px-10 py-4 hover:bg-bark hover:text-cream transition-colors duration-300"
+            >
+              Apply for Coaching
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Who This Is For ── */}
+      <section className="bg-midnight py-24 md:py-32">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-sm">
+              <Image
+                src="/Madison-114.webp"
+                alt="Madison with arm raised toward the sky, confident and expansive"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            </div>
+            <div>
+              <p className="text-sand text-[11px] font-sans font-medium tracking-[0.3em] uppercase mb-6">
+                Who This Is For
+              </p>
+              <h2 className="font-serif text-cream text-3xl md:text-4xl lg:text-5xl leading-[1.1] mb-10">
+                This is for you if&hellip;
+              </h2>
+              <div className="space-y-5 text-cream/70 font-sans text-[17px] leading-[1.75]">
+                <p>You&rsquo;re done with almost. You want your body to feel as good as everything else in your life feels: strong, confident, like it actually belongs to you. You&rsquo;re ready to fully invest in yourself and you want to work with someone who will take that as seriously as you do.</p>
+                <p>You travel. You have a full, demanding life. You&rsquo;ve tried things before. And you&rsquo;re ready to do it properly this time.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── How It Works ── */}
+      <section className="bg-midnight py-24 md:py-32">
+        <div className="max-w-3xl mx-auto px-6">
+          <p className="text-sand text-[11px] font-sans font-medium tracking-[0.3em] uppercase mb-6">
+            The Process
+          </p>
+          <h2 className="font-serif text-cream text-3xl md:text-4xl lg:text-5xl leading-[1.1] mb-16">
+            How it works.
+          </h2>
+
+          <div className="space-y-0">
+            {steps.map((step, index) => (
+              <div key={step.num} className="relative flex gap-8 pb-14 last:pb-0">
+                {index < steps.length - 1 && (
+                  <div className="absolute left-[15px] top-10 bottom-0 w-px bg-sand/20" />
+                )}
+                <div className="flex-shrink-0 w-[31px] h-[31px] rounded-full bg-sand/15 flex items-center justify-center mt-1">
+                  <div className="w-3 h-3 rounded-full bg-sand" />
+                </div>
+                <div className="pt-0.5">
+                  <p className="text-sand text-[11px] font-sans font-medium tracking-[0.2em] uppercase mb-2">
+                    {step.num}
+                  </p>
+                  <h3 className="font-serif text-cream text-xl md:text-2xl mb-3">{step.title}</h3>
+                  <p className="text-cream/65 font-sans text-[15px] leading-relaxed">{step.body}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-14 pt-14 border-t border-cream/10">
+            <Link
+              href="/apply"
+              className="inline-block bg-sand text-midnight font-sans font-medium text-sm tracking-wide uppercase rounded-full px-10 py-4 hover:bg-bark hover:text-cream transition-colors duration-300"
+            >
+              Apply for Coaching
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Final CTA ── */}
+      <section className="bg-bark py-24 md:py-32">
+        <div className="max-w-3xl mx-auto px-6 text-center">
+          <h2 className="font-serif text-cream text-3xl md:text-4xl lg:text-5xl leading-[1.1] mb-10">
+            Your body should feel as good as your life does. Let&rsquo;s make that happen.
+          </h2>
+          <Link
+            href="/apply"
+            className="inline-flex items-center bg-cream text-bark text-[12px] font-sans font-medium tracking-[0.2em] uppercase px-10 py-4 rounded-sm hover:bg-cream/90 transition-colors duration-300"
+          >
+            Apply for Coaching
+          </Link>
+          <p className="mt-5 text-cream/40 font-sans text-xs tracking-wide">
+            Application only &middot; Spots are limited
+          </p>
         </div>
       </section>
     </>
