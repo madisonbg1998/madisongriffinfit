@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState, useCallback } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -36,9 +36,7 @@ function useInView(threshold = 0.15) {
 function anim(visible: boolean, delay = 0) {
   return {
     className: `transition-all duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
-      visible
-        ? 'opacity-100 translate-y-0'
-        : 'opacity-0 translate-y-8'
+      visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
     }`,
     style: { transitionDelay: `${delay}ms` },
   }
@@ -52,14 +50,12 @@ export default function HomePage() {
     <>
       <HeroSection />
       <ProblemSection />
-      <ReframeSection />
+      <DreamOutcomeSection />
       <MethodSection />
-      <ImageDivider />
-      <ResultsSection />
-      <DifferentiatorSection />
-      <SocialProofSection />
-      <FAQSection />
+      <WhoThisIsForSection />
       <BodyBriefSection />
+      <OffersSection />
+      <SocialProofSection />
       <FinalCTASection />
     </>
   )
@@ -77,7 +73,6 @@ function HeroSection() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background image */}
       <div className="absolute inset-0">
         <Image
           src="/Madison-29.webp"
@@ -87,13 +82,10 @@ function HeroSection() {
           className="object-cover object-[center_20%]"
           sizes="100vw"
         />
-        {/* Dark gradient overlay — bottom-heavy */}
-        {/* Gradient: heavier on left for text readability, lighter on right to show Madison */}
         <div className="absolute inset-0 bg-gradient-to-b from-midnight/40 via-midnight/45 to-midnight/70" />
         <div className="absolute inset-0 bg-gradient-to-r from-midnight/50 via-midnight/20 to-transparent" />
       </div>
 
-      {/* Content — left-aligned so Madison is visible on right */}
       <div className="relative z-10 mx-auto max-w-7xl w-full px-6 md:px-12 lg:px-20 text-left pt-20">
         <div className="max-w-2xl">
           <h1
@@ -111,13 +103,11 @@ function HeroSection() {
             }`}
             style={{ textShadow: '0 1px 10px rgba(0,0,0,0.4)' }}
           >
-            You&rsquo;ve built a full life. Work, travel, plans, people. It all
-            moves. And you don&rsquo;t want to give that up just to feel better
-            in your body.
+            Strength and nutrition coaching for women who travel, build businesses, and refuse to put their lives on hold to get results.
           </p>
 
           <div
-            className={`mt-10 flex flex-col sm:flex-row items-start sm:items-center gap-5 transition-all duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-500 ${
+            className={`mt-10 transition-all duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-500 ${
               loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
@@ -127,25 +117,16 @@ function HeroSection() {
             >
               Get Your Free Body Brief
             </Link>
-            <Link
-              href="/apply"
-              className="text-cream/65 font-sans text-sm tracking-wide hover:text-cream/90 transition-colors duration-300 underline underline-offset-4 decoration-cream/30"
-            >
-              Or apply for 1:1 coaching →
-            </Link>
           </div>
         </div>
       </div>
 
-      {/* Scroll indicator */}
       <div
         className={`absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 transition-opacity duration-1000 delay-[800ms] ${
           loaded ? 'opacity-60' : 'opacity-0'
         }`}
       >
-        <span className="text-cream/50 text-[10px] tracking-[0.2em] uppercase font-sans">
-          Scroll
-        </span>
+        <span className="text-cream/50 text-[10px] tracking-[0.2em] uppercase font-sans">Scroll</span>
         <svg
           className="w-5 h-5 text-cream/50 animate-bounce"
           fill="none"
@@ -153,11 +134,7 @@ function HeroSection() {
           stroke="currentColor"
           strokeWidth={1.5}
         >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M19.5 8.25l-7.5 7.5-7.5-7.5"
-          />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
         </svg>
       </div>
     </section>
@@ -175,57 +152,35 @@ function ProblemSection() {
     <section className="bg-cream py-28 md:py-36">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-16 lg:gap-20 items-center">
-          {/* Text — 60 % */}
           <div ref={s1.ref} className="lg:col-span-3 space-y-7">
             <h2
-              {...anim(s1.isVisible)}
               className={`font-serif text-3xl md:text-[2.75rem] leading-[1.15] text-midnight tracking-tight text-balance ${anim(s1.isVisible).className}`}
               style={anim(s1.isVisible).style}
             >
-              Most fitness approaches quietly expect you to.
+              Most fitness approaches quietly expect you to shrink your life to fit them.
             </h2>
 
             <div
-              {...anim(s1.isVisible, 120)}
               className={`space-y-5 text-charcoal/80 font-sans text-base md:text-[17px] leading-relaxed ${anim(s1.isVisible, 120).className}`}
               style={anim(s1.isVisible, 120).style}
             >
-              <p>
-                They work&hellip; if your routine is fixed. If your schedule is
-                predictable. If your weeks all look the same.
-              </p>
-              <p>
-                But yours don&rsquo;t.
-              </p>
-              <p>
-                Some weeks you&rsquo;re in a rhythm &mdash; some weeks
-                you&rsquo;re not. And that&rsquo;s normal.
-              </p>
-              <p>
-                The problem is you&rsquo;ve been given two options: something
-                that gets results, but doesn&rsquo;t fit your life &mdash; or
-                something that fits your life, but doesn&rsquo;t change your
-                body. So you end up stuck between the two.
-              </p>
-              <p>
-                You don&rsquo;t need to choose.
-              </p>
+              <p>They work&hellip; If your schedule never changes. If you eat the same meals every week. If you never travel, never have a big work season, never have a night where everything falls apart.</p>
+              <p>But your life doesn&rsquo;t look like that. Some weeks you&rsquo;re in a rhythm. Some weeks you&rsquo;re in three different time zones. And the fitness industry has spent years telling you that the reason you&rsquo;re not getting results is you.</p>
+              <p>It isn&rsquo;t.</p>
+              <p>The problem isn&rsquo;t your discipline. It isn&rsquo;t your consistency. It isn&rsquo;t that you don&rsquo;t want it badly enough.</p>
+              <p>The problem is you&rsquo;ve been given a system that was never designed for the way you actually live.</p>
             </div>
 
             <blockquote
-              {...anim(s1.isVisible, 240)}
               className={`border-l-2 border-sand pl-6 font-serif italic text-xl md:text-2xl text-midnight/80 leading-snug ${anim(s1.isVisible, 240).className}`}
               style={anim(s1.isVisible, 240).style}
             >
-              &ldquo;The problem was never your discipline. It was a system
-              designed for a life you don&rsquo;t actually live.&rdquo;
+              &ldquo;The problem was never your discipline. It was a system built for a life you don&rsquo;t actually live.&rdquo;
             </blockquote>
           </div>
 
-          {/* Image — 40 % */}
           <div
             ref={s2.ref}
-            {...anim(s2.isVisible, 200)}
             className={`lg:col-span-2 ${anim(s2.isVisible, 200).className}`}
             style={anim(s2.isVisible, 200).style}
           >
@@ -246,9 +201,9 @@ function ProblemSection() {
 }
 
 /* ================================================================== */
-/*  3. REFRAME                                                         */
+/*  3. DREAM OUTCOME                                                   */
 /* ================================================================== */
-function ReframeSection() {
+function DreamOutcomeSection() {
   const s1 = useInView()
   const s2 = useInView()
 
@@ -256,10 +211,8 @@ function ReframeSection() {
     <section className="bg-midnight py-28 md:py-36 overflow-hidden">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
-          {/* Image */}
           <div
             ref={s1.ref}
-            {...anim(s1.isVisible)}
             className={`relative aspect-[4/5] rounded-sm overflow-hidden ${anim(s1.isVisible).className}`}
             style={anim(s1.isVisible).style}
           >
@@ -272,51 +225,23 @@ function ReframeSection() {
             />
           </div>
 
-          {/* Text */}
           <div ref={s2.ref} className="space-y-7">
             <h2
-              {...anim(s2.isVisible)}
               className={`font-serif text-3xl md:text-[2.75rem] leading-[1.15] text-cream tracking-tight text-balance ${anim(s2.isVisible).className}`}
               style={anim(s2.isVisible).style}
             >
-              Picture waking up and actually liking what you see.
+              Picture what it feels like when it actually works.
             </h2>
 
             <div
-              {...anim(s2.isVisible, 120)}
               className={`space-y-5 text-cream/70 font-sans text-base md:text-[17px] leading-relaxed ${anim(s2.isVisible, 120).className}`}
               style={anim(s2.isVisible, 120).style}
             >
-              <p>
-                You wake up, look in the mirror&hellip; and you&rsquo;re not
-                immediately picking yourself apart. Your body looks tighter,
-                leaner, more defined. Your arms look good in a tank top. Your
-                waist feels smaller. Your clothes sit better.
-              </p>
-              <p>
-                You put something on and think: <em>okay&hellip; I actually look
-                pretty damn good.</em> Not sucking in. Not overthinking it. Not
-                changing outfits three times. Just&hellip; comfortable in your
-                body. Confident.
-              </p>
-              <p>
-                You walk into a room and feel put together, attractive, like
-                yourself again. Not because you&rsquo;re trying to hide
-                anything &mdash; but because you&rsquo;re not thinking about it
-                anymore.
-              </p>
-            </div>
-
-            <div
-              {...anim(s2.isVisible, 240)}
-              className={`border-l-2 border-sand/60 pl-6 ${anim(s2.isVisible, 240).className}`}
-              style={anim(s2.isVisible, 240).style}
-            >
-              <p className="font-serif italic text-xl md:text-2xl text-sand leading-snug">
-                Without having to pull back on your life to do it. Because your
-                life isn&rsquo;t the thing that needs to change. What you&rsquo;re
-                doing is.
-              </p>
+              <p>Not just how you look. How you feel.</p>
+              <p>You walk into a room and you&rsquo;re just there. Fully present. Not doing the mental inventory of whether your stomach looks flat, whether you should have worn something else, whether you look as tired as you feel.</p>
+              <p>You stop scanning. You stop starting over. You stop negotiating with yourself every Sunday about what this week is going to be different.</p>
+              <p>You have energy that matches your life. You eat out, you travel, you enjoy things, and none of it sends you into a spiral. You feel strong in your body. Comfortable in it. Like it belongs to the life you&rsquo;ve built.</p>
+              <p>That&rsquo;s not a fantasy. That&rsquo;s what happens when the way you train and eat is actually built around you.</p>
             </div>
           </div>
         </div>
@@ -334,10 +259,9 @@ const pillars = [
     alt: 'Madison showing athletic physique, smiling and confident',
     label: 'Strength',
     paragraphs: [
-      'Most women end up stuck doing one of two things: a \u201cperfect\u201d gym routine they can\u2019t keep up with, or workouts they can do anywhere that don\u2019t actually change their body.',
-      'I don\u2019t do either.',
-      'We use a more flexible approach where your training adapts to what you have, so when you\u2019ve got access to a full gym, we push for real physique change, and when you don\u2019t, we adjust without everything falling apart.',
-      'That way you\u2019re not choosing between results or something you can stick to.',
+      'Most women end up doing one of two things: a program that gets results but falls apart the moment they travel, or workouts they can do anywhere that don’t actually change their body.',
+      'We do neither.',
+      'Your training adapts to what you have, so when you’re in a full gym we push for real change, and when you’re not, we adjust without everything falling apart.',
     ],
   },
   {
@@ -345,10 +269,9 @@ const pillars = [
     alt: 'Madison eating from a bowl on the beach at sunset',
     label: 'Fuel',
     paragraphs: [
-      'Most approaches just teach you how to eat less. Which works\u2026 until you actually want a life.',
-      'I do the opposite.',
-      'We focus on building a body that can eat more over time while still getting leaner and actually changing shape.',
-      'So you can go out, order what you want, enjoy your food\u2026 and not have that low-key panic about what it\u2019s doing to your body. You know what you\u2019re doing, you know how to adjust, and nothing feels off track.',
+      'Most approaches teach you to eat less. Which works until you actually want a life.',
+      'We do the opposite.',
+      'We build a body that can eat more over time while still getting leaner and changing shape. So you can go out, order what you want, and not spend the rest of the night doing mental math.',
     ],
   },
   {
@@ -356,8 +279,9 @@ const pillars = [
     alt: 'Madison close-up, eyes closed, peaceful in golden light',
     label: 'Mindset',
     paragraphs: [
-      'The inner game that makes the outer results stick. We dismantle the all-or-nothing thinking, the guilt cycles, and the perfectionism that have kept you starting over.',
-      'This is where lasting change actually lives. We will not only be working on strengthening your body but strengthening your mind.',
+      'This is where lasting change actually lives.',
+      'We dismantle the all-or-nothing thinking, the guilt cycles, and the perfectionism that have kept you starting over. One bad meal doesn’t ruin the day. One bad week doesn’t ruin the month.',
+      'We build the mental foundation that makes everything else stick.',
     ],
   },
 ]
@@ -365,50 +289,39 @@ const pillars = [
 function MethodSection() {
   const heading = useInView()
   const cards = useInView(0.1)
+  const cta = useInView()
 
   return (
     <section className="bg-cream py-28 md:py-36">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        {/* Heading */}
         <div ref={heading.ref} className="text-center max-w-3xl mx-auto mb-20">
           <p
-            {...anim(heading.isVisible)}
             className={`text-sand text-[11px] font-sans font-medium tracking-[0.25em] uppercase mb-5 ${anim(heading.isVisible).className}`}
             style={anim(heading.isVisible).style}
           >
             The Method
           </p>
           <h2
-            {...anim(heading.isVisible, 100)}
             className={`font-serif text-4xl md:text-5xl lg:text-[3.5rem] text-midnight tracking-tight ${anim(heading.isVisible, 100).className}`}
             style={anim(heading.isVisible, 100).style}
           >
-            Introducing: Body Unmuted
+            The Body Unmuted Method.
           </h2>
           <p
-            {...anim(heading.isVisible, 200)}
             className={`mt-6 text-charcoal/70 font-sans text-base md:text-lg leading-relaxed max-w-2xl mx-auto ${anim(heading.isVisible, 200).className}`}
             style={anim(heading.isVisible, 200).style}
           >
-            A three-pillar coaching method built for women whose lives are too
-            full for cookie-cutter fitness. Strength. Fuel. Mindset. Woven
-            together so your results compound &mdash; not collapse.
+            Three pillars. Woven together so your results build on themselves instead of collapsing every time life gets real.
           </p>
         </div>
 
-        {/* Pillar cards */}
-        <div
-          ref={cards.ref}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10"
-        >
+        <div ref={cards.ref} className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
           {pillars.map((pillar, i) => (
             <div
               key={pillar.label}
-              {...anim(cards.isVisible, i * 150)}
               className={`group rounded-sm border border-charcoal/8 bg-white shadow-[0_2px_20px_rgba(0,0,0,0.04)] overflow-hidden hover:shadow-[0_8px_40px_rgba(0,0,0,0.08)] transition-shadow duration-500 ${anim(cards.isVisible, i * 150).className}`}
               style={anim(cards.isVisible, i * 150).style}
             >
-              {/* Image */}
               <div className="relative aspect-[4/5] overflow-hidden">
                 <Image
                   src={pillar.image}
@@ -418,14 +331,13 @@ function MethodSection() {
                   sizes="(max-width: 768px) 100vw, 33vw"
                 />
               </div>
-              {/* Text */}
               <div className="p-7 md:p-8">
                 <p className="text-sand text-[11px] font-sans font-semibold tracking-[0.2em] uppercase mb-3">
                   {pillar.label}
                 </p>
                 <div className="space-y-3">
-                  {pillar.paragraphs.map((para, i) => (
-                    <p key={i} className="text-charcoal/75 font-sans text-[15px] leading-relaxed">
+                  {pillar.paragraphs.map((para, j) => (
+                    <p key={j} className="text-charcoal/75 font-sans text-[15px] leading-relaxed">
                       {para}
                     </p>
                   ))}
@@ -435,77 +347,58 @@ function MethodSection() {
           ))}
         </div>
 
-      </div>
-    </section>
-  )
-}
-
-/* ================================================================== */
-/*  5. FULL-WIDTH IMAGE DIVIDER                                        */
-/* ================================================================== */
-function ImageDivider() {
-  const s = useInView(0.1)
-
-  return (
-    <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
-      {/* Parallax-style bg (uses fixed attachment on desktop) */}
-      <div className="absolute inset-0">
-        <Image
-          src="/Madison-170.webp"
-          alt="Dramatic sunset silhouette of Madison on mountain"
-          fill
-          className="object-cover md:object-[center_30%]"
-          sizes="100vw"
-          style={{
-            /* CSS backgroundAttachment: fixed doesn't work with next/image fill,
-               so we simulate depth with a subtle scale */
-          }}
-        />
-        <div className="absolute inset-0 bg-midnight/50" />
-      </div>
-
-      <div ref={s.ref} className="relative z-10 px-6 text-center max-w-3xl mx-auto">
-        <p
-          {...anim(s.isVisible)}
-          className={`font-serif italic text-2xl md:text-4xl lg:text-[2.75rem] text-cream leading-snug tracking-tight ${anim(s.isVisible).className}`}
-          style={anim(s.isVisible).style}
+        <div
+          ref={cta.ref}
+          className={`mt-14 text-center ${anim(cta.isVisible).className}`}
+          style={anim(cta.isVisible).style}
         >
-          &ldquo;The goal was never to force your life around your fitness. It
-          was to finally feel at home in the body you&rsquo;re building your
-          life in.&rdquo;
-        </p>
+          <Link
+            href="/method"
+            className="inline-block border border-bark text-bark font-sans font-medium text-sm tracking-wide uppercase rounded-full px-10 py-4 hover:bg-bark hover:text-cream transition-colors duration-300"
+          >
+            Read more about the method
+          </Link>
+        </div>
       </div>
     </section>
   )
 }
 
 /* ================================================================== */
-/*  6. RESULTS                                                         */
+/*  5. WHO THIS IS FOR                                                 */
 /* ================================================================== */
-const resultsList = [
-  'A strong, lean physique that doesn\u2019t require perfection to maintain',
-  'The confidence to walk into any room and feel like yourself',
-  'Energy that actually matches the life you\u2019re living',
-  'Freedom from food guilt, binge-restrict cycles, and all-or-nothing thinking',
-  'A workout routine that travels with you and adapts to real life',
-  'The ability to eat out, enjoy vacations, and still hit your goals',
-  'A body that performs for the life you\u2019ve built \u2014 not one that holds you back from it',
-]
-
-function ResultsSection() {
+function WhoThisIsForSection() {
   const s1 = useInView()
   const s2 = useInView()
 
   return (
-    <section className="bg-cream py-28 md:py-36">
+    <section className="bg-white py-28 md:py-36">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
-          {/* Image */}
+          <div ref={s1.ref} className="space-y-7">
+            <h2
+              className={`font-serif text-3xl md:text-[2.75rem] leading-[1.15] text-midnight tracking-tight text-balance ${anim(s1.isVisible).className}`}
+              style={anim(s1.isVisible).style}
+            >
+              This is for you if&hellip;
+            </h2>
+
+            <div
+              className={`space-y-5 text-charcoal/80 font-sans text-base md:text-[17px] leading-relaxed ${anim(s1.isVisible, 120).className}`}
+              style={anim(s1.isVisible, 120).style}
+            >
+              <p>You&rsquo;ve tried things before and they&rsquo;ve worked&hellip; Until your routine changed, a work trip came up, or life just got loud. And then you were back at square one wondering what was wrong with you.</p>
+              <p>Nothing is wrong with you.</p>
+              <p>You&rsquo;re a woman with a full life. A career, travel, things you care about that have nothing to do with the gym. You want to feel incredible in your body. You want results that are real and that hold. But you&rsquo;re not willing to become a more boring version of yourself to get them.</p>
+              <p>You&rsquo;re tired of fitness content that treats you like you just need more motivation. You&rsquo;re tired of starting over. You&rsquo;re tired of feeling like your body and your life are in conflict.</p>
+              <p>They don&rsquo;t have to be.</p>
+            </div>
+          </div>
+
           <div
-            ref={s1.ref}
-            {...anim(s1.isVisible)}
-            className={`relative aspect-[4/5] rounded-sm overflow-hidden ${anim(s1.isVisible).className}`}
-            style={anim(s1.isVisible).style}
+            ref={s2.ref}
+            className={`relative aspect-[4/5] rounded-sm overflow-hidden ${anim(s2.isVisible, 200).className}`}
+            style={anim(s2.isVisible, 200).style}
           >
             <Image
               src="/Madison-83.webp"
@@ -515,43 +408,6 @@ function ResultsSection() {
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
           </div>
-
-          {/* Text */}
-          <div ref={s2.ref} className="space-y-8">
-            <h2
-              {...anim(s2.isVisible)}
-              className={`font-serif text-3xl md:text-[2.75rem] leading-[1.15] text-midnight tracking-tight ${anim(s2.isVisible).className}`}
-              style={anim(s2.isVisible).style}
-            >
-              What You Actually Want
-            </h2>
-
-            <p
-              {...anim(s2.isVisible, 100)}
-              className={`text-charcoal/70 font-sans text-base md:text-[17px] leading-relaxed ${anim(s2.isVisible, 100).className}`}
-              style={anim(s2.isVisible, 100).style}
-            >
-              Forget the six-week challenge results that vanish by week eight.
-              Here&rsquo;s what life looks like when your fitness actually works
-              for you:
-            </p>
-
-            <ul className="space-y-4">
-              {resultsList.map((item, i) => (
-                <li
-                  key={i}
-                  {...anim(s2.isVisible, 150 + i * 80)}
-                  className={`flex items-start gap-4 ${anim(s2.isVisible, 150 + i * 80).className}`}
-                  style={anim(s2.isVisible, 150 + i * 80).style}
-                >
-                  <span className="mt-1.5 block h-2 w-2 rounded-full bg-sand flex-shrink-0" />
-                  <span className="text-charcoal/80 font-sans text-[15px] md:text-base leading-relaxed">
-                    {item}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
         </div>
       </div>
     </section>
@@ -559,300 +415,7 @@ function ResultsSection() {
 }
 
 /* ================================================================== */
-/*  7. DIFFERENTIATOR                                                  */
-/* ================================================================== */
-const differentiators = [
-  {
-    icon: (
-      <svg className="w-7 h-7 text-sand" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
-      </svg>
-    ),
-    title: 'Built for Real Life',
-    description:
-      'Every program is designed around your schedule, your travel, and your actual life \u2014 not an idealized version of it. Missed a workout? We adapt. Changed time zones? We adjust. No guilt, no starting over.',
-  },
-  {
-    icon: (
-      <svg className="w-7 h-7 text-sand" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.047 8.287 8.287 0 009 9.601a8.983 8.983 0 013.361-6.867 8.21 8.21 0 003 2.48z" />
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 18a3.75 3.75 0 00.495-7.468 5.99 5.99 0 00-1.925 3.547 5.975 5.975 0 01-2.133-1.001A3.75 3.75 0 0012 18z" />
-      </svg>
-    ),
-    title: 'Science-Backed, Human-Led',
-    description:
-      'Evidence-based strength and nutrition principles delivered with the nuance that only 1:1 coaching provides. No templates. No bots. A real coach who knows your name, your history, and your goals.',
-  },
-  {
-    icon: (
-      <svg className="w-7 h-7 text-sand" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
-      </svg>
-    ),
-    title: 'Results That Compound',
-    description:
-      'Most programs peak at week six and crash by week ten. Body Unmuted builds momentum that compounds. Six months in, you\u2019re not maintaining \u2014 you\u2019re still growing. A year in, you\u2019re unrecognizable.',
-  },
-]
-
-function DifferentiatorSection() {
-  const heading = useInView()
-  const items = useInView(0.1)
-
-  return (
-    <section className="bg-white py-28 md:py-36">
-      <div className="mx-auto max-w-6xl px-6 lg:px-10">
-        {/* Heading */}
-        <div ref={heading.ref} className="text-center mb-20">
-          <p
-            {...anim(heading.isVisible)}
-            className={`text-sand text-[11px] font-sans font-medium tracking-[0.25em] uppercase mb-5 ${anim(heading.isVisible).className}`}
-            style={anim(heading.isVisible).style}
-          >
-            Why It Works
-          </p>
-          <h2
-            {...anim(heading.isVisible, 100)}
-            className={`font-serif text-3xl md:text-[2.75rem] text-midnight tracking-tight ${anim(heading.isVisible, 100).className}`}
-            style={anim(heading.isVisible, 100).style}
-          >
-            This is where everything changes.
-          </h2>
-        </div>
-
-        {/* Feature items */}
-        <div
-          ref={items.ref}
-          className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16"
-        >
-          {differentiators.map((d, i) => (
-            <div
-              key={d.title}
-              {...anim(items.isVisible, i * 150)}
-              className={`text-center ${anim(items.isVisible, i * 150).className}`}
-              style={anim(items.isVisible, i * 150).style}
-            >
-              <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-sand/10 mb-6">
-                {d.icon}
-              </div>
-              <h3 className="font-serif text-xl md:text-2xl text-midnight mb-4">
-                {d.title}
-              </h3>
-              <p className="text-charcoal/70 font-sans text-[15px] leading-relaxed">
-                {d.description}
-              </p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
-}
-
-/* ================================================================== */
-/*  8. SOCIAL PROOF                                                    */
-/* ================================================================== */
-const testimonials = [
-  {
-    quote:
-      'I traveled to three countries in two months and didn\u2019t miss a beat. For the first time, my fitness actually came with me instead of waiting at home.',
-    name: 'Sarah K.',
-    detail: 'Entrepreneur & World Traveler',
-  },
-  {
-    quote:
-      'I used to lose all my progress every time work got intense. Now I\u2019m stronger than I was in my twenties \u2014 and I didn\u2019t have to sacrifice my career to get here.',
-    name: 'Jessica M.',
-    detail: 'VP of Marketing',
-  },
-  {
-    quote:
-      'Madison didn\u2019t just change my body. She changed the way I think about myself. I stopped fighting food and started fueling a life I\u2019m genuinely proud of.',
-    name: 'Lauren T.',
-    detail: 'Creative Director',
-  },
-]
-
-function SocialProofSection() {
-  const heading = useInView()
-  const cards = useInView(0.1)
-
-  return (
-    <section className="relative py-28 md:py-36 overflow-hidden">
-      {/* Background image */}
-      <div className="absolute inset-0">
-        <Image
-          src="/Madison-281.webp"
-          alt="Madison walking on beach, arm raised in freedom"
-          fill
-          className="object-cover"
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-midnight/65 backdrop-blur-[2px]" />
-      </div>
-
-      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-10">
-        {/* Heading */}
-        <div ref={heading.ref} className="text-center mb-16">
-          <p
-            {...anim(heading.isVisible)}
-            className={`text-sand text-[11px] font-sans font-medium tracking-[0.25em] uppercase mb-5 ${anim(heading.isVisible).className}`}
-            style={anim(heading.isVisible).style}
-          >
-            Client Stories
-          </p>
-          <h2
-            {...anim(heading.isVisible, 100)}
-            className={`font-serif text-3xl md:text-[2.75rem] text-cream tracking-tight ${anim(heading.isVisible, 100).className}`}
-            style={anim(heading.isVisible, 100).style}
-          >
-            Women like you are building bodies that last.
-          </h2>
-        </div>
-
-        {/* Testimonial cards */}
-        <div
-          ref={cards.ref}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8"
-        >
-          {testimonials.map((t, i) => (
-            <div
-              key={t.name}
-              {...anim(cards.isVisible, i * 150)}
-              className={`rounded-sm bg-cream/10 backdrop-blur-md border border-cream/15 p-8 md:p-10 ${anim(cards.isVisible, i * 150).className}`}
-              style={anim(cards.isVisible, i * 150).style}
-            >
-              {/* Quote marks */}
-              <span className="block font-serif text-5xl text-sand/40 leading-none mb-4">
-                &ldquo;
-              </span>
-              <p className="text-cream/90 font-sans text-[15px] leading-relaxed mb-8">
-                {t.quote}
-              </p>
-              <div>
-                <p className="text-cream font-sans font-medium text-sm">
-                  {t.name}
-                </p>
-                <p className="text-cream/50 font-sans text-xs tracking-wide mt-0.5">
-                  {t.detail}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
-}
-
-/* ================================================================== */
-/*  FAQ                                                                 */
-/* ================================================================== */
-const faqs = [
-  {
-    q: 'Who is this coaching for?',
-    a: 'This is for women who live full, busy lives — women who travel, build businesses, and want a body that keeps up. If you\'re tired of starting over every time your routine gets disrupted, this is for you.',
-  },
-  {
-    q: 'I travel a lot — will this still work for me?',
-    a: 'Absolutely. The Body Unmuted method is specifically designed to adapt to your lifestyle. Your training and nutrition plans flex with your schedule, whether you\'re at home, in a hotel gym, or on the go.',
-  },
-  {
-    q: 'How is this different from other coaching programs?',
-    a: 'Most programs give you a rigid plan that only works in perfect conditions. Body Unmuted builds a system that holds — even when life is messy. We focus on strength, fueling your body properly, and breaking the all-or-nothing patterns that keep most women stuck.',
-  },
-  {
-    q: 'What does the coaching actually include?',
-    a: 'You\'ll receive a personalized strength training program, nutrition guidance without restriction, ongoing coaching and support, and systems that adapt as your life changes. Everything is tailored to you.',
-  },
-  {
-    q: 'How long is the coaching commitment?',
-    a: 'I recommend a minimum of 3–6 months to see lasting results. This isn\'t a quick fix — it\'s a sustainable shift in how you train, eat, and think about your body.',
-  },
-  {
-    q: 'Do I need gym experience?',
-    a: 'No. Whether you\'re brand new to strength training or have years of experience, your program is built for where you are right now. I meet you exactly where you\'re at.',
-  },
-]
-
-function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
-  const [open, setOpen] = useState(false)
-  const s = useInView(0.1)
-
-  return (
-    <div
-      ref={s.ref}
-      {...anim(s.isVisible, index * 80)}
-      className={`border-b border-bark/15 ${anim(s.isVisible, index * 80).className}`}
-      style={anim(s.isVisible, index * 80).style}
-    >
-      <button
-        onClick={() => setOpen(!open)}
-        className="w-full flex items-center justify-between py-6 text-left group"
-      >
-        <span className="font-serif text-lg md:text-xl text-midnight pr-8">{q}</span>
-        <span
-          className={`flex-shrink-0 w-8 h-8 rounded-full border border-bark/30 flex items-center justify-center transition-transform duration-300 ${
-            open ? 'rotate-45 bg-bark border-bark' : 'group-hover:border-bark'
-          }`}
-        >
-          <svg
-            width="14"
-            height="14"
-            viewBox="0 0 14 14"
-            fill="none"
-            className={open ? 'text-cream' : 'text-bark'}
-          >
-            <path d="M7 1v12M1 7h12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-          </svg>
-        </span>
-      </button>
-      <div
-        className={`overflow-hidden transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-          open ? 'max-h-60 opacity-100 pb-6' : 'max-h-0 opacity-0'
-        }`}
-      >
-        <p className="text-midnight/70 font-sans leading-relaxed pr-12">{a}</p>
-      </div>
-    </div>
-  )
-}
-
-function FAQSection() {
-  const s = useInView()
-
-  return (
-    <section className="bg-cream py-24 md:py-32">
-      <div className="mx-auto max-w-3xl px-6">
-        <div ref={s.ref} className="text-center mb-16">
-          <p
-            {...anim(s.isVisible)}
-            className={`text-bark text-[11px] font-medium tracking-[0.25em] uppercase mb-4 ${anim(s.isVisible).className}`}
-            style={anim(s.isVisible).style}
-          >
-            Common Questions
-          </p>
-          <h2
-            {...anim(s.isVisible, 100)}
-            className={`font-serif text-3xl md:text-5xl text-midnight ${anim(s.isVisible, 100).className}`}
-            style={anim(s.isVisible, 100).style}
-          >
-            Everything you need to know
-          </h2>
-        </div>
-
-        <div>
-          {faqs.map((faq, i) => (
-            <FAQItem key={i} q={faq.q} a={faq.a} index={i} />
-          ))}
-        </div>
-      </div>
-    </section>
-  )
-}
-
-/* ================================================================== */
-/*  9. BODY BRIEF CTA                                                  */
+/*  6. BODY BRIEF CTA                                                  */
 /* ================================================================== */
 function BodyBriefSection() {
   const s1 = useInView()
@@ -862,11 +425,8 @@ function BodyBriefSection() {
     <section className="bg-midnight py-28 md:py-36 overflow-hidden">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-
-          {/* Text */}
           <div ref={s1.ref} className="space-y-7 order-2 lg:order-1">
             <p
-              {...anim(s1.isVisible)}
               className={`text-sand text-[11px] font-sans font-medium tracking-[0.25em] uppercase ${anim(s1.isVisible).className}`}
               style={anim(s1.isVisible).style}
             >
@@ -874,39 +434,22 @@ function BodyBriefSection() {
             </p>
 
             <h2
-              {...anim(s1.isVisible, 100)}
               className={`font-serif text-3xl md:text-[2.75rem] leading-[1.15] text-cream tracking-tight text-balance ${anim(s1.isVisible, 100).className}`}
               style={anim(s1.isVisible, 100).style}
             >
-              Before we build anything &mdash; let&rsquo;s find out where you
-              actually are.
+              Before we build anything, let&rsquo;s figure out where you actually are.
             </h2>
 
             <div
-              {...anim(s1.isVisible, 200)}
               className={`space-y-5 text-cream/70 font-sans text-base md:text-[17px] leading-relaxed ${anim(s1.isVisible, 200).className}`}
               style={anim(s1.isVisible, 200).style}
             >
-              <p>
-                Most coaches hand you a program and tell you to start on Monday.
-                That&rsquo;s not how I work.
-              </p>
-              <p>
-                Before we do anything, I want to understand you &mdash; your
-                schedule, your history, what&rsquo;s worked, what&rsquo;s
-                fallen apart, and what you&rsquo;re actually working toward.
-                That&rsquo;s what the Body Brief is for.
-              </p>
-              <p>
-                Fill out a five-minute intake form and within 24&ndash;48 hours
-                I&rsquo;ll send you a personalized Body Brief: a clear picture
-                of where you stand and exactly what it will take to get where
-                you want to go.
-              </p>
+              <p>Most coaches hand you a program and tell you to start Monday. That&rsquo;s not how I work.</p>
+              <p>The Body Brief is a free, personalised snapshot of where you stand right now. You fill out a five minute form about your life, your goals, and what&rsquo;s been falling apart. I send you back a custom brief: what you&rsquo;re doing well, what&rsquo;s missing, what your actual needle movers are, and a starting point built around you.</p>
+              <p>No commitment. No pitch. Just clarity.</p>
             </div>
 
             <div
-              {...anim(s1.isVisible, 300)}
               className={`pt-2 ${anim(s1.isVisible, 300).className}`}
               style={anim(s1.isVisible, 300).style}
             >
@@ -914,18 +457,16 @@ function BodyBriefSection() {
                 href="/body-brief"
                 className="inline-block bg-sand text-midnight font-sans font-medium text-sm tracking-wide uppercase rounded-full px-10 py-4 hover:bg-bark hover:text-cream transition-colors duration-400"
               >
-                Fill Out Your Body Brief
+                Get Your Free Body Brief
               </Link>
               <p className="mt-4 text-cream/35 font-sans text-xs tracking-wide">
-                Free &middot; Takes 5 minutes &middot; No commitment required
+                Takes 5 minutes &middot; No commitment required
               </p>
             </div>
           </div>
 
-          {/* Image */}
           <div
             ref={s2.ref}
-            {...anim(s2.isVisible, 150)}
             className={`relative aspect-[3/4] rounded-sm overflow-hidden order-1 lg:order-2 ${anim(s2.isVisible, 150).className}`}
             style={anim(s2.isVisible, 150).style}
           >
@@ -945,76 +486,208 @@ function BodyBriefSection() {
 }
 
 /* ================================================================== */
-/*  10. FINAL CTA                                                      */
+/*  7. OFFERS                                                          */
 /* ================================================================== */
-function FinalCTASection() {
-  const s = useInView()
+function OffersSection() {
+  const heading = useInView()
+  const cards = useInView(0.1)
 
   return (
-    <section className="relative py-32 md:py-44 overflow-hidden">
-      {/* Background image */}
+    <section className="bg-cream py-28 md:py-36">
+      <div className="mx-auto max-w-6xl px-6 lg:px-10">
+        <div ref={heading.ref} className="text-center mb-16">
+          <h2
+            className={`font-serif text-3xl md:text-[2.75rem] text-midnight tracking-tight ${anim(heading.isVisible).className}`}
+            style={anim(heading.isVisible).style}
+          >
+            Two ways to work together.
+          </h2>
+        </div>
+
+        <div ref={cards.ref} className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+          <div
+            className={`rounded-sm border border-charcoal/10 bg-white p-10 md:p-12 space-y-5 ${anim(cards.isVisible, 0).className}`}
+            style={anim(cards.isVisible, 0).style}
+          >
+            <h3 className="font-serif text-2xl md:text-3xl text-midnight">Body Reclaimed</h3>
+            <p className="text-charcoal/70 font-sans text-base md:text-[17px] leading-relaxed">
+              For the woman who&rsquo;s ready to stop winging it and finally have a real system that&rsquo;s built around her life, not someone else&rsquo;s template.
+            </p>
+            <Link
+              href="/work-with-me"
+              className="inline-block text-bark font-sans font-medium text-sm tracking-wide underline underline-offset-4 hover:text-bark/70 transition-colors duration-300"
+            >
+              Learn more about Body Reclaimed &rarr;
+            </Link>
+          </div>
+
+          <div
+            className={`rounded-sm border border-charcoal/10 bg-midnight p-10 md:p-12 space-y-5 ${anim(cards.isVisible, 150).className}`}
+            style={anim(cards.isVisible, 150).style}
+          >
+            <h3 className="font-serif text-2xl md:text-3xl text-cream">Body Unmuted: 1:1 Coaching</h3>
+            <p className="text-cream/70 font-sans text-base md:text-[17px] leading-relaxed">
+              For the woman who&rsquo;s ready to stop wondering what she&rsquo;d look like if she actually went all in&hellip; and just go all in. Full transformation, full support, zero settling.
+            </p>
+            <Link
+              href="/apply"
+              className="inline-block text-sand font-sans font-medium text-sm tracking-wide underline underline-offset-4 hover:text-sand/70 transition-colors duration-300"
+            >
+              Explore 1:1 Coaching &rarr;
+            </Link>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ================================================================== */
+/*  8. SOCIAL PROOF                                                    */
+/* ================================================================== */
+const testimonials = [
+  {
+    quote:
+      'Working with Madison has genuinely changed my life. Over the last year I’ve lost 20 pounds, built real strength, and found a confidence I didn’t know I was missing. She doesn’t just give you workouts. She helped me completely overhaul my nutrition and actually understand what my body needs. I feel better at 36 than I did at 26. I didn’t think that was possible.',
+    name: 'Liz',
+  },
+  {
+    quote:
+      'I was traveling through seven countries in three months, losing muscle, losing confidence, and it was starting to affect my business and my speaking events. Madison reminded me I could still enjoy life, still travel, and still feel strong, confident, and sexy while actually being in a routine. She helped me move past so many mindset blocks around consistency. Now I eat high protein foods I actually love and do personalised workouts that work. I feel in such amazing shape, and it’s had a huge ripple effect on everything. If you’re even thinking about it, take the dive. She’ll not only change your body. She’ll change your life.',
+    name: 'Ashleigh',
+  },
+  {
+    quote:
+      'Madison was the first person who ever got me genuinely excited about fitness. She explains nutrition in a way that actually makes sense and feels doable in real life. She’s a trainer who’s also a foodie, so she won’t just tell you to diet. She understands that we’re human, and especially as women, we’re not operating at 100% all the time. Instead of the all-or-nothing cycle, she helps you stay consistent and keep moving forward. I’ve tried getting into the gym so many times and always fell off because I didn’t know what I was doing. Madison gave me the foundation I was missing. I finally understand what I’m supposed to be doing and what a good workout should actually FEEL like, not just look like. I honestly can’t recommend her enough.',
+    name: 'Sierra',
+  },
+]
+
+function SocialProofSection() {
+  const heading = useInView()
+  const cards = useInView(0.1)
+
+  return (
+    <section className="relative py-28 md:py-36 overflow-hidden">
       <div className="absolute inset-0">
         <Image
-          src="/Madison-114.webp"
-          alt="Madison with arm raised triumphantly on hillside"
+          src="/Madison-281.webp"
+          alt="Madison walking on beach, arm raised in freedom"
           fill
           className="object-cover"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-midnight/60 via-midnight/50 to-midnight/75" />
+        <div className="absolute inset-0 bg-midnight/65 backdrop-blur-[2px]" />
       </div>
 
-      <div
-        ref={s.ref}
-        className="relative z-10 mx-auto max-w-3xl px-6 text-center"
-      >
-        <h2
-          {...anim(s.isVisible)}
-          className={`font-serif text-3xl md:text-5xl lg:text-[3.25rem] text-cream leading-[1.12] tracking-tight text-balance ${anim(s.isVisible).className}`}
-          style={anim(s.isVisible).style}
-        >
-          Not sure where to start? Let&rsquo;s figure it out together.
-        </h2>
-
-        <p
-          {...anim(s.isVisible, 120)}
-          className={`mt-7 text-cream/70 font-sans text-base md:text-lg leading-relaxed max-w-2xl mx-auto ${anim(s.isVisible, 120).className}`}
-          style={anim(s.isVisible, 120).style}
-        >
-          Fill out the Body Brief form and I&rsquo;ll send you a personalised
-          snapshot of where you stand &mdash; your training, your nutrition, and
-          exactly what it will take to get the results you&rsquo;re after.
-        </p>
-
-        <p
-          {...anim(s.isVisible, 200)}
-          className={`mt-5 text-cream/50 font-sans text-sm leading-relaxed max-w-xl mx-auto ${anim(s.isVisible, 200).className}`}
-          style={anim(s.isVisible, 200).style}
-        >
-          Takes 5 minutes. You&rsquo;ll hear back within 24&ndash;48 hours.
-        </p>
-
-        <div
-          {...anim(s.isVisible, 300)}
-          className={`mt-10 ${anim(s.isVisible, 300).className}`}
-          style={anim(s.isVisible, 300).style}
-        >
-          <Link
-            href="/body-brief"
-            className="inline-block bg-sand text-midnight font-sans font-medium text-sm tracking-wide uppercase rounded-full px-12 py-5 hover:bg-bark hover:text-cream transition-colors duration-400 shadow-[0_4px_24px_rgba(212,165,116,0.3)]"
+      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-10">
+        <div ref={heading.ref} className="text-center mb-16">
+          <p
+            className={`text-sand text-[11px] font-sans font-medium tracking-[0.25em] uppercase mb-5 ${anim(heading.isVisible).className}`}
+            style={anim(heading.isVisible).style}
           >
-            Fill Out Your Body Brief
-          </Link>
+            Client Stories
+          </p>
+          <h2
+            className={`font-serif text-3xl md:text-[2.75rem] text-cream tracking-tight ${anim(heading.isVisible, 100).className}`}
+            style={anim(heading.isVisible, 100).style}
+          >
+            Real women. Real results.
+          </h2>
         </div>
 
-        <p
-          {...anim(s.isVisible, 400)}
-          className={`mt-8 text-cream/35 font-sans text-xs tracking-wide ${anim(s.isVisible, 400).className}`}
-          style={anim(s.isVisible, 400).style}
-        >
-          Free &middot; No commitment required
-        </p>
+        <div ref={cards.ref} className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {testimonials.map((t, i) => (
+            <div
+              key={t.name}
+              className={`rounded-sm bg-cream/10 backdrop-blur-md border border-cream/15 p-8 md:p-10 ${anim(cards.isVisible, i * 150).className}`}
+              style={anim(cards.isVisible, i * 150).style}
+            >
+              <span className="block font-serif text-5xl text-sand/40 leading-none mb-4">&ldquo;</span>
+              <p className="text-cream/90 font-sans text-[15px] leading-relaxed mb-8">{t.quote}</p>
+              <p className="text-cream font-sans font-medium text-sm">&mdash;{t.name}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
+  )
+}
+
+/* ================================================================== */
+/*  9. FINAL CTA                                                       */
+/* ================================================================== */
+function FinalCTASection() {
+  const s = useInView()
+  const madison = useInView()
+
+  return (
+    <>
+      <section className="relative py-32 md:py-44 overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src="/Madison-114.webp"
+            alt="Madison with arm raised triumphantly on hillside"
+            fill
+            className="object-cover"
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-midnight/60 via-midnight/50 to-midnight/75" />
+        </div>
+
+        <div ref={s.ref} className="relative z-10 mx-auto max-w-3xl px-6 text-center">
+          <h2
+            className={`font-serif text-3xl md:text-5xl lg:text-[3.25rem] text-cream leading-[1.12] tracking-tight text-balance ${anim(s.isVisible).className}`}
+            style={anim(s.isVisible).style}
+          >
+            Not sure where to start?
+          </h2>
+
+          <p
+            className={`mt-7 text-cream/70 font-sans text-base md:text-lg leading-relaxed max-w-2xl mx-auto ${anim(s.isVisible, 120).className}`}
+            style={anim(s.isVisible, 120).style}
+          >
+            Start with the Body Brief. It&rsquo;s free, it takes five minutes, and it gives you a clearer picture of where you are and what it will actually take to get where you want to go. No pressure, no pitch. Just the truth about your starting point.
+          </p>
+
+          <div
+            className={`mt-10 ${anim(s.isVisible, 300).className}`}
+            style={anim(s.isVisible, 300).style}
+          >
+            <Link
+              href="/body-brief"
+              className="inline-block bg-sand text-midnight font-sans font-medium text-sm tracking-wide uppercase rounded-full px-12 py-5 hover:bg-bark hover:text-cream transition-colors duration-400 shadow-[0_4px_24px_rgba(212,165,116,0.3)]"
+            >
+              Get Your Free Body Brief
+            </Link>
+          </div>
+
+          <p
+            className={`mt-8 text-cream/35 font-sans text-xs tracking-wide ${anim(s.isVisible, 400).className}`}
+            style={anim(s.isVisible, 400).style}
+          >
+            No commitment required.
+          </p>
+        </div>
+      </section>
+
+      <section className="bg-cream py-20 md:py-24">
+        <div ref={madison.ref} className="mx-auto max-w-2xl px-6 text-center">
+          <p
+            className={`text-charcoal/80 font-sans text-base md:text-[17px] leading-relaxed mb-6 ${anim(madison.isVisible).className}`}
+            style={anim(madison.isVisible).style}
+          >
+            Hi, I&rsquo;m Madison. I help women build bodies that hold up to their real lives, not an idealised version of them.
+          </p>
+          <Link
+            href="/about"
+            className={`inline-block text-bark font-sans font-medium text-sm tracking-wide underline underline-offset-4 hover:text-bark/70 transition-colors duration-300 ${anim(madison.isVisible, 100).className}`}
+            style={anim(madison.isVisible, 100).style}
+          >
+            Learn more about me &rarr;
+          </Link>
+        </div>
+      </section>
+    </>
   )
 }
