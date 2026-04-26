@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 
-const REQUIRED_FIELDS = ['name', 'email', 'message']
+const REQUIRED_FIELDS = ['name', 'message']
 
 function validateEmail(email: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
@@ -21,7 +21,7 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    if (!validateEmail(body.email)) {
+    if (body.email && !validateEmail(body.email)) {
       return NextResponse.json({ error: 'Invalid email address' }, { status: 400 })
     }
 

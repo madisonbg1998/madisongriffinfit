@@ -17,6 +17,7 @@ export function Footer() {
 
   const [contactName, setContactName] = useState('')
   const [contactEmail, setContactEmail] = useState('')
+  const [contactPhone, setContactPhone] = useState('')
   const [contactMessage, setContactMessage] = useState('')
   const [contactSubmitting, setContactSubmitting] = useState(false)
   const [contactSent, setContactSent] = useState(false)
@@ -35,7 +36,7 @@ export function Footer() {
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: contactName, email: contactEmail, message: contactMessage }),
+        body: JSON.stringify({ name: contactName, email: contactEmail, phone: contactPhone, message: contactMessage }),
       })
       const data = await response.json()
       if (!response.ok) throw new Error(data.error || 'Something went wrong.')
@@ -109,8 +110,15 @@ export function Footer() {
                     type="email"
                     value={contactEmail}
                     onChange={(e) => setContactEmail(e.target.value)}
-                    placeholder="Your email"
-                    required
+                    placeholder="Your email (optional)"
+                    suppressHydrationWarning
+                    className={inputClass}
+                  />
+                  <input
+                    type="tel"
+                    value={contactPhone}
+                    onChange={(e) => setContactPhone(e.target.value)}
+                    placeholder="Your phone number (optional)"
                     suppressHydrationWarning
                     className={inputClass}
                   />
