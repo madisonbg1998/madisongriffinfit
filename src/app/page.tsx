@@ -514,7 +514,7 @@ function OffersSection() {
               For the woman who&rsquo;s ready to stop winging it and finally have a real system that&rsquo;s built around her life, not someone else&rsquo;s template.
             </p>
             <Link
-              href="/work-with-me"
+              href="/body-reclaimed"
               className="inline-block text-bark font-sans font-medium text-sm tracking-wide underline underline-offset-4 hover:text-bark/70 transition-colors duration-300"
             >
               Learn more about Body Reclaimed &rarr;
