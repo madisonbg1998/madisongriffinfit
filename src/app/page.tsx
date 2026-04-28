@@ -72,21 +72,20 @@ function HeroSection() {
   }, [])
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-end overflow-hidden">
       <div className="absolute inset-0">
         <Image
           src="/Madison-29.webp"
           alt="Madison Griffin on mountain trail in athletic wear"
           fill
           priority
-          className="object-cover object-[center_20%]"
+          className="object-cover object-[center_35%] translate-x-[7%] scale-[1.15]"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-midnight/40 via-midnight/45 to-midnight/70" />
-        <div className="absolute inset-0 bg-gradient-to-r from-midnight/50 via-midnight/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-midnight/85 via-midnight/30 to-midnight/10" />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-7xl w-full px-6 md:px-12 lg:px-20 text-left pt-20">
+      <div className="relative z-10 mx-auto max-w-7xl w-full px-6 md:px-12 lg:px-20 pb-16 md:pb-24">
         <div className="max-w-2xl">
           <h1
             className={`font-serif text-5xl md:text-7xl lg:text-[5.25rem] leading-[1.08] text-cream tracking-tight text-balance transition-all duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
