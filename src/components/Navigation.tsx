@@ -45,6 +45,7 @@ export function Navigation() {
   return (
     <>
       <header
+        suppressHydrationWarning
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out ${
           isScrolled || forceDark
             ? 'bg-cream/95 backdrop-blur-md shadow-[0_1px_12px_rgba(0,0,0,0.06)]'
