@@ -530,7 +530,7 @@ function OffersSection() {
               For the woman who&rsquo;s ready to stop wondering what she&rsquo;d look like if she actually went all in&hellip; and just go all in. Full transformation, full support, zero settling.
             </p>
             <Link
-              href="/apply"
+              href="/work-with-me"
               className="inline-block text-sand font-sans font-medium text-sm tracking-wide underline underline-offset-4 hover:text-sand/70 transition-colors duration-300"
             >
               Explore 1:1 Coaching &rarr;
