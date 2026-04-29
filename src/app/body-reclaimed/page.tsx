@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
+import { FaqAccordion } from '@/components/FaqAccordion'
 
 export const metadata: Metadata = {
   title: 'Body Reclaimed | Monthly Coaching System',
@@ -227,14 +228,7 @@ export default function BodyReclaimedPage() {
             Everything you need to know.
           </h2>
 
-          <div>
-            {faqs.map((faq, i) => (
-              <div key={i} className="py-8 border-b border-charcoal/10 last:border-b-0">
-                <h3 className="font-serif text-midnight text-xl md:text-2xl mb-4 leading-snug">{faq.q}</h3>
-                <p className="text-charcoal/70 font-sans text-[15px] leading-relaxed">{faq.a}</p>
-              </div>
-            ))}
-          </div>
+          <FaqAccordion faqs={faqs} />
         </div>
       </section>
 
