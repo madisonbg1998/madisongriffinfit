@@ -60,7 +60,7 @@ export default function BodyReclaimedPage() {
       {/* ── Hero ── */}
       <section className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">
         <Image
-          src="/Madison-174.jpg"
+          src="/Madison-174.webp"
           alt="Madison Griffin"
           fill
           priority
@@ -152,7 +152,7 @@ export default function BodyReclaimedPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div className="relative aspect-[4/5] overflow-hidden rounded-sm">
               <Image
-                src="/Madison-94.jpg"
+                src="/Madison-94.webp"
                 alt="Madison Griffin"
                 fill
                 className="object-cover"
@@ -235,7 +235,7 @@ export default function BodyReclaimedPage() {
       {/* ── Join CTA ── */}
       <section className="relative py-28 md:py-36 overflow-hidden">
         <Image
-          src="/Madison-130.jpg"
+          src="/Madison-130.webp"
           alt="Madison Griffin"
           fill
           className="object-cover object-center"
