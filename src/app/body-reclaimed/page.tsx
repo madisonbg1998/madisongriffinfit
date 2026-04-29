@@ -233,8 +233,17 @@ export default function BodyReclaimedPage() {
       </section>
 
       {/* ── Join CTA ── */}
-      <section className="bg-midnight py-28 md:py-36">
-        <div className="max-w-2xl mx-auto px-6 text-center">
+      <section className="relative py-28 md:py-36 overflow-hidden">
+        <Image
+          src="/Madison-130.jpg"
+          alt="Madison Griffin"
+          fill
+          className="object-cover object-center"
+          sizes="100vw"
+          quality={90}
+        />
+        <div className="absolute inset-0 bg-midnight/65" />
+        <div className="relative z-10 max-w-2xl mx-auto px-6 text-center">
           <h2 className="font-serif text-cream text-3xl md:text-4xl lg:text-[3rem] leading-[1.1] mb-6">
             One clear plan. Built for you. Adjusted every month.
           </h2>
