@@ -319,6 +319,40 @@ export default function WorkWithMePage() {
           </p>
         </div>
       </section>
+
+      {/* ── Book a Call ── */}
+      <section className="bg-cream py-24 md:py-32">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-sm">
+              <Image
+                src="/Madison-102.webp"
+                alt="Madison Griffin"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            </div>
+            <div>
+              <p className="text-bark text-[11px] font-sans font-medium tracking-[0.3em] uppercase mb-6">
+                Not quite ready?
+              </p>
+              <h2 className="font-serif text-midnight text-3xl md:text-4xl lg:text-5xl leading-[1.1] mb-6">
+                Let&rsquo;s figure it out together.
+              </h2>
+              <p className="text-charcoal/70 font-sans text-[17px] leading-[1.85] mb-10">
+                Book a free call with me. I&rsquo;ll ask you a few questions, you ask me whatever you want, and we&rsquo;ll work out if this is the right fit for you right now. No pressure. No pitch.
+              </p>
+              <Link
+                href="https://calendly.com/madisongriffinfit/client-check-ins"
+                className="inline-flex items-center text-bark border border-bark/25 font-sans font-medium text-[11px] tracking-[0.18em] uppercase rounded-sm px-8 py-3.5 hover:bg-bark/5 transition-colors duration-300"
+              >
+                Book a Call with Madison
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
     </>
   )
 }

@@ -79,8 +79,10 @@ function HeroSection() {
           alt="Madison Griffin on mountain trail in athletic wear"
           fill
           priority
-          className="object-cover object-[center_35%] translate-x-[7%] scale-[1.15]"
+          className="object-cover object-[60%_35%]"
           sizes="100vw"
+          quality={100}
+          unoptimized
         />
         <div className="absolute inset-0 bg-gradient-to-t from-midnight/85 via-midnight/30 to-midnight/10" />
       </div>
