@@ -57,13 +57,13 @@ export default function AboutPage() {
               </p>
 
               <p>I spent years trying everything. Different approaches, different programs, different ways of eating. Nothing was really changing my body in the way I wanted and I couldn&rsquo;t figure out why. I was putting in the effort. It just wasn&rsquo;t working.</p>
-              <p>So I decided to finally figure it out properly and hired a coach.</p>
+              <p>So I decided to finally figure it out properly and hired a coach, a WBFF fitness athlete who completely changed my understanding of fitness and nutrition.</p>
 
               <blockquote className="border-l-2 border-sand pl-6 font-serif italic text-xl md:text-2xl text-midnight/80 leading-snug">
                 My body finally started changing. But I completely lost myself in the process.
               </blockquote>
 
-              <p>I became hyperfixated. Any deviation from the plan caused me real stress. A meal out, a missed session, an unplanned weekend. Things that should have been enjoyable became sources of anxiety. I was getting the results I&rsquo;d wanted for years, but I wasn&rsquo;t actually free. I was just trading one kind of stuck for another. Obsessing over my body instead of living in it.</p>
+              <p>But I became hyperfixated. Any deviation from the plan caused me real stress. A meal out, a missed session, an unplanned weekend. Things that should have been enjoyable became sources of anxiety. I was getting the results I&rsquo;d wanted for years, but I wasn&rsquo;t actually free. I was just trading one kind of stuck for another. Obsessing over my body instead of living in it.</p>
 
               <p className="font-serif italic text-xl md:text-2xl text-bark leading-snug">
                 That wasn&rsquo;t the answer either.
@@ -88,7 +88,7 @@ export default function AboutPage() {
       {/* ── The Shift ── */}
       <section className="bg-midnight py-24 md:py-32">
         <div className="max-w-3xl mx-auto px-6 space-y-12">
-          <p className="text-cream/75 font-sans text-[17px] leading-[1.75]">What eventually shifted everything was going into a proper muscle building phase. For the first time I stopped equating my weight with my progress. I started pulling flexibility back in, little by little. And something unexpected happened. My body kept changing, actually changing in ways I loved, but I wasn&rsquo;t white-knuckling my way through it anymore. I was eating the foods I loved. I was enjoying my life. And my body was responding better than it ever had when I was controlling everything.</p>
+          <p className="text-cream/75 font-sans text-[17px] leading-[1.75]">What eventually shifted everything was going into a proper muscle building phase. For the first time I stopped equating my weight with my progress. I started pulling flexibility back in, little by little. And something unexpected happened. My body kept changing, actually changing in ways I loved, but I wasn&rsquo;t grinding my way through it anymore. I was eating the foods I loved. I was enjoying my life. And my body was responding better than it ever had when I was controlling everything.</p>
           <p className="font-serif text-cream text-2xl md:text-3xl lg:text-4xl leading-snug text-center">
             The scanning stopped. The hyperfixation stopped. I just was.
           </p>
@@ -112,17 +112,16 @@ export default function AboutPage() {
             </div>
 
             <div className="lg:col-span-7 lg:order-2 space-y-8 text-charcoal/80 font-sans text-[17px] leading-[1.75]">
-              <p>And as that shift happened in my body, something started shifting in my life too. I was a data scientist, and I felt completely flat. Uninspired. Not excited to get up most mornings. Time was sprinting by and nothing felt like mine. The same pattern I&rsquo;d broken in my fitness &mdash; forcing myself into something that was never built for me &mdash; was playing out everywhere else.</p>
-              <p>All I wanted to do was travel the world. But I kept wondering, how could I do that and still do this?</p>
-              <p>So I started testing how much flexibility I could actually give myself and still get results. And it surprised me. Not only did my body keep responding, it got better. I was building a body I genuinely loved and felt confident in. Eating all the good food. Travelling. Supporting a strong, healthy, fit body and doing it in a way that felt calm and completely mine.</p>
-              <p>That&rsquo;s when I started building a business around what I&rsquo;d figured out. I packed up and started travelling through 21 countries, working my job and building this alongside it. All at once. It was a lot. But for the first time in a long time I felt genuinely alive. Excited. Like time was finally mine.</p>
+              <p>That&rsquo;s when it really clicked. Not just what was working, but why. I was a data scientist and a total data nerd, and I couldn&rsquo;t help myself. I went deep. Into the research, into the science, into understanding the mechanisms behind everything I&rsquo;d been experiencing. I got obsessed, as I do. And the more I understood, the more I realised that what I&rsquo;d stumbled into wasn&rsquo;t just a personal breakthrough. It was something other women needed too. So I got my certifications, and started building something around it.</p>
+              <p>I packed up and started travelling through 21 countries, building the business while still working my day job. All at once. It was a lot. But for the first time in a long time I felt genuinely alive. Excited. Like time was finally mine.</p>
 
               <blockquote className="border-l-2 border-sand pl-6 font-serif italic text-xl md:text-2xl text-midnight/80 leading-snug">
                 The next decision was easy. I quit my job with zero hesitation and ran full force toward the life I actually wanted.
               </blockquote>
 
-              <p>Now I lift, I eat really well, I drink good wine, I travel constantly, and it just works. Not because I finally got disciplined enough. Because I stopped fighting my body and started actually working with it.</p>
-              <p>That&rsquo;s what I help women do. Not just change their bodies. Change their whole relationship with their bodies. Build something sustainable, something that holds up when life gets full and unpredictable and honestly better than it&rsquo;s ever been.</p>
+              <p>Now I lift, I eat really well, I drink good wine, I travel constantly, and it just works. My body gives me the energy and the confidence to show up fully in my life. To be present, to perform, to enjoy every bit of it. That&rsquo;s what I&rsquo;d always wanted. Not a body instead of my life. A body that makes my life better.</p>
+              <p>That&rsquo;s what I help women build. Not just a body that looks different. A body that feels like theirs. That supports their life instead of competing with it. That holds up when everything gets full and loud and honestly better than it&rsquo;s ever been.</p>
+              <p>And the way I coach has kept evolving as I have, getting sharper, going deeper, getting closer to what I believe great coaching actually is.</p>
               <p>Because you don&rsquo;t need to become a more boring version of yourself to get results. You just need a way of doing this that was actually built for you.</p>
             </div>
           </div>
@@ -147,7 +146,9 @@ export default function AboutPage() {
                 Who I Work With
               </h2>
               <div className="space-y-5 text-cream/70 font-sans text-[17px] leading-relaxed mb-8">
-                <p>I work with women who have a full life and want their body to match it. Women who travel and refuse to put their goals on hold every time they do. Women who want to feel strong and look incredible without obsessing over it. Women who have tried everything and need something that actually holds.</p>
+                <p>I work with women who are done treating their body like a separate project. Women who have a full life &mdash; a career, a business, travel, relationships, ambitions &mdash; and want their body to actually match it. Not just look the part. Feel the part.</p>
+                <p>Women who show up fully in every other area of their life and can&rsquo;t figure out why this one thing won&rsquo;t click. Who have tried coaches before, followed the plans, gotten some results, and still don&rsquo;t feel at home in themselves. Who want to stop starting over and start building something that actually holds.</p>
+                <p>Women who refuse to put their life on hold to get results. Who want the wine and the pasta and the dinners and the travel, and a body that supports all of it.</p>
               </div>
               <p className="font-serif text-sand text-xl md:text-2xl italic leading-relaxed">
                 If that sounds like you, you&rsquo;re in the right place.

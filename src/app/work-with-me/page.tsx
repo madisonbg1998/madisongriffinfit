@@ -15,32 +15,37 @@ const included = [
   {
     num: '01',
     title: 'Fully custom training program',
-    body: 'Progressive, periodised strength programming built around your goals and adapted to wherever you are in the world. Full gym, hotel gym, or anywhere in between — your program travels with you and keeps building.',
+    body: 'Progressive strength programming built around your goals and adapted to wherever you are in the world. Full gym, hotel gym, or anywhere in between — your program travels with you and keeps building. And as we work together, you learn to actually feel it. Real muscle activation, genuine effort, knowing the difference between pushing hard and pushing through something your body is asking you to pay attention to.',
   },
   {
     num: '02',
     title: 'Custom nutrition framework',
-    body: 'A flexible approach built around your metabolism, your goals, and how you actually eat. No rigid meal plans. No cutting out the things you love. A strategy that gets you results and lets you live your life.',
+    body: 'A flexible approach built around your metabolism, your specific body data, and how you actually eat. Not a generic calculator. Not trends. Not guesswork. A strategy built on what the data shows, specific to you, that gets you results and lets you live your life.',
   },
   {
     num: '03',
-    title: 'Daily messaging access',
-    body: "Text or voice note me whenever you need. Questions, updates, hard days, big wins. I'm there. This is what makes everything move faster.",
+    title: 'The Body Literacy Guide',
+    body: 'Every client receives this as part of their coaching. A guide to muscle activation, reading real effort, understanding your body\'s signals, and building the felt relationship with your body that makes everything else work. This is the foundation underneath the programming — the thing that turns a good plan into something that actually holds.',
   },
   {
     num: '04',
+    title: 'Daily messaging access',
+    body: "Text or voice note me whenever you need. The 6am hotel gym panic, the restaurant menu confusion, the hard day, the big win. I respond 6 days a week and I'm genuinely there. This is what makes everything move faster.",
+  },
+  {
+    num: '05',
     title: 'One SOS call per month',
     body: 'For the moments when you just need to talk it through.',
   },
   {
-    num: '05',
+    num: '06',
     title: 'Weekly check-ins and continuous adjustments',
     body: "Every week we check in on how you're feeling and how your body is responding. Your program adapts in real time — nothing is set and forget, everything keeps moving with you.",
   },
   {
-    num: '06',
-    title: 'Mindset work woven throughout',
-    body: "We work on your body and the patterns that have been keeping you stuck — the all-or-nothing thinking, the perfectionism, the guilt cycles. This is the part most coaches skip. It's usually the part that changes everything.",
+    num: '07',
+    title: 'Body Relationship work woven throughout',
+    body: "We work on the patterns that have been keeping you stuck — the all-or-nothing thinking, the perfectionism, the guilt cycles. But we go deeper than the cycles. We work on who you are in relation to your body. The identity you've been carrying. Building your ability to actually inhabit yourself, not just manage yourself from the outside. This is the piece most coaches skip. It's usually the piece that changes everything.",
   },
 ]
 
@@ -98,38 +103,53 @@ export default function WorkWithMePage() {
 
       {/* ── Opening ── */}
       <section className="bg-midnight py-28 md:py-40">
-        <div className="max-w-3xl mx-auto px-6 space-y-16">
-          <p className="text-cream/75 font-sans text-[17px] leading-[1.85]">
-            You&rsquo;re the woman who fully commits to everything she does. Your career. Your business. Your relationships. The life you&rsquo;re building.
+        <div className="max-w-3xl mx-auto px-6 space-y-7 text-cream/75 font-sans text-[17px] leading-[1.85]">
+          <p className="font-serif text-cream text-3xl md:text-4xl leading-snug">Body Unmuted. 1:1 Coaching.</p>
+          <p className="font-serif italic text-sand text-2xl md:text-3xl leading-snug">You&rsquo;ve been living with your body on mute.</p>
+          <p>Not consciously. Not because you wanted to. But somewhere along the way you learned to push past it, work around it, override it. To live from the neck up and treat your body as something to be managed rather than something to be in.</p>
+          <p>And it works. Until you realise that no matter how much you achieve, how far you travel, how fully you show up everywhere else, there&rsquo;s this one thing that never quite feels like yours. This one place you&rsquo;ve never felt fully at home.</p>
+          <p>Unmuting your body means letting it back in. Learning to actually feel it &mdash; what it&rsquo;s telling you, what it needs, what it&rsquo;s capable of when you stop fighting it and start working with it. Building a body that doesn&rsquo;t just look strong but feels like home. That gives you energy instead of costing it. That adds to your life instead of competing with it.</p>
+          <p>This is the coaching that does that. A complete shift in how it feels to be you, in your body, in your life, in every room you walk into.</p>
+          <p className="font-serif italic text-sand text-2xl md:text-3xl leading-snug text-center py-4">
+            This is what it means to be unmuted.
           </p>
-
-          <p className="font-serif text-cream text-4xl md:text-5xl lg:text-[3.5rem] leading-snug text-center py-2">
-            And then there&rsquo;s your body.
-          </p>
-
-          <div className="space-y-7 text-cream/75 font-sans text-[17px] leading-[1.85]">
-            <p>Not because you don&rsquo;t care. You care a lot. But nothing has ever quite clicked the way everything else has. You&rsquo;ve put in the effort. You&rsquo;ve seen some results. But you&rsquo;ve never fully cracked it. Never felt like your body truly matched the woman you are in every other area of your life.</p>
+          <div className="pt-4 text-center">
+            <Link
+              href="/apply"
+              className="inline-flex items-center bg-sand text-midnight font-sans font-medium text-[11px] tracking-[0.18em] uppercase rounded-sm px-10 py-4 hover:bg-sand/90 transition-colors duration-300"
+            >
+              Apply for Coaching
+            </Link>
           </div>
-
-          <p className="font-serif italic text-sand text-2xl md:text-3xl leading-snug text-center">
-            That&rsquo;s exactly what Body Unmuted is built for.
-          </p>
         </div>
       </section>
 
       {/* ── What It Is ── */}
       <section className="bg-cream py-24 md:py-32">
-        <div className="max-w-3xl mx-auto px-6">
-          <p className="text-bark text-[11px] font-sans font-medium tracking-[0.3em] uppercase mb-6">
-            The Coaching
-          </p>
-          <h2 className="font-serif text-midnight text-3xl md:text-4xl lg:text-5xl leading-[1.1] mb-10">
-            This is the real thing.
-          </h2>
-          <div className="space-y-5 text-charcoal/80 font-sans text-[17px] leading-[1.85]">
-            <p>Body Unmuted is the most personalised coaching experience I offer. Everything &mdash; your training, your nutrition, your mindset work &mdash; is built completely around you and adjusted in real time as your life changes.</p>
-            <p>Because your life doesn&rsquo;t stay still. And your coaching shouldn&rsquo;t either.</p>
-            <p>You have a coach who knows you, who&rsquo;s paying attention, and who&rsquo;s genuinely in your corner every single day. The kind of support that means nothing falls through the cracks, and you never start over.</p>
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-sm">
+              <Image
+                src="/Madison-178.webp"
+                alt="Madison Griffin"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            </div>
+            <div>
+              <p className="text-bark text-[11px] font-sans font-medium tracking-[0.3em] uppercase mb-6">
+                The Coaching
+              </p>
+              <h2 className="font-serif text-midnight text-3xl md:text-4xl lg:text-5xl leading-[1.1] mb-10">
+                This is the real thing.
+              </h2>
+              <div className="space-y-5 text-charcoal/80 font-sans text-[17px] leading-[1.85]">
+                <p>Body Unmuted is the most personalised coaching experience I offer. Everything &mdash; your training, your nutrition, your body relationship work &mdash; is built completely around you and adjusted in real time as your life changes.</p>
+                <p>Because your life doesn&rsquo;t stay still. And your coaching shouldn&rsquo;t either.</p>
+                <p>You have a coach who knows you, who&rsquo;s paying attention, and who&rsquo;s genuinely in your corner every single day. The kind of support that means nothing falls through the cracks, and you never start over.</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -147,7 +167,7 @@ export default function WorkWithMePage() {
               </h2>
             </div>
             <p className="text-cream/40 font-sans text-[13px] leading-relaxed md:max-w-[260px]">
-              Six elements, all working together — one complete system built around you.
+              All of it working together &mdash; one complete system built around you.
             </p>
           </div>
 
@@ -190,25 +210,8 @@ export default function WorkWithMePage() {
             Your body. Unmuted.
           </h2>
 
-          <div className="flex items-center justify-center gap-6 md:gap-16 mb-14 pb-14 border-b border-cream/10">
-            <div className="text-center">
-              <p className="font-serif text-cream text-5xl md:text-6xl lg:text-7xl leading-none">6</p>
-              <p className="text-sand text-[10px] font-sans font-medium tracking-[0.25em] uppercase mt-3">Month Minimum</p>
-            </div>
-            <div className="w-px h-12 md:h-16 bg-cream/10" />
-            <div className="text-center">
-              <p className="font-serif text-cream text-5xl md:text-6xl lg:text-7xl leading-none">7</p>
-              <p className="text-sand text-[10px] font-sans font-medium tracking-[0.25em] uppercase mt-3">Days a Week</p>
-            </div>
-            <div className="w-px h-12 md:h-16 bg-cream/10" />
-            <div className="text-center">
-              <p className="font-serif text-cream text-5xl md:text-6xl lg:text-7xl leading-none">1</p>
-              <p className="text-sand text-[10px] font-sans font-medium tracking-[0.25em] uppercase mt-3">Dedicated Coach</p>
-            </div>
-          </div>
-
           <div className="space-y-5 text-cream/70 font-sans text-[17px] leading-[1.85] text-left max-w-2xl mx-auto mb-14">
-            <p>Body Unmuted is a minimum 6 month commitment. Real transformation takes time and I want to make sure you&rsquo;re getting everything you need to see it through.</p>
+            <p>Body Unmuted is a minimum 6 month commitment. Real transformation takes time &mdash; not just in your body, but in your relationship with it. I want to make sure you have everything you need to see it through and come out the other side genuinely different, not just temporarily changed.</p>
             <p>Pricing isn&rsquo;t listed here, intentionally. Every woman I work with is different and I want to make sure we&rsquo;re genuinely the right fit before we talk numbers. If you&rsquo;re accepted, we&rsquo;ll go through everything on a call together.</p>
           </div>
 
@@ -242,8 +245,10 @@ export default function WorkWithMePage() {
                 This is for you if&hellip;
               </h2>
               <div className="space-y-5 text-charcoal/75 font-sans text-[17px] leading-[1.85]">
-                <p>You&rsquo;re done with almost. You want your body to feel as good as everything else in your life feels: strong, confident, like it actually belongs to you. You&rsquo;re ready to fully invest in yourself and you want to work with someone who will take that as seriously as you do.</p>
-                <p>You travel. You have a full, demanding life. You&rsquo;ve tried things before. And you&rsquo;re ready to do it properly this time.</p>
+                <p>You&rsquo;re done with almost.</p>
+                <p>You&rsquo;re a woman with a full life &mdash; a career, a business, travel, things that matter deeply to you that have nothing to do with the gym. You want to feel incredible in your body. Strong, energised, fully at home in yourself &mdash; not instead of your life, because of it.</p>
+                <p>You don&rsquo;t want another plan to follow. You want to understand your body well enough that you don&rsquo;t need everything to be perfect to keep going. You want a coach who will take your goals as seriously as you do and who will be there every step of the way.</p>
+                <p>You&rsquo;re ready to stop managing your body from the neck up and start actually living inside it.</p>
               </div>
               <div className="mt-10">
                 <Link

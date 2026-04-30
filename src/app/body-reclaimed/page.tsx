@@ -16,7 +16,11 @@ const included = [
   },
   {
     title: 'Custom macro targets',
-    body: "Not a generic calculator. Your nutrition numbers based on your goal, your training volume, and how your body is actually responding. A clear, flexible framework you can take anywhere.",
+    body: "Not a generic calculator. Your nutrition numbers based on your goal, your training volume, and what the data shows about how your body is actually responding. A clear, flexible framework you can take anywhere.",
+  },
+  {
+    title: 'The Body Literacy Guide',
+    body: "Every Body Reclaimed client receives this. A guide to muscle activation, reading real effort, understanding your body's signals, and building the felt relationship with your body that makes everything else work. Because a custom program is only as good as your ability to actually execute it, and execution starts with being inside your body, not just going through the motions.",
   },
   {
     title: 'Monthly check-in form',
@@ -86,7 +90,7 @@ export default function BodyReclaimedPage() {
               <span className="text-cream/60 font-sans text-base">/month</span>
             </div>
             <p className="text-cream/45 font-sans text-[11px] tracking-[0.2em] uppercase">
-              Beta pricing &middot; 8 week minimum commitment
+              Founding member pricing &middot; 8 week minimum commitment
             </p>
           </div>
           <Link
@@ -105,10 +109,10 @@ export default function BodyReclaimedPage() {
             Sound familiar?
           </p>
           <div className="space-y-6 text-charcoal/80 font-sans text-[17px] leading-[1.85]">
-            <p>You&rsquo;ve read the articles. Watched the videos. Tried the programs. And somewhere between all the conflicting advice, the coaches who contradict each other, and the strategies that work for everyone except you, you&rsquo;re more confused than when you started.</p>
-            <p>It&rsquo;s not that you&rsquo;re not trying. It&rsquo;s that you&rsquo;ve been piecing together a fitness strategy from a hundred different sources that were never designed to work together for your specific body, your specific life, and your specific goals.</p>
+            <p>You know enough to know that what you&rsquo;ve been doing isn&rsquo;t working. Not because you haven&rsquo;t tried. But because you&rsquo;ve been piecing together a fitness strategy from a hundred different sources that were never designed to work together for your specific body, your specific life, and your specific goals.</p>
+            <p>The result is noise. Conflicting advice, contradicting coaches, strategies that work for everyone except you. And underneath all of it, the feeling that your body is something you&rsquo;re constantly trying to figure out rather than something you actually understand.</p>
             <p className="font-serif italic text-midnight text-2xl md:text-3xl leading-snug pt-4">
-              Body Reclaimed gives you one clear system. Built for you. Adjusted every month as you progress.
+              Body Reclaimed gives you one clear system. Built for you. Adjusted every month as you progress. And designed to do something most programs never bother with &mdash; teach you to actually understand your body in the process.
             </p>
           </div>
         </div>
@@ -123,7 +127,7 @@ export default function BodyReclaimedPage() {
                 What&rsquo;s Included
               </p>
               <h2 className="font-serif text-cream text-3xl md:text-4xl lg:text-5xl leading-[1.1]">
-                What you get every month.
+                Everything works together.
               </h2>
             </div>
             <p className="text-cream/40 font-sans text-[13px] leading-relaxed md:max-w-[240px]">
@@ -166,9 +170,12 @@ export default function BodyReclaimedPage() {
               <h2 className="font-serif text-midnight text-3xl md:text-4xl lg:text-5xl leading-[1.1] mb-10">
                 This is for you if&hellip;
               </h2>
-              <p className="text-charcoal/80 font-sans text-[17px] leading-[1.85]">
-                You want a genuinely custom plan &mdash; not a template, not a one-size-fits-all program &mdash; built around your body, your goals, and how you actually live. You&rsquo;re ready to commit to a real system and follow through on it. And you want the same level of programming my 1:1 clients get, with a monthly check-in to keep it moving.
-              </p>
+              <div className="space-y-5 text-charcoal/80 font-sans text-[17px] leading-[1.85]">
+                <p>You&rsquo;re done piecing it together.</p>
+                <p>You want a real system &mdash; not a template, not generic advice, not something built for a body and life that looks nothing like yours. You want programming that&rsquo;s actually custom, nutrition that&rsquo;s built on your specific data, and a monthly touchpoint that keeps everything moving as you do.</p>
+                <p>You&rsquo;re someone who will show up and do the work. You don&rsquo;t need someone in your ear every day, but you do need to know that someone is paying attention, that your plan is actually built for you, and that you&rsquo;re not just following a program blindly without understanding what it&rsquo;s doing or why.</p>
+                <p>You want to get results. And you want to actually understand your body in the process.</p>
+              </div>
               <div className="mt-10">
                 <Link
                   href={STRIPE_URL}
@@ -182,17 +189,17 @@ export default function BodyReclaimedPage() {
         </div>
       </section>
 
-      {/* ── Beta Pricing ── */}
+      {/* ── Founding Member Pricing ── */}
       <section className="bg-midnight py-24 md:py-36">
         <div className="max-w-3xl mx-auto px-6 text-center">
           <p className="text-sand text-[11px] font-sans font-medium tracking-[0.3em] uppercase mb-6">
             Pricing
           </p>
           <h2 className="font-serif text-cream text-3xl md:text-4xl lg:text-5xl leading-[1.1] mb-10">
-            Beta pricing, for now.
+            Founding member pricing, for now.
           </h2>
           <div className="space-y-5 text-cream/70 font-sans text-[17px] leading-[1.85] text-center max-w-2xl mx-auto mb-14">
-            <p>Body Reclaimed is a brand new offer. I&rsquo;m launching it at $197 per month while I bring the first group of women through it. When beta closes, pricing moves to $297.</p>
+            <p>Body Reclaimed is a brand new offer. I&rsquo;m launching it at $197 per month while I bring the first group of women through it. When founding member pricing closes, pricing moves to $297.</p>
             <p className="font-serif italic text-sand text-xl md:text-2xl leading-snug">
               If you&rsquo;ve been waiting for the right time, this is it.
             </p>
@@ -254,7 +261,7 @@ export default function BodyReclaimedPage() {
               <span className="text-cream/60 font-sans text-sm">/month</span>
             </div>
             <p className="text-cream/45 font-sans text-[10px] tracking-[0.2em] uppercase">
-              Beta pricing &middot; 8 week minimum
+              Founding member pricing &middot; 8 week minimum
             </p>
           </div>
           <Link
