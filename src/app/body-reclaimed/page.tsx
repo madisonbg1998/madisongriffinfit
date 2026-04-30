@@ -191,7 +191,7 @@ export default function BodyReclaimedPage() {
           <h2 className="font-serif text-cream text-3xl md:text-4xl lg:text-5xl leading-[1.1] mb-10">
             Beta pricing, for now.
           </h2>
-          <div className="space-y-5 text-cream/70 font-sans text-[17px] leading-[1.85] text-left max-w-2xl mx-auto mb-14">
+          <div className="space-y-5 text-cream/70 font-sans text-[17px] leading-[1.85] text-center max-w-2xl mx-auto mb-14">
             <p>Body Reclaimed is a brand new offer. I&rsquo;m launching it at $197 per month while I bring the first group of women through it. When beta closes, pricing moves to $297.</p>
             <p className="font-serif italic text-sand text-xl md:text-2xl leading-snug">
               If you&rsquo;ve been waiting for the right time, this is it.

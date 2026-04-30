@@ -5,7 +5,7 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'The Body Unmuted Method',
   description:
-    'Build a body that actually loves your life. Not one that\'s constantly fighting it. Strength, fuel, and mindset — woven together so your results hold.',
+    'Build a body that loves your life. Not one that\'s constantly fighting it. Strength, fuel, and body relationship — woven together so your results hold.',
   openGraph: {
     images: [{ url: '/Madison-73.webp', width: 1200, height: 630, alt: 'The Body Unmuted Method — Madison Griffin Fit' }],
   },
@@ -33,7 +33,7 @@ export default function MethodPage() {
             The Body Unmuted Method
           </h1>
           <p className="text-cream/80 font-sans text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-            Build a body that actually loves your life. Not one that&rsquo;s constantly fighting it.
+            Build a body that loves your life, not one that&rsquo;s constantly fighting it.
           </p>
         </div>
       </section>
@@ -44,20 +44,20 @@ export default function MethodPage() {
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-16 lg:gap-20">
             <div className="lg:col-span-3 space-y-7">
               <h2 className="font-serif text-midnight text-3xl md:text-[2.75rem] leading-[1.15] tracking-tight text-balance">
-                Why your results haven&rsquo;t lasted.
+                Why your results haven&rsquo;t lasted
               </h2>
 
               <div className="space-y-5 text-charcoal/80 font-sans text-base md:text-[17px] leading-relaxed">
                 <p>The fitness industry has spent decades teaching women to manage, restrict, track, and override. Eat less. Push harder. White-knuckle your way to results.</p>
                 <p>And for a while, it works.</p>
-                <p>But it was never actually fixing anything. It was just holding everything together with enough control that the cracks didn&rsquo;t show. Until a trip came up, a stressful season hit, or you just had a week where you didn&rsquo;t have it in you. And everything unraveled.</p>
-                <p>Not because you lacked discipline. Because you were treating the symptoms instead of solving the actual problem. Whatever you tried was a bandaid. And bandaids fall off.</p>
+                <p>But it was never actually fixing anything. Because the problem was never your discipline. It was that nobody ever taught you to actually understand your body. To feel what&rsquo;s working. To know what it needs. To live inside it instead of just managing it from the outside.</p>
+                <p>So when life moved &mdash; a trip, a stressful season, a week where you just didn&rsquo;t have it in you &mdash; everything unravelled. Not because you failed. Because you&rsquo;d been given a bandaid, not a foundation.</p>
                 <p>That&rsquo;s not a you problem. That&rsquo;s a design problem.</p>
-                <p>The Body Unmuted Method is built differently. Not on restriction. Not on perfection. On actually supporting your body so it can do what you&rsquo;re asking of it and keep doing it, no matter what life throws at you.</p>
+                <p>The Body Unmuted Method is built differently. Instead of handing you a plan and telling you to follow it, we build your ability to actually understand your body. To feel what&rsquo;s working, know what it needs, and trust yourself enough to keep going when life gets real. That&rsquo;s not motivation. That&rsquo;s body literacy. And it&rsquo;s the only foundation results actually stick to.</p>
               </div>
 
               <blockquote className="border-l-2 border-sand pl-6 font-serif italic text-xl md:text-2xl text-midnight/80 leading-snug">
-                &ldquo;The problem was never your discipline. It was a system that only worked when your life was perfect. And whose life is perfect?&rdquo;
+                &ldquo;You were never taught to inhabit your body. Just to manage it. That&rsquo;s not a personal failing. That&rsquo;s what every woman was handed.&rdquo;
               </blockquote>
             </div>
 
@@ -108,8 +108,10 @@ export default function MethodPage() {
               <div className="space-y-5 text-charcoal/80 font-sans text-[17px] leading-relaxed">
                 <p>Most women end up stuck between two options. A program that actually changes their body but falls apart the moment they travel or life gets busy, or workouts they can do anywhere that feel good but don&rsquo;t actually do much.</p>
                 <p>We do neither.</p>
-                <p>Your training is built around progressive overload, the thing that actually changes your body, and designed to flex with your life. Full gym access? We push. Hotel gym or living room floor? We adjust. Nothing falls apart. Nothing gets lost. You just keep building.</p>
-                <p>Over time, you get stronger, leaner, and more defined. Not because you trained perfectly, but because you trained consistently in a way that actually fits your life.</p>
+                <p>Your training is built around your goals, your schedule, and wherever you are in the world. Full gym access? We push. Hotel gym or living room floor? We adjust. Nothing falls apart. Nothing gets lost. You just keep building.</p>
+                <p>But here&rsquo;s what actually makes the difference: it&rsquo;s not just doing the workouts. It&rsquo;s how you execute them.</p>
+                <p>Results come from training close enough to failure that your body has a reason to change. That requires real muscle activation, genuine effort, and knowing the difference between pushing hard and pushing through something your body is actually signalling you to pay attention to. Most women are never taught any of this. Most coaches never teach it.</p>
+                <p>We do. Because that&rsquo;s what actually unlocks results. Not just showing up. Showing up and being inside your body when you do.</p>
               </div>
             </div>
           </div>
@@ -139,6 +141,7 @@ export default function MethodPage() {
               <div className="space-y-5 text-charcoal/80 font-sans text-[17px] leading-relaxed">
                 <p>Most approaches teach you to eat less. Which works until you actually want a life.</p>
                 <p>We do the opposite.</p>
+                <p>I spent years as a data scientist before becoming a coach, which means your nutrition isn&rsquo;t built on trends or guesswork. It&rsquo;s built on what the research actually shows, specific to your body, your training volume, and how you&rsquo;re actually responding. Your numbers move as you do.</p>
                 <p>We build a metabolism that can handle more over time &mdash; more food, more flexibility, more freedom &mdash; while still getting leaner and changing shape. So you can go out, order what you want, enjoy pasta in Italy and wine on a Tuesday, and not spend the rest of the night doing mental math about what you just ate.</p>
                 <p>This is about building a sustainable relationship with food that travels with you, holds up in social situations, and never asks you to choose between your goals and your life.</p>
               </div>
@@ -147,7 +150,7 @@ export default function MethodPage() {
         </div>
       </section>
 
-      {/* ── Pillar 3: Mindset ── */}
+      {/* ── Pillar 3: Body Relationship ── */}
       <section className="bg-cream py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
@@ -165,13 +168,13 @@ export default function MethodPage() {
                 Pillar Three
               </p>
               <h3 className="font-serif text-midnight text-3xl md:text-4xl lg:text-5xl mb-8">
-                Mindset
+                Body Relationship
               </h3>
               <div className="space-y-5 text-charcoal/80 font-sans text-[17px] leading-relaxed">
                 <p>This is the piece most programs skip entirely. And it&rsquo;s the reason most results don&rsquo;t last.</p>
                 <p>We work on the patterns that keep you starting over. The all-or-nothing thinking. The belief that one bad day means you&rsquo;ve ruined everything. The perfectionism that makes rest feel like failure and imperfection feel like proof that you&rsquo;re not cut out for this.</p>
-                <p>You are cut out for this. You just need a different relationship with the process.</p>
-                <p>One bad meal doesn&rsquo;t ruin the day. One bad week doesn&rsquo;t ruin the month. Real consistency isn&rsquo;t about never falling off. It&rsquo;s about building a version of this that&rsquo;s so well fitted to your life that getting back on track feels like the obvious thing to do, not the hard thing.</p>
+                <p>But we go deeper than the cycles. We work on who you are in relation to your body. The identity you&rsquo;ve carried &mdash; that fitness is always the thing you can&rsquo;t quite crack, that your body is something to be managed and controlled rather than lived in. That changes here.</p>
+                <p>You are cut out for this. You just need to stop fighting your body and start actually inhabiting it. Feeling it. Trusting it. Building a relationship with yourself where your body isn&rsquo;t the enemy. It&rsquo;s home.</p>
               </div>
             </div>
           </div>
@@ -199,6 +202,7 @@ export default function MethodPage() {
             <p>You stop scanning when you walk into a room. You stop doing the mental inventory of how you look, whether your stomach is flat, whether you should have worn something else. You&rsquo;re just there. Present. In the conversation.</p>
             <p>You have energy that matches your life. You travel, you eat out, you enjoy things, and none of it sends you into a spiral. Your body feels stable across every season, not just the ones where everything goes to plan.</p>
             <p>You trust yourself with food. You trust yourself in the gym. And that trust starts to bleed into everything else.</p>
+            <p>Your body stops being the thing that costs you energy and starts being the thing that gives it back. More capacity for your work, your relationships, your life. Not instead of everything you love. Because of it.</p>
             <p>This is what it feels like when your fitness is actually working for you instead of against you.</p>
           </div>
         </div>

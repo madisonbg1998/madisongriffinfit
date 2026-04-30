@@ -95,7 +95,7 @@ function HeroSection() {
             }`}
             style={{ textShadow: '0 2px 20px rgba(0,0,0,0.5), 0 1px 4px rgba(0,0,0,0.3)' }}
           >
-            You Shouldn&rsquo;t Have to Slow Your Life Down to Get Results
+            Your body and your life were never supposed to be at odds.
           </h1>
 
           <p
@@ -104,7 +104,7 @@ function HeroSection() {
             }`}
             style={{ textShadow: '0 1px 10px rgba(0,0,0,0.4)' }}
           >
-            Strength and nutrition coaching for women who travel, build businesses, and refuse to put their lives on hold to get results.
+            Strength, nutrition, and body literacy coaching for women who are done managing their bodies from the outside.
           </p>
 
           <div
@@ -165,18 +165,19 @@ function ProblemSection() {
               className={`space-y-5 text-charcoal/80 font-sans text-base md:text-[17px] leading-relaxed ${anim(s1.isVisible, 120).className}`}
               style={anim(s1.isVisible, 120).style}
             >
-              <p>They work&hellip; If your schedule never changes. If you eat the same meals every week. If you never travel, never have a big work season, never have a night where everything falls apart.</p>
-              <p>But your life doesn&rsquo;t look like that. Some weeks you&rsquo;re in a rhythm. Some weeks you&rsquo;re in three different time zones. And the fitness industry has spent years telling you that the reason you&rsquo;re not getting results is you.</p>
-              <p>It isn&rsquo;t.</p>
-              <p>The problem isn&rsquo;t your discipline. It isn&rsquo;t your consistency. It isn&rsquo;t that you don&rsquo;t want it badly enough.</p>
-              <p>The problem is you&rsquo;ve been given a system that was never designed for the way you actually live.</p>
+              <p>You&rsquo;re someone who lives fully. Who travels, builds things, shows up completely for the people and work that matter. Your life isn&rsquo;t the obstacle to your goals. It&rsquo;s the whole point.</p>
+              <p>But the fitness industry was never built for a life like yours. It was built on the premise that results require sacrifice. That discipline means deprivation. That to have the body you want, something else has to give.</p>
+              <p>And so you&rsquo;ve spent years feeling like your body and your life are pulling in opposite directions. Like the version of you that&rsquo;s fit and strong and at home in herself is somehow a different, more restricted, less alive version of you.</p>
+              <p>She&rsquo;s not. That was always a lie.</p>
+              <p>Your body and your life were never supposed to be in conflict. Fitness was never supposed to cost you the things that make your life yours. It was supposed to make you more capable of all of it. More energy. More presence. More you.</p>
+              <p>You just never had a system that proved it.</p>
             </div>
 
             <blockquote
               className={`border-l-2 border-sand pl-6 font-serif italic text-xl md:text-2xl text-midnight/80 leading-snug ${anim(s1.isVisible, 240).className}`}
               style={anim(s1.isVisible, 240).style}
             >
-              &ldquo;The problem was never your discipline. It was a system built for a life you don&rsquo;t actually live.&rdquo;
+              &ldquo;You don&rsquo;t have to choose between the body you want and the life you love.&rdquo;
             </blockquote>
           </div>
 
@@ -231,18 +232,15 @@ function DreamOutcomeSection() {
               className={`font-serif text-3xl md:text-[2.75rem] leading-[1.15] text-cream tracking-tight text-balance ${anim(s2.isVisible).className}`}
               style={anim(s2.isVisible).style}
             >
-              Picture what it feels like when it actually works.
+              Your body was never supposed to be the hardest part of your life.
             </h2>
 
             <div
               className={`space-y-5 text-cream/70 font-sans text-base md:text-[17px] leading-relaxed ${anim(s2.isVisible, 120).className}`}
               style={anim(s2.isVisible, 120).style}
             >
-              <p>Not just how you look. How you feel.</p>
-              <p>You walk into a room and you&rsquo;re just there. Fully present. Not doing the mental inventory of whether your stomach looks flat, whether you should have worn something else, whether you look as tired as you feel.</p>
-              <p>You stop scanning. You stop starting over. You stop negotiating with yourself every Sunday about what this week is going to be different.</p>
-              <p>You have energy that matches your life. You eat out, you travel, you enjoy things, and none of it sends you into a spiral. You feel strong in your body. Comfortable in it. Like it belongs to the life you&rsquo;ve built.</p>
-              <p>That&rsquo;s not a fantasy. That&rsquo;s what happens when the way you train and eat is actually built around you.</p>
+              <p>It was supposed to be the thing that makes the rest of it possible.</p>
+              <p>And building it that way, so it actually fuels your life instead of fighting it, takes a different approach entirely.</p>
             </div>
           </div>
         </div>
@@ -262,7 +260,7 @@ const pillars = [
     paragraphs: [
       'Most women end up doing one of two things: a program that gets results but falls apart the moment they travel, or workouts they can do anywhere that don’t actually change their body.',
       'We do neither.',
-      'Your training adapts to what you have, so when you’re in a full gym we push for real change, and when you’re not, we adjust without everything falling apart.',
+      'Your training adapts to what you have. But more than that, you learn to actually feel it. Real muscle activation. Knowing the difference between genuine effort and going through the motions. That’s what makes results show up and stay.',
     ],
   },
   {
@@ -272,17 +270,18 @@ const pillars = [
     paragraphs: [
       'Most approaches teach you to eat less. Which works until you actually want a life.',
       'We do the opposite.',
-      'We build a body that can eat more over time while still getting leaner and changing shape. So you can go out, order what you want, and not spend the rest of the night doing mental math.',
+      'We build a body that can eat more over time while still getting leaner and changing shape. Your nutrition is built on your specific body, your data, and how you’re actually responding, not just a generic calculator, trend, or guesswork. Numbers that move as you do.',
+      'So you can go out, order what you want, enjoy pasta in Italy and wine on a Tuesday, and not spend the rest of the night doing mental math.',
     ],
   },
   {
     image: '/Madison-201.webp',
     alt: 'Madison close-up, eyes closed, peaceful in golden light',
-    label: 'Mindset',
+    label: 'Body Relationship',
     paragraphs: [
       'This is where lasting change actually lives.',
-      'We dismantle the all-or-nothing thinking, the guilt cycles, and the perfectionism that have kept you starting over. One bad meal doesn’t ruin the day. One bad week doesn’t ruin the month.',
-      'We build the mental foundation that makes everything else stick.',
+      'We dismantle the all-or-nothing thinking, the guilt cycles, and the perfectionism that have kept you starting over. But we go deeper than the cycles. We build your ability to actually inhabit your body, not just manage it. To feel what it needs. To trust it. To stop treating it like a problem to be solved and start treating it like a home to live in.',
+      'One bad meal doesn’t ruin the day. One bad week doesn’t ruin the month. And a body you actually understand doesn’t need to be forced into results. It gets there because you finally know how to work with it.',
     ],
   },
 ]
@@ -390,9 +389,10 @@ function WhoThisIsForSection() {
             >
               <p>You&rsquo;ve tried things before and they&rsquo;ve worked&hellip; Until your routine changed, a work trip came up, or life just got loud. And then you were back at square one wondering what was wrong with you.</p>
               <p>Nothing is wrong with you.</p>
-              <p>You&rsquo;re a woman with a full life. A career, travel, things you care about that have nothing to do with the gym. You want to feel incredible in your body. You want results that are real and that hold. But you&rsquo;re not willing to become a more boring version of yourself to get them.</p>
-              <p>You&rsquo;re tired of fitness content that treats you like you just need more motivation. You&rsquo;re tired of starting over. You&rsquo;re tired of feeling like your body and your life are in conflict.</p>
-              <p>They don&rsquo;t have to be.</p>
+              <p>You&rsquo;re a woman with a full life. A career, travel, relationships, ambitions that have nothing to do with the gym. You want to feel incredible in your body. Strong, energised, at home in yourself. You want results that are real and that hold up when life gets full and unpredictable and honestly better than it&rsquo;s ever been.</p>
+              <p>But you&rsquo;re not willing to become a more boring version of yourself to get them. You&rsquo;re not willing to opt out of dinners, trips, late nights, or any of the things that make your life yours. And you shouldn&rsquo;t have to.</p>
+              <p>You&rsquo;re tired of fitness content that treats you like you just need more motivation. You&rsquo;re tired of coaches who hand you a plan without teaching you anything. You&rsquo;re tired of starting over. You&rsquo;re tired of feeling like the version of you that has the body you want and the version of you that actually lives her life are two different people.</p>
+              <p>They&rsquo;re not. And you were never supposed to choose between them.</p>
             </div>
           </div>
 
@@ -562,6 +562,11 @@ const testimonials = [
       'Madison was the first person who ever got me genuinely excited about fitness. She explains nutrition in a way that actually makes sense and feels doable in real life. She’s a trainer who’s also a foodie, so she won’t just tell you to diet. She understands that we’re human, and especially as women, we’re not operating at 100% all the time. Instead of the all-or-nothing cycle, she helps you stay consistent and keep moving forward. I’ve tried getting into the gym so many times and always fell off because I didn’t know what I was doing. Madison gave me the foundation I was missing. I finally understand what I’m supposed to be doing and what a good workout should actually FEEL like, not just look like. I honestly can’t recommend her enough.',
     name: 'Sierra',
   },
+  {
+    quote:
+      'Training with Madison has been really eye opening. I thought I was training to failure before, but she helped me realize I could do so much more. The support is great and I’m already getting stronger. She’s also really customizing everything for me and the way my body moves which has been super helpful as I grow my confidence in the gym.',
+    name: 'Ali',
+  },
 ]
 
 function SocialProofSection() {
@@ -597,7 +602,7 @@ function SocialProofSection() {
           </h2>
         </div>
 
-        <div ref={cards.ref} className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div ref={cards.ref} className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {testimonials.map((t, i) => (
             <div
               key={t.name}
