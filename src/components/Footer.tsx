@@ -14,6 +14,9 @@ const footerNav = [
 
 export function Footer() {
   const [newsletterEmail, setNewsletterEmail] = useState('')
+  const [newsletterSubmitting, setNewsletterSubmitting] = useState(false)
+  const [newsletterSent, setNewsletterSent] = useState(false)
+  const [newsletterError, setNewsletterError] = useState<string | null>(null)
 
   const [contactName, setContactName] = useState('')
   const [contactEmail, setContactEmail] = useState('')
@@ -23,9 +26,25 @@ export function Footer() {
   const [contactSent, setContactSent] = useState(false)
   const [contactError, setContactError] = useState<string | null>(null)
 
-  const handleNewsletter = (e: React.FormEvent) => {
+  const handleNewsletter = async (e: React.FormEvent) => {
     e.preventDefault()
-    setNewsletterEmail('')
+    setNewsletterSubmitting(true)
+    setNewsletterError(null)
+    try {
+      const response = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: newsletterEmail }),
+      })
+      const data = await response.json()
+      if (!response.ok) throw new Error(data.error || 'Something went wrong.')
+      setNewsletterSent(true)
+      setNewsletterEmail('')
+    } catch (err) {
+      setNewsletterError(err instanceof Error ? err.message : 'Something went wrong. Please try again.')
+    } finally {
+      setNewsletterSubmitting(false)
+    }
   }
 
   const handleContact = async (e: React.FormEvent) => {
@@ -155,24 +174,34 @@ export function Footer() {
               Weekly insights on strength, nutrition, and building a life you
               don&apos;t need a vacation from.
             </p>
-            <form onSubmit={handleNewsletter} className="flex flex-col gap-3">
-              <input
-                type="email"
-                value={newsletterEmail}
-                onChange={(e) => setNewsletterEmail(e.target.value)}
-                placeholder="Your email"
-                required
-                suppressHydrationWarning
-                className={inputClass}
-              />
-              <button
-                type="submit"
-                suppressHydrationWarning
-                className="w-full bg-bark text-cream text-[11px] font-medium tracking-[0.15em] uppercase px-6 py-3 rounded-sm hover:bg-sand transition-colors duration-300"
-              >
-                Subscribe
-              </button>
-            </form>
+            {newsletterSent ? (
+              <p className="text-sand text-sm leading-relaxed">
+                You&apos;re in — talk soon.
+              </p>
+            ) : (
+              <form onSubmit={handleNewsletter} className="flex flex-col gap-3">
+                <input
+                  type="email"
+                  value={newsletterEmail}
+                  onChange={(e) => setNewsletterEmail(e.target.value)}
+                  placeholder="Your email"
+                  required
+                  suppressHydrationWarning
+                  className={inputClass}
+                />
+                {newsletterError && (
+                  <p className="text-red-400 text-xs">{newsletterError}</p>
+                )}
+                <button
+                  type="submit"
+                  disabled={newsletterSubmitting}
+                  suppressHydrationWarning
+                  className="w-full bg-bark text-cream text-[11px] font-medium tracking-[0.15em] uppercase px-6 py-3 rounded-sm hover:bg-sand transition-colors duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
+                >
+                  {newsletterSubmitting ? 'Subscribing...' : 'Subscribe'}
+                </button>
+              </form>
+            )}
           </div>
 
         </div>
