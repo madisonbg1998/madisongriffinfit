@@ -273,7 +273,7 @@ export default function WorkWithMePage() {
             How it works.
           </h2>
 
-          <div className="space-y-0">
+          <div>
             {steps.map((step, index) => (
               <div key={step.num} className="relative flex gap-8 pb-14 last:pb-0">
                 {index < steps.length - 1 && (

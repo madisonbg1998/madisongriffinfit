@@ -4,24 +4,28 @@ import Image from 'next/image'
 
 const topics = [
   {
-    title: 'How to Stay Fit While Traveling',
+    title: 'Why Your Energy Levels Are a Training Problem, Not a Sleep Problem',
     gradient: 'from-bark/10 to-sand/10',
   },
   {
-    title: 'Why Your Fat Loss Doesn\u2019t Last',
+    title: 'The Real Reason Your Results Don\u2019t Hold When Life Gets Busy',
     gradient: 'from-sage/10 to-bark/10',
   },
   {
-    title: 'Strength Training for Women',
+    title: 'What Training to Failure Actually Feels Like (And Why Most Women Never Get There)',
     gradient: 'from-sand/10 to-cream',
   },
   {
-    title: 'How to Stop Starting Over',
+    title: 'How to Build a Body That Travels With You Instead of Against You',
     gradient: 'from-bark/10 to-sage/10',
   },
   {
-    title: 'Nutrition Without Restriction',
+    title: 'The Business Case for Actually Taking Care of Your Body',
     gradient: 'from-sage/10 to-sand/10',
+  },
+  {
+    title: 'What Body Literacy Is and Why It’s the Missing Piece in Every Program You’ve Tried',
+    gradient: 'from-bark/10 to-cream',
   },
 ]
 
@@ -57,8 +61,7 @@ export default function BlogPage() {
             Coming Soon
           </div>
           <p className="text-charcoal/70 text-lg sm:text-xl leading-relaxed max-w-xl mx-auto">
-            Insights on strength training, nutrition, and building a body that keeps up
-            with your life.
+            Insights on strength, nutrition, and why your body is the most underrated asset in your business and your life.
           </p>
         </div>
       </section>

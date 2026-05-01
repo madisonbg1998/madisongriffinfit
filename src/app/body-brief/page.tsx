@@ -578,7 +578,7 @@ export default function BodyBriefPage() {
             Finally figure out why you&rsquo;re stuck.
           </h1>
           <p className="text-cream/80 font-sans text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-12">
-            A free, personalised deep dive into your training, your nutrition, and what&rsquo;s actually been getting in the way. You fill in a five minute form. I tell you the truth.
+            A free, personalised deep dive into your training, your nutrition, and what your body is actually telling you. You fill in a five minute form. I tell you the truth.
           </p>
           <a
             href="#form"
@@ -645,7 +645,7 @@ export default function BodyBriefPage() {
       <section className="bg-midnight py-24 md:py-32">
         <div className="max-w-2xl mx-auto px-6 text-center">
           <div className="space-y-5 text-cream/70 font-sans text-[17px] leading-[1.75] mb-10">
-            <p>You&rsquo;ve been doing the things and not seeing the results. You&rsquo;re tired of not knowing why. You want someone to actually look at your situation and give you something real to work with.</p>
+            <p>You&rsquo;re tired of not knowing why. You want someone to actually look at your situation, cut through the noise, and give you something real to work with.</p>
             <p>Fill in the form. It&rsquo;s free. You might finally get the answer you&rsquo;ve been looking for.</p>
           </div>
           <p className="font-serif italic text-cream text-xl md:text-2xl leading-snug mb-12">
