@@ -72,23 +72,23 @@ function HeroSection() {
   }, [])
 
   return (
-    <section className="relative min-h-screen flex items-end overflow-hidden">
+    <section className="relative min-h-screen overflow-hidden">
       <div className="absolute inset-0">
         <Image
           src="/Madison-29.webp"
-          alt="Madison Griffin on mountain trail in athletic wear"
+          alt="Madison Griffin"
           fill
           priority
-          className="object-cover object-[60%_35%]"
+          className="object-cover"
+          style={{ objectPosition: '50% 30%' }}
           sizes="100vw"
-          quality={100}
-          unoptimized
         />
         <div className="absolute inset-0 bg-gradient-to-t from-midnight/85 via-midnight/30 to-midnight/10" />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-7xl w-full px-6 md:px-12 lg:px-20 pb-16 md:pb-24">
-        <div className="max-w-2xl">
+      <div className="absolute inset-0 flex items-end">
+        <div className="mx-auto max-w-7xl w-full px-6 md:px-12 lg:px-20 pb-16 md:pb-24">
+          <div className="max-w-2xl">
           <h1
             className={`font-serif text-5xl md:text-7xl lg:text-[5.25rem] leading-[1.08] text-cream tracking-tight text-balance transition-all duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
               loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
@@ -99,7 +99,7 @@ function HeroSection() {
           </h1>
 
           <p
-            className={`mt-7 text-lg md:text-xl text-cream/85 font-sans font-light leading-relaxed max-w-xl transition-all duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-200 ${
+            className={`mt-7 text-lg md:text-xl text-cream/70 font-sans font-light leading-relaxed max-w-xl transition-all duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-200 ${
               loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
             style={{ textShadow: '0 1px 10px rgba(0,0,0,0.4)' }}
@@ -114,12 +114,17 @@ function HeroSection() {
           >
             <Link
               href="/body-brief"
-              className="inline-block bg-sand text-midnight font-sans font-medium text-sm tracking-wide uppercase rounded-full px-10 py-4 hover:bg-bark hover:text-cream transition-colors duration-400"
+              className="inline-flex items-center gap-3 bg-sand text-midnight font-sans font-medium text-[11px] tracking-[0.18em] uppercase rounded-sm px-10 py-4 hover:bg-bark hover:text-cream transition-colors duration-300"
             >
               Get Your Free Body Brief
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M2 7h10M8 3l4 4-4 4" />
+              </svg>
             </Link>
           </div>
         </div>
+      </div>
+
       </div>
 
       <div

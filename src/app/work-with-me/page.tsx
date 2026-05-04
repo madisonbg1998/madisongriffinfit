@@ -73,11 +73,11 @@ export default function WorkWithMePage() {
       {/* ── Hero ── */}
       <section className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">
         <Image
-          src="/Madison-157.webp"
-          alt="Madison Griffin overlooking mountains and ocean"
+          src="/Madison-173.webp"
+          alt="Madison Griffin"
           fill
           priority
-          className="object-cover object-[center_35%]"
+          className="object-cover object-center"
           sizes="100vw"
           quality={90}
         />
@@ -103,23 +103,36 @@ export default function WorkWithMePage() {
 
       {/* ── Opening ── */}
       <section className="bg-midnight py-28 md:py-40">
-        <div className="max-w-3xl mx-auto px-6 space-y-7 text-cream/75 font-sans text-[17px] leading-[1.85]">
-          <p className="font-serif text-cream text-3xl md:text-4xl leading-snug">Body Unmuted. 1:1 Coaching.</p>
-          <p className="font-serif italic text-sand text-2xl md:text-3xl leading-snug">You&rsquo;ve been living with your body on mute.</p>
-          <p>Not consciously. Not because you wanted to. But somewhere along the way you learned to push past it, work around it, override it. To live from the neck up and treat your body as something to be managed rather than something to be in.</p>
-          <p>And it works. Until you realise that no matter how much you achieve, how far you travel, how fully you show up everywhere else, there&rsquo;s this one thing that never quite feels like yours. This one place you&rsquo;ve never felt fully at home.</p>
-          <p>Unmuting your body means letting it back in. Learning to actually feel it &mdash; what it&rsquo;s telling you, what it needs, what it&rsquo;s capable of when you stop fighting it and start working with it. Building a body that doesn&rsquo;t just look strong but feels like home. That gives you energy instead of costing it. That adds to your life instead of competing with it.</p>
-          <p>This is the coaching that does that. A complete shift in how it feels to be you, in your body, in your life, in every room you walk into.</p>
-          <p className="font-serif italic text-sand text-2xl md:text-3xl leading-snug text-center py-4">
-            This is what it means to be unmuted.
-          </p>
-          <div className="pt-4 text-center">
-            <Link
-              href="/apply"
-              className="inline-flex items-center bg-sand text-midnight font-sans font-medium text-[11px] tracking-[0.18em] uppercase rounded-sm px-10 py-4 hover:bg-sand/90 transition-colors duration-300"
-            >
-              Apply for Coaching
-            </Link>
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+            <div className="space-y-7 text-cream/75 font-sans text-[17px] leading-[1.85]">
+              <p className="font-serif text-cream text-3xl md:text-4xl leading-snug">Body Unmuted 1:1 Coaching.</p>
+              <p className="font-serif italic text-sand text-2xl md:text-3xl leading-snug">You&rsquo;ve been living with your body on mute.</p>
+              <p>Not consciously. Not because you wanted to. But somewhere along the way you learned to push past it, work around it, override it. To live from the neck up and treat your body as something to be managed rather than something to be in.</p>
+              <p>And it works. Until you realise that no matter how much you achieve, how far you travel, how fully you show up everywhere else, there&rsquo;s this one thing that never quite feels like yours. This one place you&rsquo;ve never felt fully at home.</p>
+              <p>Unmuting your body means letting it back in. Learning to actually feel it &mdash; what it&rsquo;s telling you, what it needs, what it&rsquo;s capable of when you stop fighting it and start working with it. Building a body that doesn&rsquo;t just look strong but feels like home. That gives you energy instead of costing it. That adds to your life instead of competing with it.</p>
+              <p>This is the coaching that does that. A complete shift in how it feels to be you, in your body, in your life, in every room you walk into.</p>
+              <p className="font-serif italic text-sand text-2xl md:text-3xl leading-snug py-2">
+                This is what it means to be unmuted.
+              </p>
+              <div className="pt-2">
+                <Link
+                  href="/apply"
+                  className="inline-flex items-center bg-sand text-midnight font-sans font-medium text-[11px] tracking-[0.18em] uppercase rounded-sm px-10 py-4 hover:bg-sand/90 transition-colors duration-300"
+                >
+                  Apply for Coaching
+                </Link>
+              </div>
+            </div>
+            <div className="relative aspect-[4/5] overflow-hidden rounded-sm">
+              <Image
+                src="/Madison-157.webp"
+                alt="Madison Griffin"
+                fill
+                className="object-cover object-[center_35%]"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            </div>
           </div>
         </div>
       </section>
