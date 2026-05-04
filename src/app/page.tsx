@@ -431,7 +431,7 @@ function BodyBriefSection() {
     <section className="bg-midnight py-28 md:py-36 overflow-hidden">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-          <div ref={s1.ref} className="space-y-7 order-2 lg:order-1">
+          <div ref={s1.ref} className="space-y-7 order-2 lg:order-2">
             <p
               className={`text-sand text-[11px] font-sans font-medium tracking-[0.25em] uppercase ${anim(s1.isVisible).className}`}
               style={anim(s1.isVisible).style}
@@ -473,14 +473,14 @@ function BodyBriefSection() {
 
           <div
             ref={s2.ref}
-            className={`relative aspect-[3/4] rounded-sm overflow-hidden order-1 lg:order-2 ${anim(s2.isVisible, 150).className}`}
+            className={`relative aspect-[3/4] rounded-sm overflow-hidden order-1 lg:order-1 ${anim(s2.isVisible, 150).className}`}
             style={anim(s2.isVisible, 150).style}
           >
             <Image
-              src="/Madison-157.webp"
+              src="/Madison-102.webp"
               alt="Madison Griffin"
               fill
-              className="object-cover object-top"
+              className="object-cover object-center"
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-midnight/30 via-transparent to-transparent" />
