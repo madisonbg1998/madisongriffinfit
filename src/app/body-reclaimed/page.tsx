@@ -1,13 +1,10 @@
-import type { Metadata } from 'next'
+'use client'
+
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
 import { FaqAccordion } from '@/components/FaqAccordion'
-
-export const metadata: Metadata = {
-  title: 'Body Reclaimed | Monthly Coaching System',
-  description:
-    'A custom monthly coaching system built around your actual life. Custom programming, macro targets, and personalised monthly check-ins.',
-}
 
 const included = [
   {
@@ -55,12 +52,138 @@ const faqs = [
   },
 ]
 
-const STRIPE_URL = 'https://buy.stripe.com/5kQ7sNfbf2Q30oe1g97Zu01'
 const CALENDLY_URL = 'https://calendly.com/madisongriffinfit/client-check-ins'
 
+const inputClass =
+  'w-full bg-white border border-bark/20 rounded-lg px-4 py-3 text-midnight placeholder:text-charcoal/30 text-sm focus:outline-none focus:ring-2 focus:ring-bark/20 focus:border-bark transition-all duration-300'
+
+const labelClass = 'block text-charcoal/70 font-sans text-xs font-medium tracking-wide uppercase mb-1.5'
+
+/* ── Join Modal ── */
+function JoinModal({ onClose }: { onClose: () => void }) {
+  const router = useRouter()
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [phone, setPhone] = useState('')
+  const [submitting, setSubmitting] = useState(false)
+  const [error, setError] = useState('')
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    setSubmitting(true)
+    setError('')
+    try {
+      const res = await fetch('/api/body-reclaimed-join', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, phone }),
+      })
+      if (!res.ok) throw new Error()
+      router.push('/body-reclaimed/welcome')
+    } catch {
+      setError('Something went wrong. Please try again.')
+      setSubmitting(false)
+    }
+  }
+
+  return (
+    <div
+      className="fixed inset-0 bg-midnight/75 z-50 flex items-center justify-center p-6"
+      onClick={onClose}
+    >
+      <div
+        className="bg-cream w-full max-w-md rounded-sm p-10 relative"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button
+          onClick={onClose}
+          aria-label="Close"
+          className="absolute top-5 right-5 text-charcoal/30 hover:text-charcoal transition-colors duration-200"
+        >
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <path strokeLinecap="round" d="M4 4l12 12M16 4L4 16" />
+          </svg>
+        </button>
+
+        <p className="text-bark text-[11px] font-sans font-medium tracking-[0.3em] uppercase mb-4">
+          Body Reclaimed
+        </p>
+        <h2 className="font-serif text-midnight text-3xl leading-snug mb-3">
+          You&rsquo;re almost in.
+        </h2>
+        <p className="text-charcoal/60 font-sans text-sm leading-relaxed mb-8">
+          Drop your details and I&rsquo;ll be in touch within 24 hours with everything you need to get started.
+        </p>
+
+        <form onSubmit={handleSubmit} className="space-y-5">
+          <div>
+            <label className={labelClass}>Full name</label>
+            <input
+              type="text"
+              required
+              placeholder="Your name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className={inputClass}
+            />
+          </div>
+          <div>
+            <label className={labelClass}>Email</label>
+            <input
+              type="email"
+              required
+              placeholder="your@email.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className={inputClass}
+            />
+          </div>
+          <div>
+            <label className={labelClass}>
+              Phone{' '}
+              <span className="text-charcoal/35 normal-case tracking-normal font-normal">
+                (optional)
+              </span>
+            </label>
+            <input
+              type="tel"
+              placeholder="+1 (555) 000-0000"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              className={inputClass}
+            />
+          </div>
+
+          {error && (
+            <p className="text-red-500 font-sans text-sm">{error}</p>
+          )}
+
+          <button
+            type="submit"
+            disabled={submitting}
+            className="w-full bg-bark text-cream font-sans font-medium text-[11px] tracking-[0.18em] uppercase rounded-sm py-4 hover:bg-bark/90 transition-colors duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
+          >
+            {submitting ? 'Submitting…' : 'Join Body Reclaimed'}
+          </button>
+        </form>
+
+        <p className="text-charcoal/35 font-sans text-xs text-center mt-6">
+          $197/month &middot; 8 week minimum &middot; Founding member pricing
+        </p>
+      </div>
+    </div>
+  )
+}
+
+/* ── Page ── */
 export default function BodyReclaimedPage() {
+  const [modalOpen, setModalOpen] = useState(false)
+  const openModal = () => setModalOpen(true)
+
   return (
     <>
+      {modalOpen && <JoinModal onClose={() => setModalOpen(false)} />}
+
       {/* ── Hero ── */}
       <section className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">
         <Image
@@ -93,12 +216,12 @@ export default function BodyReclaimedPage() {
               Founding member pricing &middot; 8 week minimum commitment
             </p>
           </div>
-          <Link
-            href={STRIPE_URL}
+          <button
+            onClick={openModal}
             className="inline-flex items-center bg-sand text-midnight font-sans font-medium text-[11px] tracking-[0.18em] uppercase rounded-sm px-10 py-4 hover:bg-sand/90 transition-colors duration-300"
           >
             Join Now
-          </Link>
+          </button>
         </div>
       </section>
 
@@ -177,12 +300,12 @@ export default function BodyReclaimedPage() {
                 <p>You want to get results. And you want to actually understand your body in the process.</p>
               </div>
               <div className="mt-10">
-                <Link
-                  href={STRIPE_URL}
+                <button
+                  onClick={openModal}
                   className="inline-flex items-center bg-bark text-cream font-sans font-medium text-[11px] tracking-[0.18em] uppercase rounded-sm px-8 py-3.5 hover:bg-bark/90 transition-colors duration-300"
                 >
                   Join Now
-                </Link>
+                </button>
               </div>
             </div>
           </div>
@@ -216,12 +339,12 @@ export default function BodyReclaimedPage() {
             </p>
           </div>
 
-          <Link
-            href={STRIPE_URL}
+          <button
+            onClick={openModal}
             className="inline-flex items-center bg-sand text-midnight font-sans font-medium text-[11px] tracking-[0.18em] uppercase rounded-sm px-10 py-4 hover:bg-sand/90 transition-colors duration-300"
           >
             Join Now
-          </Link>
+          </button>
         </div>
       </section>
 
@@ -264,12 +387,12 @@ export default function BodyReclaimedPage() {
               Founding member pricing &middot; 8 week minimum
             </p>
           </div>
-          <Link
-            href={STRIPE_URL}
+          <button
+            onClick={openModal}
             className="inline-flex items-center bg-sand text-midnight font-sans font-medium text-[11px] tracking-[0.18em] uppercase rounded-sm px-10 py-4 hover:bg-sand/90 transition-colors duration-300"
           >
             Join Now
-          </Link>
+          </button>
         </div>
       </section>
 
