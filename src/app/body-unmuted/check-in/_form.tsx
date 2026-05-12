@@ -1,9 +1,7 @@
 'use client'
 
 import { useState, useCallback } from 'react'
-
-// Update this each week to reflect when clients can expect their Loom
-const LOOM_DAY = 'Friday'
+import { useRouter } from 'next/navigation'
 
 // ── Style constants ───────────────────────────────────────────────────────────
 
@@ -135,10 +133,9 @@ function ScaleInput({
 // ── Main component ────────────────────────────────────────────────────────────
 
 export default function CheckInForm() {
+  const router = useRouter()
   const [formData, setFormData] = useState<FormData>(initialFormData)
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSubmitted, setIsSubmitted] = useState(false)
-  const [error, setError] = useState<string | null>(null)
 
   const updateField = useCallback(
     (field: keyof FormData, value: string | number | null) => {
@@ -149,7 +146,6 @@ export default function CheckInForm() {
 
   const handleSubmit = useCallback(async () => {
     setIsSubmitting(true)
-    setError(null)
 
     const payload = {
       ...formData,
@@ -161,59 +157,15 @@ export default function CheckInForm() {
       stressCup: formData.stressCup !== null ? `${formData.stressCup}/10` : '',
     }
 
-    try {
-      const response = await fetch('/api/body-unmuted-check-in', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      })
+    // Fire submission in background — navigate immediately so clients never see an error
+    fetch('/api/body-unmuted-check-in', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    }).catch((err) => console.error('Check-in submission error:', err))
 
-      const data = await response.json()
-
-      if (!response.ok) {
-        throw new Error(data.error || 'Something went wrong. Please try again.')
-      }
-
-      setIsSubmitted(true)
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-    } catch (err) {
-      setError(
-        err instanceof Error ? err.message : 'Something went wrong. Please try again.'
-      )
-    } finally {
-      setIsSubmitting(false)
-    }
-  }, [formData])
-
-  // ── Success state ─────────────────────────────────────────────────────────
-
-  if (isSubmitted) {
-    return (
-      <div className="min-h-screen bg-cream flex items-center justify-center px-6 py-28">
-        <div className="max-w-lg">
-          <p className="text-bark text-[11px] font-sans font-medium tracking-[0.3em] uppercase mb-8">
-            Body Unmuted
-          </p>
-          <h1 className="font-serif text-midnight text-4xl sm:text-5xl leading-[1.1] mb-10">
-            Submitted.
-          </h1>
-          <div className="space-y-5 text-charcoal/70 font-sans text-[17px] leading-[1.85] mb-12">
-            <p>
-              Thank you for taking the time to reflect properly. It makes a real difference
-              to how I coach you.
-            </p>
-            <p>
-              I&rsquo;ll be back with your Loom by {LOOM_DAY}. If anything urgent comes up
-              before then, you know where to find me.
-            </p>
-          </div>
-          <p className="font-serif italic text-midnight text-2xl">
-            Madison
-          </p>
-        </div>
-      </div>
-    )
-  }
+    router.push('/body-unmuted/check-in/submitted')
+  }, [formData, router])
 
   // ── Form ──────────────────────────────────────────────────────────────────
 
@@ -231,13 +183,6 @@ export default function CheckInForm() {
         <p className="text-charcoal/60 font-sans text-base leading-relaxed mb-14">
           Be honest. The more detail you give me, the better I can support you.
         </p>
-
-        {/* Error */}
-        {error && (
-          <div className="bg-red-50 border border-red-200 text-red-700 text-sm px-4 py-3 rounded-lg mb-8">
-            {error}
-          </div>
-        )}
 
         <div className="space-y-8">
 
