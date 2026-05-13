@@ -31,8 +31,8 @@ export default function AboutPage() {
             </div>
             <div className="relative aspect-[3/4] overflow-hidden rounded-sm">
               <Image
-                src="/Madison-134.webp"
-                alt="Madison smiling in a green dress along the coast"
+                src="/morocco_2.webp"
+                alt="Madison in Morocco"
                 fill
                 priority
                 className="object-cover"

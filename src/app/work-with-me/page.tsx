@@ -126,7 +126,7 @@ export default function WorkWithMePage() {
             </div>
             <div className="relative aspect-[4/5] overflow-hidden rounded-sm">
               <Image
-                src="/Madison-157.webp"
+                src="/morocco_1.webp"
                 alt="Madison Griffin"
                 fill
                 className="object-cover object-[center_35%]"
