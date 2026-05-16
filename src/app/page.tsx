@@ -506,34 +506,18 @@ function OffersSection() {
             className={`font-serif text-3xl md:text-[2.75rem] text-midnight tracking-tight ${anim(heading.isVisible).className}`}
             style={anim(heading.isVisible).style}
           >
-            Two ways to work together.
+            Ready to go all in?
           </h2>
         </div>
 
-        <div ref={cards.ref} className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+        <div ref={cards.ref} className="max-w-2xl mx-auto">
           <div
-            className={`rounded-sm border border-charcoal/10 bg-white p-10 md:p-12 space-y-5 ${anim(cards.isVisible, 0).className}`}
+            className={`rounded-sm border border-charcoal/10 bg-midnight p-10 md:p-12 space-y-5 ${anim(cards.isVisible, 0).className}`}
             style={anim(cards.isVisible, 0).style}
-          >
-            <h3 className="font-serif text-2xl md:text-3xl text-midnight">Body Reclaimed</h3>
-            <p className="text-charcoal/70 font-sans text-base md:text-[17px] leading-relaxed">
-              For the woman who&rsquo;s ready to stop winging it and finally have a real system that&rsquo;s built around her life, not someone else&rsquo;s template.
-            </p>
-            <Link
-              href="/body-reclaimed"
-              className="inline-block text-bark font-sans font-medium text-sm tracking-wide underline underline-offset-4 hover:text-bark/70 transition-colors duration-300"
-            >
-              Learn more about Body Reclaimed &rarr;
-            </Link>
-          </div>
-
-          <div
-            className={`rounded-sm border border-charcoal/10 bg-midnight p-10 md:p-12 space-y-5 ${anim(cards.isVisible, 150).className}`}
-            style={anim(cards.isVisible, 150).style}
           >
             <h3 className="font-serif text-2xl md:text-3xl text-cream">Body Unmuted: 1:1 Coaching</h3>
             <p className="text-cream/70 font-sans text-base md:text-[17px] leading-relaxed">
-              For the woman who&rsquo;s ready to stop wondering what she&rsquo;d look like if she actually went all in&hellip; and just go all in. Full transformation, full support, zero settling.
+              For the woman who&rsquo;s ready to stop wondering what her life would look like if she actually went all in on her strength, her energy, her confidence, and the way she shows up. Full transformation, full support, zero settling.
             </p>
             <Link
               href="/work-with-me"

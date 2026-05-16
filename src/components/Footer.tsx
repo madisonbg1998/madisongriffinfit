@@ -7,7 +7,6 @@ const footerNav = [
   { href: '/method', label: 'Method' },
   { href: '/about', label: 'About' },
   { href: '/body-brief', label: 'Body Brief' },
-  { href: '/body-reclaimed', label: 'Body Reclaimed' },
   { href: '/work-with-me', label: '1:1 Coaching' },
   { href: '/blog', label: 'Blog' },
 ]
