@@ -6,16 +6,22 @@ import Image from 'next/image'
 const STEP_LABELS = ['About You', 'Your Goals', 'Your History', 'Why You', 'Anything Else']
 
 const READINESS_OPTIONS = [
-  "I'm 100% ready — I've been thinking about this for a while and I'm done waiting",
-  "Pretty ready — I have some questions but I'm genuinely interested",
-  "I'm exploring my options right now",
+  "I'm fully ready, I've been building toward this and I'm done waiting",
+  "I'm ready but want to make sure we're the right fit, the call will tell me",
+  "I'm not quite ready yet but I want to get the process started",
+]
+
+const MOTIVATION_OPTIONS = [
+  "This is the most important thing I could be working on, I'm done waiting",
+  "I'm motivated but balancing other priorities",
+  "I'm still figuring out if the timing is right",
 ]
 
 const START_TIMING_OPTIONS = [
-  "As soon as possible — I'm ready now",
+  "As soon as possible",
   "Within the next month",
-  "In the next 2 to 3 months",
-  "I'm planning ahead — further out than that",
+  "Within the next 3 months",
+  "I'm not sure yet",
 ]
 
 interface FormData {
@@ -28,10 +34,10 @@ interface FormData {
   successVision: string
   pastAttempts: string
   barriers: string
-  currentStruggles: string
   whyMadison: string
   whyNow: string
   readinessLevel: string
+  motivationLevel: string
   startTiming: string
   anythingElse: string
 }
@@ -46,10 +52,10 @@ const initialFormData: FormData = {
   successVision: '',
   pastAttempts: '',
   barriers: '',
-  currentStruggles: '',
   whyMadison: '',
   whyNow: '',
   readinessLevel: '',
+  motivationLevel: '',
   startTiming: '',
   anythingElse: '',
 }
@@ -136,7 +142,6 @@ export default function ApplyPage() {
     if (step === 3) {
       if (!formData.pastAttempts.trim()) { setError("Please share what you've tried before."); return false }
       if (!formData.barriers.trim()) { setError('Please share what has gotten in the way.'); return false }
-      if (!formData.currentStruggles.trim()) { setError("Please share what you're struggling with right now."); return false }
     }
     if (step === 4) {
       if (!formData.whyMadison.trim()) { setError('Please share why you want to work with me.'); return false }
@@ -146,12 +151,16 @@ export default function ApplyPage() {
   }, [step, formData])
 
   const handleNext = useCallback(() => {
-    if (validateStep()) setStep((s) => Math.min(s + 1, 5))
+    if (validateStep()) {
+      setStep((s) => Math.min(s + 1, 5))
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
   }, [validateStep])
 
   const handleBack = useCallback(() => {
     setError(null)
     setStep((s) => Math.max(s - 1, 1))
+    window.scrollTo({ top: 0, behavior: 'smooth' })
   }, [])
 
   const handleSubmit = useCallback(async () => {
@@ -309,7 +318,7 @@ export default function ApplyPage() {
                   Tell me about your life. <span className="text-sand">*</span>
                 </label>
                 <p className="text-charcoal/40 text-xs mb-3">
-                  Work, travel, routine, what your days look like, what makes your life full and what makes it chaotic. Give me a real picture.
+                  What does your day to day look like, how do you work, how much do you travel, and what makes it full and chaotic?
                 </p>
                 <textarea
                   id="lifeDescription"
@@ -332,7 +341,7 @@ export default function ApplyPage() {
                   How do you feel in your body right now? <span className="text-sand">*</span>
                 </label>
                 <p className="text-charcoal/40 text-xs mb-3">
-                  Not what you want to change — just how it actually feels to live in it day to day.
+                  Not what you want to change, just an honest snapshot of what it actually feels like to live in it today.
                 </p>
                 <textarea
                   id="bodyFeeling"
@@ -350,7 +359,7 @@ export default function ApplyPage() {
                   What are your goals? <span className="text-sand">*</span>
                 </label>
                 <p className="text-charcoal/40 text-xs mb-3">
-                  Tell me what you want physically, but also how you want to feel, show up, and live. Don&apos;t hold back.
+                  Tell me about the physical results you want, and also how you want to feel, show up, and live. Nothing is too surface or too deep here.
                 </p>
                 <textarea
                   id="goals"
@@ -365,9 +374,11 @@ export default function ApplyPage() {
               <div>
                 <QLabel num="07" />
                 <label htmlFor="successVision" className="block text-midnight text-sm font-medium mb-1">
-                  What does success look like to you in 6 months? <span className="text-sand">*</span>
+                  What would need to be true in 6 months for you to feel like this was the best investment you made this year? <span className="text-sand">*</span>
                 </label>
-                <p className="text-charcoal/40 text-xs mb-3">Paint me the picture.</p>
+                <p className="text-charcoal/40 text-xs mb-3">
+                  Be specific — what would you be doing, how would you be feeling, what would have changed?
+                </p>
                 <textarea
                   id="successVision"
                   required
@@ -389,7 +400,7 @@ export default function ApplyPage() {
                   What have you tried before? <span className="text-sand">*</span>
                 </label>
                 <p className="text-charcoal/40 text-xs mb-3">
-                  What have you done, what worked for a while, and what never quite stuck — and why do you think that is?
+                  What worked, what never stuck, and why do you think that is?
                 </p>
                 <textarea
                   id="pastAttempts"
@@ -404,35 +415,14 @@ export default function ApplyPage() {
               <div>
                 <QLabel num="09" />
                 <label htmlFor="barriers" className="block text-midnight text-sm font-medium mb-1">
-                  What has gotten in the way of you reaching your goals so far? <span className="text-sand">*</span>
+                  What has consistently gotten in the way of reaching this, and do you have a sense of why it keeps happening? <span className="text-sand">*</span>
                 </label>
-                <p className="text-charcoal/40 text-xs mb-3">
-                  Be honest. This is some of the most useful information you can give me.
-                </p>
                 <textarea
                   id="barriers"
                   required
                   value={formData.barriers}
                   onChange={(e) => updateField('barriers', e.target.value)}
                   placeholder="What keeps getting in the way..."
-                  className={textareaClass}
-                />
-              </div>
-
-              <div>
-                <QLabel num="10" />
-                <label htmlFor="currentStruggles" className="block text-midnight text-sm font-medium mb-1">
-                  Is there anything specific you&apos;re struggling with right now? <span className="text-sand">*</span>
-                </label>
-                <p className="text-charcoal/40 text-xs mb-3">
-                  Training, nutrition, mindset, life circumstances — anything you want me to know going in.
-                </p>
-                <textarea
-                  id="currentStruggles"
-                  required
-                  value={formData.currentStruggles}
-                  onChange={(e) => updateField('currentStruggles', e.target.value)}
-                  placeholder="What feels hardest right now..."
                   className={textareaClass}
                 />
               </div>
@@ -443,7 +433,7 @@ export default function ApplyPage() {
           {step === 4 && (
             <div className="space-y-8 animate-fade-in">
               <div>
-                <QLabel num="11" />
+                <QLabel num="10" />
                 <label htmlFor="whyMadison" className="block text-midnight text-sm font-medium mb-2">
                   Why do you want to work with me specifically? <span className="text-sand">*</span>
                 </label>
@@ -458,9 +448,9 @@ export default function ApplyPage() {
               </div>
 
               <div>
-                <QLabel num="12" />
+                <QLabel num="11" />
                 <label htmlFor="whyNow" className="block text-midnight text-sm font-medium mb-2">
-                  Why now? What&apos;s made you ready to take this step? <span className="text-sand">*</span>
+                  Why now? What&apos;s made this the moment? <span className="text-sand">*</span>
                 </label>
                 <textarea
                   id="whyNow"
@@ -473,9 +463,9 @@ export default function ApplyPage() {
               </div>
 
               <div>
-                <QLabel num="13" />
+                <QLabel num="12" />
                 <p className="text-midnight text-sm font-medium mb-3">
-                  How ready are you to fully commit to this?
+                  How ready are you to commit?
                 </p>
                 <div className="space-y-2.5">
                   {READINESS_OPTIONS.map((opt) => (
@@ -485,6 +475,25 @@ export default function ApplyPage() {
                       value={opt}
                       checked={formData.readinessLevel === opt}
                       onChange={(v) => updateField('readinessLevel', v)}
+                      label={opt}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <QLabel num="13" />
+                <p className="text-midnight text-sm font-medium mb-1">
+                  One practical question before we wrap up. How motivated are you to solve this right now?
+                </p>
+                <div className="space-y-2.5 mt-3">
+                  {MOTIVATION_OPTIONS.map((opt) => (
+                    <RadioOption
+                      key={opt}
+                      name="motivationLevel"
+                      value={opt}
+                      checked={formData.motivationLevel === opt}
+                      onChange={(v) => updateField('motivationLevel', v)}
                       label={opt}
                     />
                   ))}
@@ -518,10 +527,9 @@ export default function ApplyPage() {
               <div>
                 <QLabel num="15" />
                 <label htmlFor="anythingElse" className="block text-midnight text-sm font-medium mb-1">
-                  Anything else you want to tell me before I review your application?{' '}
+                  Is there anything you want me to know that would help me understand why this is the right moment for you? Or anything that feels important that the questions didn&apos;t ask.{' '}
                   <span className="text-charcoal/30 font-normal">(optional)</span>
                 </label>
-                <p className="text-charcoal/40 text-xs mb-3">Anything at all you want me to know.</p>
                 <textarea
                   id="anythingElse"
                   value={formData.anythingElse}
