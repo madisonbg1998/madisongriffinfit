@@ -5,7 +5,7 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'Body Unmuted 1:1 Coaching',
   description:
-    'Full transformation coaching with daily support, total personalisation, and a coach who treats your goals like her own.',
+    "Full coaching. Built completely around you. For the woman who's ready to stop managing her body from the outside and start actually living inside it.",
   openGraph: {
     images: [{ url: '/Madison-157.webp', width: 1200, height: 630, alt: 'Body Unmuted 1:1 Coaching — Madison Griffin Fit' }],
   },
@@ -45,7 +45,7 @@ const included = [
   {
     num: '07',
     title: 'Body Relationship work woven throughout',
-    body: "We work on the patterns that have been keeping you stuck — the all-or-nothing thinking, the perfectionism, the guilt cycles. But we go deeper than the cycles. We work on who you are in relation to your body. The identity you've been carrying. Building your ability to actually inhabit yourself, not just manage yourself from the outside. This is the piece most coaches skip. It's usually the piece that changes everything.",
+    body: "This is woven into every other element of the work, not bolted on at the end. We address the patterns — all-or-nothing, perfectionism, guilt cycles — and then go deeper into who you are in relation to your body. The identity underneath the behaviour. Most coaches skip this entirely. It's usually what changes everything.",
   },
 ]
 
@@ -90,7 +90,7 @@ export default function WorkWithMePage() {
             For the woman who&rsquo;s ready to go all in on her body the way she goes all in on her life.
           </h1>
           <p className="text-cream/80 font-sans text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-12">
-            Full transformation coaching with daily support, total personalisation, and a coach who treats your goals like her own.
+            Full coaching. Built completely around you. For the woman who&rsquo;s ready to stop managing her body from the outside and start actually living inside it.
           </p>
           <Link
             href="/apply"
@@ -108,10 +108,10 @@ export default function WorkWithMePage() {
             <div className="space-y-7 text-cream/75 font-sans text-[17px] leading-[1.85]">
               <p className="font-serif text-cream text-3xl md:text-4xl leading-snug">Body Unmuted 1:1 Coaching.</p>
               <p className="font-serif italic text-sand text-2xl md:text-3xl leading-snug">You&rsquo;ve been living with your body on mute.</p>
-              <p>Not consciously. Not because you wanted to. But somewhere along the way you learned to push past it, work around it, override it. To live from the neck up and treat your body as something to be managed rather than something to be in.</p>
-              <p>And it works. Until you realise that no matter how much you achieve, how far you travel, how fully you show up everywhere else, there&rsquo;s this one thing that never quite feels like yours. This one place you&rsquo;ve never felt fully at home.</p>
-              <p>Unmuting your body means letting it back in. Learning to actually feel it &mdash; what it&rsquo;s telling you, what it needs, what it&rsquo;s capable of when you stop fighting it and start working with it. Building a body that doesn&rsquo;t just look strong but feels like home. That gives you energy instead of costing it. That adds to your life instead of competing with it.</p>
-              <p>This is the coaching that does that. A complete shift in how it feels to be you, in your body, in your life, in every room you walk into.</p>
+              <p>Not consciously. Not because you wanted to. But somewhere along the way you learned to push past it, work around it, override it. To live from the neck up and treat your body as <em className="italic text-sand/80">something to be managed</em> rather than something to be in.</p>
+              <p>And it works. Until you realise that no matter how much you achieve, how far you travel, how fully you show up everywhere else, there&rsquo;s this one thing that never quite feels like yours. <span className="text-cream">This one place you&rsquo;ve never felt fully at home.</span></p>
+              <p>Unmuting your body means letting it back in. Learning to actually feel it &mdash; what it&rsquo;s telling you, what it needs, what it&rsquo;s capable of when you stop fighting it and start working with it. Building a body that doesn&rsquo;t just look strong but <em className="italic text-sand/80">feels like home.</em> That gives you energy instead of costing it. That adds to your life instead of competing with it.</p>
+              <p>This is the coaching that does that. <span className="text-cream font-medium">A complete shift</span> in how it feels to be you, in your body, in your life, in every room you walk into.</p>
               <p className="font-serif italic text-sand text-2xl md:text-3xl leading-snug py-2">
                 This is what it means to be unmuted.
               </p>
@@ -158,9 +158,9 @@ export default function WorkWithMePage() {
                 This is the real thing.
               </h2>
               <div className="space-y-5 text-charcoal/80 font-sans text-[17px] leading-[1.85]">
-                <p>Body Unmuted is the most personalised coaching experience I offer. Everything &mdash; your training, your nutrition, your body relationship work &mdash; is built completely around you and adjusted in real time as your life changes.</p>
+                <p>Body Unmuted is the most personalised coaching experience I offer. Everything &mdash; your training, your nutrition, your body relationship work &mdash; is <em className="italic text-bark">built completely around you</em> and adjusted in real time as your life changes.</p>
                 <p>Because your life doesn&rsquo;t stay still. And your coaching shouldn&rsquo;t either.</p>
-                <p>You have a coach who knows you, who&rsquo;s paying attention, and who&rsquo;s genuinely in your corner every single day. The kind of support that means nothing falls through the cracks, and you never start over.</p>
+                <p>You have a coach who knows you, who&rsquo;s paying attention, and who&rsquo;s genuinely in your corner every single day. The kind of support that means nothing falls through the cracks, and <span className="text-midnight font-medium">you never start over.</span></p>
               </div>
             </div>
           </div>
@@ -216,16 +216,13 @@ export default function WorkWithMePage() {
       {/* ── Investment ── */}
       <section className="bg-midnight py-24 md:py-36">
         <div className="max-w-3xl mx-auto px-6 text-center">
-          <p className="text-sand text-[11px] font-sans font-medium tracking-[0.3em] uppercase mb-6">
-            The Investment
-          </p>
           <h2 className="font-serif text-cream text-3xl md:text-4xl lg:text-5xl leading-[1.1] mb-14">
-            Your body. Unmuted.
+            The Investment
           </h2>
 
           <div className="space-y-5 text-cream/70 font-sans text-[17px] leading-[1.85] text-left max-w-2xl mx-auto mb-14">
-            <p>Body Unmuted is a minimum 6 month commitment. Real transformation takes time &mdash; not just in your body, but in your relationship with it. I want to make sure you have everything you need to see it through and come out the other side genuinely different, not just temporarily changed.</p>
-            <p>Pricing isn&rsquo;t listed here, intentionally. Every woman I work with is different and I want to make sure we&rsquo;re genuinely the right fit before we talk numbers. If you&rsquo;re accepted, we&rsquo;ll go through everything on a call together.</p>
+            <p>Body Unmuted is a <span className="text-cream font-medium">minimum 6 month commitment.</span> Real transformation takes time &mdash; not just in your body, but in your relationship with it. I want to make sure you have everything you need to see it through and come out the other side <em className="italic text-sand/80">genuinely different</em>, not just temporarily changed.</p>
+            <p>Pricing isn&rsquo;t listed here, <em className="italic text-sand/80">intentionally.</em> Every woman I work with is different and I want to make sure we&rsquo;re genuinely the right fit before we talk numbers. If you&rsquo;re accepted, we&rsquo;ll go through everything on a call together.</p>
           </div>
 
           <Link
@@ -258,10 +255,10 @@ export default function WorkWithMePage() {
                 This is for you if&hellip;
               </h2>
               <div className="space-y-5 text-charcoal/75 font-sans text-[17px] leading-[1.85]">
-                <p>You&rsquo;re done with almost.</p>
-                <p>You&rsquo;re a woman with a full life &mdash; a career, a business, travel, things that matter deeply to you that have nothing to do with the gym. You want to feel incredible in your body. Strong, energised, fully at home in yourself &mdash; not instead of your life, because of it.</p>
+                <p>You&rsquo;ve been close before. You&rsquo;ve done the programs, followed the plans, gotten some results. And then life happened and you were back at the beginning, wondering what was wrong with you. <em className="italic text-bark">Nothing is wrong with you. The approach was wrong.</em></p>
+                <p>You&rsquo;re a woman with a full life &mdash; a career, a business, travel, things that matter deeply to you that have nothing to do with the gym. You want to feel incredible in your body. Strong, energised, fully at home in yourself &mdash; <span className="text-midnight">not instead of your life, because of it.</span></p>
                 <p>You don&rsquo;t want another plan to follow. You want to understand your body well enough that you don&rsquo;t need everything to be perfect to keep going. You want a coach who will take your goals as seriously as you do and who will be there every step of the way.</p>
-                <p>You&rsquo;re ready to stop managing your body from the neck up and start actually living inside it.</p>
+                <p>You&rsquo;re ready to stop managing your body from the neck up and <em className="italic text-bark">start actually living inside it.</em></p>
               </div>
               <div className="mt-10">
                 <Link
@@ -352,14 +349,11 @@ export default function WorkWithMePage() {
               />
             </div>
             <div>
-              <p className="text-bark text-[11px] font-sans font-medium tracking-[0.3em] uppercase mb-6">
-                Not quite ready?
-              </p>
               <h2 className="font-serif text-midnight text-3xl md:text-4xl lg:text-5xl leading-[1.1] mb-6">
-                Let&rsquo;s figure it out together.
+                Want to talk it through first?
               </h2>
               <p className="text-charcoal/70 font-sans text-[17px] leading-[1.85] mb-10">
-                Book a free call with me. I&rsquo;ll ask you a few questions, you ask me whatever you want, and we&rsquo;ll work out if this is the right fit for you right now. No pressure. No pitch.
+                Book a free call. We&rsquo;ll spend 20 minutes on where you are, what you&rsquo;re looking for, and whether this is the right fit right now. No pitch, just a real conversation.
               </p>
               <Link
                 href="https://calendly.com/madisongriffinfit/client-check-ins"

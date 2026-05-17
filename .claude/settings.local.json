@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -c \"\" \"C:/Users/madis/.claude/projects/c--Users-madis-Documents-MadisonGriffinFit-Website-madison-griffin/3c14959c-7510-4252-8856-522b4a088c2c.jsonl\")",
+      "Read(//c/Users/madis/.claude/projects/c--Users-madis-Documents-MadisonGriffinFit-Website-madison-griffin/**)"
+    ]
+  }
+}

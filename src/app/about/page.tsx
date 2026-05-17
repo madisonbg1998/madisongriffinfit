@@ -5,7 +5,7 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'About Madison',
   description:
-    'Fitness coach, wine nerd, serial traveller, and firm believer that you shouldn\'t have to become a more boring version of yourself to get results.',
+    'Former data scientist, current fitness coach, wine nerd, serial traveller, and firm believer that getting real results and actually living your life were never supposed to be in competition.',
   openGraph: {
     images: [{ url: '/Madison-134.webp', width: 1200, height: 630, alt: 'About Madison Griffin' }],
   },
@@ -26,7 +26,7 @@ export default function AboutPage() {
                 Hi, I&rsquo;m Madison.
               </h1>
               <p className="text-charcoal/80 font-sans text-lg md:text-xl leading-relaxed max-w-lg">
-                Fitness coach, wine nerd, serial traveller, and firm believer that you shouldn&rsquo;t have to become a more boring version of yourself to get results.
+                Former data scientist, current fitness coach, wine nerd, serial traveller, and firm believer that getting real results and actually living your life were never supposed to be in competition.
               </p>
             </div>
             <div className="relative aspect-[3/4] overflow-hidden rounded-sm">
@@ -122,7 +122,7 @@ export default function AboutPage() {
               <p>Now I lift, I eat really well, I drink good wine, I travel constantly, and it just works. My body gives me the energy and the confidence to show up fully in my life. To be present, to perform, to enjoy every bit of it. That&rsquo;s what I&rsquo;d always wanted. Not a body instead of my life. A body that makes my life better.</p>
               <p>That&rsquo;s what I help women build. Not just a body that looks different. A body that feels like theirs. That supports their life instead of competing with it. That holds up when everything gets full and loud and honestly better than it&rsquo;s ever been.</p>
               <p>And the way I coach has kept evolving as I have, getting sharper, going deeper, getting closer to what I believe great coaching actually is.</p>
-              <p>Because you don&rsquo;t need to become a more boring version of yourself to get results. You just need a way of doing this that was actually built for you.</p>
+              <p>Because the version of you who has the body she wants and the version of you who actually lives her life were never supposed to be different people.</p>
             </div>
           </div>
         </div>
