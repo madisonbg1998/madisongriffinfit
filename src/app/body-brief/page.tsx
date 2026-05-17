@@ -556,10 +556,10 @@ export default function BodyBriefPage() {
             The Body Brief
           </p>
           <h1 className="font-serif text-cream text-5xl md:text-7xl lg:text-[5rem] leading-[1.08] tracking-tight text-balance mb-8">
-            Finally figure out why you&rsquo;re stuck.
+            A personalised snapshot of where you actually are and what it&rsquo;s going to take to change.
           </h1>
           <p className="text-cream/80 font-sans text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-12">
-            A free, personalised deep dive into your training, your nutrition, and what your body is actually telling you. You fill in a five minute form. I tell you the truth.
+            You fill in five minutes of honest answers about your life, your training, and what keeps breaking down. I tell you exactly what&rsquo;s missing and where to start. Not a generic plan. Your actual situation.
           </p>
           <a
             href="#form"
@@ -574,11 +574,10 @@ export default function BodyBriefPage() {
       <section className="bg-midnight py-24 md:py-32">
         <div className="max-w-3xl mx-auto px-6">
           <div className="space-y-6 text-cream/75 font-sans text-[17px] leading-[1.75] mb-14">
-            <p>Think of it as the conversation I&rsquo;d have with you if we sat down to lunch and you told me you were feeling stuck, didn&rsquo;t love your body, and couldn&rsquo;t figure out why nothing was working.</p>
-            <p>That&rsquo;s exactly what this is.</p>
-            <p>You tell me about your life. Your goals, your training, your nutrition, your patterns, the things that keep tripping you up. I go through every answer and put together something completely personalised: what you&rsquo;re already doing well, what&rsquo;s actually missing, what your real needle movers are, and a training and nutrition framework built around how you actually live.</p>
-            <p>Not a generic plan. Not a list of things to fix. The specific, honest picture of where you are and that &ldquo;ohhhh, that makes sense&rdquo; moment most women have never had about their own body.</p>
-            <p>It takes five minutes to fill in. You&rsquo;ll hear back within 48 hours. And it&rsquo;s completely free.</p>
+            <p>Think of it as the conversation I&rsquo;d have with you if we sat down to lunch and you told me <em className="italic text-sand/80">exactly where you were with your body, what you&rsquo;d tried, what wasn&rsquo;t working, and what you actually wanted.</em> <span className="text-cream font-medium">That&rsquo;s exactly what this is.</span></p>
+            <p>You tell me about your life. Your goals, your training, your nutrition, your patterns, <em className="italic text-sand/80">the things that keep tripping you up.</em> I go through every answer and put together something <span className="text-cream">completely personalised</span>: what you&rsquo;re already doing well, what&rsquo;s actually missing, what your real needle movers are, and a training and nutrition framework <em className="italic text-sand/80">built around how you actually live.</em></p>
+            <p><span className="text-cream font-medium">Not a generic plan. Not a list of things to fix.</span> The specific, honest picture of where you are and that <em className="italic text-sand/80">&ldquo;ohhhh, that makes sense&rdquo;</em> moment most women have never had about their own body.</p>
+            <p>It takes five minutes to fill in. And it&rsquo;s <span className="text-cream font-medium">completely free.</span></p>
           </div>
           <a
             href="#form"
@@ -626,8 +625,7 @@ export default function BodyBriefPage() {
       <section className="bg-midnight py-24 md:py-32">
         <div className="max-w-2xl mx-auto px-6 text-center">
           <div className="space-y-5 text-cream/70 font-sans text-[17px] leading-[1.75] mb-10">
-            <p>You&rsquo;re tired of not knowing why. You want someone to actually look at your situation, cut through the noise, and give you something real to work with.</p>
-            <p>Fill in the form. It&rsquo;s free. You might finally get the answer you&rsquo;ve been looking for.</p>
+            <p>Whether you&rsquo;re missing knowledge, struggling to make the strategy stick, or know something deeper is getting in the way, this is where you finally find out which one it is. Fill in the form and we&rsquo;ll go through your results together.</p>
           </div>
           <p className="font-serif italic text-cream text-xl md:text-2xl leading-snug mb-12">
             &ldquo;The more honest you are, the more useful your brief will be.&rdquo;
