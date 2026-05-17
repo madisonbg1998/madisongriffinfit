@@ -60,7 +60,7 @@ export function Navigation() {
                 isScrolled || forceDark ? 'text-midnight' : 'text-cream'
               }`}
             >
-              Madison Griffin Fit
+              Body Unmuted
             </Link>
 
             {/* Desktop Navigation */}

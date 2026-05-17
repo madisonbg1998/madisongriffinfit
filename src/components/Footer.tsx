@@ -209,13 +209,13 @@ export function Footer() {
       <div className="border-t border-charcoal/50">
         <div className="mx-auto max-w-7xl px-6 lg:px-10 py-8 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-cream/40 text-xs tracking-wide">
-            &copy; 2026 Madison Griffin Fit. All rights reserved.
+            &copy; 2026 Madison Griffin Fit LLC. All rights reserved.
           </p>
           <Link
             href="/"
             className="text-cream/40 text-[10px] font-medium tracking-[0.2em] uppercase hover:text-cream/60 transition-colors duration-300"
           >
-            Madison Griffin Fit
+            Body Unmuted
           </Link>
         </div>
       </div>
