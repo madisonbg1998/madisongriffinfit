@@ -170,8 +170,7 @@ export function Footer() {
               Stay in the Loop
             </h3>
             <p className="text-cream/50 text-sm leading-relaxed mb-6">
-              Weekly insights on strength, nutrition, and building a life you
-              don&apos;t need a vacation from.
+              Insights on strength, nutrition, and building a body that holds up to your actual life. No noise. Just the real stuff.
             </p>
             {newsletterSent ? (
               <p className="text-sand text-sm leading-relaxed">

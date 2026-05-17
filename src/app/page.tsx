@@ -104,7 +104,7 @@ function HeroSection() {
             }`}
             style={{ textShadow: '0 1px 10px rgba(0,0,0,0.4)' }}
           >
-            Strength, nutrition, and body literacy coaching for women who are done managing their bodies from the outside.
+            Coaching for location-free female founders who have optimised everything in their life except their body. That changes here.
           </p>
 
           <div
@@ -178,12 +178,6 @@ function ProblemSection() {
               <p>You just never had a system that proved it.</p>
             </div>
 
-            <blockquote
-              className={`border-l-2 border-sand pl-6 font-serif italic text-xl md:text-2xl text-midnight/80 leading-snug ${anim(s1.isVisible, 240).className}`}
-              style={anim(s1.isVisible, 240).style}
-            >
-              &ldquo;You don&rsquo;t have to choose between the body you want and the life you love.&rdquo;
-            </blockquote>
           </div>
 
           <div
@@ -263,9 +257,7 @@ const pillars = [
     alt: 'Madison showing athletic physique, smiling and confident',
     label: 'Strength',
     paragraphs: [
-      'Most women end up doing one of two things: a program that gets results but falls apart the moment they travel, or workouts they can do anywhere that don’t actually change their body.',
-      'We do neither.',
-      'Your training adapts to what you have. But more than that, you learn to actually feel it. Real muscle activation. Knowing the difference between genuine effort and going through the motions. That’s what makes results show up and stay.',
+      'Your training adapts to wherever you are in the world without losing progress. No falling apart when you travel, no starting over when life gets busy. You just keep building.',
     ],
   },
   {
@@ -273,10 +265,7 @@ const pillars = [
     alt: 'Madison eating from a bowl on the beach at sunset',
     label: 'Fuel',
     paragraphs: [
-      'Most approaches teach you to eat less. Which works until you actually want a life.',
-      'We do the opposite.',
-      'We build a body that can eat more over time while still getting leaner and changing shape. Your nutrition is built on your specific body, your data, and how you’re actually responding, not just a generic calculator, trend, or guesswork. Numbers that move as you do.',
-      'So you can go out, order what you want, enjoy pasta in Italy and wine on a Tuesday, and not spend the rest of the night doing mental math.',
+      `Most approaches teach you to eat less. We build the opposite — a metabolism that handles more over time, not less. So you can actually live while you're doing this.`,
     ],
   },
   {
@@ -284,9 +273,7 @@ const pillars = [
     alt: 'Madison close-up, eyes closed, peaceful in golden light',
     label: 'Body Relationship',
     paragraphs: [
-      'This is where lasting change actually lives.',
-      'We dismantle the all-or-nothing thinking, the guilt cycles, and the perfectionism that have kept you starting over. But we go deeper than the cycles. We build your ability to actually inhabit your body, not just manage it. To feel what it needs. To trust it. To stop treating it like a problem to be solved and start treating it like a home to live in.',
-      'One bad meal doesn’t ruin the day. One bad week doesn’t ruin the month. And a body you actually understand doesn’t need to be forced into results. It gets there because you finally know how to work with it.',
+      `This is the piece most programmes skip entirely. And it's the reason most results don't last. We go deeper than the cycles — into who you actually are in relation to your body.`,
     ],
   },
 ]
@@ -316,7 +303,7 @@ function MethodSection() {
             className={`mt-6 text-charcoal/70 font-sans text-base md:text-lg leading-relaxed max-w-2xl mx-auto ${anim(heading.isVisible, 200).className}`}
             style={anim(heading.isVisible, 200).style}
           >
-            Three pillars. Woven together so your results build on themselves instead of collapsing every time life gets real.
+            Built around the three reasons high-performing women stay stuck in their bodies &mdash; a knowledge gap, a strategy gap, and a relationship gap. Three pillars that work on all three at once.
           </p>
         </div>
 
@@ -359,9 +346,9 @@ function MethodSection() {
         >
           <Link
             href="/method"
-            className="inline-block border border-bark text-bark font-sans font-medium text-sm tracking-wide uppercase rounded-full px-10 py-4 hover:bg-bark hover:text-cream transition-colors duration-300"
+            className="inline-block text-bark font-sans font-medium text-sm tracking-wide underline underline-offset-4 hover:text-bark/70 transition-colors duration-300"
           >
-            Read more about the method
+            Read the full method &rarr;
           </Link>
         </div>
       </div>
@@ -451,7 +438,7 @@ function BodyBriefSection() {
               style={anim(s1.isVisible, 200).style}
             >
               <p>Most coaches hand you a program and tell you to start Monday. That&rsquo;s not how I work.</p>
-              <p>The Body Brief is a free, personalised snapshot of where you stand right now. You fill out a five minute form about your life, your goals, and what&rsquo;s been falling apart. I send you back a custom brief: what you&rsquo;re doing well, what&rsquo;s missing, what your actual needle movers are, and a starting point built around you.</p>
+              <p>The Body Brief is a free, personalised snapshot of where you stand right now. You fill out a five minute form. I read every answer personally and send you back something specific to you &mdash; not a template, not a generic plan.</p>
               <p>No commitment. No pitch. Just clarity.</p>
             </div>
 
@@ -517,7 +504,7 @@ function OffersSection() {
           >
             <h3 className="font-serif text-2xl md:text-3xl text-cream">Body Unmuted: 1:1 Coaching</h3>
             <p className="text-cream/70 font-sans text-base md:text-[17px] leading-relaxed">
-              For the woman who&rsquo;s ready to stop wondering what her life would look like if she actually went all in on her strength, her energy, her confidence, and the way she shows up. Full transformation, full support, zero settling.
+              Full coaching. Every element built around you. For the woman who&rsquo;s done circling this and ready to actually build something.
             </p>
             <Link
               href="/work-with-me"
@@ -537,23 +524,19 @@ function OffersSection() {
 /* ================================================================== */
 const testimonials = [
   {
-    quote:
-      'Working with Madison has genuinely changed my life. Over the last year I’ve lost 20 pounds, built real strength, and found a confidence I didn’t know I was missing. She doesn’t just give you workouts. She helped me completely overhaul my nutrition and actually understand what my body needs. I feel better at 36 than I did at 26. I didn’t think that was possible.',
+    quote: `Working with Madison has genuinely changed my life. Over the last year I've lost 20 pounds, built real strength, and found a confidence I didn't know I was missing. She doesn't just give you workouts. She helped me completely overhaul my nutrition and actually understand what my body needs. I feel better at 36 than I did at 26. I didn't think that was possible.`,
     name: 'Liz',
   },
   {
-    quote:
-      'I was traveling through seven countries in three months, losing muscle, losing confidence, and it was starting to affect my business and my speaking events. Madison reminded me I could still enjoy life, still travel, and still feel strong, confident, and sexy while actually being in a routine. She helped me move past so many mindset blocks around consistency. Now I eat high protein foods I actually love and do personalised workouts that work. I feel in such amazing shape, and it’s had a huge ripple effect on everything. If you’re even thinking about it, take the dive. She’ll not only change your body. She’ll change your life.',
+    quote: `I was traveling through seven countries in three months, losing muscle, losing confidence, and it was starting to affect my business and my speaking events. Madison reminded me I could still enjoy life, still travel, and still feel strong, confident, and sexy while actually being in a routine. She helped me move past so many mindset blocks around consistency. Now I eat high protein foods I actually love and do personalised workouts that work. I feel in such amazing shape, and it's had a huge ripple effect on everything. If you're even thinking about it, take the dive. She'll not only change your body. She'll change your life.`,
     name: 'Ashleigh',
   },
   {
-    quote:
-      'Madison was the first person who ever got me genuinely excited about fitness. She explains nutrition in a way that actually makes sense and feels doable in real life. She’s a trainer who’s also a foodie, so she won’t just tell you to diet. She understands that we’re human, and especially as women, we’re not operating at 100% all the time. Instead of the all-or-nothing cycle, she helps you stay consistent and keep moving forward. I’ve tried getting into the gym so many times and always fell off because I didn’t know what I was doing. Madison gave me the foundation I was missing. I finally understand what I’m supposed to be doing and what a good workout should actually FEEL like, not just look like. I honestly can’t recommend her enough.',
+    quote: `Madison was the first person who ever got me genuinely excited about fitness. She explains nutrition in a way that actually makes sense and feels doable in real life. She's a trainer who's also a foodie, so she won't just tell you to diet. She understands that we're human, and especially as women, we're not operating at 100% all the time. Instead of the all-or-nothing cycle, she helps you stay consistent and keep moving forward. I've tried getting into the gym so many times and always fell off because I didn't know what I was doing. Madison gave me the foundation I was missing. I finally understand what I'm supposed to be doing and what a good workout should actually FEEL like, not just look like. I honestly can't recommend her enough.`,
     name: 'Sierra',
   },
   {
-    quote:
-      'Training with Madison has been really eye opening. I thought I was training to failure before, but she helped me realize I could do so much more. The support is great and I’m already getting stronger. She’s also really customizing everything for me and the way my body moves which has been super helpful as I grow my confidence in the gym.',
+    quote: `Training with Madison has been really eye opening. I thought I was training to failure before, but she helped me realize I could do so much more. The support is great and I'm already getting stronger. She's also really customizing everything for me and the way my body moves which has been super helpful as I grow my confidence in the gym.`,
     name: 'Ali',
   },
 ]
@@ -587,7 +570,7 @@ function SocialProofSection() {
             className={`font-serif text-3xl md:text-[2.75rem] text-cream tracking-tight ${anim(heading.isVisible, 100).className}`}
             style={anim(heading.isVisible, 100).style}
           >
-            Real women. Real results.
+            What changes when your body stops being the problem.
           </h2>
         </div>
 
@@ -672,7 +655,7 @@ function FinalCTASection() {
             className={`text-charcoal/80 font-sans text-base md:text-[17px] leading-relaxed mb-6 ${anim(madison.isVisible).className}`}
             style={anim(madison.isVisible).style}
           >
-            Hi, I&rsquo;m Madison. I help women build bodies that hold up to their real lives, not an idealised version of them.
+            Hi, I&rsquo;m Madison. I&rsquo;m a former data scientist turned coach, and I work with ambitious women who have figured out everything in their life except this. My method is built around why results actually fail &mdash; and it&rsquo;s not what most coaches think.
           </p>
           <Link
             href="/about"
