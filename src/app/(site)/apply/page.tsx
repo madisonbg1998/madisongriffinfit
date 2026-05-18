@@ -590,8 +590,8 @@ export default function ApplyPage() {
       </div>
 
       {/* Photo Side - Desktop only */}
-      <div className="hidden lg:block w-[40%] relative">
-        <div className="fixed top-0 right-0 w-[40%] h-screen">
+      <div className="hidden lg:block w-[40%]">
+        <div className="sticky top-0 h-screen">
           <Image
             src="/Madison-134.webp"
             alt="Madison Griffin"
