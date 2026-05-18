@@ -1,6 +1,4 @@
 import type { Metadata } from 'next'
-import { Navigation } from '@/components/Navigation'
-import { Footer } from '@/components/Footer'
 import './globals.css'
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://madison-griffin.vercel.app'
@@ -68,9 +66,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="font-sans bg-cream text-midnight antialiased">
-        <Navigation />
-        <main className="min-h-screen">{children}</main>
-        <Footer />
+        {children}
       </body>
     </html>
   )
