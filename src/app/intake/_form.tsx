@@ -1679,7 +1679,7 @@ export default function IntakeForm() {
       <div className="hidden lg:block w-[40%]">
         <div className="sticky top-0 h-screen">
           <Image
-            src="/Madison-157.webp"
+            src="/Madison-73.webp"
             alt="Madison Griffin"
             fill
             className="object-cover object-center"
