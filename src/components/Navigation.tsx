@@ -8,7 +8,8 @@ const navLinks = [
   { href: '/method', label: 'Method' },
   { href: '/about', label: 'About' },
   { href: '/body-brief', label: 'Body Brief' },
-  { href: '/work-with-me', label: '1:1 Coaching' },
+  { href: '/work-with-me', label: 'Body Unmuted 1:1' },
+  { href: '/body-decoded', label: 'Body Decoded 1:1' },
   { href: '/blog', label: 'Blog' },
 ]
 
