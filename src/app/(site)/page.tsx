@@ -490,27 +490,51 @@ function OffersSection() {
       <div className="mx-auto max-w-6xl px-6 lg:px-10">
         <div ref={heading.ref} className="text-center mb-16">
           <h2
-            className={`font-serif text-3xl md:text-[2.75rem] text-midnight tracking-tight ${anim(heading.isVisible).className}`}
+            className={`font-serif text-3xl md:text-[2.75rem] text-midnight tracking-tight mb-5 ${anim(heading.isVisible).className}`}
             style={anim(heading.isVisible).style}
           >
             Ready to go all in?
           </h2>
+          <p
+            className={`text-charcoal/55 font-sans text-base md:text-lg leading-relaxed max-w-xl mx-auto ${anim(heading.isVisible).className}`}
+            style={{ ...anim(heading.isVisible).style, transitionDelay: '100ms' }}
+          >
+            Two programmes, built for two different women. One for when you need the right framework. One for when something deeper is getting in the way.
+          </p>
         </div>
 
-        <div ref={cards.ref} className="max-w-2xl mx-auto">
+        <div ref={cards.ref} className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
           <div
-            className={`rounded-sm border border-charcoal/10 bg-midnight p-10 md:p-12 space-y-5 ${anim(cards.isVisible, 0).className}`}
+            className={`rounded-sm bg-midnight p-10 md:p-12 space-y-5 flex flex-col ${anim(cards.isVisible, 0).className}`}
             style={anim(cards.isVisible, 0).style}
           >
-            <h3 className="font-serif text-2xl md:text-3xl text-cream">Body Unmuted: 1:1 Coaching</h3>
-            <p className="text-cream/70 font-sans text-base md:text-[17px] leading-relaxed">
-              Full coaching. Every element built around you. For the woman who&rsquo;s done circling this and ready to actually build something.
+            <p className="text-sand text-[10px] font-sans font-medium tracking-[0.25em] uppercase">1:1 Coaching</p>
+            <h3 className="font-serif text-2xl md:text-3xl text-cream">Body Unmuted</h3>
+            <p className="text-cream/65 font-sans text-sm md:text-base leading-relaxed flex-1">
+              Strength programming, nutrition strategy, and body relationship work built entirely around you.
             </p>
             <Link
               href="/work-with-me"
               className="inline-block text-sand font-sans font-medium text-sm tracking-wide underline underline-offset-4 hover:text-sand/70 transition-colors duration-300"
             >
-              Explore 1:1 Coaching &rarr;
+              Explore Body Unmuted &rarr;
+            </Link>
+          </div>
+
+          <div
+            className={`rounded-sm bg-sand p-10 md:p-12 space-y-5 flex flex-col ${anim(cards.isVisible, 100).className}`}
+            style={anim(cards.isVisible, 100).style}
+          >
+            <p className="text-midnight/50 text-[10px] font-sans font-medium tracking-[0.25em] uppercase">1:1 Coaching</p>
+            <h3 className="font-serif text-2xl md:text-3xl text-cream">Body Decoded</h3>
+            <p className="text-cream/80 font-sans text-sm md:text-base leading-relaxed flex-1">
+              Your body is not responding because something deeper is in the way. Gut health, hormones, and body composition addressed together by one integrated team.
+            </p>
+            <Link
+              href="/body-decoded"
+              className="inline-block text-midnight font-sans font-medium text-sm tracking-wide underline underline-offset-4 hover:text-midnight/50 transition-colors duration-300"
+            >
+              Explore Body Decoded &rarr;
             </Link>
           </div>
         </div>
