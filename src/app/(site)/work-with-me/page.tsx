@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+﻿import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -102,7 +102,7 @@ export default function WorkWithMePage() {
       </section>
 
       {/* ── Opening ── */}
-      <section className="bg-midnight py-28 md:py-40">
+      <section className="bg-choco py-28 md:py-40">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
             <div className="space-y-7 text-cream/75 font-sans text-[17px] leading-[1.85]">
@@ -168,7 +168,7 @@ export default function WorkWithMePage() {
       </section>
 
       {/* ── What's Included ── */}
-      <section className="bg-midnight py-24 md:py-36">
+      <section className="bg-choco py-24 md:py-36">
         <div className="max-w-5xl mx-auto px-6">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-cream/10 pb-10">
             <div>
@@ -214,7 +214,7 @@ export default function WorkWithMePage() {
       </section>
 
       {/* ── Investment ── */}
-      <section className="bg-midnight py-24 md:py-36">
+      <section className="bg-choco py-24 md:py-36">
         <div className="max-w-3xl mx-auto px-6 text-center">
           <h2 className="font-serif text-cream text-3xl md:text-4xl lg:text-5xl leading-[1.1] mb-14">
             The Investment
@@ -274,7 +274,7 @@ export default function WorkWithMePage() {
       </section>
 
       {/* ── How It Works ── */}
-      <section className="bg-midnight py-24 md:py-32">
+      <section className="bg-choco py-24 md:py-32">
         <div className="max-w-3xl mx-auto px-6">
           <p className="text-sand text-[11px] font-sans font-medium tracking-[0.3em] uppercase mb-6">
             The Process

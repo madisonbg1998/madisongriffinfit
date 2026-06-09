@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
@@ -242,7 +242,7 @@ export default function BodyReclaimedPage() {
       </section>
 
       {/* ── What's Included ── */}
-      <section className="bg-midnight py-24 md:py-36">
+      <section className="bg-choco py-24 md:py-36">
         <div className="max-w-5xl mx-auto px-6">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-cream/10 pb-10">
             <div>
@@ -313,7 +313,7 @@ export default function BodyReclaimedPage() {
       </section>
 
       {/* ── Founding Member Pricing ── */}
-      <section className="bg-midnight py-24 md:py-36">
+      <section className="bg-choco py-24 md:py-36">
         <div className="max-w-3xl mx-auto px-6 text-center">
           <p className="text-sand text-[11px] font-sans font-medium tracking-[0.3em] uppercase mb-6">
             Pricing

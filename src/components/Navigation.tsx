@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
@@ -134,8 +134,8 @@ export function Navigation() {
           className="absolute top-6 right-6 w-8 h-8 flex flex-col justify-center items-center"
           aria-label="Close navigation menu"
         >
-          <span className="block h-[1.5px] w-6 bg-midnight rotate-45 translate-y-[0px]" />
-          <span className="block h-[1.5px] w-6 bg-midnight -rotate-45 translate-y-[0px]" />
+          <span className="block h-[1.5px] w-6 bg-choco rotate-45 translate-y-[0px]" />
+          <span className="block h-[1.5px] w-6 bg-choco -rotate-45 translate-y-[0px]" />
         </button>
 
         <div className="flex flex-col items-center justify-center h-full gap-8">

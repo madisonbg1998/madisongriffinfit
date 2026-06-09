@@ -140,20 +140,20 @@ export default function ChatPage() {
 /* ================================================================ */
 function Portal({ onSelect }: { onSelect: (v: string) => void }) {
   return (
-    <div className="min-h-screen bg-cream flex flex-col">
+    <div className="min-h-screen flex flex-col" style={{ background: '#1C0D06' }}>
 
       {/* Top bar */}
       <div className="flex items-center justify-between px-8 pt-8">
         <Link
           href="/body-reclaimed"
-          className="text-charcoal/35 font-sans text-[10px] tracking-[0.2em] uppercase hover:text-charcoal/60 transition-colors duration-300 flex items-center gap-2"
+          className="text-cream/25 font-sans text-[10px] tracking-[0.2em] uppercase hover:text-cream/55 transition-colors duration-300 flex items-center gap-2"
         >
           <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
           </svg>
           Back
         </Link>
-        <p className="text-charcoal/20 font-sans text-[10px] tracking-[0.2em] uppercase">
+        <p className="text-cream/15 font-sans text-[10px] tracking-[0.2em] uppercase">
           Body Reclaimed
         </p>
       </div>
@@ -163,17 +163,17 @@ function Portal({ onSelect }: { onSelect: (v: string) => void }) {
 
         {/* Orb */}
         <div className="relative mb-12">
-          {/* Ambient glow behind */}
+          {/* Ambient glow — much stronger on dark bg */}
           <div
             className="absolute rounded-full -z-10 blur-3xl"
             style={{
-              inset: '-30%',
-              background: 'radial-gradient(circle, rgba(212,165,116,0.35) 0%, transparent 70%)',
+              inset: '-40%',
+              background: 'radial-gradient(circle, rgba(212,165,116,0.55) 0%, transparent 70%)',
             }}
           />
           {/* Sparkle top-right */}
           <svg
-            className="absolute -top-1 -right-1 text-sand/70"
+            className="absolute -top-1 -right-1 text-sand"
             width="14"
             height="14"
             viewBox="0 0 24 24"
@@ -181,9 +181,9 @@ function Portal({ onSelect }: { onSelect: (v: string) => void }) {
           >
             <path d="M12 2L13.09 9.26L20 10L13.09 10.74L12 18L10.91 10.74L4 10L10.91 9.26L12 2Z" />
           </svg>
-          {/* Sparkle bottom-left (smaller) */}
+          {/* Sparkle bottom-left */}
           <svg
-            className="absolute bottom-2 -left-3 text-sand/40"
+            className="absolute bottom-2 -left-3 text-sand/50"
             width="8"
             height="8"
             viewBox="0 0 24 24"
@@ -196,18 +196,18 @@ function Portal({ onSelect }: { onSelect: (v: string) => void }) {
 
         {/* Label */}
         <div className="flex items-center gap-4 mb-5">
-          <div className="w-10 h-px bg-sand/35" />
+          <div className="w-10 h-px bg-sand/30" />
           <p className="text-sand text-[10px] font-sans font-medium tracking-[0.3em] uppercase">
             Body Reclaimed
           </p>
-          <div className="w-10 h-px bg-sand/35" />
+          <div className="w-10 h-px bg-sand/30" />
         </div>
 
         {/* Greeting */}
-        <h1 className="font-serif text-midnight text-4xl md:text-5xl mb-3 tracking-tight">
+        <h1 className="font-serif text-cream text-4xl md:text-5xl mb-3 tracking-tight">
           Hi there.
         </h1>
-        <p className="text-charcoal/40 font-sans text-base mb-14 text-center max-w-xs leading-relaxed">
+        <p className="text-cream/35 font-sans text-base mb-14 text-center max-w-xs leading-relaxed">
           What would you like to work on today?
         </p>
 
@@ -218,17 +218,17 @@ function Portal({ onSelect }: { onSelect: (v: string) => void }) {
               key={opt.value}
               onClick={() => onSelect(opt.value)}
               className={`w-full text-left py-5 flex items-center justify-between group transition-all duration-300 hover:pl-1.5 ${
-                i === 0 ? 'border-t border-bark/8' : ''
-              } border-b border-bark/8`}
+                i === 0 ? 'border-t border-cream/8' : ''
+              } border-b border-cream/8`}
             >
               <div>
-                <p className="text-midnight font-serif text-lg leading-tight mb-0.5 group-hover:text-bark transition-colors duration-300">
+                <p className="text-cream font-serif text-lg leading-tight mb-0.5 group-hover:text-sand transition-colors duration-300">
                   {opt.label}
                 </p>
-                <p className="text-charcoal/35 font-sans text-[11px]">{opt.sub}</p>
+                <p className="text-cream/30 font-sans text-[11px]">{opt.sub}</p>
               </div>
               <svg
-                className="w-3.5 h-3.5 text-sand/50 group-hover:text-bark group-hover:translate-x-1 transition-all duration-300 flex-shrink-0 ml-4"
+                className="w-3.5 h-3.5 text-cream/25 group-hover:text-sand group-hover:translate-x-1 transition-all duration-300 flex-shrink-0 ml-4"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
@@ -244,7 +244,7 @@ function Portal({ onSelect }: { onSelect: (v: string) => void }) {
 
       {/* Footer */}
       <div className="pb-8 text-center">
-        <p className="text-charcoal/18 font-sans text-[10px] tracking-wide">
+        <p className="text-cream/12 font-sans text-[10px] tracking-wide">
           Powered by Madison Griffin Fit
         </p>
       </div>
@@ -276,13 +276,13 @@ function Chat({ messages, isTyping, input, setInput, send, onBack, bottomRef }: 
   }
 
   return (
-    <div className="h-screen flex flex-col bg-cream">
+    <div className="h-screen flex flex-col" style={{ background: '#1C0D06' }}>
 
       {/* Header */}
-      <header className="flex-shrink-0 bg-cream border-b border-bark/8 px-5 py-4 flex items-center gap-3">
+      <header className="flex-shrink-0 border-b border-cream/8 px-5 py-4 flex items-center gap-3" style={{ background: '#1C0D06' }}>
         <button
           onClick={onBack}
-          className="text-charcoal/30 hover:text-charcoal/65 transition-colors duration-300 p-1"
+          className="text-cream/25 hover:text-cream/60 transition-colors duration-300 p-1"
           aria-label="Back"
         >
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
@@ -292,7 +292,7 @@ function Chat({ messages, isTyping, input, setInput, send, onBack, bottomRef }: 
 
         <div className="flex-1 flex items-center justify-center gap-2.5">
           <BrandOrb size="xs" />
-          <p className="font-serif text-midnight text-[15px]">Body Reclaimed</p>
+          <p className="font-serif text-cream text-[15px]">Body Reclaimed</p>
         </div>
 
         <div className="w-6" />
@@ -312,12 +312,12 @@ function Chat({ messages, isTyping, input, setInput, send, onBack, bottomRef }: 
           {isTyping && (
             <div className="flex items-end gap-3">
               <BrandOrb size="sm" />
-              <div className="bg-white border border-bark/8 rounded-2xl rounded-bl-sm px-5 py-4 shadow-[0_2px_20px_rgba(0,0,0,0.04)]">
+              <div className="rounded-2xl rounded-bl-sm px-5 py-4 border border-cream/8" style={{ background: 'rgba(255,255,255,0.06)' }}>
                 <div className="flex items-center gap-1.5">
                   {[0, 150, 300].map((d) => (
                     <span
                       key={d}
-                      className="w-1.5 h-1.5 rounded-full bg-sand/60 animate-bounce"
+                      className="w-1.5 h-1.5 rounded-full bg-sand/70 animate-bounce"
                       style={{ animationDelay: `${d}ms` }}
                     />
                   ))}
@@ -331,7 +331,7 @@ function Chat({ messages, isTyping, input, setInput, send, onBack, bottomRef }: 
       </div>
 
       {/* Input */}
-      <div className="flex-shrink-0 border-t border-bark/8 bg-cream px-4 sm:px-6 py-4">
+      <div className="flex-shrink-0 border-t border-cream/8 px-4 sm:px-6 py-4" style={{ background: '#1C0D06' }}>
         <form
           onSubmit={(e) => { e.preventDefault(); send(input) }}
           className="max-w-xl mx-auto flex items-end gap-3"
@@ -342,8 +342,8 @@ function Chat({ messages, isTyping, input, setInput, send, onBack, bottomRef }: 
             onKeyDown={handleKeyDown}
             placeholder="Message..."
             rows={1}
-            className="flex-1 bg-white border border-bark/15 rounded-xl px-4 py-3 text-midnight placeholder:text-charcoal/25 text-sm focus:outline-none focus:ring-2 focus:ring-bark/15 focus:border-bark/40 transition-all duration-300 resize-none leading-relaxed"
-            style={{ minHeight: '48px', maxHeight: '120px' }}
+            className="flex-1 border border-cream/10 rounded-xl px-4 py-3 text-cream placeholder:text-cream/25 text-sm focus:outline-none focus:ring-1 focus:ring-sand/40 focus:border-sand/40 transition-all duration-300 resize-none leading-relaxed"
+            style={{ minHeight: '48px', maxHeight: '120px', background: 'rgba(255,255,255,0.06)' }}
             onInput={e => {
               const el = e.currentTarget
               el.style.height = 'auto'
@@ -353,10 +353,10 @@ function Chat({ messages, isTyping, input, setInput, send, onBack, bottomRef }: 
           <button
             type="submit"
             disabled={!input.trim() || isTyping}
-            className="flex-shrink-0 w-10 h-10 rounded-full bg-midnight flex items-center justify-center hover:bg-bark disabled:opacity-25 disabled:cursor-not-allowed transition-all duration-300"
+            className="flex-shrink-0 w-10 h-10 rounded-full bg-sand flex items-center justify-center hover:bg-sand/80 disabled:opacity-25 disabled:cursor-not-allowed transition-all duration-300"
             aria-label="Send"
           >
-            <svg className="w-3.5 h-3.5 text-cream -rotate-90" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+            <svg className="w-3.5 h-3.5 text-midnight -rotate-90" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5" />
             </svg>
           </button>
@@ -372,8 +372,8 @@ function BotBubble({ content }: { content: string }) {
   return (
     <div className="flex items-end gap-3">
       <BrandOrb size="sm" />
-      <div className="bg-white border border-bark/8 rounded-2xl rounded-bl-sm px-5 py-4 shadow-[0_2px_20px_rgba(0,0,0,0.04)] max-w-[88%]">
-        <p className="text-midnight font-sans text-[14px] leading-[1.8] whitespace-pre-line">{content}</p>
+      <div className="rounded-2xl rounded-bl-sm px-5 py-4 border border-cream/8 max-w-[88%]" style={{ background: 'rgba(255,255,255,0.06)' }}>
+        <p className="text-cream font-sans text-[14px] leading-[1.8] whitespace-pre-line">{content}</p>
       </div>
     </div>
   )
@@ -383,8 +383,8 @@ function BotBubble({ content }: { content: string }) {
 function UserBubble({ content }: { content: string }) {
   return (
     <div className="flex justify-end">
-      <div className="bg-midnight text-cream rounded-2xl rounded-br-sm px-5 py-4 max-w-[88%] shadow-[0_2px_20px_rgba(0,0,0,0.08)]">
-        <p className="font-sans text-[14px] leading-[1.8] whitespace-pre-line">{content}</p>
+      <div className="bg-sand rounded-2xl rounded-br-sm px-5 py-4 max-w-[88%] shadow-[0_2px_20px_rgba(0,0,0,0.25)]">
+        <p className="text-midnight font-sans text-[14px] leading-[1.8] whitespace-pre-line">{content}</p>
       </div>
     </div>
   )

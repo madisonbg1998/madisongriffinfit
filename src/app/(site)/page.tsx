@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
@@ -55,6 +55,7 @@ export default function HomePage() {
       <WhoThisIsForSection />
       <BodyBriefSection />
       <OffersSection />
+      <NewsletterSection />
       <SocialProofSection />
       <FinalCTASection />
     </>
@@ -209,7 +210,7 @@ function DreamOutcomeSection() {
   const s2 = useInView()
 
   return (
-    <section className="bg-midnight py-28 md:py-36 overflow-hidden">
+    <section className="bg-choco py-28 md:py-36 overflow-hidden">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
           <div
@@ -415,7 +416,7 @@ function BodyBriefSection() {
   const s2 = useInView()
 
   return (
-    <section className="bg-midnight py-28 md:py-36 overflow-hidden">
+    <section className="bg-choco py-28 md:py-36 overflow-hidden">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           <div ref={s1.ref} className="space-y-7 order-2 lg:order-2">
@@ -505,7 +506,7 @@ function OffersSection() {
 
         <div ref={cards.ref} className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
           <div
-            className={`rounded-sm bg-midnight p-10 md:p-12 space-y-5 flex flex-col ${anim(cards.isVisible, 0).className}`}
+            className={`rounded-sm bg-choco p-10 md:p-12 space-y-5 flex flex-col ${anim(cards.isVisible, 0).className}`}
             style={anim(cards.isVisible, 0).style}
           >
             <p className="text-sand text-[10px] font-sans font-medium tracking-[0.25em] uppercase">1:1 Coaching</p>
@@ -544,7 +545,46 @@ function OffersSection() {
 }
 
 /* ================================================================== */
-/*  8. SOCIAL PROOF                                                    */
+/*  8. NEWSLETTER                                                      */
+/* ================================================================== */
+function NewsletterSection() {
+  const s = useInView()
+
+  return (
+    <section className="bg-choco py-20 md:py-28">
+      <div ref={s.ref} className="mx-auto max-w-2xl px-6 text-center">
+        <p
+          className={`text-sand text-[10px] font-sans font-medium tracking-[0.3em] uppercase mb-5 ${anim(s.isVisible).className}`}
+          style={anim(s.isVisible).style}
+        >
+          The Newsletter
+        </p>
+        <h2
+          className={`font-serif text-cream text-3xl md:text-4xl leading-tight mb-5 ${anim(s.isVisible, 100).className}`}
+          style={anim(s.isVisible, 100).style}
+        >
+          Actually though...<br />you should be on this list.
+        </h2>
+        <p
+          className={`text-cream/50 font-sans text-base leading-relaxed mb-8 max-w-lg mx-auto ${anim(s.isVisible, 200).className}`}
+          style={anim(s.isVisible, 200).style}
+        >
+          Every week we&apos;re dismantling the BS fitness beliefs that have been keeping you restricted, stressed, and living smaller than you should be.
+        </p>
+        <Link
+          href="/newsletter"
+          className={`inline-block bg-sand text-midnight font-sans text-[11px] font-semibold tracking-[0.18em] uppercase px-10 py-4 rounded-sm hover:bg-sand/85 transition-colors duration-300 ${anim(s.isVisible, 300).className}`}
+          style={anim(s.isVisible, 300).style}
+        >
+          Join the Actually Though Newsletter
+        </Link>
+      </div>
+    </section>
+  )
+}
+
+/* ================================================================== */
+/*  9. SOCIAL PROOF                                                    */
 /* ================================================================== */
 const testimonials = [
   {

@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
 
 const topics = [
   {
@@ -93,32 +94,23 @@ export default function BlogPage() {
       </section>
 
       {/* Newsletter Signup */}
-      <section className="bg-cream py-20 sm:py-28">
+      <section className="py-20 sm:py-28" style={{ background: '#1C0D06' }}>
         <div className="mx-auto max-w-xl px-6 lg:px-10 text-center">
-          <h2 className="font-serif text-midnight text-3xl sm:text-4xl font-medium mb-4">
-            Be the First to Know
-          </h2>
-          <p className="text-charcoal/70 text-base leading-relaxed mb-10">
-            Get notified when new articles drop. No spam, just real insights
-            delivered to your inbox.
+          <p className="text-sand text-[10px] font-sans font-medium tracking-[0.3em] uppercase mb-6">
+            The Newsletter
           </p>
-          <form
-            onSubmit={(e) => e.preventDefault()}
-            className="flex flex-col sm:flex-row gap-3"
+          <h2 className="font-serif text-cream text-3xl sm:text-4xl mb-5">
+            Actually though...<br />you should be on this list.
+          </h2>
+          <p className="text-cream/45 font-sans text-base leading-relaxed mb-10">
+            Every week we&apos;re dismantling the BS fitness beliefs that have been keeping you restricted, stressed, and living smaller than you should be. Be first to know when new posts drop too.
+          </p>
+          <Link
+            href="/newsletter"
+            className="inline-block bg-sand text-midnight font-sans text-[11px] font-semibold tracking-[0.2em] uppercase px-10 py-4 rounded-lg hover:bg-sand/85 transition-all duration-300"
           >
-            <input
-              type="email"
-              placeholder="Your email address"
-              required
-              className="flex-1 bg-white border border-bark/20 text-midnight placeholder:text-charcoal/35 text-sm px-5 py-3.5 rounded-sm focus:outline-none focus:ring-2 focus:ring-bark/20 focus:border-bark transition-all duration-300"
-            />
-            <button
-              type="submit"
-              className="bg-bark text-cream text-[11px] font-medium tracking-[0.18em] uppercase px-8 py-3.5 rounded-sm hover:bg-bark/90 transition-colors duration-300 whitespace-nowrap"
-            >
-              Notify Me
-            </button>
-          </form>
+            Join the Actually Though Newsletter
+          </Link>
         </div>
       </section>
     </>

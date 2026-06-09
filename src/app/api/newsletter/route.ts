@@ -7,7 +7,7 @@ function validateEmail(email: string): boolean {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    const { email } = body
+    const { email, firstName } = body
 
     if (!email || typeof email !== 'string' || email.trim() === '') {
       return NextResponse.json({ error: 'Email is required' }, { status: 400 })
@@ -17,34 +17,56 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Invalid email address' }, { status: 400 })
     }
 
-    const baseUrl = process.env.ADHARA_BASE_URL
-    const formSlug = process.env.ADHARA_NEWSLETTER_FORM_SLUG
-    const apiKey = process.env.ADHARA_API_KEY
-    const workspaceId = process.env.ADHARA_WORKSPACE_ID
+    const cleanEmail = email.trim()
+    const cleanFirstName = firstName?.trim() || ''
 
-    if (!baseUrl || !formSlug || !apiKey || !workspaceId) {
-      console.error('Missing Adhara environment variables for newsletter form')
-      return NextResponse.json({ error: 'Server configuration error' }, { status: 500 })
-    }
+    // ── 1. ConvertKit / Kit ──────────────────────────────────────────
+    const kitParams = new URLSearchParams()
+    kitParams.append('email_address', cleanEmail)
+    if (cleanFirstName) kitParams.append('fields[first_name]', cleanFirstName)
 
-    const response = await fetch(`${baseUrl}/api/v1/forms/${formSlug}/submit`, {
+    const kitPromise = fetch('https://app.kit.com/forms/9538302/subscriptions', {
       method: 'POST',
-      headers: {
-        'X-API-Key': apiKey,
-        'X-Workspace-ID': workspaceId,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ response_data: { email: email.trim() } }),
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: kitParams.toString(),
     })
 
-    if (!response.ok) {
-      const errorText = await response.text()
-      console.error('Adhara newsletter submission failed:', response.status, errorText)
-      return NextResponse.json({ error: 'Failed to subscribe' }, { status: response.status })
+    // ── 2. Adhara ────────────────────────────────────────────────────
+    const baseUrl   = process.env.ADHARA_BASE_URL
+    const formSlug  = process.env.ADHARA_NEWSLETTER_FORM_SLUG
+    const apiKey    = process.env.ADHARA_API_KEY
+    const workspaceId = process.env.ADHARA_WORKSPACE_ID
+
+    const adharaPromise = (baseUrl && formSlug && apiKey && workspaceId)
+      ? fetch(`${baseUrl}/api/v1/forms/${formSlug}/submit`, {
+          method: 'POST',
+          headers: {
+            'X-API-Key': apiKey,
+            'X-Workspace-ID': workspaceId,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            response_data: { email: cleanEmail, fullName: cleanFirstName },
+          }),
+        })
+      : Promise.resolve(null)
+
+    // Fire both at the same time
+    const [kitRes, adharaRes] = await Promise.all([kitPromise, adharaPromise])
+
+    if (!kitRes.ok) {
+      const errorText = await kitRes.text()
+      console.error('ConvertKit subscription failed:', kitRes.status, errorText)
+      return NextResponse.json({ error: 'Failed to subscribe' }, { status: kitRes.status })
     }
 
-    const data = await response.json()
-    return NextResponse.json({ success: true, data })
+    if (adharaRes && !adharaRes.ok) {
+      // Log but don't fail — Kit succeeded, Adhara is secondary
+      const errorText = await adharaRes.text()
+      console.error('Adhara newsletter submission failed:', adharaRes.status, errorText)
+    }
+
+    return NextResponse.json({ success: true })
   } catch (error) {
     console.error('Newsletter submission error:', error)
     return NextResponse.json({ error: 'An unexpected error occurred' }, { status: 500 })

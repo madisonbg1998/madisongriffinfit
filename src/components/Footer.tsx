@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState } from 'react'
 import Link from 'next/link'
@@ -7,11 +7,13 @@ const footerNav = [
   { href: '/method', label: 'Method' },
   { href: '/about', label: 'About' },
   { href: '/body-brief', label: 'Body Brief' },
-  { href: '/work-with-me', label: '1:1 Coaching' },
+  { href: '/work-with-me', label: 'Body Unmuted 1:1' },
+  { href: '/body-decoded', label: 'Body Decoded 1:1' },
   { href: '/blog', label: 'Blog' },
 ]
 
 export function Footer() {
+  const [newsletterFirstName, setNewsletterFirstName] = useState('')
   const [newsletterEmail, setNewsletterEmail] = useState('')
   const [newsletterSubmitting, setNewsletterSubmitting] = useState(false)
   const [newsletterSent, setNewsletterSent] = useState(false)
@@ -33,7 +35,7 @@ export function Footer() {
       const response = await fetch('/api/newsletter', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: newsletterEmail }),
+        body: JSON.stringify({ email: newsletterEmail, firstName: newsletterFirstName }),
       })
       const data = await response.json()
       if (!response.ok) throw new Error(data.error || 'Something went wrong.')
@@ -66,10 +68,10 @@ export function Footer() {
     }
   }
 
-  const inputClass = 'w-full bg-charcoal/60 border border-charcoal/80 text-cream placeholder:text-cream/30 text-sm px-4 py-3 rounded-sm focus:outline-none focus:border-sand/50 transition-colors duration-300'
+  const inputClass = 'w-full border border-cream/10 text-cream placeholder:text-cream/25 text-sm px-4 py-3 rounded-sm focus:outline-none focus:border-sand/40 focus:ring-1 focus:ring-sand/20 transition-all duration-300 [background:rgba(255,255,255,0.06)]'
 
   return (
-    <footer className="bg-midnight text-cream/80">
+    <footer className="bg-choco text-cream/80">
       <div className="mx-auto max-w-7xl px-6 lg:px-10 pt-20 pb-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-16 lg:gap-20">
 
@@ -167,10 +169,10 @@ export function Footer() {
           {/* Newsletter */}
           <div>
             <h3 className="text-cream text-[11px] font-medium tracking-[0.2em] uppercase mb-8">
-              Stay in the Loop
+              Actually though... you should be on this list.
             </h3>
             <p className="text-cream/50 text-sm leading-relaxed mb-6">
-              Insights on strength, nutrition, and building a body that holds up to your actual life. No noise. Just the real stuff.
+              Every week we&apos;re dismantling the BS fitness beliefs that have been keeping you restricted, stressed, and living smaller than you should be.
             </p>
             {newsletterSent ? (
               <p className="text-sand text-sm leading-relaxed">
@@ -179,10 +181,18 @@ export function Footer() {
             ) : (
               <form onSubmit={handleNewsletter} className="flex flex-col gap-3">
                 <input
+                  type="text"
+                  value={newsletterFirstName}
+                  onChange={(e) => setNewsletterFirstName(e.target.value)}
+                  placeholder="Name"
+                  suppressHydrationWarning
+                  className={inputClass}
+                />
+                <input
                   type="email"
                   value={newsletterEmail}
                   onChange={(e) => setNewsletterEmail(e.target.value)}
-                  placeholder="Your email"
+                  placeholder="Email"
                   required
                   suppressHydrationWarning
                   className={inputClass}
@@ -196,7 +206,7 @@ export function Footer() {
                   suppressHydrationWarning
                   className="w-full bg-bark text-cream text-[11px] font-medium tracking-[0.15em] uppercase px-6 py-3 rounded-sm hover:bg-sand transition-colors duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
                 >
-                  {newsletterSubmitting ? 'Subscribing...' : 'Subscribe'}
+                  {newsletterSubmitting ? 'Joining...' : 'Join the Actually Though Newsletter'}
                 </button>
               </form>
             )}

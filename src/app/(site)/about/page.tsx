@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+﻿import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -86,7 +86,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── The Shift ── */}
-      <section className="bg-midnight py-24 md:py-32">
+      <section className="bg-choco py-24 md:py-32">
         <div className="max-w-3xl mx-auto px-6 space-y-12">
           <p className="text-cream/75 font-sans text-[17px] leading-[1.75]">What eventually shifted everything was going into a proper muscle building phase. For the first time I stopped equating my weight with my progress. I started pulling flexibility back in, little by little. And something unexpected happened. My body kept changing, actually changing in ways I loved, but I wasn&rsquo;t grinding my way through it anymore. I was eating the foods I loved. I was enjoying my life. And my body was responding better than it ever had when I was controlling everything.</p>
           <p className="font-serif text-cream text-2xl md:text-3xl lg:text-4xl leading-snug text-center">
@@ -129,7 +129,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── Who I Work With ── */}
-      <section className="bg-midnight py-24 md:py-32">
+      <section className="bg-choco py-24 md:py-32">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div className="relative aspect-[4/5] overflow-hidden rounded-sm">

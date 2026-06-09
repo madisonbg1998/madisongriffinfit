@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState, useCallback } from 'react'
 import Image from 'next/image'
@@ -571,7 +571,7 @@ export default function BodyBriefPage() {
       </section>
 
       {/* ── The Copy ── */}
-      <section className="bg-midnight py-24 md:py-32">
+      <section className="bg-choco py-24 md:py-32">
         <div className="max-w-3xl mx-auto px-6">
           <div className="space-y-6 text-cream/75 font-sans text-[17px] leading-[1.75] mb-14">
             <p>Think of it as the conversation I&rsquo;d have with you if we sat down to lunch and you told me <em className="italic text-sand/80">exactly where you were with your body, what you&rsquo;d tried, what wasn&rsquo;t working, and what you actually wanted.</em> <span className="text-cream font-medium">That&rsquo;s exactly what this is.</span></p>
@@ -622,7 +622,7 @@ export default function BodyBriefPage() {
       </section>
 
       {/* ── This Is For You If ── */}
-      <section className="bg-midnight py-24 md:py-32">
+      <section className="bg-choco py-24 md:py-32">
         <div className="max-w-2xl mx-auto px-6 text-center">
           <div className="space-y-5 text-cream/70 font-sans text-[17px] leading-[1.75] mb-10">
             <p>Whether you&rsquo;re missing knowledge, struggling to make the strategy stick, or know something deeper is getting in the way, this is where you finally find out which one it is. Fill in the form and we&rsquo;ll go through your results together.</p>

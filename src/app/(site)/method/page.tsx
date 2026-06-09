@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+﻿import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -133,7 +133,7 @@ export default function MethodPage() {
       </section>
 
       {/* ── Pillars Intro ── */}
-      <section className="bg-midnight py-20 md:py-28">
+      <section className="bg-choco py-20 md:py-28">
         <div className="max-w-3xl mx-auto px-6 text-center">
           <h2 className="font-serif text-cream leading-[1.25] tracking-tight text-balance">
             <span className="block text-4xl md:text-5xl mb-4">Three pillars.</span>

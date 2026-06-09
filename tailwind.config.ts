@@ -15,6 +15,7 @@ const config: Config = {
         sage: "#5C6B4F",
         charcoal: "#2C2C2C",
         midnight: "#1A1A1A",
+        choco: "#1C0D06",
       },
       fontFamily: {
         serif: ["Playfair Display", "Georgia", "serif"],

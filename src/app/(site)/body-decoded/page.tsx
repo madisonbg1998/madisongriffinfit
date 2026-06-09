@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+﻿import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -75,7 +75,7 @@ export default function BodyDecodedPage() {
       </section>
 
       {/* ── 2. WHAT LED HER HERE ── */}
-      <section className="bg-midnight py-28 md:py-40">
+      <section className="bg-choco py-28 md:py-40">
         <div className="max-w-3xl mx-auto px-6">
           <p className="text-sand text-[11px] font-sans font-medium tracking-[0.3em] uppercase mb-10">
             The Problem
@@ -164,7 +164,7 @@ export default function BodyDecodedPage() {
       </section>
 
       {/* ── 4. THE INTEGRATED APPROACH ── */}
-      <section className="bg-midnight py-28 md:py-40">
+      <section className="bg-choco py-28 md:py-40">
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-16 lg:gap-24 items-start">
             <div className="lg:col-span-3 space-y-7 text-cream/70 font-sans text-[17px] leading-[1.85]">
@@ -238,7 +238,7 @@ export default function BodyDecodedPage() {
       </section>
 
       {/* ── 6. MEET JAMIE ── */}
-      <section className="bg-midnight py-28 md:py-40">
+      <section className="bg-choco py-28 md:py-40">
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
 
@@ -349,7 +349,7 @@ export default function BodyDecodedPage() {
       </section>
 
       {/* ── 8. CTA ── */}
-      <section className="bg-midnight py-28 md:py-40">
+      <section className="bg-choco py-28 md:py-40">
         <div className="max-w-3xl mx-auto px-6 text-center">
           <p className="text-sand text-[11px] font-sans font-medium tracking-[0.3em] uppercase mb-8">
             This Is for You If
