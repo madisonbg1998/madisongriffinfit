@@ -263,7 +263,7 @@ interface ChatProps {
   setInput:  (v: string) => void
   send:      (v: string) => void
   onBack:    () => void
-  bottomRef: React.RefObject<HTMLDivElement>
+  bottomRef: React.RefObject<HTMLDivElement | null>
 }
 
 function Chat({ messages, isTyping, input, setInput, send, onBack, bottomRef }: ChatProps) {
