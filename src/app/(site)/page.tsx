@@ -76,7 +76,7 @@ function HeroSection() {
     <section className="min-h-screen flex flex-col lg:flex-row overflow-hidden" style={{ background: '#1C0D06' }}>
 
       {/* ── Left: Text ── */}
-      <div className="flex-1 flex flex-col justify-end lg:justify-center px-8 md:px-14 lg:px-16 xl:px-24 pt-40 lg:pt-0 pb-16 lg:pb-0 relative z-10 max-w-none lg:max-w-[62%]">
+      <div className="flex-1 flex flex-col justify-end lg:justify-center px-8 md:px-14 lg:px-16 xl:px-24 pt-40 lg:pt-28 pb-16 lg:pb-0 relative z-10 max-w-none lg:max-w-[62%]">
 
         {/* Label */}
         <div
@@ -90,7 +90,7 @@ function HeroSection() {
 
         {/* Headline */}
         <h1
-          className={`font-serif text-cream text-[2.6rem] md:text-5xl lg:text-[3.25rem] xl:text-[3.75rem] leading-[1.08] tracking-tight mb-7 max-w-lg transition-all duration-[1100ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-100 ${
+          className={`font-serif text-cream text-[3.25rem] md:text-[4rem] lg:text-[4.75rem] xl:text-[5.25rem] leading-[1.06] tracking-tight mb-7 max-w-xl transition-all duration-[1100ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-100 ${
             loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
@@ -99,7 +99,7 @@ function HeroSection() {
 
         {/* Subtext */}
         <p
-          className={`text-cream/55 font-sans text-base md:text-[17px] leading-relaxed mb-3 max-w-sm transition-all duration-[1100ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-200 ${
+          className={`text-cream/55 font-sans text-[18px] md:text-[21px] leading-relaxed mb-3 max-w-md transition-all duration-[1100ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-200 ${
             loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
           }`}
         >
@@ -108,7 +108,7 @@ function HeroSection() {
 
         {/* Parenthetical */}
         <p
-          className={`text-sand/50 font-sans text-sm italic mb-12 max-w-sm transition-all duration-[1100ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-300 ${
+          className={`text-sand/50 font-sans text-[16px] italic mb-12 max-w-md transition-all duration-[1100ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-300 ${
             loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
           }`}
         >
@@ -147,12 +147,12 @@ function HeroSection() {
 
       {/* ── Right: Photo ── */}
       <div
-        className={`relative lg:w-[38%] xl:w-[40%] flex-shrink-0 h-[55vw] lg:h-auto transition-opacity duration-[1400ms] ease-out delay-200 ${
+        className={`relative lg:w-[38%] xl:w-[40%] flex-shrink-0 h-[55vw] lg:h-auto overflow-hidden transition-opacity duration-[1400ms] ease-out delay-200 ${
           loaded ? 'opacity-100' : 'opacity-0'
         }`}
       >
         <Image
-          src="/madison-fan-hero.webp"
+          src="/madison-fan-hero2.webp"
           alt="Madison Griffin"
           fill
           priority
