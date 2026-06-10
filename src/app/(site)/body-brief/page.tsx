@@ -550,7 +550,7 @@ export default function BodyBriefPage() {
           className="object-cover"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-midnight/55" />
+        <div className="absolute inset-0 bg-black/55" />
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center py-28">
           <p className="text-sand text-[11px] font-sans font-medium tracking-[0.3em] uppercase mb-6">
             The Body Brief
@@ -1352,10 +1352,11 @@ export default function BodyBriefPage() {
               priority
               quality={90}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-midnight/20 via-transparent to-midnight/10" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-black/10" />
           </div>
         </div>
       </div>
     </>
   )
 }
+

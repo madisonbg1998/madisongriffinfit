@@ -73,77 +73,104 @@ function HeroSection() {
   }, [])
 
   return (
-    <section className="relative min-h-screen overflow-hidden">
-      <div className="absolute inset-0">
-        <Image
-          src="/Madison-29.webp"
-          alt="Madison Griffin"
-          fill
-          priority
-          className="object-cover"
-          style={{ objectPosition: '50% 30%' }}
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-midnight/85 via-midnight/30 to-midnight/10" />
-      </div>
+    <section className="min-h-screen flex flex-col lg:flex-row overflow-hidden" style={{ background: '#1C0D06' }}>
 
-      <div className="absolute inset-0 flex items-end">
-        <div className="mx-auto max-w-7xl w-full px-6 md:px-12 lg:px-20 pb-16 md:pb-24">
-          <div className="max-w-2xl">
-          <h1
-            className={`font-serif text-5xl md:text-7xl lg:text-[5.25rem] leading-[1.08] text-cream tracking-tight text-balance transition-all duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
-              loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-            }`}
-            style={{ textShadow: '0 2px 20px rgba(0,0,0,0.5), 0 1px 4px rgba(0,0,0,0.3)' }}
-          >
-            Your body and your life were never supposed to be at odds.
-          </h1>
+      {/* ── Left: Text ── */}
+      <div className="flex-1 flex flex-col justify-end lg:justify-center px-8 md:px-14 lg:px-16 xl:px-24 pt-40 lg:pt-0 pb-16 lg:pb-0 relative z-10 max-w-none lg:max-w-[62%]">
 
-          <p
-            className={`mt-7 text-lg md:text-xl text-cream/70 font-sans font-light leading-relaxed max-w-xl transition-all duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-200 ${
-              loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}
-            style={{ textShadow: '0 1px 10px rgba(0,0,0,0.4)' }}
-          >
-            Coaching for location-free female founders who have optimised everything in their life except their body. That changes here.
-          </p>
+        {/* Label */}
+        <div
+          className={`flex items-center gap-3 mb-8 transition-all duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
+            loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+          }`}
+        >
+          <div className="w-8 h-px bg-sand/40" />
+          <p className="text-sand text-[10px] font-sans font-medium tracking-[0.3em] uppercase">Body Unmuted</p>
+        </div>
 
-          <div
-            className={`mt-10 transition-all duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-500 ${
-              loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}
+        {/* Headline */}
+        <h1
+          className={`font-serif text-cream text-[2.6rem] md:text-5xl lg:text-[3.25rem] xl:text-[3.75rem] leading-[1.08] tracking-tight mb-7 max-w-lg transition-all duration-[1100ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-100 ${
+            loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}
+        >
+          Make your body your best business asset.
+        </h1>
+
+        {/* Subtext */}
+        <p
+          className={`text-cream/55 font-sans text-base md:text-[17px] leading-relaxed mb-3 max-w-sm transition-all duration-[1100ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-200 ${
+            loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+          }`}
+        >
+          A flexible approach to fitness for the location free female founder.
+        </p>
+
+        {/* Parenthetical */}
+        <p
+          className={`text-sand/50 font-sans text-sm italic mb-12 max-w-sm transition-all duration-[1100ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-300 ${
+            loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+          }`}
+        >
+          (consistent schedule, time zone, and equipment <span className="not-italic font-medium text-sand/70">NOT</span> required)
+        </p>
+
+        {/* CTA */}
+        <div
+          className={`transition-all duration-[1100ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-[450ms] ${
+            loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+          }`}
+        >
+          <Link
+            href="/body-brief"
+            className="inline-flex items-center gap-3 bg-sand text-midnight font-sans font-medium text-[11px] tracking-[0.18em] uppercase rounded-sm px-10 py-4 hover:bg-sand/80 transition-colors duration-300"
           >
-            <Link
-              href="/body-brief"
-              className="inline-flex items-center gap-3 bg-sand text-midnight font-sans font-medium text-[11px] tracking-[0.18em] uppercase rounded-sm px-10 py-4 hover:bg-bark hover:text-cream transition-colors duration-300"
-            >
-              Get Your Free Body Brief
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M2 7h10M8 3l4 4-4 4" />
-              </svg>
-            </Link>
-          </div>
+            Get Your Free Body Brief
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M2 7h10M8 3l4 4-4 4" />
+            </svg>
+          </Link>
+        </div>
+
+        {/* Scroll indicator */}
+        <div
+          className={`hidden lg:flex mt-16 flex-col items-start gap-2 transition-opacity duration-1000 delay-[900ms] ${
+            loaded ? 'opacity-40' : 'opacity-0'
+          }`}
+        >
+          <span className="text-cream/60 text-[10px] tracking-[0.2em] uppercase font-sans">Scroll</span>
+          <svg className="w-4 h-4 text-cream/60 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+          </svg>
         </div>
       </div>
 
-      </div>
-
+      {/* ── Right: Photo ── */}
       <div
-        className={`absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 transition-opacity duration-1000 delay-[800ms] ${
-          loaded ? 'opacity-60' : 'opacity-0'
+        className={`relative lg:w-[38%] xl:w-[40%] flex-shrink-0 h-[55vw] lg:h-auto transition-opacity duration-[1400ms] ease-out delay-200 ${
+          loaded ? 'opacity-100' : 'opacity-0'
         }`}
       >
-        <span className="text-cream/50 text-[10px] tracking-[0.2em] uppercase font-sans">Scroll</span>
-        <svg
-          className="w-5 h-5 text-cream/50 animate-bounce"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          strokeWidth={1.5}
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-        </svg>
+        <Image
+          src="/madison-fan-hero.webp"
+          alt="Madison Griffin"
+          fill
+          priority
+          className="object-cover object-center"
+          sizes="(max-width: 1024px) 100vw, 40vw"
+        />
+        {/* Left edge fade into chocolate */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{ background: 'linear-gradient(to right, #1C0D06 0%, transparent 25%)' }}
+        />
+        {/* Bottom fade for mobile */}
+        <div
+          className="absolute inset-0 pointer-events-none lg:hidden"
+          style={{ background: 'linear-gradient(to top, #1C0D06 0%, transparent 40%)' }}
+        />
       </div>
+
     </section>
   )
 }
@@ -365,7 +392,7 @@ function WhoThisIsForSection() {
   const s2 = useInView()
 
   return (
-    <section className="bg-white py-28 md:py-36">
+    <section className="bg-cream py-28 md:py-36">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
           <div ref={s1.ref} className="space-y-7">
@@ -471,7 +498,7 @@ function BodyBriefSection() {
               className="object-cover object-center"
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-midnight/30 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
           </div>
         </div>
       </div>
@@ -619,7 +646,7 @@ function SocialProofSection() {
           className="object-cover"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-midnight/65 backdrop-blur-[2px]" />
+        <div className="absolute inset-0 bg-black/65 backdrop-blur-[2px]" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-10">
@@ -674,7 +701,7 @@ function FinalCTASection() {
             className="object-cover"
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-midnight/60 via-midnight/50 to-midnight/75" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/75" />
         </div>
 
         <div ref={s.ref} className="relative z-10 mx-auto max-w-3xl px-6 text-center">

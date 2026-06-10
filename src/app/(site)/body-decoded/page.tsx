@@ -60,7 +60,7 @@ export default function BodyDecodedPage() {
           style={{ objectPosition: '50% 25%' }}
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-midnight/65" />
+        <div className="absolute inset-0 bg-black/65" />
         <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
           <p className="text-sand text-[11px] font-sans font-medium tracking-[0.3em] uppercase mb-6">
             A Collaboration

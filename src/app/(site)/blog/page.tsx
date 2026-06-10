@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import Image from 'next/image'
 import Link from 'next/link'
@@ -43,7 +43,7 @@ export default function BlogPage() {
           priority
           quality={90}
         />
-        <div className="absolute inset-0 bg-midnight/50" />
+        <div className="absolute inset-0 bg-black/50" />
         <div className="relative z-10 text-center px-6">
           <p className="text-sand text-[11px] font-medium tracking-[0.25em] uppercase mb-5">
             Thoughts & Insights

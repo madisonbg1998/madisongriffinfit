@@ -43,7 +43,7 @@ export default function MethodPage() {
           className="object-cover"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-midnight/60" />
+        <div className="absolute inset-0 bg-black/60" />
         <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
           <p className="text-sand text-[11px] font-sans font-medium tracking-[0.3em] uppercase mb-6">
             The Method
@@ -297,7 +297,7 @@ export default function MethodPage() {
           className="object-cover"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-midnight/65" />
+        <div className="absolute inset-0 bg-black/65" />
         <div className="relative z-10 max-w-3xl mx-auto px-6 text-center">
           <p className="text-sand text-[11px] font-sans font-medium tracking-[0.3em] uppercase mb-8">
             The Outcome

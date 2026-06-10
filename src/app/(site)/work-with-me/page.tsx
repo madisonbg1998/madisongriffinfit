@@ -81,7 +81,7 @@ export default function WorkWithMePage() {
           sizes="100vw"
           quality={90}
         />
-        <div className="absolute inset-0 bg-midnight/58" />
+        <div className="absolute inset-0 bg-black/58" />
         <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
           <p className="text-sand text-[11px] font-sans font-medium tracking-[0.3em] uppercase mb-6">
             1:1 Coaching
@@ -315,7 +315,7 @@ export default function WorkWithMePage() {
           sizes="100vw"
           quality={85}
         />
-        <div className="absolute inset-0 bg-midnight/62" />
+        <div className="absolute inset-0 bg-black/62" />
         <div className="relative z-10 max-w-3xl mx-auto px-6 text-center">
           <p className="text-sand text-[11px] font-sans font-medium tracking-[0.3em] uppercase mb-8">
             Ready to Begin

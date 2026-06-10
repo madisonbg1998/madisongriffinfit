@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState, useCallback } from 'react'
 import Image from 'next/image'
@@ -69,7 +69,7 @@ const textareaClass =
 function QLabel({ num }: { num: string }) {
   return (
     <p className="text-bark text-[10px] font-medium tracking-[0.2em] uppercase mb-2">
-      {num} —
+      {num} â€”
     </p>
   )
 }
@@ -219,7 +219,7 @@ export default function ApplyPage() {
           <p className="text-bark text-[11px] font-medium tracking-[0.25em] uppercase mb-4">1:1 Coaching</p>
           <h1 className="font-serif text-midnight text-4xl sm:text-5xl font-medium mb-4">Apply for Coaching</h1>
           <p className="text-charcoal/60 text-base leading-relaxed mb-12">
-            I read every application personally. Be as honest and specific as you can — the more real you are, the better I can assess whether we&apos;re the right fit for each other.
+            I read every application personally. Be as honest and specific as you can â€” the more real you are, the better I can assess whether we&apos;re the right fit for each other.
           </p>
 
           {/* Step Progress */}
@@ -261,7 +261,7 @@ export default function ApplyPage() {
             </div>
           )}
 
-          {/* ── Step 1: About You ── */}
+          {/* â”€â”€ Step 1: About You â”€â”€ */}
           {step === 1 && (
             <div className="space-y-8 animate-fade-in">
               <div>
@@ -332,7 +332,7 @@ export default function ApplyPage() {
             </div>
           )}
 
-          {/* ── Step 2: Your Goals ── */}
+          {/* â”€â”€ Step 2: Your Goals â”€â”€ */}
           {step === 2 && (
             <div className="space-y-8 animate-fade-in">
               <div>
@@ -377,7 +377,7 @@ export default function ApplyPage() {
                   What would need to be true in 6 months for you to feel like this was the best investment you made this year? <span className="text-sand">*</span>
                 </label>
                 <p className="text-charcoal/40 text-xs mb-3">
-                  Be specific — what would you be doing, how would you be feeling, what would have changed?
+                  Be specific â€” what would you be doing, how would you be feeling, what would have changed?
                 </p>
                 <textarea
                   id="successVision"
@@ -391,7 +391,7 @@ export default function ApplyPage() {
             </div>
           )}
 
-          {/* ── Step 3: Your History ── */}
+          {/* â”€â”€ Step 3: Your History â”€â”€ */}
           {step === 3 && (
             <div className="space-y-8 animate-fade-in">
               <div>
@@ -429,7 +429,7 @@ export default function ApplyPage() {
             </div>
           )}
 
-          {/* ── Step 4: Why You, Why Now ── */}
+          {/* â”€â”€ Step 4: Why You, Why Now â”€â”€ */}
           {step === 4 && (
             <div className="space-y-8 animate-fade-in">
               <div>
@@ -521,7 +521,7 @@ export default function ApplyPage() {
             </div>
           )}
 
-          {/* ── Step 5: Anything Else ── */}
+          {/* â”€â”€ Step 5: Anything Else â”€â”€ */}
           {step === 5 && (
             <div className="space-y-8 animate-fade-in">
               <div>
@@ -600,9 +600,10 @@ export default function ApplyPage() {
             priority
             quality={90}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-midnight/20 via-transparent to-midnight/10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-black/10" />
         </div>
       </div>
     </div>
   )
 }
+

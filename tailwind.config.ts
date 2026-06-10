@@ -13,8 +13,8 @@ const config: Config = {
         sand: "#D4A574",
         bark: "#8B7355",
         sage: "#5C6B4F",
-        charcoal: "#2C2C2C",
-        midnight: "#1A1A1A",
+        charcoal: "#3D2B1A",
+        midnight: "#2D1506",
         choco: "#1C0D06",
       },
       fontFamily: {

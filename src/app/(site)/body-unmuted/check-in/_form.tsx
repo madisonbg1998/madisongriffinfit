@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
@@ -14,6 +14,7 @@ const textareaClass =
 // ── FormData ──────────────────────────────────────────────────────────────────
 
 interface FormData {
+  name: string
   // Section 1
   weekWord: string
   weekRating: number | null
@@ -51,6 +52,7 @@ interface FormData {
 }
 
 const initialFormData: FormData = {
+  name: '',
   weekWord: '',
   weekRating: null,
   mostImportant: '',
@@ -112,6 +114,7 @@ function ScaleInput({
             key={n}
             type="button"
             onClick={() => onChange(n)}
+            suppressHydrationWarning
             className={`flex-1 h-9 rounded-lg text-xs font-medium border transition-all duration-200 ${
               value === n
                 ? 'bg-bark border-bark text-cream'
@@ -186,6 +189,21 @@ export default function CheckInForm() {
 
         <div className="space-y-8">
 
+          {/* ── Name ── */}
+          <div>
+            <label className="block text-midnight text-sm font-medium mb-2">
+              Your name
+            </label>
+            <input
+              type="text"
+              suppressHydrationWarning
+              value={formData.name}
+              onChange={(e) => updateField('name', e.target.value)}
+              placeholder="First name"
+              className={`${inputClass} max-w-xs`}
+            />
+          </div>
+
           {/* ── Section 1: The Week Overall ── */}
           <SectionHeader num="01" title="The Week Overall" />
 
@@ -195,6 +213,7 @@ export default function CheckInForm() {
             </label>
             <input
               type="text"
+              suppressHydrationWarning
               value={formData.weekWord}
               onChange={(e) => updateField('weekWord', e.target.value)}
               placeholder="e.g. chaotic, solid, tired, focused..."
@@ -219,6 +238,7 @@ export default function CheckInForm() {
               What&rsquo;s the one thing you most want me to know about this week?
             </label>
             <textarea
+              suppressHydrationWarning
               value={formData.mostImportant}
               onChange={(e) => updateField('mostImportant', e.target.value)}
               placeholder="Whatever feels most important..."
@@ -246,6 +266,7 @@ export default function CheckInForm() {
               Which sessions felt good, and what made them feel that way?
             </label>
             <textarea
+              suppressHydrationWarning
               value={formData.goodSessions}
               onChange={(e) => updateField('goodSessions', e.target.value)}
               placeholder="Walk me through what stood out..."
@@ -258,6 +279,7 @@ export default function CheckInForm() {
               Which sessions felt hard, flat, or off — and do you have a sense of why?
             </label>
             <textarea
+              suppressHydrationWarning
               value={formData.hardSessions}
               onChange={(e) => updateField('hardSessions', e.target.value)}
               placeholder="Be specific if you can..."
@@ -273,6 +295,7 @@ export default function CheckInForm() {
               Schedule, energy, travel, motivation, life.
             </p>
             <textarea
+              suppressHydrationWarning
               value={formData.trainingObstacles}
               onChange={(e) => updateField('trainingObstacles', e.target.value)}
               placeholder="Nothing, or tell me what came up..."
@@ -285,6 +308,7 @@ export default function CheckInForm() {
               Any pain, tightness, discomfort, or anything physical I should know about?
             </label>
             <textarea
+              suppressHydrationWarning
               value={formData.physicalNotes}
               onChange={(e) => updateField('physicalNotes', e.target.value)}
               placeholder="Nothing, or describe..."
@@ -312,6 +336,7 @@ export default function CheckInForm() {
               How were your hunger and cravings throughout the week?
             </label>
             <textarea
+              suppressHydrationWarning
               value={formData.hungerCravings}
               onChange={(e) => updateField('hungerCravings', e.target.value)}
               placeholder="Normal, elevated, absent..."
@@ -327,6 +352,7 @@ export default function CheckInForm() {
               Evening eating, stress eating, skipping meals, anything like that.
             </p>
             <textarea
+              suppressHydrationWarning
               value={formData.nutritionPatterns}
               onChange={(e) => updateField('nutritionPatterns', e.target.value)}
               placeholder="Nothing notable, or share what you noticed..."
@@ -340,6 +366,7 @@ export default function CheckInForm() {
             </label>
             <input
               type="text"
+              suppressHydrationWarning
               value={formData.alcoholDrinks}
               onChange={(e) => updateField('alcoholDrinks', e.target.value)}
               placeholder="e.g. none, 2, 6..."
@@ -352,6 +379,7 @@ export default function CheckInForm() {
               Did anything derail your nutrition this week, and what do you think was behind it?
             </label>
             <textarea
+              suppressHydrationWarning
               value={formData.nutritionDerail}
               onChange={(e) => updateField('nutritionDerail', e.target.value)}
               placeholder="Nothing, or walk me through it..."
@@ -368,6 +396,7 @@ export default function CheckInForm() {
             </label>
             <input
               type="text"
+              suppressHydrationWarning
               value={formData.sleepHours}
               onChange={(e) => updateField('sleepHours', e.target.value)}
               placeholder="e.g. 7 hours"
@@ -404,6 +433,7 @@ export default function CheckInForm() {
               How has your digestion and bloating been this week?
             </label>
             <textarea
+              suppressHydrationWarning
               value={formData.digestionBloating}
               onChange={(e) => updateField('digestionBloating', e.target.value)}
               placeholder="Normal, better than usual, rough..."
@@ -417,6 +447,7 @@ export default function CheckInForm() {
             </label>
             <input
               type="text"
+              suppressHydrationWarning
               value={formData.cycleDay}
               onChange={(e) => updateField('cycleDay', e.target.value)}
               placeholder="e.g. day 14, luteal phase, not applicable..."
@@ -429,6 +460,7 @@ export default function CheckInForm() {
               Any PMS symptoms, hormonal shifts, or anything cycle-related that affected your week?
             </label>
             <textarea
+              suppressHydrationWarning
               value={formData.cycleNotes}
               onChange={(e) => updateField('cycleNotes', e.target.value)}
               placeholder="Nothing, or share here..."
@@ -459,6 +491,7 @@ export default function CheckInForm() {
               Work, personal, emotional — anything relevant.
             </p>
             <textarea
+              suppressHydrationWarning
               value={formData.stressors}
               onChange={(e) => updateField('stressors', e.target.value)}
               placeholder="Nothing notable, or share here..."
@@ -474,6 +507,7 @@ export default function CheckInForm() {
               Travel, events, big deadlines, social commitments — anything that might affect training or nutrition.
             </p>
             <textarea
+              suppressHydrationWarning
               value={formData.upcoming}
               onChange={(e) => updateField('upcoming', e.target.value)}
               placeholder="Nothing, or let me know..."
@@ -492,6 +526,7 @@ export default function CheckInForm() {
               Training, nutrition, mindset, life. Anything counts.
             </p>
             <textarea
+              suppressHydrationWarning
               value={formData.biggestWin}
               onChange={(e) => updateField('biggestWin', e.target.value)}
               placeholder="Own it..."
@@ -504,6 +539,7 @@ export default function CheckInForm() {
               What did you struggle with most?
             </label>
             <textarea
+              suppressHydrationWarning
               value={formData.biggestStruggle}
               onChange={(e) => updateField('biggestStruggle', e.target.value)}
               placeholder="Be honest..."
@@ -516,6 +552,7 @@ export default function CheckInForm() {
               How did you respond when things went off plan?
             </label>
             <textarea
+              suppressHydrationWarning
               value={formData.offPlanResponse}
               onChange={(e) => updateField('offPlanResponse', e.target.value)}
               placeholder="Dusted yourself off, spiralled, somewhere in between..."
@@ -531,6 +568,7 @@ export default function CheckInForm() {
               One thing you want to focus on or improve next week
             </label>
             <textarea
+              suppressHydrationWarning
               value={formData.focusNextWeek}
               onChange={(e) => updateField('focusNextWeek', e.target.value)}
               placeholder="Keep it specific..."
@@ -543,6 +581,7 @@ export default function CheckInForm() {
               Anything you need from me this week?
             </label>
             <textarea
+              suppressHydrationWarning
               value={formData.needFromMe}
               onChange={(e) => updateField('needFromMe', e.target.value)}
               placeholder="Nothing, or let me know..."
@@ -558,7 +597,8 @@ export default function CheckInForm() {
             type="button"
             onClick={handleSubmit}
             disabled={isSubmitting}
-            className="inline-flex items-center gap-2 bg-bark text-cream font-sans font-medium text-[11px] tracking-[0.18em] uppercase px-10 py-4 rounded-sm hover:bg-bark/90 transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
+          suppressHydrationWarning
+          className="inline-flex items-center gap-2 bg-bark text-cream font-sans font-medium text-[11px] tracking-[0.18em] uppercase px-10 py-4 rounded-sm hover:bg-bark/90 transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
           >
             {isSubmitting ? (
               <>

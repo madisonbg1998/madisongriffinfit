@@ -46,7 +46,7 @@ export default function NewsletterPage() {
           Back
         </Link>
         <p className="text-cream/15 font-sans text-[10px] tracking-[0.2em] uppercase">
-          Madison Griffin Fit
+          Body Unmuted
         </p>
       </div>
 
@@ -145,7 +145,7 @@ export default function NewsletterPage() {
       {/* Footer */}
       <div className="pb-8 text-center flex-shrink-0">
         <p className="text-cream/12 font-sans text-[10px] tracking-wide">
-          Madison Griffin Fit
+          Body Unmuted
         </p>
       </div>
 

@@ -88,7 +88,7 @@ function JoinModal({ onClose }: { onClose: () => void }) {
 
   return (
     <div
-      className="fixed inset-0 bg-midnight/75 z-50 flex items-center justify-center p-6"
+      className="fixed inset-0 bg-black/75 z-50 flex items-center justify-center p-6"
       onClick={onClose}
     >
       <div
@@ -195,7 +195,7 @@ export default function BodyReclaimedPage() {
           sizes="100vw"
           quality={90}
         />
-        <div className="absolute inset-0 bg-midnight/60" />
+        <div className="absolute inset-0 bg-black/60" />
         <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
           <p className="text-sand text-[11px] font-sans font-medium tracking-[0.3em] uppercase mb-6">
             Body Reclaimed
@@ -372,7 +372,7 @@ export default function BodyReclaimedPage() {
           sizes="100vw"
           quality={90}
         />
-        <div className="absolute inset-0 bg-midnight/65" />
+        <div className="absolute inset-0 bg-black/65" />
         <div className="relative z-10 max-w-2xl mx-auto px-6 text-center">
           <h2 className="font-serif text-cream text-3xl md:text-4xl lg:text-[3rem] leading-[1.1] mb-6">
             One clear plan. Built for you. Adjusted every month.
