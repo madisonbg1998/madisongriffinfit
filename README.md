@@ -12,4 +12,4 @@ $ pnpm dev
 
 Updates to have new forms.
 
-# Powered By Adhara
+# Powered By Adhara, Copyright 2026
