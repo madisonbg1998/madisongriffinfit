@@ -18,10 +18,10 @@ export default function AboutPage() {
       {/* ══════════════════════════════════════════ */}
       {/*  HERO                                      */}
       {/* ══════════════════════════════════════════ */}
-      <section className="min-h-screen flex flex-col lg:flex-row overflow-hidden" style={{ background: '#1C0D06' }}>
+      <section className="flex flex-col lg:flex-row lg:min-h-screen overflow-hidden" style={{ background: '#1C0D06' }}>
 
         {/* Left: text */}
-        <div className="flex-1 flex flex-col justify-center px-8 md:px-14 lg:px-16 xl:px-20 pt-36 pb-16 lg:py-0">
+        <div className="lg:flex-1 flex flex-col justify-center px-8 md:px-14 lg:px-16 xl:px-20 pt-28 pb-10 lg:py-0">
           <div className="flex items-center gap-3 mb-10">
             <div className="w-8 h-px bg-sand/40" />
             <p className="text-sand text-[10px] font-sans font-medium tracking-[0.3em] uppercase">About Madison</p>
@@ -35,13 +35,13 @@ export default function AboutPage() {
         </div>
 
         {/* Right: photo */}
-        <div className="relative lg:w-[42%] flex-shrink-0 h-[65vw] lg:h-auto overflow-hidden">
+        <div className="relative lg:w-[42%] flex-shrink-0 h-[115vw] lg:h-auto overflow-hidden">
           <Image
             src="/madison_smiling_on_couch.webp"
             alt="Madison Griffin"
             fill
             priority
-            className="object-cover object-[center_30%]"
+            className="object-cover object-center lg:object-[center_30%]"
             sizes="(max-width: 1024px) 100vw, 42vw"
           />
           <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(to right, #1C0D06 0%, transparent 30%)' }} />
@@ -56,7 +56,7 @@ export default function AboutPage() {
       {/*  01 — THE BEGINNING  (cream)              */}
       {/* ══════════════════════════════════════════ */}
       <section className="bg-cream py-24 md:py-32">
-        <div className="max-w-6xl mx-auto px-6 lg:px-10">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10">
 
           {/* Chapter label */}
           <div className="flex items-center gap-3 mb-14">
@@ -81,18 +81,17 @@ export default function AboutPage() {
                 </p>
               </div>
 
-              <p>That&rsquo;s when I realized this approach was never going to work for the life I actually wanted to build. I wanted to travel. Eat everything. Drink great wine. Sit at long dinners. A fitness approach that had me stressed in a winery parking lot on a Sunday was not going to survive that life.</p>
+              <p>That&rsquo;s when I realized this approach was never going to work for the life I actually wanted to build. Because I wanted to travel. Like really travel. I wanted to eat everything and drink great wine and sit at long dinners and show up fully in my life. And a fitness approach that had me stressed at a winery on a Sunday was not going to survive that.</p>
             </div>
 
             <div className="lg:col-span-5 lg:order-1">
-              <div className="overflow-hidden rounded-sm sticky top-28">
+              <div className="relative aspect-[3/4] overflow-hidden rounded-sm sticky top-28">
                 <Image
                   src="/madison-wine.webp"
                   alt="Madison with wine"
-                  width={0}
-                  height={0}
+                  fill
+                  className="object-cover object-center"
                   sizes="(max-width: 1024px) 100vw, 40vw"
-                  className="w-full h-auto"
                 />
               </div>
             </div>
@@ -124,7 +123,7 @@ export default function AboutPage() {
       {/*  02 — THE MUSCLE TRUTH  (cream)           */}
       {/* ══════════════════════════════════════════ */}
       <section className="bg-cream py-24 md:py-32">
-        <div className="max-w-6xl mx-auto px-6 lg:px-10">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10">
 
           {/* Chapter label */}
           <div className="flex items-center gap-3 mb-14">
@@ -158,7 +157,7 @@ export default function AboutPage() {
                 </p>
               </div>
 
-              <p>I know. Women have been told to be afraid of it forever and it makes me insane. Because <span className="text-bark font-medium">building muscle is genuinely the answer to everything.</span> It lets you eat more. It balances your hormones. It completely transforms your physique in a way that cardio and restriction never will. It gives you energy. It lets you travel and eat pasta and drink wine and not stress about it constantly because your body actually knows how to use food now.</p>
+              <p>I know. Women have been told to be afraid of it forever and it makes me insane. Because <span className="text-bark font-medium">building muscle is genuinely the answer to everything.</span> It lets you eat more. It balances your hormones. It completely transforms your physique in a way that cardio and restriction never will. It gives you energy. It lets you travel and eat pasta and drink wine and not stress about it constantly because your body actually knows how to use food now. And you get to feel strong and confident and like your body is working with you instead of against you.</p>
               <p className="font-medium text-bark">It&rsquo;s basically an 11 out of 10.</p>
               <p>I went deep on all of this — the research, the science, the mechanisms behind everything I&rsquo;d been experiencing. Because of course I did. <span className="text-bark font-medium">Data scientist. Can&rsquo;t help it.</span> And the more I understood, the more I realized that what I&rsquo;d stumbled into wasn&rsquo;t just my own breakthrough. It was something other women desperately needed too.</p>
               <p>So I got my certifications, packed up, and started traveling. <span className="text-bark font-medium">21 countries. Incredible food. Great wine.</span> And I woke up every single morning <span className="text-bark font-medium">genuinely confident in my body.</span> Not because I was perfect. Because I finally understood how my body actually worked.</p>
@@ -184,14 +183,13 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             <div className="lg:col-span-5 lg:order-1">
-              <div className="overflow-hidden rounded-sm">
+              <div className="relative aspect-[3/4] overflow-hidden rounded-sm">
                 <Image
-                  src="/madison-pool.webp"
-                  alt="Madison at the pool"
-                  width={0}
-                  height={0}
+                  src="/madison-fan-hero.webp"
+                  alt="Madison"
+                  fill
+                  className="object-cover object-bottom"
                   sizes="(max-width: 1024px) 100vw, 40vw"
-                  className="w-full h-auto"
                 />
               </div>
             </div>
@@ -200,7 +198,7 @@ export default function AboutPage() {
               <div className="space-y-6 text-cream/70 font-sans text-[17px] leading-[1.75]">
                 <p>When you understand what actually drives results, you stop stressing about the things that don&rsquo;t. Suddenly <span className="text-sand">the pasta isn&rsquo;t the enemy and the wine isn&rsquo;t a setback</span> and your body starts working with you in a way it never did when you were fighting it.</p>
                 <p>Eventually <span className="text-sand">I quit my job, went all in on this,</span> and haven&rsquo;t looked back.</p>
-                <p>Now I <span className="text-sand">lift, eat really well, travel constantly, drink great wine, still geek out over cheese,</span> and my body gives me the energy and confidence to show up fully in everything I&rsquo;m building.</p>
+                <p>Now I <span className="text-sand">lift, eat really well, travel constantly, drink great wine, still geek out over cheese,</span> and my body gives me the energy and confidence to show up fully in everything I&rsquo;m building. That&rsquo;s what I always wanted.</p>
               </div>
 
               <p className="font-serif text-cream text-2xl md:text-3xl leading-snug">
@@ -208,7 +206,8 @@ export default function AboutPage() {
               </p>
 
               <div className="space-y-5 text-cream/70 font-sans text-[17px] leading-[1.75] pt-6 border-t border-cream/10">
-                <p>I don&rsquo;t just give you a workout plan. I <span className="text-sand">teach you how to actually change your body over time,</span> even when you&rsquo;re busy, traveling, and have a completely full life. I help you understand your body well enough that <span className="text-sand">you never have to outsource it again.</span></p>
+                <p>And that&rsquo;s exactly what I help women build.</p>
+                <p>I don&rsquo;t just give you a workout plan. I <span className="text-sand">teach you how to actually change your body over time,</span> even when you&rsquo;re busy, traveling, and have a completely full life. I help you understand your body well enough that <span className="text-sand">you never have to outsource it again.</span> And I help you show up as the most confident, energized, magnetic version of yourself in your life and your business.</p>
                 <p className="font-serif text-sand text-xl leading-snug">Because when you&rsquo;re finally living in a body you love, everything shifts.</p>
               </div>
             </div>

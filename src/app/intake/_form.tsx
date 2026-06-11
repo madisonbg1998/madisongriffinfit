@@ -1,22 +1,22 @@
-﻿'use client'
+'use client'
 
 import { useState, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 
-// â”€â”€ Step labels â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Step labels ───────────────────────────────────────────────────────────────
 
 const STEP_LABELS = ['Basics', 'History', 'Goals', 'Wellbeing', 'Inside', 'Lifestyle', 'Mindset', 'Logistics']
 
-// â”€â”€ Step 1: The Basics â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Step 1: The Basics ────────────────────────────────────────────────────────
 
 const TIMEZONE_OPTIONS = [
-  'Los Angeles / Vancouver (UTCâˆ’8/âˆ’7)',
-  'Denver / Phoenix (UTCâˆ’7/âˆ’6)',
-  'Chicago / Mexico City (UTCâˆ’6/âˆ’5)',
-  'New York / Toronto (UTCâˆ’5/âˆ’4)',
-  'Halifax / Atlantic (UTCâˆ’4/âˆ’3)',
-  'SÃ£o Paulo / Buenos Aires (UTCâˆ’3)',
+  'Los Angeles / Vancouver (UTC−8/−7)',
+  'Denver / Phoenix (UTC−7/−6)',
+  'Chicago / Mexico City (UTC−6/−5)',
+  'New York / Toronto (UTC−5/−4)',
+  'Halifax / Atlantic (UTC−4/−3)',
+  'São Paulo / Buenos Aires (UTC−3)',
   'Reykjavik / Lisbon (UTC+0)',
   'London / Dublin (UTC+0/+1)',
   'Paris / Amsterdam / Berlin (UTC+1/+2)',
@@ -33,79 +33,79 @@ const TIMEZONE_OPTIONS = [
   'Auckland / Wellington (UTC+12/+13)',
 ]
 
-// â”€â”€ Step 2: Your History â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Step 2: Your History ──────────────────────────────────────────────────────
 
 const TRAINING_BACKGROUND_OPTIONS = [
   'Complete beginner',
-  'Some experience â€” on and off over the years',
-  'Intermediate â€” fairly consistent for 1â€“3 years',
-  'Experienced â€” training consistently for 3+ years',
-  'Athletic background â€” sport or performance training',
+  'Some experience — on and off over the years',
+  'Intermediate — fairly consistent for 1–3 years',
+  'Experienced — training consistently for 3+ years',
+  'Athletic background — sport or performance training',
 ]
 
-// â”€â”€ Step 3: Your Goals â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Step 3: Your Goals ────────────────────────────────────────────────────────
 
 const PRIMARY_GOAL_OPTIONS = [
   'Fat loss / body recomposition',
   'Building muscle / getting stronger',
-  'Both â€” lose fat and build muscle',
+  'Both — lose fat and build muscle',
   'Improve fitness and endurance',
   'Feel better in my body day to day',
   'Build consistency and healthy habits',
   'Other',
 ]
 
-// â”€â”€ Step 4: Health & Wellbeing â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Step 4: Health & Wellbeing ────────────────────────────────────────────────
 
 const SLEEP_QUALITY_OPTIONS = [
-  'Great â€” I fall asleep easily and wake rested',
-  'Okay â€” mostly fine but not always restful',
-  'Broken â€” I wake through the night',
-  'Poor â€” I struggle to fall or stay asleep',
+  'Great — I fall asleep easily and wake rested',
+  'Okay — mostly fine but not always restful',
+  'Broken — I wake through the night',
+  'Poor — I struggle to fall or stay asleep',
   'It varies a lot',
 ]
 
-// â”€â”€ Step 5: The Inside Stuff â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Step 5: The Inside Stuff ──────────────────────────────────────────────────
 
 const BOWEL_MOVEMENT_OPTIONS = [
   'Multiple times a day',
-  'Once a day â€” regular and consistent',
+  'Once a day — regular and consistent',
   'Every couple of days',
-  'Every 3+ days â€” I struggle to go regularly',
+  'Every 3+ days — I struggle to go regularly',
   'It varies a lot',
 ]
 
 const DIGESTIVE_DISCOMFORT_OPTIONS = [
   'Rarely or never',
   'Occasionally',
-  'Often â€” most days',
+  'Often — most days',
   'Almost always',
 ]
 
 const MENSTRUAL_CYCLE_OPTIONS = [
-  'Yes â€” regular cycle',
-  'Yes â€” but irregular',
-  'No â€” on hormonal contraception that stops my period',
-  'No â€” post-menopausal',
-  'No â€” perimenopause',
-  'No â€” other reason',
+  'Yes — regular cycle',
+  'Yes — but irregular',
+  'No — on hormonal contraception that stops my period',
+  'No — post-menopausal',
+  'No — perimenopause',
+  'No — other reason',
   'Prefer not to say',
 ]
 
-// â”€â”€ Step 6: Your Lifestyle â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Step 6: Your Lifestyle ────────────────────────────────────────────────────
 
 const JOB_ACTIVITY_OPTIONS = [
-  'Mostly desk-based â€” I sit most of the day',
-  'Mixed â€” some sitting, some moving',
+  'Mostly desk-based — I sit most of the day',
+  'Mixed — some sitting, some moving',
   'On my feet a lot',
   'Physically demanding',
 ]
 
 const TRAVEL_FREQUENCY_OPTIONS = [
-  "Rarely â€” I'm mostly in one place",
-  'Occasionally â€” a few times a year',
-  'Often â€” at least once a month',
-  "Constantly â€” I'm location-free or always on the move",
+  "Rarely — I'm mostly in one place",
+  'Occasionally — a few times a year',
+  'Often — at least once a month',
+  "Constantly — I'm location-free or always on the move",
 ]
 
 const COOKING_FOR_OPTIONS = [
@@ -118,7 +118,7 @@ const COOKING_FOR_OPTIONS = [
 ]
 
 const EATING_OUT_OPTIONS = [
-  'Rarely â€” I cook almost everything myself',
+  'Rarely — I cook almost everything myself',
   'A couple of times a week',
   'Most days involve a meal out or with others',
   'Almost every meal is out or social',
@@ -126,26 +126,26 @@ const EATING_OUT_OPTIONS = [
 
 const ALCOHOL_INTAKE_OPTIONS = [
   "I don't drink",
-  'Rarely â€” special occasions only',
-  'Socially â€” a few times a week',
+  'Rarely — special occasions only',
+  'Socially — a few times a week',
   'Most evenings, usually a glass or two',
   'It varies a lot',
 ]
 
-// â”€â”€ Step 7: Mindset & Food â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Step 7: Mindset & Food ────────────────────────────────────────────────────
 
 const EATING_PATTERNS_OPTIONS = [
-  'Pretty consistent â€” I eat similar things most days',
+  'Pretty consistent — I eat similar things most days',
   'Good during the week, looser on weekends',
-  'All-or-nothing â€” either on track or off the rails',
+  'All-or-nothing — either on track or off the rails',
   'I graze throughout the day rather than meals',
-  'Chaotic â€” it really varies',
+  'Chaotic — it really varies',
 ]
 
 const EMOTIONAL_EATING_OPTIONS = [
   'Rarely or never',
-  'Sometimes â€” I notice it but can manage it',
-  "Often â€” food is my go-to when stressed or overwhelmed",
+  'Sometimes — I notice it but can manage it',
+  "Often — food is my go-to when stressed or overwhelmed",
   "Yes, and it's something I really struggle with",
 ]
 
@@ -156,14 +156,14 @@ const DISORDERED_EATING_OPTIONS = [
   "I'd rather not say",
 ]
 
-// â”€â”€ Step 8: Logistics â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Step 8: Logistics ─────────────────────────────────────────────────────────
 
 const EQUIPMENT_OPTIONS = [
   'Full commercial gym',
   'Home gym with weights and rack',
   'Dumbbells and/or kettlebells at home',
   'Resistance bands only',
-  'Hotel gyms â€” varies when I travel',
+  'Hotel gyms — varies when I travel',
   'Bodyweight only',
 ]
 
@@ -180,11 +180,11 @@ const SESSION_LENGTH_OPTIONS = [
   '30 minutes or less',
   'Around 45 minutes',
   'Around 60 minutes',
-  '60â€“75 minutes',
-  "As long as needed â€” time isn't a constraint",
+  '60–75 minutes',
+  "As long as needed — time isn't a constraint",
 ]
 
-// â”€â”€ Style constants â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Style constants ───────────────────────────────────────────────────────────
 
 const inputClass =
   'w-full bg-white border border-bark/20 rounded-lg px-4 py-3 text-midnight placeholder:text-charcoal/30 text-sm focus:outline-none focus:ring-2 focus:ring-bark/20 focus:border-bark transition-all duration-300'
@@ -192,7 +192,7 @@ const inputClass =
 const textareaClass =
   'w-full bg-white border border-bark/20 rounded-lg px-4 py-3 text-midnight placeholder:text-charcoal/30 text-sm min-h-[120px] resize-y focus:outline-none focus:ring-2 focus:ring-bark/20 focus:border-bark transition-all duration-300'
 
-// â”€â”€ FormData interface â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── FormData interface ────────────────────────────────────────────────────────
 
 interface FormData {
   // Step 1
@@ -308,7 +308,7 @@ const initialFormData: FormData = {
   anythingElse: '',
 }
 
-// â”€â”€ Sub-components â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Sub-components ────────────────────────────────────────────────────────────
 
 function RadioOption({
   name,
@@ -465,12 +465,12 @@ function StepHeader({
 function QNum({ num }: { num: string }) {
   return (
     <p className="text-bark text-[10px] font-medium tracking-[0.2em] uppercase mb-2">
-      {num} â€”
+      {num} —
     </p>
   )
 }
 
-// â”€â”€ Main component â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Main component ────────────────────────────────────────────────────────────
 
 export default function IntakeForm() {
   const router = useRouter()
@@ -565,7 +565,7 @@ export default function IntakeForm() {
     }
   }, [formData, validateStep])
 
-  // â”€â”€ Main form layout â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // ── Main form layout ──────────────────────────────────────────────────────
 
   return (
     <div className="min-h-screen bg-cream flex">
@@ -581,7 +581,7 @@ export default function IntakeForm() {
             Intake Form
           </h1>
           <p className="text-charcoal/60 text-base leading-relaxed mb-10">
-            Take your time â€” there are no wrong answers. The more honest you are, the better I can support you.
+            Take your time — there are no wrong answers. The more honest you are, the better I can support you.
           </p>
 
           {/* Step progress bar */}
@@ -640,7 +640,7 @@ export default function IntakeForm() {
             </div>
           )}
 
-          {/* â”€â”€ Step 1: The Basics â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+          {/* ── Step 1: The Basics ──────────────────────────────────────────── */}
           {step === 1 && (
             <div className="space-y-6 animate-fade-in">
               <StepHeader />
@@ -776,7 +776,7 @@ export default function IntakeForm() {
                   What&apos;s your relationship with the scale?
                 </label>
                 <p className="text-charcoal/40 text-xs mb-3">
-                  Do you weigh yourself regularly? Does the number affect your mood or behaviour? Be honest â€” this helps me a lot.
+                  Do you weigh yourself regularly? Does the number affect your mood or behaviour? Be honest — this helps me a lot.
                 </p>
                 <textarea
                   id="scaleRelationship"
@@ -789,7 +789,7 @@ export default function IntakeForm() {
             </div>
           )}
 
-          {/* â”€â”€ Step 2: Your History â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+          {/* ── Step 2: Your History ────────────────────────────────────────── */}
           {step === 2 && (
             <div className="space-y-8 animate-fade-in">
               <StepHeader
@@ -822,7 +822,7 @@ export default function IntakeForm() {
                   What kinds of training have you done before?
                 </label>
                 <p className="text-charcoal/40 text-xs mb-3">
-                  Gym, running, Pilates, CrossFit, sport â€” anything counts.
+                  Gym, running, Pilates, CrossFit, sport — anything counts.
                 </p>
                 <textarea
                   id="trainingTypes"
@@ -839,7 +839,7 @@ export default function IntakeForm() {
                   What has worked for you in the past?
                 </label>
                 <p className="text-charcoal/40 text-xs mb-3">
-                  Even if it was short-lived â€” what felt good, what got results?
+                  Even if it was short-lived — what felt good, what got results?
                 </p>
                 <textarea
                   id="whatWorked"
@@ -870,7 +870,7 @@ export default function IntakeForm() {
                   How would you describe your relationship with food and dieting?
                 </label>
                 <p className="text-charcoal/40 text-xs mb-3">
-                  Any history of restriction, calorie counting, yo-yo dieting, fad diets â€” all relevant and all safe to share here.
+                  Any history of restriction, calorie counting, yo-yo dieting, fad diets — all relevant and all safe to share here.
                 </p>
                 <textarea
                   id="foodRelationship"
@@ -883,12 +883,12 @@ export default function IntakeForm() {
             </div>
           )}
 
-          {/* â”€â”€ Step 3: Your Goals â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+          {/* ── Step 3: Your Goals ──────────────────────────────────────────── */}
           {step === 3 && (
             <div className="space-y-8 animate-fade-in">
               <StepHeader
                 subtitle="Where you're going."
-                desc="The more specific you are here, the better. Vague goals get vague results â€” let's get clear."
+                desc="The more specific you are here, the better. Vague goals get vague results — let's get clear."
               />
 
               <div>
@@ -950,7 +950,7 @@ export default function IntakeForm() {
                   Is there a timeline you&apos;re working towards?
                 </label>
                 <p className="text-charcoal/40 text-xs mb-3">
-                  A trip, an event, a milestone â€” or just a general timeframe you have in mind.
+                  A trip, an event, a milestone — or just a general timeframe you have in mind.
                 </p>
                 <input
                   id="timeline"
@@ -971,14 +971,14 @@ export default function IntakeForm() {
                   id="biggestBlocker"
                   value={formData.biggestBlocker}
                   onChange={(e) => updateField('biggestBlocker', e.target.value)}
-                  placeholder="Be honest â€” what's really been in the way?"
+                  placeholder="Be honest — what's really been in the way?"
                   className={textareaClass}
                 />
               </div>
             </div>
           )}
 
-          {/* â”€â”€ Step 4: Health & Wellbeing â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+          {/* ── Step 4: Health & Wellbeing ───────────────────────────────────── */}
           {step === 4 && (
             <div className="space-y-8 animate-fade-in">
               <StepHeader
@@ -992,7 +992,7 @@ export default function IntakeForm() {
                   Any injuries, chronic pain, or physical limitations?
                 </label>
                 <p className="text-charcoal/40 text-xs mb-3">
-                  Past or present â€” anything that affects how you move or train.
+                  Past or present — anything that affects how you move or train.
                 </p>
                 <textarea
                   id="injuries"
@@ -1119,12 +1119,12 @@ export default function IntakeForm() {
             </div>
           )}
 
-          {/* â”€â”€ Step 5: The Inside Stuff â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+          {/* ── Step 5: The Inside Stuff ─────────────────────────────────────── */}
           {step === 5 && (
             <div className="space-y-8 animate-fade-in">
               <StepHeader
                 subtitle="What's happening under the hood."
-                desc="This is the stuff most coaches never ask about â€” and exactly why we're asking. No TMI here, I promise."
+                desc="This is the stuff most coaches never ask about — and exactly why we're asking. No TMI here, I promise."
               />
 
               <div>
@@ -1219,7 +1219,7 @@ export default function IntakeForm() {
                   Anything about your cycle or hormones you&apos;d like me to know?
                 </label>
                 <p className="text-charcoal/40 text-xs mb-3">
-                  PMS symptoms, PMDD, hormonal acne, mood shifts, energy crashes â€” anything that affects your life and training.
+                  PMS symptoms, PMDD, hormonal acne, mood shifts, energy crashes — anything that affects your life and training.
                 </p>
                 <textarea
                   id="hormoneNotes"
@@ -1232,12 +1232,12 @@ export default function IntakeForm() {
             </div>
           )}
 
-          {/* â”€â”€ Step 6: Your Lifestyle â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+          {/* ── Step 6: Your Lifestyle ───────────────────────────────────────── */}
           {step === 6 && (
             <div className="space-y-8 animate-fade-in">
               <StepHeader
                 subtitle="How you actually live."
-                desc="Your programme needs to fit your life â€” not the other way around. Tell me what real life looks like."
+                desc="Your programme needs to fit your life — not the other way around. Tell me what real life looks like."
               />
 
               <div>
@@ -1359,7 +1359,7 @@ export default function IntakeForm() {
                   Anything else about your lifestyle I should know?
                 </label>
                 <p className="text-charcoal/40 text-xs mb-3">
-                  Shift work, young kids, caring responsibilities, a very social job, night owl tendencies â€” anything that shapes your reality.
+                  Shift work, young kids, caring responsibilities, a very social job, night owl tendencies — anything that shapes your reality.
                 </p>
                 <textarea
                   id="lifestyleNotes"
@@ -1372,7 +1372,7 @@ export default function IntakeForm() {
             </div>
           )}
 
-          {/* â”€â”€ Step 7: Mindset & Food â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+          {/* ── Step 7: Mindset & Food ───────────────────────────────────────── */}
           {step === 7 && (
             <div className="space-y-8 animate-fade-in">
               <StepHeader
@@ -1424,7 +1424,7 @@ export default function IntakeForm() {
                   Do you have any history with disordered eating or a difficult relationship with food?
                 </p>
                 <p className="text-charcoal/40 text-xs mb-3">
-                  You don&apos;t have to share details â€” a simple answer helps me understand how to approach nutrition with you.
+                  You don&apos;t have to share details — a simple answer helps me understand how to approach nutrition with you.
                 </p>
                 <div className="space-y-2.5">
                   {DISORDERED_EATING_OPTIONS.map((opt) => (
@@ -1473,7 +1473,7 @@ export default function IntakeForm() {
             </div>
           )}
 
-          {/* â”€â”€ Step 8: Logistics â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+          {/* ── Step 8: Logistics ───────────────────────────────────────────── */}
           {step === 8 && (
             <div className="space-y-8 animate-fade-in">
               <StepHeader
@@ -1558,7 +1558,7 @@ export default function IntakeForm() {
                   Do you do any other exercise outside of your training sessions?
                 </label>
                 <p className="text-charcoal/40 text-xs mb-3">
-                  Walking, yoga, swimming, sport, cycling â€” anything that&apos;s part of your regular routine.
+                  Walking, yoga, swimming, sport, cycling — anything that&apos;s part of your regular routine.
                 </p>
                 <textarea
                   id="otherExercise"
@@ -1675,7 +1675,7 @@ export default function IntakeForm() {
         </div>
       </div>
 
-      {/* Photo side â€” desktop only, sticky */}
+      {/* Photo side — desktop only, sticky */}
       <div className="hidden lg:block w-[40%]">
         <div className="sticky top-0 h-screen">
           <Image

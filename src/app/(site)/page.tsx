@@ -73,10 +73,10 @@ function HeroSection() {
   }, [])
 
   return (
-    <section className="min-h-screen flex flex-col lg:flex-row overflow-hidden" style={{ background: '#1C0D06' }}>
+    <section className="flex flex-col lg:flex-row lg:min-h-screen overflow-hidden" style={{ background: '#1C0D06' }}>
 
       {/* ── Left: Text ── */}
-      <div className="flex-1 flex flex-col justify-end lg:justify-center px-8 md:px-14 lg:px-16 xl:px-24 pt-40 lg:pt-28 pb-16 lg:pb-0 relative z-10 max-w-none lg:max-w-[62%]">
+      <div className="lg:flex-1 flex flex-col lg:justify-center px-8 md:px-14 lg:px-16 xl:px-24 pt-28 pb-10 lg:pt-28 lg:pb-0 relative z-10 max-w-none lg:max-w-[62%]">
 
         {/* Label */}
         <div
@@ -147,7 +147,7 @@ function HeroSection() {
 
       {/* ── Right: Photo ── */}
       <div
-        className={`relative lg:w-[38%] xl:w-[40%] flex-shrink-0 h-[55vw] lg:h-auto overflow-hidden transition-opacity duration-[1400ms] ease-out delay-200 ${
+        className={`relative lg:w-[38%] xl:w-[40%] flex-shrink-0 h-[110vw] lg:h-auto overflow-hidden transition-opacity duration-[1400ms] ease-out delay-200 ${
           loaded ? 'opacity-100' : 'opacity-0'
         }`}
       >
