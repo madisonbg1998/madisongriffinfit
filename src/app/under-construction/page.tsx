@@ -1,9 +1,5 @@
 import type { Metadata } from 'next'
-import { Archivo_Black, Fredoka, Space_Mono } from 'next/font/google'
-
-const display = Archivo_Black({ subsets: ['latin'], weight: '400' })
-const rounded = Fredoka({ subsets: ['latin'], weight: ['500', '700'] })
-const mono = Space_Mono({ subsets: ['latin'], weight: '400' })
+import { display, rounded, mono } from '../fonts'
 
 export const metadata: Metadata = {
   title: 'Coming Soon',
