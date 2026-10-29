@@ -59,16 +59,22 @@ function Corner({ className }: { className: string }) {
 export default function FitnessFuneralPage() {
   return (
     <div
-      className={`${garamond.className} min-h-screen px-4 py-10 sm:py-20`}
-      style={{
-        backgroundColor: '#211b19',
-        backgroundImage: `radial-gradient(ellipse at center, rgba(90,70,60,0.35) 0%, rgba(20,15,13,0.9) 75%), ${GRAIN}`,
-      }}
+      className={`${garamond.className} relative isolate min-h-screen px-4 py-10 sm:py-20`}
+      style={{ backgroundColor: '#140d09' }}
     >
+      {/* Chocolate satin backdrop, pinned so the card scrolls over it */}
+      <div
+        aria-hidden
+        className="fixed inset-0 -z-10 bg-cover bg-center"
+        style={{
+          backgroundImage: `radial-gradient(ellipse at center, transparent 35%, rgba(10,6,4,0.7) 100%), linear-gradient(rgba(14,9,6,0.62), rgba(14,9,6,0.62)), ${GRAIN}, url('/chocolate-satin.jpg')`,
+          backgroundSize: 'cover, cover, 240px 240px, cover',
+        }}
+      />
       {/* Mourning card: black band, then ivory paper */}
       <article
         className="relative max-w-2xl mx-auto p-3 sm:p-4 rounded-[3px] shadow-[0_30px_80px_rgba(0,0,0,0.55)]"
-        style={{ background: '#1b1614' }}
+        style={{ background: '#1f120b' }}
       >
         <div
           className="relative px-7 sm:px-16 py-14 sm:py-20 rounded-[2px]"
@@ -186,8 +192,8 @@ export default function FitnessFuneralPage() {
 
             <a
               href={RSVP_URL}
-              className={`${smallCaps.className} inline-block text-base tracking-[0.25em] px-9 py-3.5 transition-colors duration-500 hover:bg-[#2a211b] hover:text-[#f2e9d8]`}
-              style={{ color: INK, border: `1px solid ${INK}`, outline: `1px solid ${GOLD}80`, outlineOffset: '4px' }}
+              className={`${smallCaps.className} inline-block text-base tracking-[0.25em] px-9 py-3.5 text-[#2a211b] transition-colors duration-500 hover:bg-[#2a211b] hover:text-[#f2e9d8]`}
+              style={{ border: `1px solid ${INK}`, outline: `1px solid ${GOLD}80`, outlineOffset: '4px' }}
             >
               Kindly RSVP to the Funeral
             </a>
