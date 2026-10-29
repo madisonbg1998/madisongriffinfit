@@ -136,25 +136,18 @@ export default function FitnessFuneralPage() {
             </p>
 
             <p>
-              The service will also mark the debut of{' '}
+              We’ll pay our respects to some spectacularly unhelpful advice, then I’ll introduce you to{' '}
               <span className={`${smallCaps.className} tracking-wider font-semibold`} style={{ color: GOLD }}>
                 Sweat Equity
               </span>
-              : personalized health and fitness for{' '}
-              <Mark>the woman with no off season.</Mark>
+              —and show you how we handle{' '}
+              <Mark>the flights, full calendars, and last-minute opportunities</Mark> the deceased failed to
+              account for.
             </p>
 
             <p>
-              I built it for the flights, full calendars, post-conference pasta, and bodies we’re very much
-              still interested in building.
-            </p>
-
-            <p className="italic text-center">
-              In lieu of flowers, please bring your <Mark>unreasonable ambitions.</Mark>
-            </p>
-
-            <p>
-              A wake will follow, with <Mark>wine, cheese, and a launch worth toasting.</Mark>{' '}
+              A wake will follow, with wine, cheese, and{' '}
+              <Mark>a room full of female founders you’ll want to know.</Mark>{' '}
               <em>Please don’t feel obligated to remain sad.</em>
             </p>
 
