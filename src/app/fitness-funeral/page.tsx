@@ -151,6 +151,26 @@ export default function FitnessFuneralPage() {
               <em>Please don’t feel obligated to remain sad.</em>
             </p>
 
+            {/* Memorial portrait, hotlinked from Giphy with attribution */}
+            <figure className="flex flex-col items-center pt-2">
+              <div
+                className="w-44 h-56 sm:w-52 sm:h-64 rounded-[50%] overflow-hidden"
+                style={{ boxShadow: `0 0 0 1px ${GOLD}, 0 0 0 6px ${PAPER}, 0 0 0 7px ${GOLD}99, 0 12px 30px rgba(60,40,20,0.35)` }}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="https://media.giphy.com/media/g8SpAwIpdMcP6xlvDt/giphy.gif"
+                  alt="Francesca from Bridgerton in black mourning attire, smiling with a glass in hand"
+                  className="w-full h-full object-cover sepia-[0.25]"
+                />
+              </div>
+              <figcaption className={`${smallCaps.className} text-[11px] tracking-[0.2em] mt-4`} style={{ color: GOLD }}>
+                <a href="https://giphy.com/gifs/bridgerton-franchaela-francesca-g8SpAwIpdMcP6xlvDt" target="_blank" rel="noopener noreferrer">
+                  via Giphy
+                </a>
+              </figcaption>
+            </figure>
+
             <p className="text-center italic pt-2">
               Your presence is requested.
               <br />
