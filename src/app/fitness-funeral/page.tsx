@@ -106,21 +106,22 @@ export default function FitnessFuneralPage() {
           <Flourish className="w-48 mx-auto my-10" />
 
           <div className="text-[1.2rem] sm:text-[1.3rem] leading-[1.7] space-y-6 text-pretty">
-            <p className="italic text-[1.35rem] sm:text-[1.45rem]">Dearly beloved female founder,</p>
+            <p className="italic text-[1.35rem] sm:text-[1.45rem]">Dearly beloved founder,</p>
 
             <p>
               <span className="float-left text-[4.6rem] leading-[0.75] font-medium mr-3 mt-2" style={{ color: GOLD }}>
                 P
               </span>
               lease join us in laying to rest{' '}
-              <Mark>“I’ll work on my body when things calm down.”</Mark> She is survived by three upcoming
-              speaking gigs, two flights, and the event you just agreed to host.
+              <Mark>“I’ll work on my body when things calm down.”</Mark> She has tragically died in an
+              accident, by <Mark>calendar strangulation</Mark> from three upcoming speaking gigs, two flights,
+              and the event you just agreed to host.
             </p>
 
             <p className="italic text-center">We did everything we could. You kept booking things.</p>
 
             <p>
-              Also being lowered into the ground: the expectation that you’ll{' '}
+              Also being lowered into the ground– the expectation that you’ll{' '}
               <Mark>decline dinner with your dream collaborator</Mark> because your fitness plan had you
               home with some chicken.
             </p>
@@ -153,8 +154,12 @@ export default function FitnessFuneralPage() {
 
             <p>
               A wake will follow, with wine, cheese, and{' '}
-              <Mark>a room full of female founders you’ll want to know.</Mark>{' '}
-              <em>Please don’t feel obligated to remain sad.</em>
+              <Mark>a room full of women founders who move faster than the speed of light.</Mark>
+            </p>
+
+            <p className="italic text-center">
+              Please don’t feel obligated to remain sad. We plan on transitioning to happy tears within the
+              first 6 seconds of the service.
             </p>
 
             {/* Memorial portrait, hotlinked from Giphy with attribution */}
