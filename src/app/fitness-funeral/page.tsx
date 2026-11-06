@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 import { script, garamond, smallCaps } from '../fonts'
 
-// TODO: point at the real RSVP form
-const RSVP_URL = '#'
+// Tickets are sold through Luma
+const RSVP_URL = 'https://luma.com/hzpdkn85'
 
 export const metadata: Metadata = {
   title: 'You Are Summoned to a Fitness Funeral',
@@ -193,7 +193,18 @@ export default function FitnessFuneralPage() {
 
           <footer className="text-center">
             <p className="italic text-xl mb-1">With deepest condolences for the advice,</p>
-            <p className={`${script.className} text-5xl sm:text-6xl mb-12`}>Madison</p>
+            <p className={`${script.className} text-5xl sm:text-6xl mb-10`}>Madison</p>
+
+            <div className="mb-10 space-y-1">
+              <p className="italic text-lg">The service will be held</p>
+              <p className={`${smallCaps.className} text-xl sm:text-2xl tracking-[0.12em] font-semibold`}>
+                Sunday, the Fifteenth of November
+              </p>
+              <p className="italic text-lg">six o’clock until nine in the evening</p>
+              <p className={`${smallCaps.className} text-base tracking-[0.18em] pt-1`} style={{ color: GOLD }}>
+                Hillside Farmacy · Austin, Texas
+              </p>
+            </div>
 
             <a
               href={RSVP_URL}
