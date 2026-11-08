@@ -1,4 +1,6 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
+import { doblegh, elza, geistMono } from '../../fonts'
 
 export const metadata: Metadata = {
   title: 'Thank You | Madison Griffin Fit',
@@ -7,30 +9,21 @@ export const metadata: Metadata = {
 
 export default function IntakeThankYouPage() {
   return (
-    <section className="bg-cream min-h-screen flex items-center justify-center px-6 py-28">
-      <div className="max-w-lg text-center">
-
-        <p className="text-bark text-[11px] font-sans font-medium tracking-[0.3em] uppercase mb-8">
-          Client Intake
+    <main className={`${doblegh.className} flex min-h-screen flex-col items-center justify-center bg-[#E4FF72] px-6 py-16 text-center text-[#004238]`}>
+      <Image src="/sweat-equity/logo-pine.svg" alt="Sweat Equity" width={170} height={57} priority className="h-auto w-[170px]" />
+      <p className={`${geistMono.className} mt-12 text-sm`}>Client Intake</p>
+      <h1 className={`${elza.className} mt-4 max-w-3xl text-5xl uppercase leading-none sm:text-7xl`}>You&rsquo;re all in.</h1>
+      <div className="mt-6 max-w-lg space-y-5 text-lg leading-relaxed">
+        <p>
+          Thank you for filling that in. I know it wasn&rsquo;t a quick form, and the fact
+          that you took the time to answer honestly tells me everything I need to know
+          about the kind of client you are.
         </p>
-
-        <h1 className="font-serif text-midnight text-5xl md:text-6xl leading-[1.05] mb-8">
-          You&rsquo;re all in.
-        </h1>
-
-        <div className="space-y-5 text-charcoal/70 font-sans text-[17px] leading-[1.85]">
-          <p>
-            Thank you for filling that in. I know it wasn&rsquo;t a quick form, and the fact
-            that you took the time to answer honestly tells me everything I need to know
-            about the kind of client you are.
-          </p>
-          <p>
-            Your start date is locked in. Get some good sleep, drink your water, and get
-            ready. We&rsquo;re about to do something really good.
-          </p>
-        </div>
-
+        <p>
+          Your start date is locked in. Get some good sleep, drink your water, and get
+          ready. We&rsquo;re about to do something really good.
+        </p>
       </div>
-    </section>
+    </main>
   )
 }
