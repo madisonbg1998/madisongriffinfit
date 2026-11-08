@@ -1,16 +1,22 @@
 'use client'
 
-import { useState } from 'react'
+import { type FormEvent, useState } from 'react'
 import Image from 'next/image'
 import { doblegh, elza, geistMono } from '../../fonts'
 
 export default function SweatEquityCheckoutPage() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'error'>('idle')
+  const [firstName, setFirstName] = useState('')
 
-  async function startCheckout() {
+  async function startCheckout(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault()
     setStatus('loading')
     try {
-      const res = await fetch('/api/sweat-equity-checkout', { method: 'POST' })
+      const res = await fetch('/api/sweat-equity-checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ firstName }),
+      })
       const data = await res.json()
       if (!res.ok || !data.checkoutUrl) throw new Error(data.error)
       window.location.href = data.checkoutUrl
@@ -62,14 +68,27 @@ export default function SweatEquityCheckoutPage() {
               </div>
             </dl>
 
-            <button
-              type="button"
-              onClick={startCheckout}
-              disabled={status === 'loading'}
-              className={`${geistMono.className} mt-8 w-full cursor-pointer rounded-full bg-[#004238] px-8 py-4 text-sm text-[#FCF8F5] transition-colors duration-300 hover:bg-[#1E0F10] focus:outline-none focus-visible:ring-4 focus-visible:ring-[#C7D2FF] disabled:cursor-wait disabled:opacity-70`}
-            >
-              {status === 'loading' ? 'One Moment...' : 'Claim My Shares'}
-            </button>
+            <form onSubmit={startCheckout} className="mt-7">
+              <label htmlFor="first-name" className={`${geistMono.className} block text-sm`}>First Name</label>
+              <input
+                id="first-name"
+                name="firstName"
+                type="text"
+                autoComplete="given-name"
+                required
+                maxLength={50}
+                value={firstName}
+                onChange={(event) => setFirstName(event.target.value)}
+                className="mt-2 w-full rounded-lg border border-[#004238]/25 bg-white px-4 py-3 text-base text-[#1E0F10] transition-all duration-300 focus:border-[#004238] focus:outline-none focus:ring-2 focus:ring-[#004238]/20"
+              />
+              <button
+                type="submit"
+                disabled={status === 'loading'}
+                className={`${geistMono.className} mt-4 w-full cursor-pointer rounded-full bg-[#004238] px-8 py-4 text-sm text-[#FCF8F5] transition-colors duration-300 hover:bg-[#1E0F10] focus:outline-none focus-visible:ring-4 focus-visible:ring-[#C7D2FF] disabled:cursor-wait disabled:opacity-70`}
+              >
+                {status === 'loading' ? 'One Moment...' : 'Claim My Shares'}
+              </button>
+            </form>
 
             <div aria-live="polite">
               {status === 'error' && (

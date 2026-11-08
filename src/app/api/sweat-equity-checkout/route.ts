@@ -9,6 +9,12 @@ export async function POST(request: NextRequest) {
   const baseUrl = process.env.ADHARA_BASE_URL || 'https://api.adharaweb.com'
   const origin = request.nextUrl.origin
 
+  const body = await request.json().catch(() => ({}))
+  const firstName = typeof body.firstName === 'string' ? body.firstName.trim().slice(0, 50) : ''
+  if (!firstName) {
+    return NextResponse.json({ error: 'First name is required.' }, { status: 400 })
+  }
+
   try {
     const res = await fetch(`${baseUrl}/api/v1/public/shop/${WORKSPACE_SLUG}/checkout`, {
       method: 'POST',
@@ -18,7 +24,8 @@ export async function POST(request: NextRequest) {
         item_id: PRODUCT_ID,
         price_id: PRICE_ID,
         quantity: 1,
-        success_url: `${origin}/sweat-equity/welcome`,
+        // Stripe fills in {CHECKOUT_SESSION_ID}; the welcome page uses it to verify payment
+        success_url: `${origin}/sweat-equity/welcome?session_id={CHECKOUT_SESSION_ID}&first_name=${encodeURIComponent(firstName)}`,
         cancel_url: `${origin}/sweat-equity/checkout`,
       }),
     })
