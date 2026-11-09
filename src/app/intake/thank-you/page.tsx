@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import { doblegh, elza, geistMono } from '../../fonts'
 
+const SCHEDULE_CALL_URL = 'https://calendar.app.google/myySAkhNztGR19uf6'
+
 export const metadata: Metadata = {
   title: 'Thank You | Madison Griffin Fit',
   robots: { index: false, follow: false },
@@ -23,7 +25,18 @@ export default function IntakeThankYouPage() {
           Your start date is locked in. Get some good sleep, drink your water, and get
           ready. We&rsquo;re about to do something really good.
         </p>
+        <p className="font-bold">
+          Last step: grab your strategy call. Pick a time on my calendar so we can go over everything together.
+        </p>
       </div>
+      <a
+        href={SCHEDULE_CALL_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={`${geistMono.className} mt-8 inline-block rounded-full bg-[#004238] px-8 py-4 text-sm text-[#FCF8F5] transition-colors duration-300 hover:bg-[#1E0F10] focus:outline-none focus-visible:ring-4 focus-visible:ring-[#004238]/25`}
+      >
+        Book Your Strategy Call
+      </a>
     </main>
   )
 }
