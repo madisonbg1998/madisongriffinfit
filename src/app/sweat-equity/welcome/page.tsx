@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import { doblegh, elza, geistMono } from '../../fonts'
+import { addToKitSequence, KIT_SEQUENCES } from '@/lib/kit'
 
 export const metadata: Metadata = {
   title: { absolute: 'Welcome | Sweat Equity' },
@@ -8,7 +9,6 @@ export const metadata: Metadata = {
 }
 
 const WORKSPACE_SLUG = 'madisongriffinfitcom'
-const KIT_SEQUENCE_ID = 2962783
 
 // Confirms the Stripe session was paid, then adds the buyer to the Kit welcome sequence.
 async function enrollPaidBuyer(sessionId: string, firstName: string) {
@@ -30,14 +30,7 @@ async function enrollPaidBuyer(sessionId: string, firstName: string) {
   const { payment_status: paymentStatus, customer_email: email } = await statusRes.json()
   if (paymentStatus !== 'paid' || !email) return
 
-  const sequenceRes = await fetch(`https://api.convertkit.com/v3/sequences/${KIT_SEQUENCE_ID}/subscribe`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ api_key: kitApiKey, email, first_name: firstName }),
-  })
-  if (!sequenceRes.ok) {
-    console.error('Kit sequence enrollment failed:', sequenceRes.status, await sequenceRes.text())
-  }
+  await addToKitSequence(KIT_SEQUENCES.sweatEquityWelcome, email, firstName || undefined)
 }
 
 export default async function SweatEquityWelcomePage({
