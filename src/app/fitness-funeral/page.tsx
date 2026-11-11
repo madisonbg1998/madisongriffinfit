@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { script, garamond, smallCaps } from '../fonts'
+import { bodoni, script } from '../fonts'
 
 // Tickets are sold through Luma
 const RSVP_URL = 'https://luma.com/hzpdkn85'
@@ -13,208 +13,250 @@ export const metadata: Metadata = {
   },
 }
 
-const INK = '#2a211b'
-const GOLD = '#a8875a'
-const PAPER = '#f2e9d8'
+const CREAM = '#f4eee3'
+const TAUPE = '#b9ad9a'
+const BLACK = '#0a0a0a'
 
-// Fractal noise used for paper grain and the velvet backdrop
-const GRAIN = `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.25  0 0 0 0 0.18  0 0 0 0 0.1  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")`
+// Pearls per strand, left to right: a loose curtain that dips toward the center
+const STRANDS = [4, 3, 6, 7, 8, 6, 5, 7, 9, 8, 11, 9, 10, 8, 7, 9, 10, 8, 6, 7, 5, 3, 4]
+const PEARL_GAP = 15
+const PEARL_R = 4.4
 
-function Flourish({ className = '' }: { className?: string }) {
+function PearlGradient({ id }: { id: string }) {
   return (
-    <svg aria-hidden viewBox="0 0 220 24" className={className} fill="none" stroke="currentColor" strokeWidth="1">
-      <path d="M2 12 H86" />
-      <path d="M218 12 H134" />
-      <path d="M86 12 C96 2, 104 2, 110 12 C116 22, 124 22, 134 12" />
-      <path d="M86 12 C96 22, 104 22, 110 12 C116 2, 124 2, 134 12" />
-      <circle cx="110" cy="12" r="2" fill="currentColor" />
-      <circle cx="80" cy="12" r="1.2" fill="currentColor" />
-      <circle cx="140" cy="12" r="1.2" fill="currentColor" />
+    <defs>
+      <radialGradient id={id} cx="35%" cy="30%" r="75%">
+        <stop offset="0%" stopColor="#ffffff" />
+        <stop offset="45%" stopColor="#e9e2d4" />
+        <stop offset="100%" stopColor="#8f8676" />
+      </radialGradient>
+    </defs>
+  )
+}
+
+function PearlCurtain() {
+  const width = 800
+  const step = width / STRANDS.length
+  const height = Math.max(...STRANDS) * PEARL_GAP + 20
+  return (
+    <svg aria-hidden viewBox={`0 0 ${width} ${height}`} className="w-full max-w-4xl mx-auto block" preserveAspectRatio="xMidYMin meet">
+      <PearlGradient id="pearl" />
+      {STRANDS.map((count, i) => {
+        const x = step * i + step / 2
+        const lastY = 10 + (count - 1) * PEARL_GAP
+        return (
+          <g key={i}>
+            <line x1={x} y1={0} x2={x} y2={lastY} stroke="#9a9182" strokeWidth={0.6} />
+            {Array.from({ length: count }, (_, j) => (
+              <circle key={j} cx={x} cy={10 + j * PEARL_GAP} r={PEARL_R} fill="url(#pearl)" />
+            ))}
+          </g>
+        )
+      })}
     </svg>
   )
 }
 
-// Key phrase: heavier ink with a soft gold highlighter wash
+// Three pearls on a thread, used to break the letter into short passages
+function PearlBreak() {
+  return (
+    <svg aria-hidden viewBox="0 0 120 12" className="block w-24 mx-auto my-14">
+      <PearlGradient id="pearl-break" />
+      <line x1="0" y1="6" x2="120" y2="6" stroke={`${CREAM}40`} strokeWidth="0.6" />
+      {[44, 60, 76].map((cx) => (
+        <circle key={cx} cx={cx} cy="6" r={cx === 60 ? 4.6 : 3.6} fill="url(#pearl-break)" />
+      ))}
+    </svg>
+  )
+}
+
+function Rule({ className = '' }: { className?: string }) {
+  return <div aria-hidden className={`mx-auto h-px w-28 ${className}`} style={{ backgroundColor: `${CREAM}99` }} />
+}
+
+// Key phrase: brighter, slightly heavier ink against the softer body text
 function Mark({ children }: { children: React.ReactNode }) {
   return (
-    <span
-      className="font-semibold box-decoration-clone px-0.5"
-      style={{ backgroundImage: `linear-gradient(transparent 58%, ${GOLD}40 58%)` }}
-    >
+    <span className="font-medium" style={{ color: CREAM }}>
       {children}
     </span>
   )
 }
 
-function Corner({ className }: { className: string }) {
+// Short standalone line, set apart from the paragraphs around it
+function Aside({ children }: { children: React.ReactNode }) {
   return (
-    <svg aria-hidden viewBox="0 0 60 60" className={`absolute w-10 h-10 sm:w-14 sm:h-14 ${className}`} fill="none" stroke={GOLD} strokeWidth="1">
-      <path d="M4 56 V12 C4 7, 7 4, 12 4 H56" />
-      <path d="M10 56 V18 C10 13, 13 10, 18 10 H56" opacity="0.6" />
-      <path d="M18 18 C26 18, 30 22, 30 30 C24 30, 18 26, 18 18 Z" fill={GOLD} fillOpacity="0.25" />
-    </svg>
+    <p className="italic text-center text-[1.3rem] sm:text-[1.45rem] leading-snug max-w-md mx-auto" style={{ color: CREAM }}>
+      {children}
+    </p>
   )
 }
+
+const LABEL = 'font-sans uppercase tracking-[0.32em] text-[11px] sm:text-xs'
 
 export default function FitnessFuneralPage() {
   return (
     <div
-      className={`${garamond.className} relative isolate min-h-screen px-4 py-10 sm:py-20`}
-      style={{ backgroundColor: '#140d09' }}
+      className={`${bodoni.className} min-h-screen pb-24`}
+      style={{
+        color: `${CREAM}e0`,
+        backgroundColor: BLACK,
+        backgroundImage: `radial-gradient(ellipse at 50% 30%, #161514 0%, ${BLACK} 65%)`,
+      }}
     >
-      {/* Chocolate satin backdrop, pinned so the card scrolls over it */}
-      <div
-        aria-hidden
-        className="fixed inset-0 -z-10 bg-cover bg-center"
-        style={{
-          backgroundImage: `radial-gradient(ellipse at center, transparent 35%, rgba(10,6,4,0.7) 100%), linear-gradient(rgba(14,9,6,0.62), rgba(14,9,6,0.62)), ${GRAIN}, url('/chocolate-satin.jpg')`,
-          backgroundSize: 'cover, cover, 240px 240px, cover',
-        }}
-      />
-      {/* Mourning card: black band, then ivory paper */}
-      <article
-        className="relative max-w-2xl mx-auto p-3 sm:p-4 rounded-[3px] shadow-[0_30px_80px_rgba(0,0,0,0.55)]"
-        style={{ background: '#1f120b' }}
-      >
-        <div
-          className="relative px-7 sm:px-16 py-14 sm:py-20 rounded-[2px]"
-          style={{
-            color: INK,
-            backgroundColor: PAPER,
-            backgroundImage: `radial-gradient(ellipse at 15% 10%, rgba(255,250,238,0.7), transparent 55%), radial-gradient(ellipse at 90% 95%, rgba(176,140,90,0.22), transparent 50%), radial-gradient(ellipse at center, transparent 60%, rgba(140,105,60,0.22) 100%), ${GRAIN}`,
-            boxShadow: `inset 0 0 0 1px ${GOLD}66, inset 0 0 0 7px ${PAPER}, inset 0 0 0 8px ${GOLD}40`,
-          }}
-        >
-          <Corner className="top-4 left-4" />
-          <Corner className="top-4 right-4 rotate-90" />
-          <Corner className="bottom-4 right-4 rotate-180" />
-          <Corner className="bottom-4 left-4 -rotate-90" />
+      <PearlCurtain />
 
-          <header className="text-center">
-            <p className={`${smallCaps.className} text-sm tracking-[0.35em] mb-6`} style={{ color: GOLD }}>
-              In Loving Memory
+      <article className="max-w-2xl mx-auto px-6 sm:px-10">
+        <header className="text-center pt-10 sm:pt-14">
+          <p className={`${LABEL} mb-7`} style={{ color: TAUPE }}>
+            In Loving Memory
+          </p>
+          <p className="text-xl sm:text-2xl mb-4" style={{ color: CREAM }}>
+            You are hereby summoned to a
+          </p>
+          <h1
+            className="font-normal leading-[0.98] tracking-[-0.01em] text-[clamp(4rem,18vw,8rem)] mb-8"
+            style={{ color: CREAM }}
+          >
+            <span className="block">Fitness</span>
+            <span className="block">Funeral</span>
+          </h1>
+          <p className="text-xl sm:text-2xl leading-snug" style={{ color: CREAM }}>
+            A Farewell Service &amp;
+            <br />
+            Sweat Equity Launch Celebration
+          </p>
+        </header>
+
+        <Rule className="my-14" />
+
+        <div className="max-w-xl mx-auto text-[1.15rem] sm:text-[1.25rem] leading-[1.85] text-pretty">
+          {/* The deceased */}
+          <section className="space-y-7">
+            <p className="italic text-center text-[1.4rem] sm:text-[1.6rem]" style={{ color: CREAM }}>
+              Dearly beloved founder,
             </p>
-            <p className="italic text-xl sm:text-2xl mb-1">You are hereby summoned to a</p>
-            <h1 className={`${script.className} font-normal whitespace-nowrap leading-[1.2] text-[clamp(2.1rem,8.5vw,4.25rem)] mb-4`}>
-              Fitness Funeral
-            </h1>
-            <p className={`${smallCaps.className} text-base sm:text-lg tracking-[0.18em]`}>
-              A Farewell Service &amp; Sweat Equity Launch Celebration
-            </p>
-          </header>
-
-          <Flourish className="w-48 mx-auto my-10" />
-
-          <div className="text-[1.2rem] sm:text-[1.3rem] leading-[1.7] space-y-6 text-pretty">
-            <p className="italic text-[1.35rem] sm:text-[1.45rem]">Dearly beloved founder,</p>
-
             <p>
-              <span className="float-left text-[4.6rem] leading-[0.75] font-medium mr-3 mt-2" style={{ color: GOLD }}>
+              <span className="float-left text-[4.4rem] leading-[0.8] mr-3 mt-1.5" style={{ color: CREAM }}>
                 P
               </span>
               lease join us in laying to rest{' '}
-              <Mark>“I’ll work on my body when things calm down.”</Mark> She has tragically died in an
-              accident, by <Mark>calendar strangulation</Mark> from three upcoming speaking gigs, two flights,
-              and the event you just agreed to host.
+              <Mark>“I’ll work on my body when things calm down.”</Mark>
             </p>
+            <p>
+              She has tragically died in an accident, by <Mark>calendar strangulation</Mark> from three
+              upcoming speaking gigs, two flights, and the event you just agreed to host.
+            </p>
+            <Aside>We did everything we could. You kept booking things.</Aside>
+          </section>
 
-            <p className="italic text-center">We did everything we could. You kept booking things.</p>
+          <PearlBreak />
 
+          {/* Also being buried */}
+          <section className="space-y-7">
             <p>
               Also being lowered into the ground– the expectation that you’ll{' '}
               <Mark>decline dinner with your dream collaborator</Mark> because your fitness plan had you
               home with some chicken.
             </p>
-
             <p>
               <Mark>“Just use the hotel gym”</Mark> will serve as pallbearer, provided he can make it before
               your 8 a.m. panel.
             </p>
+          </section>
 
+          <PearlBreak />
+
+          {/* Why we gather */}
+          <section className="space-y-7">
             <p>
-              We’re gathering because <Mark>you actually like the life you’re building.</Mark> You want the
-              speaking gig, the trip, the business, and to{' '}
+              We’re gathering because <Mark>you actually like the life you’re building.</Mark>
+            </p>
+            <p>
+              You want the speaking gig, the trip, the business, and to{' '}
               <Mark>love how you look in the photos afterward.</Mark>
             </p>
-
             <p>
               We will observe a moment of silence for the years spent believing you needed{' '}
               <Mark>a quieter calendar</Mark> to have that.
             </p>
+          </section>
 
+          <PearlBreak />
+
+          {/* The service */}
+          <section className="space-y-7">
             <p>
               We’ll pay our respects to some spectacularly unhelpful advice, then I’ll introduce you to{' '}
-              <span className={`${smallCaps.className} tracking-wider font-semibold`} style={{ color: GOLD }}>
+              <span className="font-sans uppercase tracking-[0.2em] text-[0.78em]" style={{ color: CREAM }}>
                 Sweat Equity
               </span>
               —and show you how we handle{' '}
               <Mark>the flights, full calendars, and last-minute opportunities</Mark> the deceased failed to
               account for.
             </p>
-
             <p>
               A wake will follow, with wine, cheese, and{' '}
               <Mark>a room full of women founders who move faster than the speed of light.</Mark>
             </p>
-
-            <p className="italic text-center">
+            <Aside>
               Please don’t feel obligated to remain sad. We plan on transitioning to happy tears within the
               first 6 seconds of the service.
-            </p>
+            </Aside>
+          </section>
 
-            {/* Memorial portrait, hotlinked from Giphy with attribution */}
-            <figure className="flex flex-col items-center pt-2">
-              <div
-                className="w-44 h-56 sm:w-52 sm:h-64 rounded-[50%] overflow-hidden"
-                style={{ boxShadow: `0 0 0 1px ${GOLD}, 0 0 0 6px ${PAPER}, 0 0 0 7px ${GOLD}99, 0 12px 30px rgba(60,40,20,0.35)` }}
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="https://media.giphy.com/media/g8SpAwIpdMcP6xlvDt/giphy.gif"
-                  alt="Francesca from Bridgerton in black mourning attire, smiling with a glass in hand"
-                  className="w-full h-full object-cover sepia-[0.25]"
-                />
-              </div>
-              <figcaption className={`${smallCaps.className} text-[11px] tracking-[0.2em] mt-4`} style={{ color: GOLD }}>
-                <a href="https://giphy.com/gifs/bridgerton-franchaela-francesca-g8SpAwIpdMcP6xlvDt" target="_blank" rel="noopener noreferrer">
-                  via Giphy
-                </a>
-              </figcaption>
-            </figure>
+          {/* Memorial portrait, hotlinked from Giphy with attribution */}
+          <figure className="flex flex-col items-center pt-16">
+            <div
+              className="w-44 h-56 sm:w-52 sm:h-64 rounded-[50%] overflow-hidden"
+              style={{ boxShadow: `0 0 0 1px ${CREAM}cc, 0 0 0 7px ${BLACK}, 0 0 0 8px ${CREAM}55` }}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://media.giphy.com/media/g8SpAwIpdMcP6xlvDt/giphy.gif"
+                alt="Francesca from Bridgerton in black mourning attire, smiling with a glass in hand"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <figcaption className={`${LABEL} !text-[10px] mt-5`} style={{ color: TAUPE }}>
+              <a href="https://giphy.com/gifs/bridgerton-franchaela-francesca-g8SpAwIpdMcP6xlvDt" target="_blank" rel="noopener noreferrer">
+                via Giphy
+              </a>
+            </figcaption>
+          </figure>
 
-            <p className="text-center italic pt-2">
-              Your presence is requested.
-              <br />
-              Your old fitness rules have already been notified.
+          <p className="text-center text-[1.3rem] sm:text-[1.45rem] leading-snug pt-10" style={{ color: CREAM }}>
+            Your presence is requested.
+            <br />
+            Your old fitness rules have already been notified.
+          </p>
+        </div>
+
+        <Rule className="my-14" />
+
+        <footer className="text-center">
+          <p className="italic text-lg sm:text-xl mb-2">With deepest condolences for the advice,</p>
+          <p className={`${script.className} text-6xl sm:text-7xl leading-[1.3] -rotate-3 mb-14`} style={{ color: CREAM }}>
+            Madison
+          </p>
+
+          <div className="mb-14 space-y-2" style={{ color: CREAM }}>
+            <p className={`${LABEL} mb-4`} style={{ color: TAUPE }}>
+              The service will be held
             </p>
+            <p className="text-2xl sm:text-[1.75rem]">Sunday, the Fifteenth of November</p>
+            <p className="text-xl sm:text-[1.35rem]">six o’clock until nine in the evening</p>
+            <p className="text-xl sm:text-[1.35rem]">Hillside Farmacy · Austin, Texas</p>
           </div>
 
-          <Flourish className="w-48 mx-auto my-10" />
-
-          <footer className="text-center">
-            <p className="italic text-xl mb-1">With deepest condolences for the advice,</p>
-            <p className={`${script.className} text-5xl sm:text-6xl mb-10`}>Madison</p>
-
-            <div className="mb-10 space-y-1">
-              <p className="italic text-lg">The service will be held</p>
-              <p className={`${smallCaps.className} text-xl sm:text-2xl tracking-[0.12em] font-semibold`}>
-                Sunday, the Fifteenth of November
-              </p>
-              <p className="italic text-lg">six o’clock until nine in the evening</p>
-              <p className={`${smallCaps.className} text-base tracking-[0.18em] pt-1`} style={{ color: GOLD }}>
-                Hillside Farmacy · Austin, Texas
-              </p>
-            </div>
-
-            <a
-              href={RSVP_URL}
-              className={`${smallCaps.className} inline-block text-base tracking-[0.25em] px-9 py-3.5 text-[#2a211b] transition-colors duration-500 hover:bg-[#2a211b] hover:text-[#f2e9d8]`}
-              style={{ border: `1px solid ${INK}`, outline: `1px solid ${GOLD}80`, outlineOffset: '4px' }}
-            >
-              Kindly RSVP to the Funeral
-            </a>
-          </footer>
-        </div>
+          <a
+            href={RSVP_URL}
+            className="inline-block font-sans uppercase text-xs sm:text-[13px] tracking-[0.28em] px-9 py-4 text-white transition-colors duration-500 hover:bg-[#f4eee3] hover:text-[#0a0a0a]"
+            style={{ border: `1px solid ${CREAM}`, outline: `1px solid ${CREAM}55`, outlineOffset: '5px' }}
+          >
+            Kindly RSVP to the Funeral
+          </a>
+        </footer>
       </article>
     </div>
   )
