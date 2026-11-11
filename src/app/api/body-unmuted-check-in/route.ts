@@ -4,8 +4,9 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
 
-    const baseUrl = process.env.ADHARA_BASE_URL
-    const formSlug = process.env.ADHARA_CHECK_IN_FORM_SLUG
+    // Defaults keep check-ins flowing even if these env vars go missing on a new deployment
+    const baseUrl = process.env.ADHARA_BASE_URL || 'https://api.adharaweb.com'
+    const formSlug = process.env.ADHARA_CHECK_IN_FORM_SLUG || 'body-unmuted-check-in'
     const apiKey = process.env.ADHARA_API_KEY
     const workspaceId = process.env.ADHARA_WORKSPACE_ID
 
