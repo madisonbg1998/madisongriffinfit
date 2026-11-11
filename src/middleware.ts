@@ -22,9 +22,15 @@ const HIDDEN_PATHS = [
 const LIVE_PATHS = ['/body-unmuted/check-in']
 
 export function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl
+
+  // Founder Fitness Audit is a standalone HTML page in /public; serve it at a clean URL
+  if (pathname === '/founder-fitness-audit') {
+    return NextResponse.rewrite(new URL('/founder-fitness-audit.html', request.url))
+  }
+
   if (!UNDER_CONSTRUCTION) return NextResponse.next()
 
-  const { pathname } = request.nextUrl
   if (LIVE_PATHS.some((p) => pathname === p || pathname.startsWith(`${p}/`))) {
     return NextResponse.next()
   }

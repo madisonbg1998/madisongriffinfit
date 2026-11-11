@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Founder Fitness Audit | Sweat Equity</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pine:#004238; --pine-2:#0b5247; --lime:#E4FF72; --peri:#C7D2FF; --tang:#FF5E3E;
+    --pearl:#FCF8F5; --espresso:#1E0F10; --line:rgba(0,66,56,.16);
+    --h1:"Archivo Black", "Arial Black", sans-serif;
+    --h2:"Bricolage Grotesque", "DM Sans", sans-serif;
+    --body:"DM Sans", system-ui, sans-serif;
+    --mono:"Geist Mono", ui-monospace, monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--pearl);color:var(--espresso);font-family:var(--body);font-weight:500;-webkit-font-smoothing:antialiased}
+  body{min-height:100vh;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+  button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+  .mono{font-family:var(--mono);text-transform:uppercase;letter-spacing:.08em}
+
+  /* ---------- top bar ---------- */
+  .topbar{position:sticky;top:0;z-index:5;background:var(--pearl);padding:14px 20px 12px;border-bottom:1px solid var(--line)}
+  .topbar-row{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:680px;margin:0 auto}
+  .wordmark{font-family:var(--h1);font-size:15px;letter-spacing:.02em;color:var(--pine)}
+  .wordmark span{color:var(--tang)}
+  .restart{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--pine);opacity:.7;padding:6px 0}
+  .restart:hover{opacity:1}
+  .track{max-width:680px;margin:10px auto 0;height:6px;border-radius:99px;background:rgba(0,66,56,.1);overflow:hidden}
+  .fill{height:100%;background:var(--pine);border-radius:99px;transition:width .35s ease}
+
+  .wrap{max-width:680px;margin:0 auto;padding:28px 20px 48px}
+
+  /* ---------- intro ---------- */
+  .intro{min-height:100vh;background:var(--pine);color:var(--pearl);display:flex;flex-direction:column}
+  .intro .wrap{flex:1;display:flex;flex-direction:column;justify-content:center;padding-top:48px;padding-bottom:56px}
+  .intro .wordmark{color:var(--lime);font-size:18px;margin-bottom:40px}
+  .intro .wordmark span{color:var(--pearl)}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+  .intro .eyebrow{color:var(--peri);margin-bottom:16px}
+  .intro h1{font-family:var(--h1);text-transform:uppercase;line-height:1;font-size:clamp(40px,9vw,68px);color:var(--lime);margin-bottom:28px}
+  .intro p{font-size:18px;line-height:1.55;max-width:540px;margin-bottom:14px;color:rgba(252,248,245,.92)}
+  .intro .belief{font-family:var(--h2);font-weight:700;font-size:20px;line-height:1.35;color:var(--pearl);border-left:3px solid var(--tang);padding-left:14px;margin:18px 0 30px}
+  .meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px}
+  .meta span{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(228,255,114,.5);color:var(--lime);padding:7px 11px;border-radius:99px}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--mono);font-size:14px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:18px 26px;border-radius:99px;transition:transform .12s ease, background .2s ease}
+  .btn:active{transform:scale(.98)}
+  .btn-lime{background:var(--lime);color:var(--pine)}
+  .btn-lime:hover{background:#d8f55e}
+  .btn-pine{background:var(--pine);color:var(--lime)}
+  .btn-pine:hover{background:var(--pine-2)}
+  .btn-ghost{border:1.5px solid var(--pine);color:var(--pine)}
+  .btn[disabled]{opacity:.35;pointer-events:none}
+
+  /* ---------- question screens ---------- */
+  .tag{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:6px 10px;border-radius:6px;margin-bottom:18px}
+  .tag.possible{background:var(--tang);color:var(--pearl)}
+  .tag.effective{background:var(--peri);color:var(--pine)}
+  .tag.livable{background:var(--lime);color:var(--pine)}
+  .tag.about{background:var(--pine);color:var(--lime)}
+  .count{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--pine);opacity:.6;margin-left:10px}
+  .qtitle{font-family:var(--h2);font-weight:700;font-size:clamp(24px,5.2vw,32px);line-height:1.18;color:var(--pine);margin-bottom:10px;letter-spacing:-.01em}
+  .qsub{font-size:15px;line-height:1.5;color:rgba(30,15,16,.7);margin-bottom:26px}
+  .stmt{font-family:var(--h2);font-weight:700;font-size:clamp(23px,5vw,30px);line-height:1.22;color:var(--pine);margin:8px 0 30px;letter-spacing:-.01em}
+  .stmt-lead{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:rgba(30,15,16,.55)}
+
+  .scale{display:grid;gap:10px}
+  .opt{width:100%;text-align:left;display:flex;align-items:center;gap:14px;padding:17px 18px;border-radius:14px;border:1.5px solid var(--line);background:#fff;font-size:17px;line-height:1.35;transition:border-color .15s, background .15s, color .15s}
+  .opt:hover{border-color:var(--pine)}
+  .opt .dot{flex:0 0 22px;height:22px;border-radius:50%;border:1.5px solid var(--pine);display:flex;align-items:center;justify-content:center}
+  .opt.sel{background:var(--pine);border-color:var(--pine);color:var(--pearl)}
+  .opt.sel .dot{border-color:var(--lime);background:var(--lime)}
+  .opt.sel .dot::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--pine)}
+
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+  .chip{padding:12px 16px;border-radius:99px;border:1.5px solid var(--line);background:#fff;font-size:15px}
+  .chip:hover{border-color:var(--pine)}
+  .chip.sel{background:var(--pine);color:var(--lime);border-color:var(--pine)}
+  .label{display:block;font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--pine);margin-bottom:10px}
+  .consent{display:flex;align-items:flex-start;gap:12px;font-size:15px;line-height:1.45;color:rgba(30,15,16,.8);margin:-10px 0 28px;cursor:pointer}
+  .consent input{flex:0 0 20px;width:20px;height:20px;margin-top:1px;accent-color:var(--tang);cursor:pointer}
+  input[type=text], input[type=email], textarea{width:100%;font:inherit;font-size:17px;padding:15px 16px;border-radius:12px;border:1.5px solid var(--line);background:#fff;color:var(--espresso);margin-bottom:26px;outline:none}
+  input[type=text]:focus, input[type=email]:focus, textarea:focus{border-color:var(--pine)}
+  textarea{min-height:130px;resize:vertical;line-height:1.5}
+
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:30px}
+  .back{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--pine);padding:12px 0;opacity:.75}
+  .back:hover{opacity:1}
+  .hint{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(30,15,16,.45)}
+
+  /* section divider screen */
+  .divider{border-radius:22px;padding:30px 26px;margin-top:6px}
+  .divider.possible{background:var(--tang);color:var(--pearl)}
+  .divider.effective{background:var(--peri);color:var(--pine)}
+  .divider.livable{background:var(--pine);color:var(--pearl)}
+  .divider .big{font-family:var(--h1);text-transform:uppercase;font-size:clamp(44px,11vw,72px);line-height:1;margin:10px 0 16px}
+  .divider.livable .big{color:var(--lime)}
+  .divider p{font-size:18px;line-height:1.5;max-width:480px}
+
+  /* ---------- results ---------- */
+  .res-hero{background:var(--pine);color:var(--pearl);padding:36px 0 34px}
+  .res-hero .wordmark{color:var(--lime);margin-bottom:26px}
+  .res-hero .wordmark span{color:var(--pearl)}
+  .res-hero h1{font-family:var(--h1);text-transform:uppercase;font-size:clamp(34px,8vw,56px);line-height:1;color:var(--lime);margin:10px 0 18px}
+  .res-hero .eyebrow{color:var(--peri)}
+  .res-hero p{font-size:17px;line-height:1.5;color:rgba(252,248,245,.9);max-width:540px}
+  .facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+  .facts span{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;background:rgba(252,248,245,.1);border:1px solid rgba(252,248,245,.25);padding:7px 11px;border-radius:99px}
+
+  .sec-h{font-family:var(--h1);text-transform:uppercase;font-size:24px;line-height:1.05;color:var(--pine);margin:40px 0 6px}
+  .sec-sub{font-size:15px;line-height:1.5;color:rgba(30,15,16,.65);margin-bottom:18px}
+
+  .lever{background:var(--lime);color:var(--pine);border-radius:22px;padding:26px 24px;margin-top:-18px;position:relative;box-shadow:0 10px 30px rgba(0,66,56,.15)}
+  .lever .eyebrow{margin-bottom:10px}
+  .lever h2{font-family:var(--h2);font-weight:800;font-size:clamp(26px,6vw,34px);line-height:1.1;margin-bottom:10px;letter-spacing:-.01em}
+  .lever p{font-size:17px;line-height:1.5}
+
+  .sheet{display:grid;gap:14px}
+  .sheet-col{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px 18px 8px}
+  .sheet-col h3{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+  .row{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:11px 0;border-top:1px solid var(--line)}
+  .row:first-of-type{border-top:0}
+  .row .name{font-family:var(--h2);font-weight:700;font-size:16px;color:var(--pine);line-height:1.25}
+  .row .said{font-size:13px;color:rgba(30,15,16,.6);margin-top:3px;line-height:1.35}
+  .pill{flex:0 0 auto;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:5px 8px;border-radius:6px;margin-top:2px}
+  .pill.asset{background:var(--lime);color:var(--pine)}
+  .pill.watch{background:var(--peri);color:var(--pine)}
+  .pill.liability{background:var(--tang);color:var(--pearl)}
+  .legend{display:flex;flex-wrap:wrap;gap:14px;font-size:13px;color:rgba(30,15,16,.7);margin-bottom:16px}
+  .legend .pill{margin-right:6px}
+
+  .take{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px 22px 20px;margin-bottom:14px}
+  .take .num{font-family:var(--h1);font-size:14px;color:var(--tang);margin-right:8px}
+  .take h3{font-family:var(--h2);font-weight:800;font-size:23px;line-height:1.15;color:var(--pine);margin:12px 0 8px;letter-spacing:-.01em}
+  .take .st{font-size:16px;line-height:1.55;margin-bottom:14px}
+  .take dl{display:grid;gap:12px}
+  .take dt{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--pine);opacity:.7;margin-bottom:3px}
+  .take dd{font-size:15.5px;line-height:1.5}
+  .take .ask{background:var(--pearl);border-left:3px solid var(--tang);padding:12px 14px;border-radius:0 10px 10px 0;font-family:var(--h2);font-weight:700;font-size:17px;color:var(--pine);line-height:1.35}
+
+  .quote{background:var(--peri);color:var(--pine);border-radius:20px;padding:22px 24px;font-family:var(--h2);font-weight:700;font-size:20px;line-height:1.4}
+  .quote .eyebrow{display:block;margin-bottom:10px;font-family:var(--mono);font-weight:500}
+
+  .finale{background:var(--espresso);color:var(--pearl);border-radius:22px;padding:28px 24px;margin-top:34px}
+  .finale h2{font-family:var(--h1);text-transform:uppercase;font-size:clamp(26px,6vw,36px);line-height:1.02;color:var(--lime);margin-bottom:12px}
+  .finale p{font-size:16px;line-height:1.55;color:rgba(252,248,245,.85);margin-bottom:22px}
+  .finale .btns{display:flex;flex-wrap:wrap;gap:10px}
+  .finale .btn-ghost{border-color:rgba(252,248,245,.5);color:var(--pearl)}
+  .copied{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--lime);margin-top:12px;min-height:14px}
+
+  /* in-page confirm */
+  .modal{position:fixed;inset:0;background:rgba(30,15,16,.55);display:flex;align-items:center;justify-content:center;padding:20px;z-index:20}
+  .modal-card{background:var(--pearl);border-radius:20px;padding:26px 24px;max-width:400px;width:100%}
+  .modal-card h3{font-family:var(--h2);font-weight:800;font-size:22px;color:var(--pine);margin-bottom:8px}
+  .modal-card p{font-size:15.5px;line-height:1.5;margin-bottom:20px}
+  .modal-card .btns{display:flex;gap:10px;flex-wrap:wrap}
+
+  .fade{animation:fade .28s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+  @media (min-width:720px){
+    .sheet{grid-template-columns:repeat(3,1fr)}
+    .sheet-col{padding:16px 14px 6px}
+  }
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+(function(){
+  "use strict";
+
+  /* ============================================================
+     CONTENT (questions + results pulled from the three original audits)
+  ============================================================ */
+  var SCALE_FRICTION = ["Not really", "Sometimes", "Often", "Very true"];
+  var SCALE_STRENGTH = ["Not true yet", "A little true", "Mostly true", "Very true"];
+
+  var SECTIONS = [
+    {
+      key:"possible", tag:"Possible", label:"Section 1 of 3",
+      divider:"Does fitness actually fit the life you built? Four quick statements. Choose what is true, not what sounds good.",
+      scale:SCALE_FRICTION, frictionScale:true,
+      items:[
+        { cat:"Freedom Conflict", text:"When I picture getting serious about fitness, I picture less freedom around food, travel, or plans." },
+        { cat:"Perfect Conditions", text:"I keep waiting for a calmer season, a longer stretch at home, or a better routine to really begin." },
+        { cat:"All-or-Nothing", text:"If I miss a workout or eat differently than planned, it feels like the week is already off." },
+        { cat:"Effort-Return", text:"I have put in effort before without enough visible return, so it is hard to trust that trying again will be worth it." }
+      ],
+      pinch:{
+        title:"If you had to pick one, which sounds most like you?",
+        options:[
+          { cat:"Freedom Conflict", text:"I worry that doing it properly will restrict the life I want to live." },
+          { cat:"Perfect Conditions", text:"I keep waiting for life to become stable enough to do it consistently." },
+          { cat:"All-or-Nothing", text:"Once I cannot do everything, it is hard to believe doing something still matters." },
+          { cat:"Effort-Return", text:"I am not convinced the time and energy I give fitness will produce a meaningful return." }
+        ]
+      }
+    },
+    {
+      key:"effective", tag:"Effective", label:"Section 2 of 3",
+      divider:"Is the work you are doing actually built to change your body? Five statements about your training, food, and recovery.",
+      scale:SCALE_STRENGTH, frictionScale:false,
+      items:[
+        { cat:"Direction", text:"My training and nutrition are organized around one clear physical outcome." },
+        { cat:"Training Stimulus", text:"I repeat key lifts long enough to progress them, and I can point to what has improved." },
+        { cat:"Nutrition Support", text:"I have clear nutrition targets for my current goal, and I follow them consistently enough to see how my body responds." },
+        { cat:"Recovery", text:"Most weeks, my energy and recovery are stable enough that I can train well and see my performance gradually improve." },
+        { cat:"Feedback", text:"I know how to decide whether to keep going, make an adjustment, or look deeper." }
+      ],
+      pinch:{
+        title:"What are you least sure about right now?",
+        options:[
+          { cat:"Direction", text:"Whether I am working toward the right goal in the right order." },
+          { cat:"Training Stimulus", text:"Whether my workouts are producing enough of the right stimulus." },
+          { cat:"Nutrition Support", text:"Whether my nutrition actually matches the result I want." },
+          { cat:"Recovery", text:"Whether my body is recovering well enough to respond." },
+          { cat:"Feedback", text:"Whether I have enough evidence to know what should change next." }
+        ]
+      }
+    },
+    {
+      key:"livable", tag:"Livable", label:"Section 3 of 3",
+      divider:"Does your plan survive contact with your real life? Think about a week that would normally knock you off, not an easy week at home.",
+      scale:SCALE_STRENGTH, frictionScale:false,
+      items:[
+        { cat:"Time and Schedule", text:"If I only had two short training windows, I would know exactly what work still matters." },
+        { cat:"Travel and Equipment", text:"I can adapt my training when the gym, equipment, location, or time zone changes." },
+        { cat:"Food and Social Plans", text:"After an unplanned meal or a less structured day of eating, I know how to return to normal without restricting, compensating, or saying “f*ck it.”" },
+        { cat:"Energy and Recovery", text:"I know how to scale training when sleep, stress, or energy is meaningfully different." },
+        { cat:"Competing Priorities", text:"I have a reduced version of the plan for launches, deadlines, and unusually demanding work weeks." },
+        { cat:"Returning After Disruption", text:"After several missed days, I know exactly how to return without punishment or trying to make up for them." }
+      ],
+      pinch:{
+        title:"Which week would knock you off first?",
+        options:[
+          { cat:"Time and Schedule", text:"A week with almost no time" },
+          { cat:"Travel and Equipment", text:"Traveling or using a different gym" },
+          { cat:"Food and Social Plans", text:"Several meals out or social plans" },
+          { cat:"Energy and Recovery", text:"Poor sleep, stress, or lower energy" },
+          { cat:"Competing Priorities", text:"A launch or demanding business season" },
+          { cat:"Returning After Disruption", text:"Trying to return after falling out of the routine" }
+        ]
+      }
+    }
+  ];
+
+  var RESULTS = {
+    "Freedom Conflict": {
+      title:"The Freedom Conflict",
+      statement:"Some part of you has learned to see physical results and freedom as opposing choices.",
+      needs:"Structure that creates more freedom, instead of asking freedom to become the price of changing your body.",
+      ask:"What would fitness look like if it protected the parts of your life you refuse to lose?",
+      step:"Name one freedom you refuse to give up this week (a trip, a dinner, a slow morning). Plan your training around protecting it."
+    },
+    "Perfect Conditions": {
+      title:"The Perfect-Conditions Trap",
+      statement:"Your fitness plan keeps being assigned to a version of your life that rarely exists.",
+      needs:"A clear way to flex before life becomes a reason to disappear from it.",
+      ask:"Which “perfect condition” have you been waiting for before you let yourself begin?",
+      step:"Pick the next messy day on your calendar and decide right now what 20 minutes of training looks like on it."
+    },
+    "All-or-Nothing": {
+      title:"The All-or-Nothing Rulebook",
+      statement:"Your definition of consistency is so narrow that most real weeks cannot qualify.",
+      needs:"More than one valid version of the plan, so an imperfect week can still move you forward.",
+      ask:"What could still count during a week that cannot hold the full plan?",
+      step:"Write your minimum week: the two things that still count when nothing else fits."
+    },
+    "Effort-Return": {
+      title:"The Effort-Return Disconnect",
+      statement:"You have put real effort in before, and the return was not visible enough to trust the next round.",
+      needs:"The actions with the highest physical return first, and a way to see that return quickly enough to rebuild trust.",
+      ask:"What would you need to see to actually believe the effort is working?",
+      step:"Write down the one thing you did for your body this month that produced something you could see or feel. Do more of exactly that this week."
+    },
+    "Direction": {
+      title:"The Direction Gap",
+      statement:"You know the result you want, but the work is not yet organized into a clear phase designed to create it.",
+      needs:"One clear priority, a reason it fits your starting point, and markers for when the phase should change.",
+      ask:"What is the primary job of this phase of your transformation?",
+      step:"Write one sentence: is the priority right now building muscle, losing fat, or both, and if both, which one leads this month?"
+    },
+    "Training Stimulus": {
+      title:"The Training-Stimulus Gap",
+      statement:"You are exercising, but the muscles you want to change may not be getting enough of the right work to adapt.",
+      needs:"Training that makes progression visible and gives the right muscles a specific reason to change.",
+      ask:"Can you point to the signal your target muscles are being asked to adapt to?",
+      step:"Pick one main lift. Log the weight, reps, and how many reps you had left on your last set. Repeat next week and compare."
+    },
+    "Nutrition Support": {
+      title:"The Nutrition-Support Gap",
+      statement:"You may eat well, but “healthy” and strategically supported for your current goal are not always the same thing.",
+      needs:"Individualized targets and enough real-life consistency to evaluate them, without immediately getting more restrictive.",
+      ask:"Is your current nutrition actually matched to the phase you are asking your body to complete?",
+      step:"For three days, jot down your protein at each meal, even roughly. Not to judge it, just to see the real number."
+    },
+    "Recovery": {
+      title:"The Recovery Gap",
+      statement:"Your body may not currently have enough capacity to respond to everything you are asking of it.",
+      needs:"Recovery that matches the work, and a way to respond intelligently when your body keeps sending the same signal.",
+      ask:"What has your body been repeating that your current plan has not accounted for?",
+      step:"Rate your sleep and energy 1 to 5 each morning this week before you train. Look for the pattern before adding more work."
+    },
+    "Feedback": {
+      title:"The Feedback Gap",
+      statement:"You are putting in the work, but you do not have the evidence to know what it is producing.",
+      needs:"More than one measure of progress, enough time to read it, and a clear rule for when to keep going, adjust, or look deeper.",
+      ask:"What evidence would tell you the plan is working, or that it is time to change it?",
+      step:"Pick two measures besides the scale (a lift, a photo, how your clothes fit, your energy) and record them today as your starting point."
+    },
+    "Time and Schedule": {
+      title:"Time and Schedule",
+      statement:"Your strategy still depends on having the full amount of time available.",
+      needs:"A full version, a reduced version, and a minimum effective version of the week, each with a clear purpose.",
+      ask:"If you had half the time, what would still deserve a place?",
+      step:"Write down the two workouts you would keep if you only had two short windows this week."
+    },
+    "Travel and Equipment": {
+      title:"Travel and Equipment",
+      statement:"Your strategy is attached to a particular place, gym, or set of tools.",
+      needs:"A portable set of training priorities and clear substitutions that keep the purpose of the work.",
+      ask:"What part of your plan needs to become portable before your next trip?",
+      step:"Before your next trip, write one 30-minute session for a hotel room or unfamiliar gym that keeps the purpose of your main workout."
+    },
+    "Food and Social Plans": {
+      title:"Food and Social Plans",
+      statement:"Your nutrition strategy gets fragile when food is social, unfamiliar, or outside your control.",
+      needs:"A way to enjoy restaurant meals, celebrations, and travel food that keeps the week intact, and a calm way back afterward.",
+      ask:"What does your next meal look like after a dinner that did not go to plan?",
+      step:"Decide your default next meal after a big night out so there is nothing left to negotiate."
+    },
+    "Energy and Recovery": {
+      title:"Energy and Recovery",
+      statement:"Your plan assumes the same energy every day, and your life does not deliver that.",
+      needs:"A scaled version of training for low-sleep, high-stress days, and a clear sense of when a signal means adjust instead of push.",
+      ask:"What does a good training day look like when you slept five hours?",
+      step:"Tonight, decide what a lower-energy version of tomorrow’s workout looks like, so you are not negotiating with yourself at 6am."
+    },
+    "Competing Priorities": {
+      title:"Competing Priorities",
+      statement:"Your plan has no protected smaller version for the seasons when your business needs more from you.",
+      needs:"A reduced plan with firm boundaries and a clear return on the time you give it.",
+      ask:"What is the smallest strategy that would still support you during your busiest season?",
+      step:"Name your next demanding work stretch on the calendar and decide today what your fitness minimum will be during it."
+    },
+    "Returning After Disruption": {
+      title:"Returning After Disruption",
+      statement:"The plan explains how to perform it, but not how to come back to it.",
+      needs:"A pre-decided first step back that does not involve punishment, compensation, or a perfect Monday.",
+      ask:"What is the simplest first action that tells your body “we are back”?",
+      step:"Write down the exact first workout you will do the next time you come back from a disruption, before you need it."
+    }
+  };
+
+  var GOALS = ["Build muscle", "Lose fat", "Both", "More energy and strength", "Not sure yet"];
+  var TRAVEL = ["0 to 3 days", "4 to 10 days", "11 to 20 days", "20+ days"];
+
+  /* ============================================================
+     FLOW
+  ============================================================ */
+  var OPEN_QS = {
+    week:{ tag:"In your words", title:"What does a normal week of fitness look like for you right now, honestly?",
+           sub:"Training, food, movement, all of it. The real week, not the ideal one.", placeholder:"Right now, I...",
+           label:"A normal week right now", btn:"Next →" },
+    tried:{ tag:"In your words", title:"What have you already tried that didn’t stick?",
+            sub:"Programs, apps, coaches, diets, routines. And if you know why it stopped, add that too.", placeholder:"I tried...",
+            label:"What hasn’t stuck", btn:"Next →" },
+    fix:{ tag:"Last question", title:"If we could fix one thing about your fitness, what would you want it to be?",
+          sub:"One sentence is plenty. Say it the way you would say it to a friend.", placeholder:"Optional, but this is the part I read first.",
+          label:"The one thing to fix", btn:"See my snapshot →" }
+  };
+  var OTHER = "__other";
+
+  var FLOW = [{ kind:"intro" }, { kind:"about" }, { kind:"open", field:"week" }];
+  SECTIONS.forEach(function(sec, si){
+    FLOW.push({ kind:"divider", si:si });
+    sec.items.forEach(function(it, ii){ FLOW.push({ kind:"stmt", si:si, ii:ii }); });
+    FLOW.push({ kind:"pinch", si:si });
+    if (sec.key === "effective") FLOW.push({ kind:"open", field:"tried" });
+  });
+  FLOW.push({ kind:"open", field:"fix" });
+  FLOW.push({ kind:"results" });
+  var PROGRESS_STEPS = FLOW.length - 2;
+
+  function freshState(){
+    return { step:0, name:"", email:"", emailOptIn:false, goal:null, goalOther:"", travel:null, answers:{}, pinch:{}, pinchOther:{}, open:{ week:"", tried:"", fix:"" }, saved:false };
+  }
+  function validEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test((v || "").trim()); }
+  function goalText(){
+    if (state.goal === OTHER) return (state.goalOther || "").trim() || "Other";
+    return state.goal || "not set";
+  }
+  var state = freshState();
+  var app = document.getElementById("app");
+  var advancing = false;
+
+  function el(tag, attrs, kids){
+    var e = document.createElement(tag);
+    attrs = attrs || {};
+    for (var k in attrs){
+      if (!attrs.hasOwnProperty(k)) continue;
+      var v = attrs[k];
+      if (v == null) continue;
+      if (k === "class") e.className = v;
+      else if (k === "text") e.textContent = v;
+      else if (k.indexOf("on") === 0) e.addEventListener(k.slice(2), v);
+      else e.setAttribute(k, v);
+    }
+    (kids || []).forEach(function(c){
+      if (c == null || c === false) return;
+      e.appendChild(typeof c === "string" ? document.createTextNode(c) : c);
+    });
+    return e;
+  }
+
+  function go(i){
+    state.step = Math.max(0, Math.min(FLOW.length - 1, i));
+    advancing = false;
+    render();
+    window.scrollTo(0, 0);
+  }
+  function next(){ go(state.step + 1); }
+  function back(){ go(state.step - 1); }
+
+  function confirmRestart(){
+    var modal = el("div", { class:"modal" }, [
+      el("div", { class:"modal-card fade" }, [
+        el("h3", { text:"Start a fresh audit?" }),
+        el("p", { text:"This clears every answer on this screen so the next person starts clean." }),
+        el("div", { class:"btns" }, [
+          el("button", { class:"btn btn-pine", onclick:function(){ document.body.removeChild(modal); state = freshState(); render(); window.scrollTo(0,0); } }, ["Yes, start fresh"]),
+          el("button", { class:"btn btn-ghost", onclick:function(){ document.body.removeChild(modal); } }, ["Keep going"])
+        ])
+      ])
+    ]);
+    modal.addEventListener("click", function(e){ if (e.target === modal) document.body.removeChild(modal); });
+    document.body.appendChild(modal);
+  }
+
+  function topbar(){
+    var done = Math.max(0, state.step - 1);
+    var pct = Math.round(done / PROGRESS_STEPS * 100);
+    return el("div", { class:"topbar" }, [
+      el("div", { class:"topbar-row" }, [
+        el("div", { class:"wordmark" }, ["SWEAT ", el("span", { text:"EQUITY" })]),
+        el("button", { class:"restart", onclick:confirmRestart }, ["Start over"])
+      ]),
+      el("div", { class:"track" }, [ el("div", { class:"fill", style:"width:" + pct + "%" }) ])
+    ]);
+  }
+
+  function navRow(canNext, nextLabel, onNext){
+    return el("div", { class:"nav" }, [
+      el("button", { class:"back", onclick:back }, ["← Back"]),
+      onNext ? el("button", { class:"btn btn-pine", disabled: canNext ? null : "disabled", onclick:onNext }, [nextLabel || "Next →"]) : el("span", { class:"hint", text:"Tap an answer" })
+    ]);
+  }
+
+  /* ---------- screens ---------- */
+  function renderIntro(){
+    return el("div", { class:"intro fade" }, [
+      el("div", { class:"wrap" }, [
+        el("div", { class:"wordmark" }, ["SWEAT ", el("span", { text:"EQUITY" })]),
+        el("div", { class:"eyebrow", text:"The Founder Fitness Audit" }),
+        el("h1", { text:"Your body is a business asset. Let’s audit it." }),
+        el("p", { text:"Five or six minutes. Quick taps, a few answers in your own words. Then you walk over to Madison with a snapshot of what is working, what is quietly costing you, and where to start." }),
+        el("p", { text:"Answer from what has actually happened over the last six months, not the routine you keep promising yourself you will follow when life calms down." }),
+        el("div", { class:"belief", text:"Fitness should expand your freedom, not shrink your life to fit it." }),
+        el("div", { class:"meta" }, [ el("span", { text:"5 to 6 minutes" }), el("span", { text:"3 short sections" }), el("span", { text:"Instant snapshot" }) ]),
+        el("div", {}, [ el("button", { class:"btn btn-lime", onclick:next }, ["Start my audit →"]) ])
+      ])
+    ]);
+  }
+
+  function chipGroup(options, current, onPick, withOther){
+    var chips = options.map(function(o){
+      return el("button", { class:"chip" + (current === o ? " sel" : ""), onclick:function(){ onPick(o); } }, [o]);
+    });
+    if (withOther) chips.push(el("button", { class:"chip" + (current === OTHER ? " sel" : ""), onclick:function(){ onPick(OTHER); } }, ["Other"]));
+    return el("div", { class:"chips" }, chips);
+  }
+
+  function renderAbout(){
+    var nameInput = el("input", { type:"text", placeholder:"First name", autocomplete:"off", value:state.name });
+    nameInput.addEventListener("input", function(){ state.name = nameInput.value; });
+    var emailInput = el("input", { type:"email", placeholder:"you@example.com", autocomplete:"off", inputmode:"email", value:state.email });
+    var navWrap = el("div");
+    function drawNav(){
+      navWrap.innerHTML = "";
+      navWrap.appendChild(navRow(!!(state.goal && state.travel && validEmail(state.email)), "Next →", next));
+    }
+    emailInput.addEventListener("input", function(){ state.email = emailInput.value; drawNav(); });
+    var optIn = el("input", { type:"checkbox", id:"email-optin" });
+    optIn.checked = state.emailOptIn;
+    optIn.addEventListener("change", function(){ state.emailOptIn = optIn.checked; });
+    drawNav();
+    var body = el("div", { class:"wrap fade" }, [
+      el("div", {}, [ el("span", { class:"tag about", text:"About you" }) ]),
+      el("h2", { class:"qtitle", text:"First, the quick basics." }),
+      el("p", { class:"qsub", text:"So your snapshot is actually yours." }),
+      el("label", { class:"label", text:"Your first name" }),
+      nameInput,
+      el("label", { class:"label", text:"Your email" }),
+      emailInput,
+      el("label", { class:"consent", for:"email-optin" }, [
+        optIn,
+        el("span", { text:"Yes, Madison can email me fitness tips, offers and Sweat Equity updates. I can unsubscribe anytime." })
+      ]),
+      el("span", { class:"label", text:"What do you most want your body to do for you in the next 6 months?" }),
+      chipGroup(GOALS, state.goal, function(o){ state.goal = o; render(); if (o === OTHER){ var g = document.getElementById("goal-other"); if (g) g.focus(); } }, true),
+      state.goal === OTHER ? (function(){
+        var gi = el("input", { type:"text", id:"goal-other", placeholder:"In your words...", autocomplete:"off", value:state.goalOther, style:"margin-top:-12px" });
+        gi.addEventListener("input", function(){ state.goalOther = gi.value; });
+        return gi;
+      })() : null,
+      el("span", { class:"label", text:"How many days a month are you traveling or away from home?" }),
+      chipGroup(TRAVEL, state.travel, function(o){ state.travel = o; render(); }),
+      navWrap
+    ]);
+    return body;
+  }
+
+  function renderDivider(f){
+    var sec = SECTIONS[f.si];
+    return el("div", { class:"wrap fade" }, [
+      el("div", { class:"divider " + sec.key }, [
+        el("div", { class:"eyebrow", text:sec.label }),
+        el("div", { class:"big", text:sec.tag }),
+        el("p", { text:sec.divider })
+      ]),
+      navRow(true, "Let’s go →", next)
+    ]);
+  }
+
+  function renderStmt(f){
+    var sec = SECTIONS[f.si], it = sec.items[f.ii];
+    var key = it.cat;
+    var cur = state.answers[key];
+    var opts = el("div", { class:"scale" }, sec.scale.map(function(label, idx){
+      var b = el("button", { class:"opt" + (cur === idx ? " sel" : "") }, [ el("span", { class:"dot" }), label ]);
+      b.addEventListener("click", function(){
+        if (advancing) return;
+        state.answers[key] = idx;
+        Array.prototype.forEach.call(opts.children, function(c){ c.classList.remove("sel"); });
+        b.classList.add("sel");
+        advancing = true;
+        setTimeout(next, 230);
+      });
+      return b;
+    }));
+    return el("div", { class:"wrap fade" }, [
+      el("div", {}, [ el("span", { class:"tag " + sec.key, text:sec.tag }), el("span", { class:"count", text:(f.ii + 1) + " of " + sec.items.length }) ]),
+      el("div", { class:"stmt-lead", text:"How true is this for you?" }),
+      el("div", { class:"stmt", text:it.text }),
+      opts,
+      navRow(cur != null, "Next →", cur != null ? next : null)
+    ]);
+  }
+
+  function renderPinch(f){
+    var sec = SECTIONS[f.si];
+    var cur = state.pinch[sec.key];
+    var list = sec.pinch.options.concat([{ cat:OTHER, text:"Something else (write it in)" }]);
+    var opts = el("div", { class:"scale" }, list.map(function(o){
+      var b = el("button", { class:"opt" + (cur === o.cat ? " sel" : "") }, [ el("span", { class:"dot" }), o.text ]);
+      b.addEventListener("click", function(){
+        if (advancing) return;
+        state.pinch[sec.key] = o.cat;
+        if (o.cat === OTHER){
+          render();
+          var t = document.getElementById("pinch-other"); if (t) t.focus();
+          return;
+        }
+        Array.prototype.forEach.call(opts.children, function(c){ c.classList.remove("sel"); });
+        b.classList.add("sel");
+        advancing = true;
+        setTimeout(next, 260);
+      });
+      return b;
+    }));
+    var otherBox = null, navWrap = el("div");
+    function drawNav(){
+      navWrap.innerHTML = "";
+      var ok = cur && (cur !== OTHER || (state.pinchOther[sec.key] || "").trim());
+      navWrap.appendChild(navRow(!!ok, "Next →", cur ? next : null));
+    }
+    if (cur === OTHER){
+      otherBox = el("textarea", { id:"pinch-other", placeholder:"In your words...", style:"margin-top:12px;margin-bottom:0;min-height:90px" });
+      otherBox.value = state.pinchOther[sec.key] || "";
+      otherBox.addEventListener("input", function(){ state.pinchOther[sec.key] = otherBox.value; drawNav(); });
+    }
+    drawNav();
+    return el("div", { class:"wrap fade" }, [
+      el("div", {}, [ el("span", { class:"tag " + sec.key, text:sec.tag }), el("span", { class:"count", text:"Last one in this section" }) ]),
+      el("h2", { class:"qtitle", text:sec.pinch.title }),
+      el("p", { class:"qsub", text:"Go with your gut." }),
+      opts,
+      otherBox,
+      navWrap
+    ]);
+  }
+
+  function renderOpen(f){
+    var Q = OPEN_QS[f.field];
+    var ta = el("textarea", { placeholder:Q.placeholder });
+    ta.value = state.open[f.field] || "";
+    ta.addEventListener("input", function(){ state.open[f.field] = ta.value; });
+    return el("div", { class:"wrap fade" }, [
+      el("div", {}, [ el("span", { class:"tag about", text:Q.tag }), el("span", { class:"count", text:"Optional" }) ]),
+      el("h2", { class:"qtitle", text:Q.title }),
+      el("p", { class:"qsub", text:Q.sub }),
+      ta,
+      navRow(true, Q.btn, next)
+    ]);
+  }
+
+  function gutOther(key){
+    return state.pinch[key] === OTHER ? (state.pinchOther[key] || "").trim() : "";
+  }
+  function wordsList(){
+    var out = [];
+    ["week", "tried", "fix"].forEach(function(k){
+      var v = (state.open[k] || "").trim();
+      if (v) out.push({ label:OPEN_QS[k].label, text:v });
+    });
+    SECTIONS.forEach(function(sec){
+      var g = gutOther(sec.key);
+      if (g) out.push({ label:sec.tag + ": " + sec.pinch.title, text:g });
+    });
+    return out;
+  }
+
+  /* ---------- scoring ---------- */
+  // gap score 0..3 (higher = bigger gap). Pinch adds 1.5 so it breaks ties and lifts near-ties.
+  function gapOf(sec, cat){
+    var a = state.answers[cat];
+    if (a == null) return 0;
+    return sec.frictionScale ? a : 3 - a;
+  }
+  function analyze(){
+    var out = SECTIONS.map(function(sec){
+      var rows = sec.items.map(function(it, order){
+        var g = gapOf(sec, it.cat);
+        var weighted = g + (state.pinch[sec.key] === it.cat ? 1.5 : 0);
+        return { cat:it.cat, text:it.text, gap:g, weighted:weighted, order:order,
+                 said: state.answers[it.cat] != null ? sec.scale[state.answers[it.cat]] : "Skipped" };
+      });
+      var sorted = rows.slice().sort(function(a, b){ return (b.weighted - a.weighted) || (a.order - b.order); });
+      var avg = rows.reduce(function(s, r){ return s + r.gap; }, 0) / rows.length;
+      return { sec:sec, rows:rows, top:sorted[0], avg:avg };
+    });
+    var lever = out.slice().sort(function(a, b){ return (b.top.weighted - a.top.weighted) || 0; })[0];
+    var strongest = [];
+    out.forEach(function(s){ s.rows.forEach(function(r){ if (r.gap === 0) strongest.push(r.cat); }); });
+    return { sections:out, lever:lever, strongest:strongest };
+  }
+  function status(g){ return g >= 2 ? "liability" : (g >= 1 ? "watch" : "asset"); }
+  var STATUS_LABEL = { asset:"Asset", watch:"Watch", liability:"Liability" };
+  function sectionRead(avg){
+    if (avg >= 2) return "Biggest drag";
+    if (avg >= 1) return "Mixed";
+    return "Working";
+  }
+
+  /* ---------- results ---------- */
+  function renderResults(){
+    var A = analyze();
+    saveAudit(A);
+    var nm = (state.name || "").trim();
+    var lev = RESULTS[A.lever.top.cat];
+
+    var hero = el("div", { class:"res-hero fade" }, [
+      el("div", { class:"wrap", style:"padding-top:0;padding-bottom:30px" }, [
+        el("div", { class:"wordmark" }, ["SWEAT ", el("span", { text:"EQUITY" })]),
+        el("div", { class:"eyebrow", text:"Founder Fitness Snapshot" }),
+        el("h1", { text: nm ? nm + "’s balance sheet" : "Your balance sheet" }),
+        el("p", { text:"Here is what you told me, where your body is already paying you back, and the three things worth talking through together." }),
+        el("div", { class:"facts" }, [
+          el("span", { text:"Goal: " + goalText() }),
+          el("span", { text:"Away: " + (state.travel || "not set") + " / month" })
+        ])
+      ])
+    ]);
+
+    var w = el("div", { class:"wrap", style:"padding-top:0" });
+
+    // biggest lever
+    w.appendChild(el("div", { class:"lever fade" }, [
+      el("div", { class:"eyebrow", text:"Your biggest lever · " + A.lever.sec.tag }),
+      el("h2", { text:lev.title }),
+      el("p", { text:lev.statement })
+    ]));
+
+    // in your words (right under the lever so Madison can open with it)
+    var words = wordsList();
+    if (words.length){
+      w.appendChild(el("div", { class:"sec-h", text:"In your words" }));
+      w.appendChild(el("p", { class:"sec-sub", text:"What you wrote, exactly as you said it." }));
+      words.forEach(function(q){
+        w.appendChild(el("div", { class:"quote", style:"margin-bottom:12px" }, [ el("span", { class:"eyebrow", text:q.label }), "\u201c" + q.text + "\u201d" ]));
+      });
+    }
+
+    // balance sheet
+    w.appendChild(el("div", { class:"sec-h", text:"What you told me" }));
+    w.appendChild(el("p", { class:"sec-sub", text:"Every answer you gave, sorted into what is working for you and what is costing you." }));
+    w.appendChild(el("div", { class:"legend" }, [
+      el("span", {}, [ el("span", { class:"pill asset", text:"Asset" }), "Paying you back" ]),
+      el("span", {}, [ el("span", { class:"pill watch", text:"Watch" }), "Holding, but shaky" ]),
+      el("span", {}, [ el("span", { class:"pill liability", text:"Liability" }), "Quietly costing you" ])
+    ]));
+    var sheet = el("div", { class:"sheet" });
+    A.sections.forEach(function(s){
+      var col = el("div", { class:"sheet-col" }, [
+        el("h3", {}, [ el("span", { class:"tag " + s.sec.key, style:"margin:0", text:s.sec.tag }), el("span", { class:"count", style:"margin:0", text:sectionRead(s.avg) }) ])
+      ]);
+      s.rows.forEach(function(r){
+        var st = status(r.gap);
+        var pinched = state.pinch[s.sec.key] === r.cat;
+        col.appendChild(el("div", { class:"row" }, [
+          el("div", {}, [
+            el("div", { class:"name", text:RESULTS[r.cat].title.replace(/^The /, "") }),
+            el("div", { class:"said", text:"You said: " + r.said + (pinched ? " · your gut pick" : "") })
+          ]),
+          el("span", { class:"pill " + st, text:STATUS_LABEL[st] })
+        ]));
+      });
+      sheet.appendChild(col);
+    });
+    w.appendChild(sheet);
+
+    // takeaways
+    w.appendChild(el("div", { class:"sec-h", text:"Three takeaways to bring to Madison" }));
+    w.appendChild(el("p", { class:"sec-sub", text:"One from each section. This is where our conversation starts." }));
+    A.sections.forEach(function(s, i){
+      var R = RESULTS[s.top.cat];
+      w.appendChild(el("div", { class:"take" }, [
+        el("div", {}, [ el("span", { class:"num", text:"0" + (i + 1) }), el("span", { class:"tag " + s.sec.key, style:"margin:0", text:s.sec.tag }) ]),
+        el("h3", { text:R.title }),
+        el("p", { class:"st", text:R.statement }),
+        el("dl", {}, [
+          el("div", {}, [ el("dt", { text:"What your strategy needs" }), el("dd", { text:R.needs }) ]),
+          el("div", {}, [ el("dt", { text:"Try this week" }), el("dd", { text:R.step }) ]),
+          el("div", {}, [ el("dt", { text:"Ask Madison" }), el("dd", { class:"ask", text:R.ask }) ])
+        ])
+      ]));
+    });
+
+
+    // finale
+    var note = el("div", { class:"copied" });
+    w.appendChild(el("div", { class:"finale" }, [
+      el("h2", { text:"Now bring this to Madison." }),
+      el("p", { text:"Turn this screen around or walk it over. We will talk through your biggest lever and what to do with it in a week that looks like yours." }),
+      el("div", { class:"btns" }, [
+        el("button", { class:"btn btn-lime", onclick:function(){ copySummary(A, note); } }, ["Copy my snapshot"]),
+        el("button", { class:"btn btn-ghost", onclick:confirmRestart }, ["New audit"])
+      ]),
+      note
+    ]));
+
+    var frag = el("div", {}, [hero, w]);
+    return frag;
+  }
+
+  function summaryText(A){
+    var nm = (state.name || "").trim();
+    var L = [];
+    L.push("FOUNDER FITNESS SNAPSHOT" + (nm ? " | " + nm : ""));
+    L.push("Sweat Equity with Madison Griffin");
+    L.push("");
+    if ((state.email || "").trim()) L.push("Email: " + state.email.trim());
+    L.push("Goal: " + goalText());
+    L.push("Away from home: " + (state.travel || "not set") + " / month");
+    L.push("");
+    L.push("BIGGEST LEVER: " + RESULTS[A.lever.top.cat].title + " (" + A.lever.sec.tag + ")");
+    L.push(RESULTS[A.lever.top.cat].statement);
+    A.sections.forEach(function(s, i){
+      var R = RESULTS[s.top.cat];
+      L.push("");
+      L.push("0" + (i + 1) + " " + s.sec.tag.toUpperCase() + ": " + R.title);
+      L.push(R.statement);
+      L.push("Needs: " + R.needs);
+      L.push("Try this week: " + R.step);
+      L.push("Ask Madison: " + R.ask);
+    });
+    L.push("");
+    L.push("WHAT I SAID");
+    A.sections.forEach(function(s){
+      s.rows.forEach(function(r){
+        L.push("- " + s.sec.tag + " | " + RESULTS[r.cat].title.replace(/^The /, "") + ": " + r.said + " (" + STATUS_LABEL[status(r.gap)] + ")");
+      });
+    });
+    var words = wordsList();
+    if (words.length){
+      L.push("");
+      L.push("IN MY WORDS");
+      words.forEach(function(q){ L.push("- " + q.label + ": \u201c" + q.text + "\u201d"); });
+    }
+    return L.join("\n");
+  }
+
+  /* ---------- save to Adhara (once per audit, quietly in the background) ---------- */
+  function gutPickText(sec){
+    var cur = state.pinch[sec.key];
+    if (!cur) return "";
+    if (cur === OTHER) return "Other: " + gutOther(sec.key);
+    for (var i = 0; i < sec.pinch.options.length; i++){
+      if (sec.pinch.options[i].cat === cur) return sec.pinch.options[i].text + " (" + cur + ")";
+    }
+    return cur;
+  }
+  function saveAudit(A){
+    if (state.saved) return;
+    state.saved = true;
+    var takeaways = A.sections.map(function(s){ return RESULTS[s.top.cat].title; });
+    var answers = [];
+    A.sections.forEach(function(s){
+      s.rows.forEach(function(r){
+        answers.push(s.sec.tag + " | " + r.text + " → " + r.said + " (" + STATUS_LABEL[status(r.gap)] + ")");
+      });
+    });
+    var payload = {
+      firstName: (state.name || "").trim(),
+      email: (state.email || "").trim(),
+      emailOptIn: !!state.emailOptIn,
+      goal: goalText(),
+      travel: state.travel || "",
+      biggestLever: RESULTS[A.lever.top.cat].title + " (" + A.lever.sec.tag + ")",
+      possibleTakeaway: takeaways[0],
+      effectiveTakeaway: takeaways[1],
+      livableTakeaway: takeaways[2],
+      possibleGutPick: gutPickText(SECTIONS[0]),
+      effectiveGutPick: gutPickText(SECTIONS[1]),
+      livableGutPick: gutPickText(SECTIONS[2]),
+      normalWeek: (state.open.week || "").trim(),
+      triedBefore: (state.open.tried || "").trim(),
+      oneThingToFix: (state.open.fix || "").trim(),
+      answers: answers.join("\n"),
+      snapshot: summaryText(A)
+    };
+    function send(attempt){
+      fetch("/api/founder-fitness-audit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      }).then(function(res){
+        if (!res.ok && attempt < 2) setTimeout(function(){ send(attempt + 1); }, 3000);
+      }, function(){
+        if (attempt < 2) setTimeout(function(){ send(attempt + 1); }, 3000);
+      });
+    }
+    send(1);
+  }
+
+  function copySummary(A, note){
+    var txt = summaryText(A);
+    function done(ok){
+      note.textContent = ok ? "Copied. Paste it into your notes or a DM to Madison." : "Copy did not work here. Snap a screenshot instead.";
+    }
+    try{
+      if (navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(txt).then(function(){ done(true); }, function(){ fallbackCopy(txt, done); });
+      } else fallbackCopy(txt, done);
+    }catch(e){ fallbackCopy(txt, done); }
+  }
+  function fallbackCopy(txt, done){
+    try{
+      var ta = document.createElement("textarea");
+      ta.value = txt; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.opacity = "0";
+      document.body.appendChild(ta); ta.select();
+      var ok = document.execCommand("copy");
+      document.body.removeChild(ta);
+      done(ok);
+    }catch(e){ done(false); }
+  }
+
+  /* ---------- render ---------- */
+  function render(){
+    var f = FLOW[state.step];
+    app.innerHTML = "";
+    if (f.kind === "intro"){ app.appendChild(renderIntro()); return; }
+    if (f.kind === "results"){ app.appendChild(renderResults()); return; }
+    app.appendChild(topbar());
+    var screen;
+    if (f.kind === "about") screen = renderAbout();
+    else if (f.kind === "divider") screen = renderDivider(f);
+    else if (f.kind === "stmt") screen = renderStmt(f);
+    else if (f.kind === "pinch") screen = renderPinch(f);
+    else if (f.kind === "open") screen = renderOpen(f);
+    app.appendChild(screen);
+  }
+
+  render();
+})();
+</script>
+</body>
+</html>

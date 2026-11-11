@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { addToKitTag, KIT_TAGS } from '@/lib/kit'
 
 // Adhara form "Sweat Equity — Win a Free Month"
 const FORM_SLUG = 'sweat-equity-giveaway'
@@ -21,6 +22,7 @@ export async function POST(request: NextRequest) {
   const fullName = clean(body?.fullName, 100)
   const email = clean(body?.email, 200)
   const instagram = normalizeInstagram(clean(body?.instagram, 200))
+  const emailOptIn = body?.emailOptIn === true
 
   if (!fullName || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || !instagram) {
     return NextResponse.json({ error: 'Please fill in your name, email and Instagram handle.' }, { status: 400 })
@@ -38,12 +40,16 @@ export async function POST(request: NextRequest) {
     const res = await fetch(`${baseUrl}/api/v1/forms/${FORM_SLUG}/submit`, {
       method: 'POST',
       headers: { 'X-API-Key': apiKey, 'X-Workspace-ID': workspaceId, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ response_data: { fullName, email, instagram } }),
+      body: JSON.stringify({
+        response_data: { fullName, email, instagram, emailOptIn: emailOptIn ? 'Yes' : 'No' },
+      }),
     })
     if (!res.ok) {
       console.error('Adhara giveaway submission failed:', res.status, await res.text())
       return NextResponse.json({ error: 'Entries are unavailable right now.' }, { status: 502 })
     }
+    // Only people who ticked the consent box go to the Kit list
+    if (emailOptIn) await addToKitTag(KIT_TAGS.sweatEquityGiveaway, email, fullName.split(/\s+/)[0])
     return NextResponse.json({ success: true })
   } catch (error) {
     console.error('Giveaway submission error:', error)

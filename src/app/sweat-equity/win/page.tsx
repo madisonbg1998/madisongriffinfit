@@ -15,6 +15,7 @@ type FieldName = (typeof FIELDS)[number]['name']
 export default function SweatEquityWinPage() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'error' | 'done'>('idle')
   const [values, setValues] = useState<Record<FieldName, string>>({ fullName: '', email: '', instagram: '' })
+  const [emailOptIn, setEmailOptIn] = useState(false)
 
   async function enter(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -23,7 +24,7 @@ export default function SweatEquityWinPage() {
       const res = await fetch('/api/sweat-equity-giveaway', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(values),
+        body: JSON.stringify({ ...values, emailOptIn }),
       })
       if (!res.ok) throw new Error()
       setStatus('done')
@@ -90,6 +91,19 @@ export default function SweatEquityWinPage() {
                       />
                     </div>
                   ))}
+                  <label className="flex cursor-pointer items-start gap-3 text-sm leading-snug">
+                    <input
+                      type="checkbox"
+                      name="emailOptIn"
+                      checked={emailOptIn}
+                      onChange={(event) => setEmailOptIn(event.target.checked)}
+                      className="mt-0.5 h-5 w-5 shrink-0 cursor-pointer accent-[#FF5E3E]"
+                    />
+                    <span>
+                      Yes, Madison can email me fitness tips, offers and Sweat Equity updates. I can unsubscribe
+                      anytime.
+                    </span>
+                  </label>
                   <button
                     type="submit"
                     disabled={status === 'loading'}
