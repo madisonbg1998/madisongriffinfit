@@ -15,7 +15,8 @@ export default function SweatEquityCheckoutPage() {
       const res = await fetch('/api/sweat-equity-checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ firstName }),
+        // A private ?code= link applies an Adhara discount code at checkout
+        body: JSON.stringify({ firstName, discountCode: new URLSearchParams(window.location.search).get('code') || undefined }),
       })
       const data = await res.json()
       if (!res.ok || !data.checkoutUrl) throw new Error(data.error)

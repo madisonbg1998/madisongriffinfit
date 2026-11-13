@@ -28,7 +28,8 @@ async function enrollPaidBuyer(sessionId: string, firstName: string) {
     return
   }
   const { payment_status: paymentStatus, customer_email: email } = await statusRes.json()
-  if (paymentStatus !== 'paid' || !email) return
+  // "no_payment_required" is a $0 checkout (100%-off code); the subscription is still created
+  if ((paymentStatus !== 'paid' && paymentStatus !== 'no_payment_required') || !email) return
 
   await addToKitSequence(KIT_SEQUENCES.sweatEquityWelcome, email, firstName || undefined)
 }
