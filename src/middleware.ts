@@ -1,5 +1,7 @@
 import { NextResponse, type NextRequest } from 'next/server'
 
+const SWEAT_EQUITY_LANDING_URL = 'https://www.sweatequity.madisongriffinfit.com/'
+
 // Flip to false to bring the full site back.
 const UNDER_CONSTRUCTION = true
 
@@ -23,6 +25,12 @@ const LIVE_PATHS = ['/body-unmuted/check-in']
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
+
+  // Homepage goes to the Sweat Equity landing page on Squarespace. Temporary (307) so
+  // browsers don't cache it if the homepage ever changes. Every other page stays here.
+  if (pathname === '/') {
+    return NextResponse.redirect(SWEAT_EQUITY_LANDING_URL, 307)
+  }
 
   // Founder Fitness Audit is a standalone HTML page in /public; serve it at a clean URL
   if (pathname === '/founder-fitness-audit') {
