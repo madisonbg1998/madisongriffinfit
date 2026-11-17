@@ -138,7 +138,8 @@ function ScaleInput({
 
 // ── Main component ────────────────────────────────────────────────────────────
 
-export default function CheckInForm() {
+// submittedPath lets the same form live at more than one URL (/body-unmuted/check-in and /check-in)
+export default function CheckInForm({ submittedPath = '/body-unmuted/check-in/submitted' }: { submittedPath?: string }) {
   const router = useRouter()
   const [formData, setFormData] = useState<FormData>(initialFormData)
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -170,8 +171,8 @@ export default function CheckInForm() {
       body: JSON.stringify(payload),
     }).catch((err) => console.error('Check-in submission error:', err))
 
-    router.push('/body-unmuted/check-in/submitted')
-  }, [formData, router])
+    router.push(submittedPath)
+  }, [formData, router, submittedPath])
 
   // ── Form ──────────────────────────────────────────────────────────────────
 
