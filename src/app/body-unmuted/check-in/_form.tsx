@@ -2,14 +2,15 @@
 
 import { useState, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
+import Image from 'next/image'
+import { doblegh, elza, geistMono } from '../../fonts'
 
 // ── Style constants ───────────────────────────────────────────────────────────
 
 const inputClass =
-  'w-full bg-white border border-bark/20 rounded-lg px-4 py-3 text-midnight placeholder:text-charcoal/30 text-sm focus:outline-none focus:ring-2 focus:ring-bark/20 focus:border-bark transition-all duration-300'
+  'w-full bg-white border border-[#004238]/25 rounded-lg px-4 py-3 text-[#1E0F10] placeholder:text-[#1E0F10]/35 text-base focus:outline-none focus:ring-2 focus:ring-[#004238]/20 focus:border-[#004238] transition-all duration-300'
 
-const textareaClass =
-  'w-full bg-white border border-bark/20 rounded-lg px-4 py-3 text-midnight placeholder:text-charcoal/30 text-sm min-h-[110px] resize-y focus:outline-none focus:ring-2 focus:ring-bark/20 focus:border-bark transition-all duration-300'
+const textareaClass = `${inputClass} min-h-[110px] resize-y`
 
 // ── FormData ──────────────────────────────────────────────────────────────────
 
@@ -86,11 +87,12 @@ const initialFormData: FormData = {
 
 function SectionHeader({ num, title }: { num: string; title: string }) {
   return (
-    <div className="border-t border-bark/10 pt-10 pb-2">
-      <p className="text-bark text-[10px] font-medium tracking-[0.25em] uppercase mb-1">
-        Section {num}
-      </p>
-      <h2 className="font-serif text-midnight text-2xl">{title}</h2>
+    <div className="pt-6">
+      <div className="flex items-center gap-4">
+        <p className={`${geistMono.className} text-sm text-[#004238]`}>Section {num}</p>
+        <span aria-hidden className="h-px flex-1 bg-[#FF5E3E]" />
+      </div>
+      <h2 className={`${elza.className} mt-3 text-3xl uppercase leading-none text-[#004238] sm:text-4xl`}>{title}</h2>
     </div>
   )
 }
@@ -115,10 +117,11 @@ function ScaleInput({
             type="button"
             onClick={() => onChange(n)}
             suppressHydrationWarning
-            className={`flex-1 h-9 rounded-lg text-xs font-medium border transition-all duration-200 ${
+            aria-pressed={value === n}
+            className={`${geistMono.className} flex-1 h-10 rounded-lg text-sm border transition-all duration-200 ${
               value === n
-                ? 'bg-bark border-bark text-cream'
-                : 'bg-white border-bark/20 text-charcoal/60 hover:border-bark/40'
+                ? 'bg-[#004238] border-[#004238] text-[#E4FF72]'
+                : 'bg-white border-[#004238]/25 text-[#004238]/70 hover:border-[#004238]'
             }`}
           >
             {n}
@@ -126,8 +129,8 @@ function ScaleInput({
         ))}
       </div>
       <div className="flex justify-between mt-2">
-        <span className="text-charcoal/40 text-[11px]">{lowLabel}</span>
-        <span className="text-charcoal/40 text-[11px]">{highLabel}</span>
+        <span className="text-[#004238]/60 text-xs">{lowLabel}</span>
+        <span className="text-right text-[#004238]/60 text-xs">{highLabel}</span>
       </div>
     </div>
   )
@@ -173,25 +176,24 @@ export default function CheckInForm() {
   // ── Form ──────────────────────────────────────────────────────────────────
 
   return (
-    <div className="bg-cream min-h-screen px-6 py-28">
-      <div className="max-w-2xl mx-auto">
+    <main className={`${doblegh.className} relative min-h-screen bg-[#C7D2FF] px-6 py-8 text-[#004238] md:px-10`}>
+
+      <div className="relative mx-auto max-w-2xl">
+        <Image src="/sweat-equity/logo-tangerine-pine.svg" alt="Sweat Equity" width={150} height={50} priority className="h-auto w-[130px] md:w-[150px]" />
 
         {/* Header */}
-        <p className="text-bark text-[11px] font-sans font-medium tracking-[0.3em] uppercase mb-6">
-          Body Unmuted
-        </p>
-        <h1 className="font-serif text-midnight text-4xl sm:text-5xl leading-[1.08] mb-4">
+        <h1 className={`${elza.className} mt-14 text-[2.75rem] uppercase leading-none text-[#004238] sm:text-6xl`}>
           Weekly Check-In
         </h1>
-        <p className="text-charcoal/60 font-sans text-base leading-relaxed mb-14">
+        <p className="mt-6 mb-12 max-w-lg text-lg leading-relaxed">
           Be honest. The more detail you give me, the better I can support you.
         </p>
 
-        <div className="space-y-8">
+        <div className="space-y-5">
 
           {/* ── Name ── */}
-          <div>
-            <label className="block text-midnight text-sm font-medium mb-2">
+          <div className="rounded-2xl bg-[#FCF8F5] p-6 shadow-lg shadow-[#004238]/10 sm:p-8">
+            <label className="block text-[#1E0F10] text-base font-bold leading-snug mb-2">
               Your name
             </label>
             <input
@@ -207,8 +209,8 @@ export default function CheckInForm() {
           {/* ── Section 1: The Week Overall ── */}
           <SectionHeader num="01" title="The Week Overall" />
 
-          <div>
-            <label className="block text-midnight text-sm font-medium mb-2">
+          <div className="rounded-2xl bg-[#FCF8F5] p-6 shadow-lg shadow-[#004238]/10 sm:p-8">
+            <label className="block text-[#1E0F10] text-base font-bold leading-snug mb-2">
               One word that sums up your week
             </label>
             <input
@@ -221,8 +223,8 @@ export default function CheckInForm() {
             />
           </div>
 
-          <div>
-            <label className="block text-midnight text-sm font-medium mb-3">
+          <div className="rounded-2xl bg-[#FCF8F5] p-6 shadow-lg shadow-[#004238]/10 sm:p-8">
+            <label className="block text-[#1E0F10] text-base font-bold leading-snug mb-3">
               How would you rate your week overall?
             </label>
             <ScaleInput
@@ -233,8 +235,8 @@ export default function CheckInForm() {
             />
           </div>
 
-          <div>
-            <label className="block text-midnight text-sm font-medium mb-2">
+          <div className="rounded-2xl bg-[#FCF8F5] p-6 shadow-lg shadow-[#004238]/10 sm:p-8">
+            <label className="block text-[#1E0F10] text-base font-bold leading-snug mb-2">
               What&rsquo;s the one thing you most want me to know about this week?
             </label>
             <textarea
@@ -249,8 +251,8 @@ export default function CheckInForm() {
           {/* ── Section 2: Training ── */}
           <SectionHeader num="02" title="Training" />
 
-          <div>
-            <label className="block text-midnight text-sm font-medium mb-3">
+          <div className="rounded-2xl bg-[#FCF8F5] p-6 shadow-lg shadow-[#004238]/10 sm:p-8">
+            <label className="block text-[#1E0F10] text-base font-bold leading-snug mb-3">
               How did your training feel this week overall?
             </label>
             <ScaleInput
@@ -261,8 +263,8 @@ export default function CheckInForm() {
             />
           </div>
 
-          <div>
-            <label className="block text-midnight text-sm font-medium mb-2">
+          <div className="rounded-2xl bg-[#FCF8F5] p-6 shadow-lg shadow-[#004238]/10 sm:p-8">
+            <label className="block text-[#1E0F10] text-base font-bold leading-snug mb-2">
               Which sessions felt good, and what made them feel that way?
             </label>
             <textarea
@@ -274,8 +276,8 @@ export default function CheckInForm() {
             />
           </div>
 
-          <div>
-            <label className="block text-midnight text-sm font-medium mb-2">
+          <div className="rounded-2xl bg-[#FCF8F5] p-6 shadow-lg shadow-[#004238]/10 sm:p-8">
+            <label className="block text-[#1E0F10] text-base font-bold leading-snug mb-2">
               Which sessions felt hard, flat, or off — and do you have a sense of why?
             </label>
             <textarea
@@ -287,11 +289,11 @@ export default function CheckInForm() {
             />
           </div>
 
-          <div>
-            <label className="block text-midnight text-sm font-medium mb-1">
+          <div className="rounded-2xl bg-[#FCF8F5] p-6 shadow-lg shadow-[#004238]/10 sm:p-8">
+            <label className="block text-[#1E0F10] text-base font-bold leading-snug mb-1">
               Did anything get in the way of training this week?
             </label>
-            <p className="text-charcoal/40 text-xs mb-3">
+            <p className="text-[#004238]/60 text-sm mb-3">
               Schedule, energy, travel, motivation, life.
             </p>
             <textarea
@@ -303,8 +305,8 @@ export default function CheckInForm() {
             />
           </div>
 
-          <div>
-            <label className="block text-midnight text-sm font-medium mb-2">
+          <div className="rounded-2xl bg-[#FCF8F5] p-6 shadow-lg shadow-[#004238]/10 sm:p-8">
+            <label className="block text-[#1E0F10] text-base font-bold leading-snug mb-2">
               Any pain, tightness, discomfort, or anything physical I should know about?
             </label>
             <textarea
@@ -319,8 +321,8 @@ export default function CheckInForm() {
           {/* ── Section 3: Nutrition ── */}
           <SectionHeader num="03" title="Nutrition" />
 
-          <div>
-            <label className="block text-midnight text-sm font-medium mb-3">
+          <div className="rounded-2xl bg-[#FCF8F5] p-6 shadow-lg shadow-[#004238]/10 sm:p-8">
+            <label className="block text-[#1E0F10] text-base font-bold leading-snug mb-3">
               How did your nutrition feel this week?
             </label>
             <ScaleInput
@@ -331,8 +333,8 @@ export default function CheckInForm() {
             />
           </div>
 
-          <div>
-            <label className="block text-midnight text-sm font-medium mb-2">
+          <div className="rounded-2xl bg-[#FCF8F5] p-6 shadow-lg shadow-[#004238]/10 sm:p-8">
+            <label className="block text-[#1E0F10] text-base font-bold leading-snug mb-2">
               How were your hunger and cravings throughout the week?
             </label>
             <textarea
@@ -344,11 +346,11 @@ export default function CheckInForm() {
             />
           </div>
 
-          <div>
-            <label className="block text-midnight text-sm font-medium mb-1">
+          <div className="rounded-2xl bg-[#FCF8F5] p-6 shadow-lg shadow-[#004238]/10 sm:p-8">
+            <label className="block text-[#1E0F10] text-base font-bold leading-snug mb-1">
               Any patterns you noticed?
             </label>
-            <p className="text-charcoal/40 text-xs mb-3">
+            <p className="text-[#004238]/60 text-sm mb-3">
               Evening eating, stress eating, skipping meals, anything like that.
             </p>
             <textarea
@@ -360,8 +362,8 @@ export default function CheckInForm() {
             />
           </div>
 
-          <div>
-            <label className="block text-midnight text-sm font-medium mb-2">
+          <div className="rounded-2xl bg-[#FCF8F5] p-6 shadow-lg shadow-[#004238]/10 sm:p-8">
+            <label className="block text-[#1E0F10] text-base font-bold leading-snug mb-2">
               How many alcoholic drinks did you have across the week?
             </label>
             <input
@@ -374,8 +376,8 @@ export default function CheckInForm() {
             />
           </div>
 
-          <div>
-            <label className="block text-midnight text-sm font-medium mb-2">
+          <div className="rounded-2xl bg-[#FCF8F5] p-6 shadow-lg shadow-[#004238]/10 sm:p-8">
+            <label className="block text-[#1E0F10] text-base font-bold leading-snug mb-2">
               Did anything derail your nutrition this week, and what do you think was behind it?
             </label>
             <textarea
@@ -390,8 +392,8 @@ export default function CheckInForm() {
           {/* ── Section 4: Body and Recovery ── */}
           <SectionHeader num="04" title="Body and Recovery" />
 
-          <div>
-            <label className="block text-midnight text-sm font-medium mb-2">
+          <div className="rounded-2xl bg-[#FCF8F5] p-6 shadow-lg shadow-[#004238]/10 sm:p-8">
+            <label className="block text-[#1E0F10] text-base font-bold leading-snug mb-2">
               How many hours of sleep did you get on average?
             </label>
             <input
@@ -404,8 +406,8 @@ export default function CheckInForm() {
             />
           </div>
 
-          <div>
-            <label className="block text-midnight text-sm font-medium mb-3">
+          <div className="rounded-2xl bg-[#FCF8F5] p-6 shadow-lg shadow-[#004238]/10 sm:p-8">
+            <label className="block text-[#1E0F10] text-base font-bold leading-snug mb-3">
               How would you rate your sleep quality?
             </label>
             <ScaleInput
@@ -416,8 +418,8 @@ export default function CheckInForm() {
             />
           </div>
 
-          <div>
-            <label className="block text-midnight text-sm font-medium mb-3">
+          <div className="rounded-2xl bg-[#FCF8F5] p-6 shadow-lg shadow-[#004238]/10 sm:p-8">
+            <label className="block text-[#1E0F10] text-base font-bold leading-snug mb-3">
               How were your energy levels across the week?
             </label>
             <ScaleInput
@@ -428,8 +430,8 @@ export default function CheckInForm() {
             />
           </div>
 
-          <div>
-            <label className="block text-midnight text-sm font-medium mb-2">
+          <div className="rounded-2xl bg-[#FCF8F5] p-6 shadow-lg shadow-[#004238]/10 sm:p-8">
+            <label className="block text-[#1E0F10] text-base font-bold leading-snug mb-2">
               How has your digestion and bloating been this week?
             </label>
             <textarea
@@ -441,8 +443,8 @@ export default function CheckInForm() {
             />
           </div>
 
-          <div>
-            <label className="block text-midnight text-sm font-medium mb-2">
+          <div className="rounded-2xl bg-[#FCF8F5] p-6 shadow-lg shadow-[#004238]/10 sm:p-8">
+            <label className="block text-[#1E0F10] text-base font-bold leading-snug mb-2">
               If applicable, where are you in your cycle right now?
             </label>
             <input
@@ -455,8 +457,8 @@ export default function CheckInForm() {
             />
           </div>
 
-          <div>
-            <label className="block text-midnight text-sm font-medium mb-2">
+          <div className="rounded-2xl bg-[#FCF8F5] p-6 shadow-lg shadow-[#004238]/10 sm:p-8">
+            <label className="block text-[#1E0F10] text-base font-bold leading-snug mb-2">
               Any PMS symptoms, hormonal shifts, or anything cycle-related that affected your week?
             </label>
             <textarea
@@ -471,8 +473,8 @@ export default function CheckInForm() {
           {/* ── Section 5: Stress and Life ── */}
           <SectionHeader num="05" title="Stress and Life" />
 
-          <div>
-            <label className="block text-midnight text-sm font-medium mb-3">
+          <div className="rounded-2xl bg-[#FCF8F5] p-6 shadow-lg shadow-[#004238]/10 sm:p-8">
+            <label className="block text-[#1E0F10] text-base font-bold leading-snug mb-3">
               How full is your stress cup right now?
             </label>
             <ScaleInput
@@ -483,11 +485,11 @@ export default function CheckInForm() {
             />
           </div>
 
-          <div>
-            <label className="block text-midnight text-sm font-medium mb-1">
+          <div className="rounded-2xl bg-[#FCF8F5] p-6 shadow-lg shadow-[#004238]/10 sm:p-8">
+            <label className="block text-[#1E0F10] text-base font-bold leading-snug mb-1">
               Any big stressors this week I should factor into your programming?
             </label>
-            <p className="text-charcoal/40 text-xs mb-3">
+            <p className="text-[#004238]/60 text-sm mb-3">
               Work, personal, emotional — anything relevant.
             </p>
             <textarea
@@ -499,11 +501,11 @@ export default function CheckInForm() {
             />
           </div>
 
-          <div>
-            <label className="block text-midnight text-sm font-medium mb-1">
+          <div className="rounded-2xl bg-[#FCF8F5] p-6 shadow-lg shadow-[#004238]/10 sm:p-8">
+            <label className="block text-[#1E0F10] text-base font-bold leading-snug mb-1">
               Anything coming up in the next week or two I should plan around?
             </label>
-            <p className="text-charcoal/40 text-xs mb-3">
+            <p className="text-[#004238]/60 text-sm mb-3">
               Travel, events, big deadlines, social commitments — anything that might affect training or nutrition.
             </p>
             <textarea
@@ -518,11 +520,11 @@ export default function CheckInForm() {
           {/* ── Section 6: Wins and Struggles ── */}
           <SectionHeader num="06" title="Wins and Struggles" />
 
-          <div>
-            <label className="block text-midnight text-sm font-medium mb-1">
+          <div className="rounded-2xl bg-[#FCF8F5] p-6 shadow-lg shadow-[#004238]/10 sm:p-8">
+            <label className="block text-[#1E0F10] text-base font-bold leading-snug mb-1">
               What&rsquo;s your biggest win this week?
             </label>
-            <p className="text-charcoal/40 text-xs mb-3">
+            <p className="text-[#004238]/60 text-sm mb-3">
               Training, nutrition, mindset, life. Anything counts.
             </p>
             <textarea
@@ -534,8 +536,8 @@ export default function CheckInForm() {
             />
           </div>
 
-          <div>
-            <label className="block text-midnight text-sm font-medium mb-2">
+          <div className="rounded-2xl bg-[#FCF8F5] p-6 shadow-lg shadow-[#004238]/10 sm:p-8">
+            <label className="block text-[#1E0F10] text-base font-bold leading-snug mb-2">
               What did you struggle with most?
             </label>
             <textarea
@@ -547,8 +549,8 @@ export default function CheckInForm() {
             />
           </div>
 
-          <div>
-            <label className="block text-midnight text-sm font-medium mb-2">
+          <div className="rounded-2xl bg-[#FCF8F5] p-6 shadow-lg shadow-[#004238]/10 sm:p-8">
+            <label className="block text-[#1E0F10] text-base font-bold leading-snug mb-2">
               How did you respond when things went off plan?
             </label>
             <textarea
@@ -563,8 +565,8 @@ export default function CheckInForm() {
           {/* ── Section 7: Looking Ahead ── */}
           <SectionHeader num="07" title="Looking Ahead" />
 
-          <div>
-            <label className="block text-midnight text-sm font-medium mb-2">
+          <div className="rounded-2xl bg-[#FCF8F5] p-6 shadow-lg shadow-[#004238]/10 sm:p-8">
+            <label className="block text-[#1E0F10] text-base font-bold leading-snug mb-2">
               One thing you want to focus on or improve next week
             </label>
             <textarea
@@ -576,8 +578,8 @@ export default function CheckInForm() {
             />
           </div>
 
-          <div>
-            <label className="block text-midnight text-sm font-medium mb-2">
+          <div className="rounded-2xl bg-[#FCF8F5] p-6 shadow-lg shadow-[#004238]/10 sm:p-8">
+            <label className="block text-[#1E0F10] text-base font-bold leading-snug mb-2">
               Anything you need from me this week?
             </label>
             <textarea
@@ -592,13 +594,13 @@ export default function CheckInForm() {
         </div>
 
         {/* Submit */}
-        <div className="mt-14 pt-10 border-t border-bark/10">
+        <div className="mt-12 pb-16">
           <button
             type="button"
             onClick={handleSubmit}
             disabled={isSubmitting}
-          suppressHydrationWarning
-          className="inline-flex items-center gap-2 bg-bark text-cream font-sans font-medium text-[11px] tracking-[0.18em] uppercase px-10 py-4 rounded-sm hover:bg-bark/90 transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
+            suppressHydrationWarning
+            className={`${geistMono.className} inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-full bg-[#004238] px-10 py-4 text-sm text-[#E4FF72] transition-colors duration-300 hover:bg-[#1E0F10] focus:outline-none focus-visible:ring-4 focus-visible:ring-[#FF5E3E] disabled:cursor-wait disabled:opacity-70 sm:w-auto`}
           >
             {isSubmitting ? (
               <>
@@ -615,6 +617,6 @@ export default function CheckInForm() {
         </div>
 
       </div>
-    </div>
+    </main>
   )
 }

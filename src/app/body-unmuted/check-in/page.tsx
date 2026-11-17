@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import CheckInForm from './_form'
 
 export const metadata: Metadata = {
-  title: 'Weekly Check-In | Body Unmuted',
+  title: 'Weekly Check-In | Sweat Equity',
   robots: { index: false, follow: false },
 }
 
