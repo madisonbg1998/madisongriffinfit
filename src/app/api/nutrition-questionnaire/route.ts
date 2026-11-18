@@ -50,7 +50,16 @@ export async function POST(request: NextRequest) {
       body: JSON.stringify({ response_data: data }),
     })
     if (!res.ok) {
-      console.error('Adhara nutrition questionnaire failed:', res.status, await res.text())
+      const text = await res.text()
+      console.error('Adhara nutrition questionnaire failed:', res.status, text)
+      // Adhara validation (e.g. a throwaway email address): show its message so the person can fix it
+      if (res.status === 422) {
+        let message: unknown
+        try {
+          message = JSON.parse(text)?.detail?.message
+        } catch {}
+        if (typeof message === 'string' && message) return NextResponse.json({ error: message }, { status: 400 })
+      }
       return NextResponse.json({ error: 'Something went wrong. Please try again.' }, { status: 502 })
     }
     return NextResponse.json({ success: true })
